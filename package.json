@@ -1,0 +1,23 @@
+{
+  "name": "phlec86",
+  "version": "1.0.0",
+  "description": "We are a small team of 5 students doing the capstone project for the subject IT Project COMP30022.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nely1/phlec-86.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nely1/phlec-86/issues"
+  },
+  "homepage": "https://github.com/nely1/phlec-86#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {}
+}
