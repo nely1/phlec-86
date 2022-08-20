@@ -20,14 +20,14 @@ Here's the structure of the repository: (Structure learnt in subject INFO30005 W
 
     Setting up Node.js
     You'll do this work at your command prompt.
-    a. Check to see whether you already have node installed: **node -v**.
-    b. If you already have it installed, move on to step 4. Otherwise, install node first.
-    c. Download and install Node: https://nodejs.org/en/download/ .
-    In Linux, install using **sudo apt install nodejs npm** or equivalent commands.
-    d. Verify the installation with **node -v** and **npm -v**.
-    e. Install node dependencies using **npm init**
-        - Accept all the defaults given in the prompt (just press Enter)
-    f. Install the Express framework using **npm install express**. 
+    * a. Check to see whether you already have node installed: **node -v**.
+    * b. If you already have it installed, move on to step 4. Otherwise, install node first.
+    * c. Download and install Node: https://nodejs.org/en/download/ .
+            - In Linux, install using **sudo apt install nodejs npm** or equivalent commands.
+    * d. Verify the installation with **node -v** and **npm -v**.
+    * e. Install node dependencies using **npm init** .
+            - Accept all the defaults given in the prompt (just press Enter)
+    * f. Install the Express framework using **npm install express**. 
 
     f. If you are having trouble contact your nearest Discord teammate.
 
