@@ -1,11 +1,11 @@
-## Welcome to the Github page for PhlecTravels
+# Welcome to the Github page for PhlecTravels
 
 We are a small team of 5 students doing the capstone project for the subject IT Project COMP30022.
 
--Pretend that this sentence is a really good intro to the team and the about this project stuff-
+*Pretend that this sentence is a really good intro to the team and the about this project stuff*
 
-### Repository structure/layout and coding guidelines: 
-> (Structure learnt in subject INFO30005 Web Information Technologies)
+# Repository structure/layout and coding guidelines: 
+> (Structure learnt in subject INFO30005 Web Information Technologies)\
 > Note - Description of structure is based of memory and is not official definitions  
 > Official definitions here: https://developer.mozilla.org/en-US/docs/Glossary/MVC
 * **controllers**: Handles interactions with the database and the user, and other logic needed for a specific page
@@ -17,8 +17,9 @@ We are a small team of 5 students doing the capstone project for the subject IT 
 the server locally using the command **node app.js** and navigate to: http://localhost:3000/
 
 ## Coding guidelines:
-> Best practices for javascript code learnt from: https://www.w3schools.com/js/js_conventions.asp
+> Best practices for javascript code learnt from: https://www.w3schools.com/js/js_conventions.asp \
 > "House rules" for the team can be discussed in Discord
+
 Brief overview of coding conventions:
  * **Variable naming**: Variables and functions will be typed in camelCase and start with letters only
  * **Indentation**: Code blocks will be indented with **4** spaces
@@ -31,6 +32,7 @@ Brief overview of coding conventions:
     * Place the closing bracket on a new line, without leading spaces.
     * Always end an object definition with a semicolon.
 
+```
     Example:
     const schema = new mongoose.Schema({ 
         name: {type: String, required: true},
@@ -40,8 +42,9 @@ Brief overview of coding conventions:
         profile_picture: String,
         role: {type:String, required:true}
     });
+```
 
-### Prerequisites needed to use the code
+# Prerequisites needed to use the code
 
 1. To use node.js (our back-end tool) (Instructions provided by INFO30005 Web information technologies):
 
@@ -56,7 +59,9 @@ Brief overview of coding conventions:
             - Accept all the defaults given in the prompt (just press Enter)
     * f. Install the Express framework using **npm install express**. 
 
-    f. If you are having trouble contact your nearest Discord teammate.
+    f. If you are having trouble, contact your nearest Discord teammate.
 
 2. To use the database: Must have a .env file with the following line:
 MONGO_URL="super secret database url that was shared in a secure environment" 
+
+3. To be continued...
