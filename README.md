@@ -44,6 +44,16 @@ Brief overview of coding conventions:
     });
 ```
 
+## Documentation and commenting
+
+As each member of the team is dedicated mainly to either the front-end or the back-end, communication between the two \
+roles will be crucial. Hence, each public function must have documentation of what the function does, private/helper \
+functions is encouraged to be documented for debugging purposes.
+
+Each major codeblock within a function should have a comment that summarises what the code does, it should be placed \
+**above** each codeblock. This will help promote code reuse whenever another team member plans to write a similar \
+function.
+
 # Prerequisites needed to use the code
 
 1. To use node.js (our back-end tool) (Instructions provided by INFO30005 Web information technologies):
