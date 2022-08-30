@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class LandingPageBody extends Component {
   render() {
@@ -9,7 +10,8 @@ export default class LandingPageBody extends Component {
                 <p className='text1 landingBodyText'>Phlec Travels is a web app designed to record the journeys you have been, and help you discover where to go next</p>
                 <div className='landingBodyLogInOut'>
                     <div className='landingBodyLogIn landingBodyLogInOutButton'>
-                        <h1>Sign In</h1>
+                        
+                        <Link to="/Login"><h1>Sign In</h1></Link>
                     </div>
                     <div className='landingBodyLogOut landingBodyLogInOutButton'>
                         <h1>Sign Up</h1>

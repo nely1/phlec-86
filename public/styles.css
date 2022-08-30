@@ -186,3 +186,12 @@ h3 {
     align-items: center;
     justify-content: center;
 }
+
+.LoginPageBox {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
