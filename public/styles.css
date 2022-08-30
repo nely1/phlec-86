@@ -30,10 +30,13 @@
 
 }
 
-@font-face {
+/* Local font access commented out (temp?) */
+/* @font-face {
     font-family: 'Fira Sans';
     src: url('./public/fonts/FiraSans-Regular.otf');
-}
+} */
+
+
 /* styles from Figma 
  * sizes should probably me made relative. */
 
