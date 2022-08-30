@@ -100,7 +100,7 @@ h3 {
     font-size: 25px;
     line-height: 30px;
     text-align: center;
-    font-color: #FFFFFF; /*var(--color-text-secondary)*/;
+    color: var(--color-text-secondary);
 }
 
 .navbarLogo {
@@ -121,3 +121,65 @@ h3 {
     height: 100px;
 }
 
+.landingBodyGrid {
+    display: grid;
+    width: 100%;
+    margin-top: 93px;
+    height: 760px;
+    grid-template-columns: 40% 60%;
+    background-color: var(--color-secondary-grey);
+
+}
+
+.landingBodyGridItemLeft {
+    justify-items: center;
+}
+
+.landingBodyGridItem {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); To Remove */
+    
+}
+
+
+.landingBodyText {
+
+    text-align: justify;
+    margin: 5%;
+}
+
+.landingBodyHeading {
+    text-align: center;
+    margin: 5%;
+}
+
+.landingBodyLogInOut {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    column-gap: 30px;
+    margin-top: 15%;
+    color: var(--color-text-secondary);
+
+}
+
+.landingBodyLogInOutButton {
+    background-color: var(--color-primary-yellow);
+    width: 275px;
+    border-radius: 10px;
+}
+
+.landingBodyLogIn {
+    justify-self: end;
+}
+
+.landingBodyImage {
+    width: 956px;
+    height: 492px;
+    
+}
+
+.landingBodyGridItemRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

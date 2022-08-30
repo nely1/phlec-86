@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import LandingPageBody from './LandingPageBody';
 
 import Navbar from './Navbar';
 
@@ -9,6 +10,6 @@ root.render(
     // Add Main Components to be Rendered Here
     <>
         <Navbar />    
-
+        <LandingPageBody />
     </>
 )
