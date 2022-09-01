@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar'
 import LandingPageBody from './pages/LandingPageBody';
@@ -13,18 +14,21 @@ const ROOT      = '/';
 const LOGIN     = '/Login';
 const HOME      = '/Home';
 const DASHBOARD = '/Dashboard';
+const LOGOUT    = '/Logout';
+
 
 export default function App() {
-    let currentPage = Pages.Home;
     return (
         <Router>
-            <Navbar />
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
+                <Route path={HOME}  element={<LandingPageBody />}></Route>
+                <Route path={LOGOUT} element={ <Navigate to={HOME}/>} />
                 <Route path={LOGIN} element={<LoginPage />}></Route>
-                <Route path={HOME}  element={<LandingPageBody />}></Route> 
                 <Route path={DASHBOARD} element={<Dashboard />}></Route>
+                
             </Routes> 
         </Router>
   )
 }
+

@@ -8,6 +8,13 @@ export default function NavButton (props) {
         let path = "/" + props.page;
         navigate(path);  
     }
+
+    let toggled = props.toggled;
+
+    if (toggled === undefined) {
+        toggled = true;
+    }
+
     if (props.className === "loginButton") {
         console.log("Rendering Login button");
         return (
@@ -18,9 +25,19 @@ export default function NavButton (props) {
             </button>
         );
     }
+    if (props.className === "logoutButton") {
+        console.log("Rendering Logout Button");
+        return (
+            <button
+                className="loginButton"
+                onClick={routeChange}>
+                Logout
+            </button>
+        )
+    }
     return (
         <button 
-        className={props.toggled ? "navButtonToggled" : "navButtonUntoggled"} 
+        className={toggled ? "navButtonToggled" : "navButtonUntoggled"} 
         onClick={routeChange}>
         {props.page}
         </button>

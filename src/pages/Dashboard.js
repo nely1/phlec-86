@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import Navbar from '../components/Navbar'
+import Pages from '../components/Navbar'
+
 function Dashboard() {
 
   /* using hooks. Might help with backend (?) */
@@ -8,6 +11,8 @@ function Dashboard() {
   const [recentImage] = useState(() => { return 'https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'});
 
   return (
+      <>
+      <Navbar page="Home" loggedIn={true}/>
     <div className='DashboardBase'>
       <div className='DashboardGrid'>
         <div className='DashboardGridItem'>
@@ -55,6 +60,7 @@ function Dashboard() {
         </div>
       </div>
     </div>
+      </>
   )
 }
 
