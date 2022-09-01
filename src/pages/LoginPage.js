@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 function LoginPage() {
   return (
         <>
-            <Navbar page="Login" loggedIn={false}/>
+        <Navbar page="Login" loggedIn={false}/>
         <div className='LoginPage'>
           <div className='LoginPageBox'>
               <h1 className='LoginPageTitle'>Sign in to Phlec Travels</h1>
@@ -28,7 +28,7 @@ function LoginPage() {
             <div className='LoginPageAlternativesItem2 text1'><Link to='/ResetPassword'><p>Forgot Password</p></Link></div>
           </div>
         </div>
-      </>
+        </>
   )
 }
 

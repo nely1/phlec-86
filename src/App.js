@@ -14,7 +14,6 @@ const ROOT      = '/';
 const LOGIN     = '/Login';
 const LANDING   = '/Landing';
 const HOME      = '/Home';
-const DASHBOARD = '/Dashboard';
 const LOGOUT    = '/Logout';
 
 
@@ -23,7 +22,6 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
-                <Route path={HOME}  element={<LandingPageBody />}></Route>
                 <Route path={LOGOUT} element={ <Navigate to={HOME}/>} />
                 <Route path={LOGIN} element={<LoginPage />}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
