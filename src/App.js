@@ -5,14 +5,14 @@ import Navbar from './components/Navbar'
 import LandingPageBody from './pages/LandingPageBody';
 import LoginPage from './pages/LoginPage';
 import Pages from './components/Navbar';
-import Dashboard from './pages/Dashboard';
+import HomePage from './pages/HomePage';
 
 
 
 const ROOT      = '/';
 const LOGIN     = '/Login';
+const LANDING   = '/Landing';
 const HOME      = '/Home';
-const DASHBOARD = '/Dashboard';
 
 export default function App() {
     let currentPage = Pages.Home;
@@ -22,8 +22,8 @@ export default function App() {
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
                 <Route path={LOGIN} element={<LoginPage />}></Route>
-                <Route path={HOME}  element={<LandingPageBody />}></Route> 
-                <Route path={DASHBOARD} element={<Dashboard />}></Route>
+                <Route path={LANDING}  element={<LandingPageBody />}></Route> 
+                <Route path={HOME} element={<HomePage />}></Route>
             </Routes> 
         </Router>
   )
