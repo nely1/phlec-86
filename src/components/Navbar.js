@@ -50,7 +50,7 @@ export default class Navbar extends React.Component {
                     <div className="logoText">Phlec Travels</div>
                 </div>
                 <ul className="navbarButtons">{buttons}</ul>
-                <img className="profileImage" src="profiledefault.png" />
+                <img className="profileImage" src="profiledefault.png" alt="Default Profile" />
                 <NavButton className="loginButton" page="Login" toggled={true}/>
             </div>
             </>
