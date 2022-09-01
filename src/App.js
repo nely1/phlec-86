@@ -6,12 +6,13 @@ import Navbar from './components/Navbar'
 import LandingPageBody from './pages/LandingPageBody';
 import LoginPage from './pages/LoginPage';
 import Pages from './components/Navbar';
-import Dashboard from './pages/Dashboard';
+import HomePage from './pages/HomePage';
 
 
 
 const ROOT      = '/';
 const LOGIN     = '/Login';
+const LANDING   = '/Landing';
 const HOME      = '/Home';
 const DASHBOARD = '/Dashboard';
 const LOGOUT    = '/Logout';
@@ -25,8 +26,8 @@ export default function App() {
                 <Route path={HOME}  element={<LandingPageBody />}></Route>
                 <Route path={LOGOUT} element={ <Navigate to={HOME}/>} />
                 <Route path={LOGIN} element={<LoginPage />}></Route>
-                <Route path={DASHBOARD} element={<Dashboard />}></Route>
-                
+                <Route path={LANDING}  element={<LandingPageBody />}></Route> 
+                <Route path={HOME} element={<HomePage />}></Route>
             </Routes> 
         </Router>
   )

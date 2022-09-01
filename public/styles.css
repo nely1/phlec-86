@@ -368,18 +368,18 @@ a {
     text-align: right;
 }
 
-.DashboardGrid {
+.HomePageGrid {
     display: grid;
     grid-template-columns: 2fr 1fr;
 }
 
-.DashboardTitle {
+.HomePageTitle {
     text-align: center;
     margin-top: 5vh;
 
 }
 
-.DashboardUpComing, .DashboardRecentMemories {
+.HomePageUpComing, .HomePageRecentMemories {
     display: flex;
     flex-direction: column;
     color: var(--color-text-secondary);
@@ -390,7 +390,7 @@ a {
     border-radius: 10px;
 }
 
-.DashboardUpComingTop, .DashboardRecentMemoriesTop {
+.HomePageUpComingTop, .HomePageRecentMemoriesTop {
     background-color: var(--color-secondary-green);
     width: 100%;
     border-radius: 10px 10px 0 0;
@@ -398,7 +398,7 @@ a {
     padding-top: 1vh;
 }
 
-.DashboardUpComingBottom {
+.HomePageUpComingBottom {
     background-color: var(--color-primary-lightgreen);
     width: 100%;
     border-radius: 0 0 10px 10px;
@@ -406,13 +406,13 @@ a {
     padding-bottom: 2vh;
 }
 
-.DashboardUpComingTimeBox {
+.HomePageUpComingTimeBox {
     background-color: var(--color-primary-yellow);
     border-radius: 10px;
     margin: 1vh 1vw;
 }
 
-.DashboardUpComingGoTo {
+.HomePageUpComingGoTo {
     background-color: var(--color-secondary-green);
     width: 60px;
     height: 45px;
@@ -420,19 +420,19 @@ a {
     margin-left: 25vw;
 }
 
-.DashboardRecentMemoriesBottom {
+.HomePageRecentMemoriesBottom {
     border-radius: 0 0 10px 10px;
     height: 35vh;
     width: 100%;
 }
 
-.DashboardRecentMemoriesPicture {
+.HomePageRecentMemoriesPicture {
     width: 100%;
     height: 100%;
     border-radius: 0 0 10px 10px;
 }
 
-.DashboardRecentMemoriesBottomOverlay {
+.HomePageRecentMemoriesBottomOverlay {
     position: relative;
     height: 20%;
     top: -20%;
@@ -441,14 +441,14 @@ a {
     text-align: left;
 }
 
-.DashboardRecentMemoriesBottomOverlayText {
+.HomePageRecentMemoriesBottomOverlayText {
     margin-left: 1vw;
     padding-top: 1vh;
     color: var(--color-text-primary);
     opacity: 100%;
 }
 
-.DashboardRecentMemoriesgGoTo {
+.HomePageRecentMemoriesgGoTo {
     background-color: var(--color-secondary-green);
     width: 60px;
     height: 45px;
@@ -459,7 +459,7 @@ a {
     text-align: center;
 }
 
-.DashboardMainPicture {
+.HomePageMainPicture {
     position: absolute;
     width: 1180px;
     height: 710px;
