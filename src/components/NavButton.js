@@ -10,31 +10,20 @@ export default function NavButton (props) {
     }
 
     let toggled = props.toggled;
-
     if (toggled === undefined) {
         toggled = true;
     }
 
-    if (props.className === "loginButton") {
-        console.log("Rendering Login button");
+    if (props.type === "login") {
         return (
             <button 
-                className="loginButton"
-                onClick={routeChange}>
-                Login
+            className="loginoutButton" 
+            onClick={routeChange}>
+            {props.page}
             </button>
         );
     }
-    if (props.className === "logoutButton") {
-        console.log("Rendering Logout Button");
-        return (
-            <button
-                className="loginButton"
-                onClick={routeChange}>
-                Logout
-            </button>
-        )
-    }
+    
     return (
         <button 
         className={toggled ? "navButtonToggled" : "navButtonUntoggled"} 

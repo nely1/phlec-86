@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar'
 function LoginPage() {
   return (
         <>
-        <Navbar page="Login" loggedIn={false}/>
         <div className='LoginPage'>
           <div className='LoginPageBox'>
               <h1 className='LoginPageTitle'>Sign in to Phlec Travels</h1>

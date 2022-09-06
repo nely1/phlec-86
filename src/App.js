@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar'
 import LandingPageBody from './pages/LandingPageBody';
 import LoginPage from './pages/LoginPage';
-import Pages from './components/Navbar';
 import HomePage from './pages/HomePage';
 
 
@@ -20,9 +19,10 @@ const LOGOUT    = '/Logout';
 export default function App() {
     return (
         <Router>
+            <Navbar />
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
-                <Route path={LOGOUT} element={ <Navigate to={HOME}/>} />
+                <Route path={LOGOUT} element={ <Navigate to={ROOT}/>} />
                 <Route path={LOGIN} element={<LoginPage />}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>

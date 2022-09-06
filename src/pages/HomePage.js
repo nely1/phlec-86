@@ -11,7 +11,6 @@ function HomePage() {
 
   return (
       <>
-      <Navbar page="Home" loggedIn={true}/>
     <div className='HomePageBase'>
       <div className='HomePageGrid'>
         <div className='HomePageGridItem'>
