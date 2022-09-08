@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import LandingPageBody from './pages/LandingPageBody';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import SignUpPage from './pages/SignupPage';
 
 
 
@@ -14,6 +15,7 @@ const LOGIN     = '/Login';
 const LANDING   = '/Landing';
 const HOME      = '/Home';
 const LOGOUT    = '/Logout';
+const SIGNUP    = '/SignUp';
 
 
 export default function App() {
@@ -26,6 +28,7 @@ export default function App() {
                 <Route path={LOGIN} element={<LoginPage />}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>
+                <Route path={SIGNUP} element={<SignUpPage />}></Route>
             </Routes> 
         </Router>
   )
