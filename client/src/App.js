@@ -6,6 +6,7 @@ import LandingPageBody from './pages/LandingPageBody';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
+import RecordPage from './pages/RecordPage';
 
 
 
@@ -15,6 +16,7 @@ const LANDING   = '/Landing';
 const HOME      = '/Home';
 const LOGOUT    = '/Logout';
 const SIGNUP    = '/SignUp';
+const RECORD    = '/Record';
 
 
 export default function App() {
@@ -27,6 +29,7 @@ export default function App() {
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>
                 <Route path={SIGNUP} element={<SignUpPage />}></Route>
+                <Route path={RECORD} element={<RecordPage />}></Route>
             </Routes> 
         </Router>
   )

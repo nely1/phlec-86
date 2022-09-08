@@ -1,0 +1,69 @@
+
+.RecordPageGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.RecordPageTitle {
+    text-align: center;
+    padding-top: 4vh;
+}
+
+.RecordPageMainPicture {
+    height: 60vh;
+    width: 63vw;
+    padding-left: 2vw;
+    padding-top: 5vh;
+}
+
+.RecordPageAddPhoto {
+    display: flex;
+    background-color: var(--color-primary-green);
+    color: var(--color-text-secondary);
+    width: 7vw;
+    margin-right:1.5vw;
+    margin-top: 2vh;
+    height: 3vh;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
+
+.RecordPageAlbumNameTitle {
+    color: var(--color-secondary-grey);
+    margin-top: 10vh;
+}
+.RecordPageTagTitle {
+    color: var(--color-secondary-grey);
+}
+
+.RecordPageAlbumNameInput {
+    border-radius: 10px;
+    width: 95%;
+    height: 3vh;
+}
+
+.RecordPageDescription {
+    padding-top: 2vh;
+    padding-bottom: 0.5vh;
+}
+.RecordPageDescriptionInput {
+    width: 95%;
+    border-radius: 10px;
+    height: 20vh;
+
+}
+
+.RecordPageSave {
+    display: flex;
+    background-color: var(--color-primary-green);
+    color: var(--color-text-secondary);
+    width: 7vw;
+    height: 5vh;
+    margin-right: 3vh;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
