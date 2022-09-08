@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './LoginPage.css'
-import Navbar from '../components/Navbar'
 
 /* The layouts of the sign up page and the login page are similar, so these two pages can share 
 some styles in styles.css */
@@ -9,7 +8,6 @@ some styles in styles.css */
 function SignUpPage() {
   return (
         <>
-        <Navbar page="Login" loggedIn={false}/>
         <div className='LoginPage'>
           <div className='LoginPageBox'>
               <h1 className='LoginPageTitle'>Create your account</h1>

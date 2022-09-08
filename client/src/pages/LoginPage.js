@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './LoginPage.css'
-import Navbar from '../components/Navbar'
+
+import { Login } from '../App';
 
 function LoginPage() {
   return (
         <>
-        <Navbar page="Login" loggedIn={false}/>
         <div className='LoginPage'>
           <div className='LoginPageBox'>
               <h1 className='LoginPageTitle'>Sign in to Phlec Travels</h1>
@@ -19,7 +19,7 @@ function LoginPage() {
                       <p className='text1'>Password: </p>
                       <input className='LoginPageInputField' type="password" ></input>
                   </label>
-                  <Link to='/Home'><input className='LoginPageSubmitButton heading2' type="submit" value="Sign In"></input></Link> {/* Change this for auth?  */}
+                  <Link to={ '/Home' } ><input className='LoginPageSubmitButton heading2' type="submit" value="Sign In" onSubmit={Login()}></input></Link> {/* Change this for auth?  */}
                   
               </form>
           </div>

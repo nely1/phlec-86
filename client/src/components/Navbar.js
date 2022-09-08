@@ -1,18 +1,16 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-import NavButtons from './NavButtons';
 import NavButton  from './NavButton';
 
 
 /* This will probably be changed when Auth is added */
-import { Login, Logout, loggedIn} from '../App';
+import { Login, Logout, getLogin} from '../App';
 
 // Enum for the pages in the navbar
 export const Pages = Object.freeze({
     Home:       "Home",
-    /* Dashboard:  "Dashboard", */
     Record:     "Record",
     Album:      "Album",
     Explore:    "Explore",
@@ -33,27 +31,33 @@ export default class Navbar extends React.Component {
     render() {
         // Different button layouts depending on if logged in or not
         let buttons, loginButton;
+
+
+        // If not logged in, load only the login button
         if (this.state.loggedIn === false) {
             console.log("not logged in");
-            buttons = <NavButtons page={Pages.Home} toggled="true"/>
-            loginButton = <NavButton className="loginButton" page="Login" />
+            loginButton = <NavButton className="loginoutButton" page="Login" >
+                    Login
+                </NavButton>
         } else {
             console.log("Rendering nav buttons");
             console.log("page: " + this.props.page);
 
             buttons = Object.values(Pages).map((page) => 
                 <li key={page}>
-                    <NavButtons 
-                        page={page} 
-                        toggled={page===this.props.page}
-                    />
-                 </li>); 
-            loginButton = <NavButton className="logoutButton" page="Logout" />
+                    <NavLink to={page} >
+                        <NavButton
+                            page={page}
+                        />
+                    </NavLink>
+                </li>); 
+            loginButton = <NavButton className="loginoutButton" page="Logout" >
+                Logout
+                </NavButton>
         }
 
         // Render Navbar
         return (
-            <>
             <div className="navbarBase">
                 <Link to='/Home' className="navbarLogo">
                     <div className="navbarLogo" href="/Home">
@@ -66,7 +70,6 @@ export default class Navbar extends React.Component {
             {loginButton}
                 
             </div>
-            </>
         );
     }
 }

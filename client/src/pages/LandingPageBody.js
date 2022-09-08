@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './LandingPage.css'
-import Navbar from "../components/Navbar";
 
 function LandingPageBody() {
     return (
         <>
-        <Navbar page="Landing" loggedIn={false}/> 
         <div className="landingBodyGrid">
               <div className="landingBodyGridItem landingBodyGridItemLeft">
                   <h1 className='landingBodyHeading'>With You <br></br> Every Step of the Way</h1>
