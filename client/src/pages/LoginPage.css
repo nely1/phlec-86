@@ -1,0 +1,100 @@
+.loginButton {
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background-color: var(--color-primary-yellow);
+    height: 40px;
+
+    position: absolute;
+    left: 1728px;   /* 90%; */
+    right: 96px;    /*  5%; */
+    top: 30px;      /* 3.25%; */
+    bottom: 540px;  /* 28%; */
+
+    border: none;
+    border-radius: 10px;
+    
+
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.landingBodyGrid {
+    display: grid;
+    width: 100%;
+    margin: 10vh 0;
+    height: 100%;
+    grid-template-columns: 40% 60%;
+    background-color: var(--color-secondary-grey);
+
+}
+
+
+.LoginPage {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.LoginPageBox {
+    position: absolute;
+    top: 25%;
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.LoginPageTitle {
+    margin-bottom: 5%;
+}
+
+.LoginPageInputBox {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.LoginPageInputField {
+    border: none;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.LoginPageSubmitButton {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    border: none;
+    background-color: var(--color-primary-green);
+    border-radius: 10px;
+    color: var(--color-text-secondary);
+}
+
+.LoginPageAlternatives {
+    display: grid;
+    width: 960px;
+    position: absolute;
+    top: 80%;
+    grid-template-columns: 1fr 1fr;
+    color: #0099FF;
+}
+
+.LoginPageAlternativesItem1 {
+    text-align: left;    
+}
+
+.LoginPageAlternativesItem2 {
+    text-align: right;
+}

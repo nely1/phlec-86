@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function NavButton (props) {
 
@@ -9,21 +9,25 @@ export default function NavButton (props) {
         navigate(path);  
     }
 
-    let toggled = props.toggled;
+
+    const location = useLocation();
+
+    let toggled = location.pathname === "/" + props.page;
+
     if (toggled === undefined) {
         toggled = true;
     }
-
     if (props.type === "login") {
+        toggled = true;
         return (
-            <button 
-            className="loginoutButton" 
-            onClick={routeChange}>
-            {props.page}
+            <button
+            className="loginoutButton"
+            onClick={ routeChange }>
+            { props.page }
             </button>
         );
     }
-    
+
     return (
         <button 
         className={toggled ? "navButtonToggled" : "navButtonUntoggled"} 

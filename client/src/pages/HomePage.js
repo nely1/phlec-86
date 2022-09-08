@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
+import './HomePage.css'
 
-import Navbar from '../components/Navbar'
-import Pages from '../components/Navbar'
 function HomePage() {
 
   /* using hooks. Might help with backend (?) */
