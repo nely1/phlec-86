@@ -1,0 +1,479 @@
+/* Stylesheet
+ * For now put all styles here 
+ * We can split it up later if we need to */
+
+* {
+    margin: 0;
+    padding: 0;
+} 
+
+:root {
+    /* Colours */
+    --color-primary-green:         #499951;
+    --color-secondary-green:       #086B06;
+
+    --color-primary-lightgreen:    #90C18B;
+
+    --color-primary-yellow:        #F5B24C;
+
+    --color-primary-grey:          #D9D9D9;
+    --color-secondary-grey:        #A5A5A5;
+    --color-primary-lightgrey:     #F6F6F6;
+
+    --color-text-primary:          #000000;
+    --color-text-secondary:        #FFFFFF;
+
+    /* Fonts */
+    --font-primary: 'Fira Sans';
+
+
+
+}
+
+/* Local font access commented out (temp?) */
+/* @font-face {
+    font-family: 'Fira Sans';
+    src: url('./public/fonts/FiraSans-Regular.otf');
+} */
+
+
+/* styles from Figma 
+ * sizes should probably me made relative. */
+
+h1 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+}
+
+h2, .heading2 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+}
+
+h3 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+/* body class 
+ * There's probably a better way to do this */
+.text1 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 58px;
+}
+
+.text2 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.text3 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+ul.no-bullets {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logoText {
+    position: absolute;
+    left: 8%;
+    right: 7%;
+    top: 20%;
+    bottom: 20%;
+
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: var(--color-text-secondary);
+}
+
+.navbarLogo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.logoSpacer {
+    border-right: 1px solid var(--color-secondary-green);
+    height: 100px;
+    opacity: 0.8;
+}
+
+.navbarBase {
+    display: flex;
+    align-items: center
+    flex-direction: row;
+    background-color: var(--color-primary-green);
+    width: 100%;
+    height: 100px;
+}
+
+.navbarButtons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 3em;
+    list-style-type: none;
+}
+
+.buttonText {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+
+    text-align: center;
+}
+
+.navButtonUntoggled {
+
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 70px;
+    
+    height: 40px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: var(--color-primary-green);
+
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navButtonToggled {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 70px;
+    
+    height: 40px;
+
+    border: none;
+    border-radius: 10px;
+    
+    background-color: var(--color-primary-yellow);
+
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.profileImage {
+    height: 60px;
+    width: 60px;
+
+
+    position: absolute;
+    left: 1632px;   /* 85%; */
+    right: 192px;   /* 10%; */
+    top: 20px;      /* 2%;  */
+    bottom: 384px;  /* 20%; */
+}
+
+.loginButton {
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background-color: var(--color-primary-yellow);
+    height: 40px;
+
+    position: absolute;
+    left: 1728px;   /* 90%; */
+    right: 96px;    /*  5%; */
+    top: 30px;      /* 3.25%; */
+    bottom: 540px;  /* 28%; */
+
+    border: none;
+    border-radius: 10px;
+    
+
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.landingBodyGrid {
+    display: grid;
+    width: 100%;
+    margin: 10vh 0;
+    height: 100%;
+    grid-template-columns: 40% 60%;
+    background-color: var(--color-secondary-grey);
+
+}
+
+.landingBodyGridItemLeft {
+    justify-items: center;
+}
+
+.landingBodyGridItem {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); To Remove */
+    
+}
+
+
+.landingBodyText {
+
+    text-align: justify;
+    margin: 5%;
+}
+
+.landingBodyHeading {
+    text-align: center;
+    margin: 5%;
+}
+
+.landingBodyLogInOut {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    column-gap: 30px;
+    margin-top: 15%;
+    margin-bottom: 5%;
+    color: var(--color-text-secondary);
+
+}
+
+.landingBodyLogInOutButton {
+    background-color: var(--color-primary-yellow);
+    width: 275px;
+    border-radius: 10px;
+}
+
+.landingBodyLogIn {
+    justify-self: end;
+}
+
+.landingBodyImage {
+    width: 956px;
+    height: 492px;
+    
+}
+
+.landingBodyGridItemRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginPage {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.LoginPageBox {
+    position: absolute;
+    top: 25%;
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.LoginPageTitle {
+    margin-bottom: 5%;
+}
+
+.LoginPageInputBox {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.LoginPageInputField {
+    border: none;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.LoginPageSubmitButton {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    border: none;
+    background-color: var(--color-primary-green);
+    border-radius: 10px;
+    color: var(--color-text-secondary);
+}
+
+.LoginPageAlternatives {
+    display: grid;
+    width: 960px;
+    position: absolute;
+    top: 80%;
+    grid-template-columns: 1fr 1fr;
+    color: #0099FF;
+}
+
+.LoginPageAlternativesItem1 {
+    text-align: left;    
+}
+
+.LoginPageAlternativesItem2 {
+    text-align: right;
+}
+
+.HomePageGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.HomePageTitle {
+    text-align: center;
+    margin-top: 5vh;
+
+}
+
+.HomePageUpComing, .HomePageRecentMemories {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-secondary);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 2vw;
+    border-radius: 10px;
+}
+
+.HomePageUpComingTop, .HomePageRecentMemoriesTop {
+    background-color: var(--color-secondary-green);
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding-bottom: 3vh;
+    padding-top: 1vh;
+}
+
+.HomePageUpComingBottom {
+    background-color: var(--color-primary-lightgreen);
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.HomePageUpComingTimeBox {
+    background-color: var(--color-primary-yellow);
+    border-radius: 10px;
+    margin: 1vh 1vw;
+}
+
+.HomePageUpComingGoTo {
+    background-color: var(--color-secondary-green);
+    width: 60px;
+    height: 45px;
+    border-radius: 10px;
+    margin-left: 25vw;
+}
+
+.HomePageRecentMemoriesBottom {
+    border-radius: 0 0 10px 10px;
+    height: 35vh;
+    width: 100%;
+}
+
+.HomePageRecentMemoriesPicture {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+.HomePageRecentMemoriesBottomOverlay {
+    position: relative;
+    height: 20%;
+    top: -20%;
+    background-color: rgba(255, 255, 255, 0.50);
+    border-radius: 0 0 10px 10px;
+    text-align: left;
+}
+
+.HomePageRecentMemoriesBottomOverlayText {
+    margin-left: 1vw;
+    padding-top: 1vh;
+    color: var(--color-text-primary);
+    opacity: 100%;
+}
+
+.HomePageRecentMemoriesgGoTo {
+    background-color: var(--color-secondary-green);
+    width: 60px;
+    height: 45px;
+    border-radius: 10px;
+    margin-left: 25vw;
+    position: relative;
+    top: -2vh;
+    text-align: center;
+}
+
+.HomePageMainPicture {
+    position: absolute;
+    width: 1180px;
+    height: 710px;
+    padding-left: 3vw;
+    top: 30vh;
+}
+
+.material-symbols-outlined {
+    font-size: 42px;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+
