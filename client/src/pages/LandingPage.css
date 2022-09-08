@@ -1,0 +1,53 @@
+.landingBodyGridItemLeft {
+    justify-items: center;
+    height: 68vh;
+}
+
+.landingBodyGridItem {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); To Remove */
+    
+}
+
+
+.landingBodyText {
+
+    text-align: justify;
+    margin: 5%;
+}
+
+.landingBodyHeading {
+    text-align: center;
+    margin: 5%;
+}
+
+.landingBodyLogInOut {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    column-gap: 30px;
+    margin-bottom: 5%;
+    color: var(--color-text-secondary);
+
+}
+
+.landingBodyLogInOutButton {
+    background-color: var(--color-primary-yellow);
+    width: 275px;
+    border-radius: 10px;
+}
+
+.landingBodyLogIn {
+    justify-self: end;
+}
+
+.landingBodyImage {
+    width: 50vw;
+    height: 45vh;
+    
+}
+
+.landingBodyGridItemRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import './LoginPage.css'
 import Navbar from '../components/Navbar'
 
 /* The layouts of the sign up page and the login page are similar, so these two pages can share 
