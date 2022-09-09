@@ -7,6 +7,7 @@ import recordController from '../controllers/recordController.js';
 const userRouter = express.Router();
 
 userRouter.get('/record', recordController.display);
+userRouter.post('/record', recordController.upload);
 
 userRouter.get('/plan', planningController.display);
 
