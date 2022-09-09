@@ -1,5 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 
 export default function NavButton (props) {
 
@@ -9,32 +10,28 @@ export default function NavButton (props) {
         navigate(path);  
     }
 
-    let toggled = props.toggled;
+
+    const location = useLocation();
+
+    let toggled = location.pathname === "/" + props.page;
 
     if (toggled === undefined) {
         toggled = true;
     }
 
-    if (props.className === "loginButton") {
-        console.log("Rendering Login button");
+
+    if (props.children === "Login" ||
+        props.children === "Logout") {
+        toggled = true;
         return (
-            <button 
-                className="loginButton"
-                onClick={routeChange}>
-                Login
+            <button
+            className="loginoutButton"
+            onClick={ routeChange }>
+            { props.page }
             </button>
         );
     }
-    if (props.className === "logoutButton") {
-        console.log("Rendering Logout Button");
-        return (
-            <button
-                className="loginButton"
-                onClick={routeChange}>
-                Logout
-            </button>
-        )
-    }
+
     return (
         <button 
         className={toggled ? "navButtonToggled" : "navButtonUntoggled"} 

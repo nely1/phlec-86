@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './HomePage.css'
-import Navbar from '../components/Navbar'
 
 function HomePage() {
 
@@ -11,7 +10,6 @@ function HomePage() {
 
   return (
       <>
-      <Navbar page="Home" loggedIn={true}/>
     <div className='HomePageBase'>
       <div className='HomePageGrid'>
         <div className='HomePageGridItem'>
