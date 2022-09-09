@@ -17,7 +17,10 @@ export default function NavButton (props) {
     if (toggled === undefined) {
         toggled = true;
     }
-    if (props.type === "login") {
+
+    console.log(props.children);
+    if (props.children === "Login" ||
+        props.children === "Logout") {
         toggled = true;
         return (
             <button
