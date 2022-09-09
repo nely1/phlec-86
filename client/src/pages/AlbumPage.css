@@ -16,7 +16,7 @@
 .AlbumPageGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 5vh;
+    margin-top: 2vh;
     margin-left: 7vw;
     margin-right: 3vw;
 }
