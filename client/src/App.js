@@ -1,5 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { loginUser } from './actions/login'
 
 import Navbar from './components/Navbar';
 import LandingPageBody from './pages/LandingPageBody';
@@ -23,6 +26,9 @@ const ALBUM     = '/Album';
 export var LoggedIn = true;
 
 export default function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => { dispatch(loginUser); }, [dispatch]);
     return (
         <>
         <Router>

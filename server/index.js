@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import userRouter from './routes/userRouter.js';
 import data from './data/index.js';
 
 const app = express();
@@ -28,6 +27,9 @@ app.listen(process.env.PORT || 3000, () => {
 })
 
 // Connect the router
-
+import userRouter from './routes/userRouter.js';
 app.use('/user', userRouter);
+
+import authRouter from './routes/authRouter.js';
+app.use('/login', authRouter)
 
