@@ -19,16 +19,16 @@ const LOGOUT    = '/Logout';
 const SIGNUP    = '/SignUp';
 const RECORD    = '/Record';
 
-export let loggedIn = false;
+export var LoggedIn = true;
 
 export default function App() {
     return (
         <>
         <Router>
-            <Navbar loggedIn={loggedIn}/>
+                <Navbar loggedIn={LoggedIn}/>
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
-                <Route path={LOGOUT} element={ <Navigate to={Logout()}/> }/>
+                <Route path={LOGOUT} element={ Logout() }/>
                 <Route path={LOGIN} element={<LoginPage />}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>
@@ -41,17 +41,18 @@ export default function App() {
 }
 
 export function Login() {
-    console.log(loggedIn);
-    loggedIn = true;
-    console.log(loggedIn);
+    console.log("Logging In");
+    LoggedIn = true;
 }
 
 export function Logout() {
-    console.log("Logging out");
+    LoggedIn = false;
     return <Navigate to={ROOT}/>
 }
 
+/*
 export function getLogin() {
     return loggedIn;
 }
+*/
 

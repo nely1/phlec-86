@@ -62,14 +62,14 @@
     flex-direction: row;
     background-color: var(--color-primary-green);
     width: 100%;
-    height: 100px;
+    height: 0.092%;
 }
 
 .navbarButtons {
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding-left: 3em;
+    padding-left: 5%;
     list-style-type: none;
 }
 
@@ -87,7 +87,7 @@
 
     padding-left: 10px;
     padding-right: 10px;
-    margin-left: 70px;
+    margin-left: 2vw;
     
     height: 40px;
 
@@ -104,13 +104,12 @@
     text-align: center;
     color: white;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .navButtonToggled {
     padding-left: 10px;
     padding-right: 10px;
-    margin-left: 70px;
+    margin-left: 2vw;
     
     height: 40px;
 
@@ -136,10 +135,10 @@
 
 
     position: absolute;
-    left: 1632px;   /* 85%; */
-    right: 192px;   /* 10%; */
-    top: 20px;      /* 2%;  */
-    bottom: 384px;  /* 20%; */
+    left: 85%;   /* 85%; */
+    right: 10%;   /* 10%; */
+    top: 2%;      /* 2%;  */
+    bottom: 20%;  /* 20%; */
 }
 
 .loginoutButton {
@@ -151,10 +150,10 @@
     height: 40px;
 
     position: absolute;
-    left: 1728px;   /* 90%; */
-    right: 96px;    /*  5%; */
-    top: 30px;      /* 3.25%; */
-    bottom: 540px;  /* 28%; */
+    left:   90%;  
+    right:  5%;  
+    top:    3.25%; 
+    bottom: 28%;
 
     border: none;
     border-radius: 10px;

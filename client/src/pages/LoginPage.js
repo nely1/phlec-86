@@ -19,7 +19,7 @@ function LoginPage() {
                       <p className='text1'>Password: </p>
                       <input className='LoginPageInputField' type="password" ></input>
                   </label>
-                  <Link to={ '/Home' } ><input className='LoginPageSubmitButton heading2' type="submit" value="Sign In" onSubmit={Login()}></input></Link> {/* Change this for auth?  */}
+                  <Link to={ '/Home' } ><input className='LoginPageSubmitButton heading2' type="submit" value="Sign In" onClick={Login()}></input></Link> {/* Change this for auth?  */}
                   
               </form>
           </div>

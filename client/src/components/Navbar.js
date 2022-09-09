@@ -1,12 +1,16 @@
 import React from 'react';
 
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
+
+import { loginStatus } from '../App';
 
 import NavButton  from './NavButton';
 
+import './Navbar.css';
+
+
 
 /* This will probably be changed when Auth is added */
-import { Login, Logout, getLogin} from '../App';
 
 // Enum for the pages in the navbar
 export const Pages = Object.freeze({
@@ -18,15 +22,17 @@ export const Pages = Object.freeze({
     Settings:   "Settings",
 });
 
+
 export default class Navbar extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.state = {
             page:       this.props.page,
             loggedIn:   this.props.loggedIn,
         }
     }
+
+
 
     render() {
         // Different button layouts depending on if logged in or not
@@ -36,40 +42,38 @@ export default class Navbar extends React.Component {
         // If not logged in, load only the login button
         if (this.state.loggedIn === false) {
             console.log("not logged in");
-            loginButton = <NavButton page="Login" >
+            loginButton = 
+                <NavButton page="Login" >
                     Login
                 </NavButton>
-        } else {
-            console.log("Rendering nav buttons");
-            console.log("page: " + this.props.page);
 
+        } else {
             buttons = Object.values(Pages).map((page) => 
                 <li key={page}>
                     <NavLink to={page} >
-                        <NavButton
-                            page={page}
-                        />
+                        <NavButton page={page} />
                     </NavLink>
                 </li>); 
-            loginButton = <NavButton className="loginoutButton" page="Logout" >
-                Logout
-                </NavButton>
+                loginButton = 
+                    <NavButton className="loginoutButton" page="Logout" >
+                        Logout
+                    </NavButton>
         }
 
         // Render Navbar
         return (
             <div className="navbarBase">
                 <Link to='/Home' className="navbarLogo">
-                    <div className="navbarLogo" href="/Home">
+                    <div className="navbarLogo" href="/">
                         <div className="logoSpacer"></div>
                         <div className="logoText">Phlec Travels</div>
                     </div>
                 </Link>
                 <ul className="navbarButtons">{buttons}</ul>
                 <img className="profileImage" src="profiledefault.png" alt="Default Profile" />
-            {loginButton}
-                
+                {loginButton}
             </div>
         );
     }
 }
+

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+
 export default function NavButton (props) {
 
     let navigate = useNavigate()
@@ -18,7 +19,7 @@ export default function NavButton (props) {
         toggled = true;
     }
 
-    console.log(props.children);
+
     if (props.children === "Login" ||
         props.children === "Logout") {
         toggled = true;
