@@ -21,20 +21,7 @@ app.use(cors());
 //     .then(() => app.listen(PORT, () =>console.log(`Server running on port: ${PORT}`)))
 //     .catch((error) => console.log(error.message));
 
-const mongoose = require("mongoose")
-const connect = mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-})
-connect
-  .then(db => {
-    console.log("connected to db")
-  })
-  .catch(err => {
-    console.log(err)
-    process.exit(1)
-  })
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('phlecTravels is listening');
@@ -42,5 +29,5 @@ app.listen(process.env.PORT || 3000, () => {
 
 // Connect the router
 
-app.use('/userRouter', userRouter);
+app.use('/user', userRouter);
 
