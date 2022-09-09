@@ -1,0 +1,33 @@
+.AlbumPageParameter {
+    display: flex;
+    flex-direction: row;
+    gap: 16.7vw;
+    margin-top: 5vh;
+    margin-left: 7vw;
+}
+
+.AlbumPageSearch {
+    width: 40vw;
+    border-radius: 10px;
+    padding-left: 0.5vw
+    ;
+}
+
+.AlbumPageGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 5vh;
+    margin-left: 7vw;
+    margin-right: 3vw;
+}
+
+.tmpBox {
+    background-color: gray;
+    height: 26vh;
+    width: 26vw;
+    margin-bottom: 0.5vh;
+}
+
+.AlbumPageItems {
+    padding-top: 4vh;
+}
