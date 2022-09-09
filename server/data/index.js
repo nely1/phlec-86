@@ -14,9 +14,12 @@ const data = mongoose.connect(process.env.CONNECTION_URL || 'mongodb://localhost
         process.exit(1) 
     }) 
 
-    db.once('open', async () => { 
-        console.log(`Mongo connection started on ${db.host}:${db.port}`) 
-    })
-
+data.then(db => {
+    console.log("connected to db")
+})
+.catch(err => {
+    console.log(err)
+    process.exit(1)
+})
 
 export default data;

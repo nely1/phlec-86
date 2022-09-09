@@ -21,11 +21,13 @@ app.use(cors());
 //     .then(() => app.listen(PORT, () =>console.log(`Server running on port: ${PORT}`)))
 //     .catch((error) => console.log(error.message));
 
+
+
 app.listen(process.env.PORT || 3000, () => {
     console.log('phlecTravels is listening');
 })
 
 // Connect the router
 
-app.use('/userRouter', userRouter);
+app.use('/user', userRouter);
 
