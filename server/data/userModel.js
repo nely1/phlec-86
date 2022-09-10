@@ -13,5 +13,14 @@ const schema = new mongoose.Schema({
     plans: [{type: mongoose.Schema.Types.ObjectId, ref: 'planModel'}]
 }) 
 
+schema.methods.verifyPassword = function (password) {
+    if(password == this.password){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 const userModel = mongoose.model('userModel', schema);
 export default userModel;
