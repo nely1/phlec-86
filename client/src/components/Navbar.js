@@ -51,7 +51,7 @@ export default class Navbar extends React.Component {
                         <NavButton page={page} />
                     </NavLink>
                 </li>); 
-                loginButton = 
+            loginButton = 
                     <NavButton className="loginoutButton" page="Logout" >
                         Logout
                     </NavButton>
