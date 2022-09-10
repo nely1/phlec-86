@@ -32,8 +32,6 @@ export default class Navbar extends React.Component {
         }
     }
 
-
-
     render() {
         // Different button layouts depending on if logged in or not
         let buttons, loginButton;
@@ -41,7 +39,6 @@ export default class Navbar extends React.Component {
 
         // If not logged in, load only the login button
         if (this.state.loggedIn === false) {
-            console.log("not logged in");
             loginButton = 
                 <NavButton page="Login" >
                     Login
