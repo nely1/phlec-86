@@ -17,7 +17,6 @@ function LoginPage() {
 
   const dispatch = useDispatch();
 
-
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
@@ -27,7 +26,6 @@ function LoginPage() {
 
   return (
     <>
-    <Navbar page="Login" loggedIn={false}/>
     <div className='LoginPage'>
       <div className='LoginPageBox'>
           <h1 className='LoginPageTitle'>Sign in to Phlec Travels</h1>

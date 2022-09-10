@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000/login';
+const url = 'http://localhost:5000/login';
 
-export const loginUser = () => axios.get(url);
+export const loginUser = (loginDetails) => axios.post(url, loginDetails);
