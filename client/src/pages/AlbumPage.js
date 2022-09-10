@@ -1,15 +1,16 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import './AlbumPage.css'
 export default function AlbumPage() {
   return (
     <>
-        <Navbar page="Album" loggedIn={true}/>
         <div className='AlbumPageParameter'>
             <h2>Filter:</h2>
             <h2>Tags:</h2>
             <input className='AlbumPageSearch' placeholder='Search...'></input>
         </div>
+        
+      {/* This would be a good candidate for a component, and should probably
+        * put them in a specific grid/flexbox so that they are more responsive. */}
         <div className='AlbumPageGrid'>
             <div className='AlbumPageItems'>
                 <div className='tmpBox'></div>
@@ -32,7 +33,6 @@ export default function AlbumPage() {
                 <p className='text3'>Date & Time + Number of Photos</p>
             </div>
         </div>
-
     </>
   )
 }
