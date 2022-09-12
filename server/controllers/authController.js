@@ -8,16 +8,16 @@ export const loginUser = async (req,res) => {
 
     User.findOne({ email }, {}, {}, (err, user) => {
         console.log("Successfully reached authentication");
-        console.log(user);
+        
         if (err) {
             res.status(500).json({message: 'Unknown error occured, please try again later'});
         }
 
-        if (!user) {
+        else if (!user) {
             res.status(404).json({message: 'Incorrect email or password'});
         }
 
-        if (!user.verifyPassword(password)){
+        else if (!user.verifyPassword(password)){
             res.status(404).json({message: 'Incorrect email or password'});
         }
         else{
