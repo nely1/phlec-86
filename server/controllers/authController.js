@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../data/userModel.js' 
+
+  
 export const loginUser = async (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -20,9 +22,11 @@ export const loginUser = async (req,res) => {
         }
         else{
             
-            const token = jwt.sign({email: user.email, id: user._id}, "super ecret stuff")
+            const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "1h"});
+            res.status(200).json({result: user, token});
+
             console.log("Somewhat logged in");
-            return done(undefined, user)
+           
         }
      })
     }
