@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "server": "nodemon index.js --ignore client"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
+    "flash": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.4",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",

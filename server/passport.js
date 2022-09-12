@@ -28,8 +28,9 @@ passport.deserializeUser((key, done) => {
 })
 
 
-passport.use('user',
-    new LocalStrategy((email, password, done) => {
+passport.use('local',
+    new LocalStrategy.Strategy(
+        (email, password, done) => {
         console.log("Successfully reached authentication");
         User.findOne({ email }, {}, {}, (err, user) => {
             if (err) {
@@ -44,21 +45,15 @@ passport.use('user',
                 })
             }
 
-            user.verifyPassword(password, (err, valid) => {
-                if (err) {
-                    return done(undefined, false, {
-                        message: 'Unknown error has occurred'
-                    })
-                }
-                if (!valid) {
-                    return done(undefined, false, {
-                        message: 'Incorrect email or password',
-                    })
-                }
-                // If user exists and password matches the hash in the database
-                console.log("Successfully logged in, but can't redirect");
+            if (!user.verifyPassword(password)){
+                return done(undefined, false, {
+                    message: 'Incorrect username or password',
+                })
+            }
+            else{
+            // If user exists and password matches the hash in the database
                 return done(undefined, user)
-            })
+            }
         })
     })
 )

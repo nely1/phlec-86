@@ -1,6 +1,13 @@
-export default (loginDetails = [], action) => {
+
+
+const authReducer =  (state = {loginDetails: null}, action) => {
     if(action.type === 'LOGIN'){
-        return action.payload;
+        localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+
+      return { ...state, loginDetails: action.data, loading: false, errors: null };
     }
-    return loginDetails;
+    return state;
 }
+
+
+export default authReducer;

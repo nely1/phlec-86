@@ -3,14 +3,17 @@ import './LoginPage.css'
 
 import { Login } from '../App';
 import {React, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../actions/login'
+
 
 import Navbar from '../components/Navbar'
 
 function LoginPage() {
   // React States
+
+  const history = useNavigate(); 
   const [loginDetails, setLoginDetails] = useState({
     email: '', password: ''
   });
@@ -21,7 +24,7 @@ function LoginPage() {
     //Prevent page reload
     event.preventDefault();
 
-    dispatch(loginUser(loginDetails));
+    dispatch(loginUser(loginDetails, history));
   }
 
   return (

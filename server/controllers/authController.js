@@ -1,14 +1,33 @@
-import passport from 'passport';
+import jwt from 'jsonwebtoken';
+import User from '../data/userModel.js' 
 
-export const loginUser = (req, res) => { 
-    console.log(req.body);
-    passport.authenticate('user', {
-        successRedirect: '/Home', failureRedirect: '/Login', failureFlash: true
-    })
-}
+  
+export const loginUser = async (req,res) => {
+    const email = req.body.email;
+    const password = req.body.password;
 
-// // Handle logout
-// authRouter.post('/logout', (req, res) => {
-//     req.logout()
-//     res.redirect('/')
-// })
+    User.findOne({ email }, {}, {}, (err, user) => {
+        console.log("Successfully reached authentication");
+        
+        if (err) {
+            res.status(500).json({message: 'Unknown error occured, please try again later'});
+        }
+
+        else if (!user) {
+            res.status(404).json({message: 'Incorrect email or password'});
+        }
+
+        else if (!user.verifyPassword(password)){
+            res.status(404).json({message: 'Incorrect email or password'});
+        }
+        else{
+            
+            const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "1h"});
+            res.status(200).json({result: user, token});
+
+            console.log("Somewhat logged in");
+           
+        }
+     })
+    }
+
