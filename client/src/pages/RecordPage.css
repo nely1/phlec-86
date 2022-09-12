@@ -40,7 +40,7 @@
 
 .RecordPageAlbumNameInput {
     border-radius: 10px;
-    width: 95%;
+    width: 32vw;
     height: 3vh;
     padding-left: 0.5vw;
 }
@@ -50,7 +50,7 @@
     padding-bottom: 0.5vh;
 }
 .RecordPageDescriptionInput {
-    width: 95%;
+    width: 31.5vw;
     border-radius: 10px;
     height: 20vh;
     padding: 0.5vw;

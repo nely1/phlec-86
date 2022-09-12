@@ -1,0 +1,38 @@
+.tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 32.5vw;
+    margin: 1vh 0vh;
+}
+
+.tagItem {
+    margin: 0.5vw;
+    background-color: var(--color-primary-green);
+    border-radius: 10px;
+    padding: 0.5vw;
+}
+
+.tagLabel {
+    color: var(--color-text-secondary);
+
+}
+
+.tagDelete {
+    margin: .3vw;
+    padding: 0.3vw;
+    background-color: var(--color-primary-yellow);
+    color: var(--color-text-secondary);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.tagInput {
+    border: none;
+    outline: none;
+    margin: 2vh;
+}
