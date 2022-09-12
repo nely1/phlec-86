@@ -29,7 +29,7 @@ passport.deserializeUser((key, done) => {
 
 
 passport.use('local',
-    new LocalStrategy(
+    new LocalStrategy.Strategy(
         (email, password, done) => {
         console.log("Successfully reached authentication");
         User.findOne({ email }, {}, {}, (err, user) => {
