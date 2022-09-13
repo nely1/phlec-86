@@ -6,7 +6,7 @@ export const loginUser = (loginDetails, history) => async (dispatch) => {
         dispatch({ type: "LOGIN"});
         
         // navigate to landing page
-        history('/Home')
+        history('/Home');
 
     } catch (error) {
         console.log(error);
