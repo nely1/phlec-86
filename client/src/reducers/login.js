@@ -1,11 +1,11 @@
 
 
 const authReducer =  (state = {loginDetails: null}, action) => {
-    if(action.type === 'LOGIN' || action.type === 'SIGNUP'){
+    if(action.type === 'LOGIN'){
             return { ...state, loginDetails: action.data, loading: false, errors: null };
     }
 
-    if (action.type === 'SIGNUP') {
+    else if (action.type === 'SIGNUP') {
       return { ...state, loginDetails: action.data, loading: false, errors: null }
     }
     

@@ -61,15 +61,12 @@ export const signUpUser = async (req, res) => {
                 lastName: lastName, 
                 email: email, 
                 password: password, 
-                favourites: {}, 
-                gender: null, 
-                role: 'user', 
-                theme: 'light', 
-                DOB: null, 
-                plans: {}});
+                favourites: [], 
+                userName: 'chuuniham',
+                plans: []});
             
 
-
+            res.status(200).json({message: 'Account created'});   
             console.log("account created");
            
         }

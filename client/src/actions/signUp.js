@@ -6,7 +6,7 @@ export const signUpUser = (signUpDetails, history) => async (dispatch) => {
 
         dispatch({type: "SIGNUP", data});
 
-        history.push('/Login');
+        history('/Login');
     }
 
     catch (error) {

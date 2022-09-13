@@ -10,7 +10,7 @@ some styles in styles.css */
 function SignUpPage() {
 
   const history = useNavigate();
-  const [signUpDetails, setSightUpDetails] = useState({
+  const [signUpDetails, setSignUpDetails] = useState({
       firstName: '', lastName: '', email: '', password: '', confirmPassword: ''
   });
 
@@ -30,23 +30,23 @@ function SignUpPage() {
               <form className='loginPageForm' onSubmit={handleSubmit}>
                 <p className='text1'>First Name </p>
                   <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="text" name="firstName" value = {signUpDetails.firstName} onchange = {(e) => setSightUpDetails({...signUpDetails, firstName: e.target.value})}></input>
+                      <input className='LoginPageInputField' type="text" name="firstName" value = {signUpDetails.firstName} onChange = {(e) => setSignUpDetails({...signUpDetails, firstName: e.target.value})}></input>
                   </label>
                 <p className='text1'>Last Name </p>
                   <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="text" name="lastName" value = {signUpDetails.lastName} onchange = {(e) => setSightUpDetails({...signUpDetails, lastName: e.target.value})}></input>
+                      <input className='LoginPageInputField' type="text" name="lastName" value = {signUpDetails.lastName} onChange = {(e) => setSignUpDetails({...signUpDetails, lastName: e.target.value})}></input>
                   </label>
                 <p className='text1'>Email Address </p>
                   <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="text" name="email" value = {signUpDetails.email} onchange = {(e) => setSightUpDetails({...signUpDetails, email: e.target.value})}></input>
+                      <input className='LoginPageInputField' type="text" name="email" value = {signUpDetails.email} onChange = {(e) => setSignUpDetails({...signUpDetails, email: e.target.value})}></input>
                   </label>
                 <p className='text1'>Password </p>
                   <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="password" name="password"  value={signUpDetails.password} onchange = {(e) => setSightUpDetails({...signUpDetails, password: e.target.value})}></input>
+                      <input className='LoginPageInputField' type="password" name="password"  value={signUpDetails.password} onChange = {(e) => setSignUpDetails({...signUpDetails, password: e.target.value})}></input>
                   </label>
                 <p className='text1'>Confirm Password </p>
                   <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="password" name="confirmPassword" value = {signUpDetails.confirmPassword} onchange = {(e) => setSightUpDetails({...signUpDetails, confirmPassword: e.target.value})}></input>
+                      <input className='LoginPageInputField' type="password" name="confirmPassword" value = {signUpDetails.confirmPassword} onChange = {(e) => setSignUpDetails({...signUpDetails, confirmPassword: e.target.value})}></input>
                   </label>
                 <input className='LoginPageSubmitButton heading2' type="submit" value="Create an account"></input>{/* Change this for auth?  */}
                   
