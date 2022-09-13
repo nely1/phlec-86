@@ -2,9 +2,7 @@
 
 const authReducer =  (state = {loginDetails: null}, action) => {
     if(action.type === 'LOGIN' || action.type === 'SIGNUP'){
-        localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-
-      return { ...state, loginDetails: action.data, loading: false, errors: null };
+            return { ...state, loginDetails: action.data, loading: false, errors: null };
     }
 
     if (action.type === 'SIGNUP') {
