@@ -1,7 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './HomePage.css'
 
 function HomePage() {
+  const loggedIn = JSON.parse(localStorage.getItem('profile'));
+  const history = useNavigate(); 
+
+  
+
+  useEffect(() => {
+    if (!loggedIn){
+      history('/Login');
+    } else {
+      console.log(loggedIn);
+    }
+  },[history, loggedIn])
 
   /* using hooks. Might help with backend (?) */
   const [user] = useState(() => {return 'Pat012'});

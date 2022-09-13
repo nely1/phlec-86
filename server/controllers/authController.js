@@ -31,3 +31,50 @@ export const loginUser = async (req,res) => {
      })
     }
 
+export const signUpUser = async (req, res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+
+
+
+    try {
+        const user = await User.findOne({email});
+
+        console.log("Successfully reached authentication");
+        
+        
+
+        if (user) {
+            res.status(404).json({message: 'User already exists'});
+        }
+
+        else if (password !== confirmPassword){
+            res.status(404).json({message: 'Passwords do not match'});
+        }
+        else{
+            
+            const newUser = await User.create({
+                firstName: firstName, 
+                lastName: lastName, 
+                email: email, 
+                password: password, 
+                favourites: [], 
+                userName: 'chuuniham',
+                plans: []});
+            
+
+            res.status(200).json({message: 'Account created'});   
+            console.log("account created");
+           
+        }
+    }
+    catch (error) {
+        res.status(500).json({message: 'Unknown error occured, please try again later'});
+        console.log(error.message);
+    }
+    
+}
+
