@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageCarousel from "../components/ImageCarousel";
 import "./HomePage.css";
@@ -16,14 +16,10 @@ function HomePage() {
   }, [history, loggedIn]);
 
   /* using hooks. Might help with backend (?) */
-  const [user] = useState(() => {
-    return "Pat012";
-  });
-  const [dashImage] = useState(() => {
-    return "https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
-  });
+  const user = "pat012";
   const recentImage =
     "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
+
   const images = [
     {
       url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
