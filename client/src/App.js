@@ -23,7 +23,8 @@ const SIGNUP    = '/SignUp';
 const RECORD    = '/Record';
 const ALBUM     = '/Album';
 
-export var LoggedIn = true;
+export var LoggedIn = false;
+
 
 export default function App() {
     const dispatch = useDispatch();
