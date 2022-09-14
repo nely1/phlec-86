@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
+import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import "./RecordPage.css";
 export default function RecordPage() {
-  const [mainImage] = useState(() => {
-    return "https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
-  });
+  const images = [
+    {
+      url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
+      alt: "one",
+    },
+    {
+      url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
+      alt: "two",
+    },
+    {
+      url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
+      alt: "three",
+    },
+  ];
   const tags = ["Beach", "Forest", "Hills"];
   return (
     <>
       <div className="RecordPageGrid">
         <div>
           <h1 className="RecordPageTitle">Save Your Favourite Moments</h1>
-          <img
-            className="RecordPageMainPicture"
-            src={mainImage}
-            alt="RecordPageImage"
-          ></img>
+          <ImageCarousel images={images}></ImageCarousel>
           <div className="RecordPageAddPhoto">
             <p className="text3">Add photo +</p>
           </div>
