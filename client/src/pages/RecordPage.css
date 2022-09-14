@@ -69,3 +69,9 @@
     align-items: center;
     float: right;
 }
+
+.RecordPageInputPhoto {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}

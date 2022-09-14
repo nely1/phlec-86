@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import "./RecordPage.css";
 export default function RecordPage() {
-  const images = [
+  const [images, setImages] = useState([
     {
       url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
       alt: "one",
@@ -14,10 +14,26 @@ export default function RecordPage() {
     },
     {
       url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
-      alt: "three",
+      alt: "",
     },
-  ];
+  ]);
+
   const tags = ["Beach", "Forest", "Hills"];
+
+  function fileSelectionHandler(event) {
+    // console.log(event.target.files[0].name);
+    // images.push({ url: event.target.files[0].name, alt: "" });
+
+    setImages([
+      ...images,
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
+        alt: "",
+      },
+    ]);
+
+    console.log(images);
+  }
   return (
     <>
       <div className="RecordPageGrid">
@@ -25,7 +41,15 @@ export default function RecordPage() {
           <h1 className="RecordPageTitle">Save Your Favourite Moments</h1>
           <ImageCarousel images={images}></ImageCarousel>
           <div className="RecordPageAddPhoto">
-            <p className="text3">Add photo +</p>
+            <label htmlFor="addPhoto" className="text3">
+              Add photo +
+            </label>
+            <input
+              type="file"
+              id="addPhoto"
+              className="RecordPageInputPhoto"
+              onChange={fileSelectionHandler}
+            ></input>
           </div>
         </div>
         <div>

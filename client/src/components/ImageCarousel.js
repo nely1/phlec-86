@@ -17,7 +17,7 @@ export default function ImageCarousel({ images }) {
   //     const newIndex = isLastImage ? 0 : currentIndex + 1;
   //     setCurrentIndex(newIndex);
   //   }
-
+  // console.log(images);
   return (
     <div>
       {/* <div onClick={goToPrev}>ARROW</div> */}
