@@ -1,0 +1,18 @@
+.CarouselImage {
+    height: 60vh;
+    width: 63vw;
+    margin-left: 2vw;
+    margin-top: 5vh;
+    border-radius: 10px;
+}
+
+.dotsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.dots {
+    margin: 0 0.5vw;
+    cursor: pointer;
+    font-size: 20px;
+}

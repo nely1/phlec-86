@@ -1,11 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './SignUpPage.css'
+import {React, useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './SignUpPage.css';
+import {useDispatch} from  'react-redux';
+import {signUpUser} from '../actions/signUp';
 
 /* The layouts of the sign up page and the login page are similar, so these two pages can share 
 some styles in styles.css */
 
 function SignUpPage() {
+
+  const history = useNavigate();
+  const [signUpDetails, setSignUpDetails] = useState({
+      firstName: '', lastName: '', email: '', password: '', confirmPassword: ''
+  });
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(signUpUser(signUpDetails, history));
+  }
+  
   return (
         <>
         <div className='SignUpPage'>
