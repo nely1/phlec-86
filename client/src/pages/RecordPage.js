@@ -64,8 +64,21 @@ export default function RecordPage() {
             className="RecordPageDescriptionInput"
             placeholder=" Type Your Description Here"
           ></textarea>
+          <h3 className="RecordPageDescription">Location</h3>
+          <input
+            className="RecordPageAlbumNameInput"
+            type="text"
+            placeholder=" Location..."
+          ></input>
           <h3 className="RecordPageTagTitle">Tags</h3>
           <TagInput givenTags={tags}></TagInput>
+          <h3 className="RecordPageTagTitle">Rating</h3>
+          <input
+            className="RecordPageRatingBar"
+            type="range"
+            min="0"
+            max="10"
+          ></input>
           <div className="RecordPageSave">
             <p className="text2">Save</p>
           </div>
