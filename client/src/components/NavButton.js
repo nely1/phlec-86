@@ -8,6 +8,8 @@ export default function NavButton (props) {
     const routeChange = () => {
         let path = "/" + props.page;
         navigate(path);  
+        props.setLogin(false);
+        localStorage.clear();
     }
 
 

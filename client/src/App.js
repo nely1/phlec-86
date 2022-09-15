@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, {useState,useEffect} from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { loginUser } from './actions/login'
@@ -23,21 +23,27 @@ const SIGNUP    = '/SignUp';
 const RECORD    = '/Record';
 const ALBUM     = '/Album';
 
-export var LoggedIn = false;
 
+export var LoggedIn = true;
 
 export default function App() {
     const dispatch = useDispatch();
-
+    const [LoggedIn, setLoggedIn] = useState(false);
     useEffect(() => { dispatch(loginUser); }, [dispatch]);
+    
     return (
+
         <>
         <Router>
-                <Navbar loggedIn={LoggedIn}/>
+                <Navbar loggedIn={LoggedIn} setLogin = {setLoggedIn}/>
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
-                <Route path={LOGOUT} element={ Logout() }/>
-                <Route path={LOGIN} element={<LoginPage />}></Route>
+                <Route path={LOGOUT} element={ 
+                    <WrapperDiv onClick={localStorage.clear()}>
+                       
+                    </WrapperDiv>
+                 }/>
+                <Route path={LOGIN} element={<LoginPage loginState = {LoggedIn} setLogin = {setLoggedIn}/>}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>
                 <Route path={SIGNUP} element={<SignUpPage />}></Route>
@@ -49,19 +55,24 @@ export default function App() {
   )
 }
 
-export function Login() {
+
+function Login() {
     console.log("Logging In");
     LoggedIn = true;
 }
 
-export function Logout() {
+function Logout() {
     LoggedIn = false;
     return <Navigate to={ROOT}/>
 }
-
 /*
 export function getLogin() {
     return loggedIn;
 }
 */
+
+function WrapperDiv() {
+    localStorage.clear();
+    return <Navigate to = {ROOT}/>;
+}
 

@@ -4,7 +4,7 @@ import './AlbumPage.css'
 export default function AlbumPage() {
   return (
     <>
-        <Navbar page="Album" loggedIn={true}/>
+        
         <div className='AlbumPageParameter'>
             <h2>Filter:</h2>
             <h2>Tags:</h2>
