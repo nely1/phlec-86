@@ -38,8 +38,7 @@ export default function App() {
                 <Navbar loggedIn={LoggedIn} setLogin = {setLoggedIn}/>
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
-                <Route path={LOGOUT} element={ <Navigate to = {ROOT}/>}/>
-
+                <Route path={LOGOUT} element={ <LandingPageBody/>}></Route>
                 <Route path={LOGIN} element={<LoginPage loginState = {LoggedIn} setLogin = {setLoggedIn}/>}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>
@@ -53,23 +52,10 @@ export default function App() {
 }
 
 
-function Login() {
-    console.log("Logging In");
-    LoggedIn = true;
-}
 
-function Logout() {
-    LoggedIn = false;
-    return <Navigate to={ROOT}/>
-}
 /*
 export function getLogin() {
     return loggedIn;
 }
 */
-
-function WrapperDiv() {
-    localStorage.clear();
-    return <Navigate to = {ROOT}/>;
-}
 
