@@ -38,11 +38,8 @@ export default function App() {
                 <Navbar loggedIn={LoggedIn} setLogin = {setLoggedIn}/>
             <Routes>
                 <Route path={ROOT}  element={<LandingPageBody />}></Route> 
-                <Route path={LOGOUT} element={ 
-                    <WrapperDiv onClick={localStorage.clear()}>
-                       
-                    </WrapperDiv>
-                 }/>
+                <Route path={LOGOUT} element={ <Navigate to = {ROOT}/>}/>
+
                 <Route path={LOGIN} element={<LoginPage loginState = {LoggedIn} setLogin = {setLoggedIn}/>}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
                 <Route path={HOME} element={<HomePage />}></Route>

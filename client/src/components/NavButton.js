@@ -6,13 +6,14 @@ export default function NavButton (props) {
 
     let navigate = useNavigate()
     const routeChange = () => {
-        console.log(props);
+        
         let path = "/" + props.page;
-        navigate(path);  
         if (props.children === "Logout"){
+            console.log(props);
             props.setLogin(false);
-            localStorage.clear();
+            localStorage.removeItem("profile");
         }
+        navigate(path);  
     }
 
 
