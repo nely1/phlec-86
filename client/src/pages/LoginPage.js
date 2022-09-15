@@ -26,7 +26,7 @@ function LoginPage({setLogin, loginState}) {
     
     console.log(loginState);
     
-    dispatch(loginUser(loginDetails, history));
+    dispatch(loginUser({loginDetails, setLogin}, history));
     if (localStorage.getItem('profile')) {
       setLogin(true);
     }
