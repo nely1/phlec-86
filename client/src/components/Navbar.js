@@ -56,6 +56,11 @@ export default function Navbar ({loggedIn, setLogin}) {
 
     // If not logged in, load only the login button
     if (loggedIn === false) {
+        buttons =  (<li key={"Explore"}>
+        <NavLink to={"Explore"} >
+            <NavButton page={"Explore"} />
+        </NavLink>
+    </li>); 
         loginButton = 
             <NavButton page="Login" >
                 Login
@@ -82,7 +87,7 @@ export default function Navbar ({loggedIn, setLogin}) {
                     <div className="logoText">Phlec Travels</div>
                 </div>
             </Link>
-            <ul className="navbarButtons">{loggedIn ? buttons: ''}</ul>
+            <ul className="navbarButtons">{buttons}</ul>
             <img className="profileImage" src="profiledefault.png" alt="Default Profile" />
             {loginButton}
         </div>
