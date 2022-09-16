@@ -10,7 +10,7 @@ import { loginUser } from '../actions/login'
 
 import Navbar from '../components/Navbar'
 
-function LoginPage() {
+function LoginPage({setLogin, loginState}) {
   // React States
 
   const history = useNavigate(); 
@@ -21,10 +21,13 @@ function LoginPage() {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
-    //Prevent page reload
+    //Prevent page reload 
     event.preventDefault();
-
-    dispatch(loginUser(loginDetails, history));
+    
+    console.log(loginState);
+    
+    dispatch(loginUser({loginDetails, setLogin}, history));
+    
   }
 
   return (
@@ -58,4 +61,7 @@ function LoginPage() {
 }
 
 export default LoginPage
+
+
+
 

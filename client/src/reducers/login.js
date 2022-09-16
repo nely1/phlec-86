@@ -1,12 +1,18 @@
 
 
 const authReducer =  (state = {loginDetails: null}, action) => {
-    if(action.type === 'LOGIN'){
-            return { ...state, loginDetails: action.data, loading: false, errors: null };
+    if (action.type === 'LOGIN'){
+        return { ...state, loginDetails: action.data, loading: false, errors: null };
     }
 
     else if (action.type === 'SIGNUP') {
-      return { ...state, loginDetails: action.data, loading: false, errors: null }
+      return { ...state, loginDetails: action.data, loading: false, errors: null };
+    }
+
+    else if (action.type === 'LOGOUT') {
+      localStorage.clear();
+
+      return {...state, loginDetails: null, loading: false, errors: null};
     }
     
     return state;
