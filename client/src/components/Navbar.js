@@ -76,4 +76,7 @@ export default class Navbar extends React.Component {
         );
     }
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes

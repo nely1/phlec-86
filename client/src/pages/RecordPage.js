@@ -1,7 +1,41 @@
 import React, { useState } from 'react'
 import './RecordPage.css'
 export default function RecordPage() {
+<<<<<<< Updated upstream
     const [mainImage] = useState(() => { return 'https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'});
+=======
+  const [images, setImages] = useState([
+    {
+      url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
+      alt: "one",
+    },
+    {
+      url: "fhttps://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
+      alt: "two",
+    },
+    {
+      url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
+      alt: "",
+    },
+  ]);
+
+  const tags = ["Beach", "Forest", "Hills"];
+
+  function fileSelectionHandler(event) {
+    // console.log(event.target.files[0].name);
+    // images.push({ url: event.target.files[0].name, alt: "" });
+
+    setImages([
+      ...images,
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
+        alt: "",
+      },
+    ]);
+
+    console.log(images);
+  }
+>>>>>>> Stashed changes
   return (
     <>
         <div className='RecordPageGrid'>
