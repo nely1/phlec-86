@@ -3,13 +3,18 @@ import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import "./RecordPage.css";
 export default function RecordPage() {
+
+    const [mainImage] = useState(() => { return 'https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'});
+
   const [images, setImages] = useState([
     {
       url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
       alt: "one",
     },
     {
+
       url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
+
       alt: "two",
     },
     {
@@ -34,6 +39,7 @@ export default function RecordPage() {
 
     console.log(images);
   }
+
   return (
     <>
       <div className="RecordPageGrid">
