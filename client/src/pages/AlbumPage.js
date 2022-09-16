@@ -9,7 +9,7 @@ export default function AlbumPage() {
             numberPhotos: 2,
             image: {
                 url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
-                alt: "one",
+                alt: "",
             },
         },
         {
