@@ -39,7 +39,7 @@ export default function NavButton (props) {
 
     return (
         <button 
-        className={toggled ? "navButtonToggled" : "navButtonUntoggled"} 
+        className={"styledButton " + (toggled ? "toggledButton" : "untoggledButton")} 
         onClick={routeChange}>
         {props.page}
         </button>

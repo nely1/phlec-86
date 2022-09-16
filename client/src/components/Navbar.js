@@ -93,6 +93,7 @@ export default function Navbar ({loggedIn, setLogin}) {
         </div>
     );
 
+
 }
 // export default class Navbar extends React.Component {
 //     constructor(props) {

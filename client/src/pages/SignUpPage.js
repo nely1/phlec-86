@@ -1,6 +1,6 @@
 import {React, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './LoginPage.css';
+import './SignUpPage.css';
 import {useDispatch} from  'react-redux';
 import {signUpUser} from '../actions/signUp';
 
@@ -24,32 +24,36 @@ function SignUpPage() {
   
   return (
         <>
-        <div className='LoginPage'>
-          <div className='LoginPageBox'>
-              <h1 className='LoginPageTitle'>Create your account</h1>
-              <form className='loginPageForm' onSubmit={handleSubmit}>
-                <p className='text1'>First Name </p>
-                  <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="text" name="firstName" value = {signUpDetails.firstName} onChange = {(e) => setSignUpDetails({...signUpDetails, firstName: e.target.value})}></input>
+        <div className='SignUpPage'>
+          <div className='SignUpPageBox'>
+              <h1 className='SignUpPageTitle'>Create your account</h1>
+              <form className='SignUpPageForm'>
+                <p className='text4'>First Name </p>
+                  <label className='SignUpPageInputBox'>
+                      <input className='SignUpPageInputField' type="text" ></input>
                   </label>
-                <p className='text1'>Last Name </p>
-                  <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="text" name="lastName" value = {signUpDetails.lastName} onChange = {(e) => setSignUpDetails({...signUpDetails, lastName: e.target.value})}></input>
+                <p className='text4'>Last Name </p>
+                  <label className='SignUpPageInputBox'>
+                      <input className='SignUpPageInputField' type="text" ></input>
                   </label>
-                <p className='text1'>Email Address </p>
-                  <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="text" name="email" value = {signUpDetails.email} onChange = {(e) => setSignUpDetails({...signUpDetails, email: e.target.value})}></input>
+                <p className='text4'>Username </p>
+                  <label className='SignUpPageInputBox'>
+                      <input className='SignUpPageInputField' type="text" ></input>
                   </label>
-                <p className='text1'>Password </p>
-                  <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="password" name="password"  value={signUpDetails.password} onChange = {(e) => setSignUpDetails({...signUpDetails, password: e.target.value})}></input>
+                <p className='text4'>Email Address </p>
+                  <label className='SignUpPageInputBox'>
+                      <input className='SignUpPageInputField' type="text" ></input>
                   </label>
-                <p className='text1'>Confirm Password </p>
-                  <label className='LoginPageInputBox'>
-                      <input className='LoginPageInputField' type="password" name="confirmPassword" value = {signUpDetails.confirmPassword} onChange = {(e) => setSignUpDetails({...signUpDetails, confirmPassword: e.target.value})}></input>
+                <p className='text4'>Password </p>
+                  <label className='SignUpPageInputBox'>
+                      <input className='SignUpPageInputField' type="password" ></input>
                   </label>
-                <input className='LoginPageSubmitButton heading2' type="submit" value="Create an account"></input>{/* Change this for auth?  */}
-                  
+                <p className='text4'>Confirm Password </p>
+                  <label className='SignUpPageInputBox'>
+                      <input className='SignUpPageInputField' type="password" ></input>
+                  </label>
+                <Link to='/Login'><input className='SignUpPageSubmitButton heading2' type="submit" value="Create an account"></input></Link> {/* Change this for auth?  */}
+
               </form>
           </div>
         </div>

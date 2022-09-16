@@ -89,12 +89,9 @@
     text-align: center;
 }
 
-.HomePageMainPicture {
+.HomePageMainPictureContainer {
     position: absolute;
-    width: 63vw;
-    height: 65vh;
-    padding-left: 3vw;
-    top: 30vh;
+    top: 25vh;
     border-radius: 10px;
 }
 

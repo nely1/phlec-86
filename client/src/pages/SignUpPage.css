@@ -1,0 +1,62 @@
+.SignUpPage {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.SignUpPageBox {
+    position: absolute;
+    top: 18%;
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SignUpPageTitle {
+    margin-bottom: 25%;
+    font-size: 50px;
+    text-align: center;
+}
+
+.SignUpPageInputBox {
+    display: grid;
+    grid-template-columns: 600px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.SignUpPageInputField {
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+.SignUpPageSubmitButton {
+    width: 600px;
+    height: 60px;
+    margin-top: 10px;
+    border: none;
+    background-color: var(--color-primary-green);
+    border-radius: 10px;
+    color: var(--color-text-secondary);
+}
+
+.text4 {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.SignUpPageForm {
+    position: absolute;
+    top: 25%;
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

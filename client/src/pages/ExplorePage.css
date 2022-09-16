@@ -1,0 +1,47 @@
+.exploreFilters {
+    display: flex;
+    flex-direction: row;
+
+    position: relative;
+    left: 5%;
+    top: 3em;
+}
+
+.exploreCards {
+    position: relative;
+    top: 5em;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+}
+
+ul.exploreCards li {
+    background-color: var(--color-primary-lightgrey);
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    height: 250px;
+    width: 1325px;
+
+    margin-left: 2.5%;
+}
+
+.exploreCards h3 {
+    position: relative;
+    top: 1em;
+    left: 1.5em;
+}
+
+.exploreCards img {
+    height: 180px;
+    width: 310px;
+
+    position: relative;
+    top: 33px;
+    left: 20px;
+}
+

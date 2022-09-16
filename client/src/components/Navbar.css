@@ -135,10 +135,10 @@
 
 
     position: absolute;
-    left: 85%;   /* 85%; */
-    right: 10%;   /* 10%; */
-    top: 2%;      /* 2%;  */
-    bottom: 20%;  /* 20%; */
+    left: 85%;   
+    right: 10%;  
+    top: 2%;     
+    bottom: 20%; 
 }
 
 .loginoutButton {
