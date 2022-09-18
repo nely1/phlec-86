@@ -25,11 +25,10 @@ export default function AlbumPage() {
     return (
         <>
             <div className="AlbumPageParameter">
-                <h2>Filter:</h2>
-                <h2>Tags:</h2>
+                <h2>Search:</h2>
                 <input
                     className="AlbumPageSearch"
-                    placeholder="Search..."
+                    placeholder="Find Your Past Albums"
                 ></input>
             </div>
 

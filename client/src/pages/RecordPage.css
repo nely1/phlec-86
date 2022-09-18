@@ -64,10 +64,12 @@
     width: 7vw;
     height: 5vh;
     margin-right: 3vh;
+    padding-left: 1vh;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     float: right;
+    border-style: none;
 }
 
 .RecordPageInputPhoto {
@@ -77,5 +79,20 @@
 }
 
 .RecordPageRatingBar {
+    margin-top: 1vh;
+    -webkit-appearance: none;
     width: 20vw;
-}
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+  }
+  
+  .RecordPageRatingBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background:var(--color-primary-yellow);
+    cursor: pointer;
+  }

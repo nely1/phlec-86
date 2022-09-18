@@ -1,13 +1,14 @@
 .AlbumPageParameter {
     display: flex;
     flex-direction: row;
-    gap: 16.7vw;
+    gap: 5vw;
     margin-top: 5vh;
     margin-left: 7vw;
 }
 
 .AlbumPageSearch {
-    width: 40vw;
+    width: 70vw;
+    height: 5vh;
     border-radius: 10px;
     padding-left: 0.5vw
     ;

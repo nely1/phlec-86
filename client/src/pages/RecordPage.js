@@ -35,7 +35,7 @@ export default function RecordPage() {
         console.log(images);
     }
     return (
-        <>
+        <form>
             <div className="RecordPageGrid">
                 <div>
                     <h1 className="RecordPageTitle">
@@ -46,6 +46,7 @@ export default function RecordPage() {
                         <label htmlFor="addPhoto" className="text3">
                             Add photo +
                         </label>
+
                         <input
                             type="file"
                             id="addPhoto"
@@ -81,12 +82,16 @@ export default function RecordPage() {
                         type="range"
                         min="0"
                         max="10"
+                        defaultValue="5"
                     ></input>
                     <div className="RecordPageSave">
-                        <p className="text2">Save</p>
+                        <input
+                            type="submit"
+                            className="RecordPageSave text3"
+                        ></input>
                     </div>
                 </div>
             </div>
-        </>
+        </form>
     );
 }
