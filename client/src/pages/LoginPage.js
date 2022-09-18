@@ -3,14 +3,17 @@ import './LoginPage.css'
 
 import { Login } from '../App';
 import {React, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../actions/login'
 
+
 import Navbar from '../components/Navbar'
 
-function LoginPage() {
+function LoginPage({setLogin, loginState}) {
   // React States
+
+  const history = useNavigate(); 
   const [loginDetails, setLoginDetails] = useState({
     email: '', password: ''
   });
@@ -18,10 +21,13 @@ function LoginPage() {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
-    //Prevent page reload
+    //Prevent page reload 
     event.preventDefault();
-
-    dispatch(loginUser(loginDetails));
+    
+    console.log(loginState);
+    
+    dispatch(loginUser({loginDetails, setLogin}, history));
+    
   }
 
   return (
@@ -55,4 +61,7 @@ function LoginPage() {
 }
 
 export default LoginPage
+
+
+
 

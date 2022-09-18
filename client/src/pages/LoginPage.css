@@ -1,14 +1,4 @@
 
-.landingBodyGrid {
-    display: grid;
-    width: 100%;
-    margin: 10vh 0;
-    height: 100%;
-    grid-template-columns: 40% 60%;
-    background-color: var(--color-secondary-grey);
-
-}
-
 
 .LoginPage {
     display: flex;

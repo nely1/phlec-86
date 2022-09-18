@@ -1,30 +1,80 @@
-import passport from 'passport';
-import User from '../data/userModel.js';
+import jwt from 'jsonwebtoken';
+import User from '../data/userModel.js' 
 
-export const loginUser = (req,res,next) => {
+  
+export const loginUser = async (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
+
     User.findOne({ email }, {}, {}, (err, user) => {
         console.log("Successfully reached authentication");
-        console.log(user);
+        
         if (err) {
-            res.send(404)
+            res.status(500).json({message: 'Unknown error occured, please try again later'});
         }
 
-        if (!user) {
-            return done(undefined, false, {
-                message: 'Incorrect email or password',
-            })
+        else if (!user) {
+            res.status(404).json({message: 'Incorrect email or password'});
         }
 
-        if (!user.verifyPassword(password)){
-            return done(undefined, false, {
-                message: 'Incorrect username or password',
-            })
+        else if (!user.verifyPassword(password)){
+            res.status(404).json({message: 'Incorrect email or password'});
         }
         else{
-        // If user exists and password matches the hash in the database
+            
+            const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "1h"});
+            res.status(200).json({result: user, token});
+
             console.log("Somewhat logged in");
-            return done(undefined, user)
+           
         }
-     })}
+     })
+    }
+
+export const signUpUser = async (req, res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+
+
+
+    try {
+        const user = await User.findOne({email});
+
+        console.log("Successfully reached authentication");
+        
+        
+
+        if (user) {
+            res.status(404).json({message: 'User already exists'});
+        }
+
+        else if (password !== confirmPassword){
+            res.status(404).json({message: 'Passwords do not match'});
+        }
+        else{
+            
+            const newUser = await User.create({
+                firstName: firstName, 
+                lastName: lastName, 
+                email: email, 
+                password: password, 
+                favourites: [], 
+                userName: 'chuuniham',
+                plans: []});
+            
+
+            res.status(200).json({message: 'Account created'});   
+            console.log("account created");
+           
+        }
+    }
+    catch (error) {
+        res.status(500).json({message: 'Unknown error occured, please try again later'});
+        console.log(error.message);
+    }
+    
+}
+
