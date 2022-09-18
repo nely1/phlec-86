@@ -5,12 +5,14 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from './actions/login'
 
 import Navbar from './components/Navbar';
+
 import LandingPageBody from './pages/LandingPageBody';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import RecordPage from './pages/RecordPage';
 import AlbumPage from './pages/AlbumPage';
+import ExplorePage from './pages/ExplorePage';
 
 
 
@@ -22,6 +24,7 @@ const LOGOUT    = '/Logout';
 const SIGNUP    = '/SignUp';
 const RECORD    = '/Record';
 const ALBUM     = '/Album';
+const EXPLORE   = '/Explore';
 
 export var LoggedIn = true;
 
@@ -42,6 +45,7 @@ export default function App() {
                 <Route path={SIGNUP} element={<SignUpPage />}></Route>
                 <Route path={RECORD} element={<RecordPage />}></Route>
                 <Route path={ALBUM} element={<AlbumPage />}></Route>
+                <Route path={EXPLORE} element={<ExplorePage />}></Route>
             </Routes> 
         </Router>
         </>
