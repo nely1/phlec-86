@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import "./RecordPage.css";
+import $ from "jquery";
+
+// Code referenced from https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
+$(document).ready(function () {
+    $(window).keydown(function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+});
+
 export default function RecordPage() {
     const [images, setImages] = useState([
         {
@@ -18,7 +30,7 @@ export default function RecordPage() {
         },
     ]);
 
-    const tags = ["Beach", "Forest", "Hills"];
+    const [tags, setTags] = useState(["Beach", "Forest", "Hills"]);
 
     function fileSelectionHandler(event) {
         // console.log(event.target.files[0].name);
@@ -31,11 +43,19 @@ export default function RecordPage() {
                 alt: "",
             },
         ]);
+    }
 
-        console.log(images);
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(event.target.recordAlbumName.value);
+        console.log(event.target.recordDescription.value);
+        console.log(event.target.recordLocation.value);
+        console.log(tags);
+        console.log(event.target.recordRating.value);
+        console.log(event.target.addPhoto);
     }
     return (
-        <form>
+        <form onSubmit={handleSubmit} id="recordForm">
             <div className="RecordPageGrid">
                 <div>
                     <h1 className="RecordPageTitle">
@@ -50,6 +70,7 @@ export default function RecordPage() {
                         <input
                             type="file"
                             id="addPhoto"
+                            name="addPhoto"
                             accept="image/*"
                             className="RecordPageInputPhoto"
                             onChange={fileSelectionHandler}
@@ -62,20 +83,26 @@ export default function RecordPage() {
                         className="RecordPageAlbumNameInput"
                         type="text"
                         placeholder=" Name..."
+                        id="recordAlbumName"
+                        name="recordAlbumName"
                     ></input>
                     <h3 className="RecordPageDescription">Description</h3>
                     <textarea
                         className="RecordPageDescriptionInput"
                         placeholder=" Type Your Description Here"
+                        id="recordDescription"
+                        name="recordDescription"
                     ></textarea>
                     <h3 className="RecordPageDescription">Location</h3>
                     <input
                         className="RecordPageAlbumNameInput"
                         type="text"
                         placeholder=" Location..."
+                        id="recordLocation"
+                        name="recordLocation"
                     ></input>
                     <h3 className="RecordPageTagTitle">Tags</h3>
-                    <TagInput givenTags={tags}></TagInput>
+                    <TagInput tags={tags} setTags={setTags}></TagInput>
                     <h3 className="RecordPageTagTitle">Rating</h3>
                     <input
                         className="RecordPageRatingBar"
@@ -83,12 +110,17 @@ export default function RecordPage() {
                         min="0"
                         max="10"
                         defaultValue="5"
+                        id="recordRating"
+                        name="recordRating"
                     ></input>
                     <div className="RecordPageSave">
-                        <input
+                        <button
                             type="submit"
                             className="RecordPageSave text3"
-                        ></input>
+                            value="Submit"
+                        >
+                            Submit
+                        </button>
                     </div>
                 </div>
             </div>

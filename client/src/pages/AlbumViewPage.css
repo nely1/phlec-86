@@ -53,3 +53,9 @@
     margin-left: 2vw;
     cursor: pointer;
  }
+
+ #viewName {
+   height: 10vh;
+   border-radius: 10px;
+
+ }

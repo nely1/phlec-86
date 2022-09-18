@@ -36,11 +36,8 @@ export default function AlbumPage() {
              * put them in a specific grid/flexbox so that they are more responsive. */}
             <div className="AlbumPageGrid">
                 {albums.map((album, index) => (
-                    <a href="Albumview">
-                        <AlbumPlaceBox
-                            key={index}
-                            album={albums[index]}
-                        ></AlbumPlaceBox>
+                    <a href="Albumview" key={index}>
+                        <AlbumPlaceBox album={albums[index]}></AlbumPlaceBox>
                     </a>
                 ))}
             </div>

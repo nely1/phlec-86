@@ -3,6 +3,18 @@ import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import TagViewOnly from "../components/TagViewOnly";
 import "./AlbumViewPage.css";
+import $ from "jquery";
+
+// Code referenced from https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
+$(document).ready(function () {
+    $(window).keydown(function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+});
+
 export default function AlbumViewPage() {
     function fileSelectionHandler(event) {
         setImages([
@@ -12,14 +24,12 @@ export default function AlbumViewPage() {
                 alt: "",
             },
         ]);
-
-        console.log(images);
     }
 
     const [edit, setEdit] = useState(false);
 
     function changeEditState() {
-        setEdit(!edit);
+        setEdit((prevEdit) => !prevEdit);
     }
     const [images, setImages] = useState([
         {
@@ -35,101 +45,125 @@ export default function AlbumViewPage() {
             alt: "",
         },
     ]);
-    const tags = ["Beach", "Forest", "Hills"];
-    const placeRating = "7";
+    const [tags, setTags] = useState(["Beach", "Forest", "Hills"]);
+    const [rating, setRating] = useState(7);
+    function handleSubmit(event) {
+        changeEditState();
+        event.preventDefault();
+        setRating(event.target.viewRating.value);
+        console.log(event.target.viewName.value);
+        console.log(event.target.viewDescription.value);
+        console.log(event.target.viewLocation.value);
+        console.log(event.target.viewRating.value);
+    }
     return (
-        <div className="AlbumViewGrid">
-            <div>
-                <ImageCarousel images={images}></ImageCarousel>
-                <a href="/Album">
-                    <button className="text3 ToAlbumButton">Album</button>
-                </a>
-                {edit ? (
-                    <div className="RecordPageAddPhoto">
-                        <label htmlFor="addPhoto" className="text3">
-                            Add photo +
-                        </label>
+        <form onSubmit={handleSubmit}>
+            <div className="AlbumViewGrid">
+                <div>
+                    <ImageCarousel images={images}></ImageCarousel>
+                    <a href="/Album">
+                        <button className="text3 ToAlbumButton">Album</button>
+                    </a>
+                    {edit ? (
+                        <div className="RecordPageAddPhoto">
+                            <label htmlFor="addPhoto" className="text3">
+                                Add photo +
+                            </label>
 
+                            <input
+                                type="file"
+                                id="addPhoto"
+                                accept="image/*"
+                                className="RecordPageInputPhoto"
+                                onChange={fileSelectionHandler}
+                            ></input>
+                        </div>
+                    ) : (
+                        <p></p>
+                    )}
+                </div>
+                {!edit ? (
+                    <div className="AlbumViewPageLeft">
+                        <h1>Frangorn Foreest</h1>
+                        <h3 className="RecordPageDescription">Description</h3>
+                        <textarea
+                            readOnly="readonly"
+                            className="RecordPageDescriptionInput"
+                            placeholder=" Type Your Description Here"
+                        ></textarea>
+                        <h3>Tags:</h3>
+                        <TagViewOnly tags={tags} visable="true"></TagViewOnly>
+                        <h3>Location:</h3>
                         <input
-                            type="file"
-                            id="addPhoto"
-                            accept="image/*"
-                            className="RecordPageInputPhoto"
-                            onChange={fileSelectionHandler}
+                            className="RecordPageAlbumNameInput"
+                            type="text"
+                            value={"Melbourne"}
+                            readOnly="readonly"
                         ></input>
+                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        <input
+                            className="AlbumViewPageRatingBar"
+                            type="range"
+                            min="0"
+                            max="10"
+                            value={rating}
+                            readOnly="readonly"
+                        ></input>
+                        <p> </p>
+                        <button
+                            onClick={changeEditState}
+                            className="text3 AlbumViewEditButton"
+                        >
+                            EDIT
+                        </button>
                     </div>
                 ) : (
-                    <p></p>
+                    <div className="AlbumViewPageLeft">
+                        <input
+                            type="text"
+                            defaultValue="Frangorn Foreest"
+                            id="viewName"
+                            name="viewName"
+                            className="heading2"
+                        ></input>
+                        <h3 className="RecordPageDescription">Description</h3>
+                        <textarea
+                            className="RecordPageDescriptionInput"
+                            placeholder=" Type Your Description Here"
+                            id="viewDescription"
+                            name="viewDescription"
+                        ></textarea>
+                        <h3>Tags:</h3>
+                        <TagInput tags={tags} setTags={setTags}></TagInput>
+                        <TagViewOnly tags={tags}></TagViewOnly>
+                        <h3>Location:</h3>
+                        <input
+                            className="RecordPageAlbumNameInput"
+                            type="text"
+                            defaultValue={"Melbourne"}
+                            id="viewLocation"
+                            name="viewLocation"
+                        ></input>
+                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        <input
+                            className="AlbumViewPageRatingBar"
+                            type="range"
+                            min="0"
+                            max="10"
+                            defaultValue={rating}
+                            id="viewRating"
+                            name="viewRating"
+                        ></input>
+                        <p></p>
+                        <button
+                            type="submit"
+                            className="text3 AlbumViewEditButton"
+                        >
+                            Save Edit
+                        </button>
+                    </div>
                 )}
             </div>
-            {!edit ? (
-                <div className="AlbumViewPageLeft">
-                    <h1>Frangorn Foreest</h1>
-                    <h3 className="RecordPageDescription">Description</h3>
-                    <textarea
-                        readOnly="readonly"
-                        className="RecordPageDescriptionInput"
-                        placeholder=" Type Your Description Here"
-                    ></textarea>
-                    <h3>Tags:</h3>
-                    <TagViewOnly givenTags={tags}></TagViewOnly>
-                    <h3>Location:</h3>
-                    <input
-                        className="RecordPageAlbumNameInput"
-                        type="text"
-                        value={"Melbourne"}
-                        readOnly="readonly"
-                    ></input>
-                    <h3 className="RecordPageTagTitle">Rating</h3>
-                    <input
-                        className="AlbumViewPageRatingBar"
-                        type="range"
-                        min="0"
-                        max="10"
-                        value={placeRating}
-                        readOnly="readonly"
-                    ></input>
-                    <p> </p>
-                    <button
-                        onClick={changeEditState}
-                        className="text3 AlbumViewEditButton"
-                    >
-                        EDIT
-                    </button>
-                </div>
-            ) : (
-                <div className="AlbumViewPageLeft">
-                    <h1>Frangorn Foreest</h1>
-                    <h3 className="RecordPageDescription">Description</h3>
-                    <textarea
-                        className="RecordPageDescriptionInput"
-                        placeholder=" Type Your Description Here"
-                    ></textarea>
-                    <h3>Tags:</h3>
-                    <TagInput givenTags={tags}></TagInput>
-                    <h3>Location:</h3>
-                    <input
-                        className="RecordPageAlbumNameInput"
-                        type="text"
-                        placeholder={"Melbourne"}
-                    ></input>
-                    <h3 className="RecordPageTagTitle">Rating</h3>
-                    <input
-                        className="AlbumViewPageRatingBar"
-                        type="range"
-                        min="0"
-                        max="10"
-                        defaultValue={placeRating}
-                    ></input>
-                    <p></p>
-                    <button
-                        onClick={changeEditState}
-                        className="text3 AlbumViewEditButton"
-                    >
-                        Save Edit
-                    </button>
-                </div>
-            )}
-        </div>
+        </form>
     );
 }

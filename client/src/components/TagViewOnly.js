@@ -1,9 +1,7 @@
 import React from "react";
 import "./TagInput.css";
-export default function TagViewOnly({ givenTags }) {
-    const tags = givenTags;
-
-    return (
+export default function TagViewOnly({ tags, visable }) {
+    return visable ? (
         <div className="tagContainer">
             {tags.map((tag, index) => (
                 <div className="tagItem" key={index}>
@@ -11,5 +9,7 @@ export default function TagViewOnly({ givenTags }) {
                 </div>
             ))}
         </div>
+    ) : (
+        <></>
     );
 }
