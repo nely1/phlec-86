@@ -1,0 +1,61 @@
+.AlbumViewGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.AlbumViewPageRatingBar {
+    margin-top: 1vh;
+    -webkit-appearance: none;
+    width: 32.7vw;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+  }
+  
+  .AlbumViewPageRatingBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background:var(--color-primary-yellow);
+    cursor: pointer;
+  }
+
+ .AlbumViewPageLeft {
+    margin-left: 2vw;
+    margin-left: 1vw;
+    margin-top: 4vh;
+ }
+
+ .AlbumViewEditButton {
+    background-color: var(--color-primary-green);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 15vh;
+    margin-left: 25vw;
+    cursor: pointer;
+ }
+
+ .ToAlbumButton {
+    background-color: var(--color-primary-green);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 12vh;
+    margin-left: 2vw;
+    cursor: pointer;
+ }
+
+ #viewName {
+   height: 10vh;
+   border-radius: 10px;
+
+ }
