@@ -4,11 +4,24 @@ import TagInput from "../components/TagInput";
 import TagViewOnly from "../components/TagViewOnly";
 import "./AlbumViewPage.css";
 export default function AlbumViewPage() {
-    const [edit, setEdit] = useState(0);
+    function fileSelectionHandler(event) {
+        setImages([
+            ...images,
+            {
+                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
+                alt: "",
+            },
+        ]);
+
+        console.log(images);
+    }
+
+    const [edit, setEdit] = useState(false);
+
     function changeEditState() {
         setEdit(!edit);
     }
-    const images = [
+    const [images, setImages] = useState([
         {
             url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
             alt: "one",
@@ -21,16 +34,36 @@ export default function AlbumViewPage() {
             url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
             alt: "",
         },
-    ];
+    ]);
     const tags = ["Beach", "Forest", "Hills"];
     const placeRating = "7";
     return (
         <div className="AlbumViewGrid">
             <div>
                 <ImageCarousel images={images}></ImageCarousel>
+                <a href="/Album">
+                    <button className="text3 ToAlbumButton">Album</button>
+                </a>
+                {edit ? (
+                    <div className="RecordPageAddPhoto">
+                        <label htmlFor="addPhoto" className="text3">
+                            Add photo +
+                        </label>
+
+                        <input
+                            type="file"
+                            id="addPhoto"
+                            accept="image/*"
+                            className="RecordPageInputPhoto"
+                            onChange={fileSelectionHandler}
+                        ></input>
+                    </div>
+                ) : (
+                    <p></p>
+                )}
             </div>
             {!edit ? (
-                <div>
+                <div className="AlbumViewPageLeft">
                     <h1>Frangorn Foreest</h1>
                     <h3 className="RecordPageDescription">Description</h3>
                     <textarea
@@ -40,6 +73,14 @@ export default function AlbumViewPage() {
                     ></textarea>
                     <h3>Tags:</h3>
                     <TagViewOnly givenTags={tags}></TagViewOnly>
+                    <h3>Location:</h3>
+                    <input
+                        className="RecordPageAlbumNameInput"
+                        type="text"
+                        value={"Melbourne"}
+                        readOnly="readonly"
+                    ></input>
+                    <h3 className="RecordPageTagTitle">Rating</h3>
                     <input
                         className="AlbumViewPageRatingBar"
                         type="range"
@@ -48,11 +89,17 @@ export default function AlbumViewPage() {
                         value={placeRating}
                         readOnly="readonly"
                     ></input>
-                    <button onClick={changeEditState}>THE EDIT BUTTON</button>
+                    <p> </p>
+                    <button
+                        onClick={changeEditState}
+                        className="text3 AlbumViewEditButton"
+                    >
+                        EDIT
+                    </button>
                 </div>
             ) : (
-                <div>
-                    <h1>Frangorn Foreest (EDIT)</h1>
+                <div className="AlbumViewPageLeft">
+                    <h1>Frangorn Foreest</h1>
                     <h3 className="RecordPageDescription">Description</h3>
                     <textarea
                         className="RecordPageDescriptionInput"
@@ -60,14 +107,27 @@ export default function AlbumViewPage() {
                     ></textarea>
                     <h3>Tags:</h3>
                     <TagInput givenTags={tags}></TagInput>
+                    <h3>Location:</h3>
+                    <input
+                        className="RecordPageAlbumNameInput"
+                        type="text"
+                        placeholder={"Melbourne"}
+                    ></input>
+                    <h3 className="RecordPageTagTitle">Rating</h3>
                     <input
                         className="AlbumViewPageRatingBar"
                         type="range"
                         min="0"
                         max="10"
-                        value={placeRating}
+                        defaultValue={placeRating}
                     ></input>
-                    <button onClick={changeEditState}>THE EDIT BUTTON</button>
+                    <p></p>
+                    <button
+                        onClick={changeEditState}
+                        className="text3 AlbumViewEditButton"
+                    >
+                        Save Edit
+                    </button>
                 </div>
             )}
         </div>
