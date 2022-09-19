@@ -1,4 +1,6 @@
 import React from 'react';
+import ListBox from 'react-listbox';
+
 import './ExplorePage.css';
 
 import SearchBar from '../components/SearchBar';
@@ -27,7 +29,11 @@ export default function ExplorePage() {
     const dummyReviews = [
         {user: "Pat01", content: "The food is good, but the screaming won't stop.", score: 7.9},
         {user: "anon", content: "Terrible... just terrible", score: 4.2},
-        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8}]
+        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
+        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
+        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
+        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
+    ]
 
     let reviews = dummyReviews.map((review) => <li><ReviewCard key={review.user} data={review} /></li>)
     return (
@@ -38,15 +44,20 @@ export default function ExplorePage() {
                 {/* Wishlist */} 
             </div>
             <div className="Explore-Reviews">
-                <ul className="exploreCards">
+                <ul className="exploreCards" >
                     {cards}
                 </ul>
                 <div className="reviewCards">
                     <ul className="reviews">
                         {reviews}
                     </ul>
-                    <button className="styledButton untoggledButton prev">{"<"}</button>
-                    <button className="styledButton untoggledButton next">{">"}</button>
+                    {/* if (user has review)*/}
+                    <div className="reviewCard userReview">
+                        <form className="userReview">
+                            <textarea className="userReviewContent"/>
+                        </form>
+                        <input class="styledButton untoggledButton" type="submit" value="Post"/>
+                    </div>
                 </div>
             </div>            
         </div>

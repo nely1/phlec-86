@@ -34,48 +34,6 @@ export default function Navbar ({loggedIn, setLogin}) {
         setLogin(false);
         setUser(null);
     }
-
-<<<<<<< HEAD
-    render() {
-        // Different button layouts depending on if logged in or not
-        let buttons, loginButton;
-
-
-        // If not logged in, load only the login button
-        if (this.state.loggedIn === false) {
-            loginButton = 
-                <NavButton page="Login" >
-                    Login
-                </NavButton>
-
-        } else {
-            buttons = Object.values(Pages).map((page) => 
-                <li key={page}>
-                    <NavLink to={page} >
-                        <NavButton page={page} />
-                    </NavLink>
-                </li>); 
-            loginButton = 
-                    <NavButton className="loginoutButton" page="Logout" >
-                        Logout
-                    </NavButton>
-        }
-
-        // Render Navbar
-        return (
-            <div className="navbarBase">
-                <Link to='/Home' className="navbarLogo">
-                    <div className="navbarLogo" href="/">
-                        <div className="logoSpacer"></div>
-                        <div className="logoText">Phlec Travels</div>
-                    </div>
-                </Link>
-                <ul className="navbarButtons">{buttons}</ul>
-                <img className="profileImage" src="profiledefault.png" alt="Default Profile" />
-                {loginButton}
-            </div>
-        );
-=======
     useEffect(() => {
         const token = user?.token;
 
@@ -118,7 +76,6 @@ export default function Navbar ({loggedIn, setLogin}) {
                 <NavButton className="loginoutButton" page="Logout" setLogin = {setLogin} logoutFunc = {() => {logout()}}>
                     Logout
                 </NavButton>
->>>>>>> 6dc4bb7161e8049c336521a7a4af8dddb55f8c82
     }
 
     return (
