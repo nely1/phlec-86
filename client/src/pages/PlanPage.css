@@ -3,6 +3,9 @@
     height: 85vh;
 }
 
+/* Disables the itenary from showing, the itenary is a list of directions */
+div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; height: 0px !important; }
+
 .HomePageGrid {
     display: grid;
     grid-template-columns: 2fr 2fr;
