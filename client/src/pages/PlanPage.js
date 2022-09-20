@@ -32,9 +32,7 @@ function LocationMarker() {
 // }  
 
 export default function PlanPage() {
-    const [plannedLocations, setPlan] = useState([{title: "Ian Potter Museum", latlng: [-37.79739396, 144.9641567]}, 
-    {title: "UniMelb Sports", latlng: [-37.7942, 144.9621]}, 
-    {title: "Newman College", latlng: [-37.7954, 144.9633]} ]);
+    const [plannedLocations, setPlan] = useState([]);
     
 
 
@@ -55,7 +53,7 @@ export default function PlanPage() {
         <div className="HomePageBase">
             <div className="HomePageGrid">   
                 <div className="HomePageGridItem">
-                    <MapContainer center={[-37.7954, 144.9633]} zoom={28} scrollWheelZoom={true}>
+                    <MapContainer center={[-37.80911373, 144.9742219]} zoom={25} scrollWheelZoom={true}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
