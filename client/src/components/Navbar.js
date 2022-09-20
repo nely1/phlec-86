@@ -34,7 +34,6 @@ export default function Navbar ({loggedIn, setLogin}) {
         setLogin(false);
         setUser(null);
     }
-
     useEffect(() => {
         const token = user?.token;
 
