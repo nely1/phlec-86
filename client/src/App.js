@@ -13,6 +13,7 @@ import HomePage from './pages/HomePage';
 import RecordPage from './pages/RecordPage';
 import AlbumPage from './pages/AlbumPage';
 import ExplorePage from './pages/ExplorePage';
+import SettingsPage from './pages/SettingsPage';
 
 
 
@@ -25,6 +26,7 @@ const SIGNUP    = '/SignUp';
 const RECORD    = '/Record';
 const ALBUM     = '/Album';
 const EXPLORE   = '/Explore';
+const SETTINGS   = '/Settings'
 
 
 export var LoggedIn = true;
@@ -49,6 +51,7 @@ export default function App() {
                 <Route path={RECORD} element={<RecordPage />}></Route>
                 <Route path={ALBUM} element={<AlbumPage />}></Route>
                 <Route path={EXPLORE} element={<ExplorePage />}></Route>
+                <Route path={SETTINGS} element={<SettingsPage />}></Route>
             </Routes> 
         </Router>
         </>
