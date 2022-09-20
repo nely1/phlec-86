@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import L from "leaflet";
 import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents, useMapEvent, Tooltip } from 'react-leaflet'
 import "./PlanPage.css";
@@ -13,16 +13,16 @@ function LocationMarker() {
     })
 }
 
-function SetPlan(props, planArr) {
-    planArr.push(
-        {
-            title: props['Feature Name'],
-            latlng: [props.Latitude, props.Longitude],
-            theme: props.Theme,
-        }
-    )
-    console.log(planArr); 
-}
+// function SetPlan(props, planArr) {
+//     planArr.push(
+//         {
+//             title: props['Feature Name'],
+//             latlng: [props.Latitude, props.Longitude],
+//             theme: props.Theme,
+//         }
+//     )
+//     console.log(planArr); 
+// }
 
 // This funciton does not work, possible causes is that the latitude and longitude in the JSON file are swapped
 // function Landmarks(){
@@ -32,10 +32,16 @@ function SetPlan(props, planArr) {
 // }  
 
 export default function PlanPage() {
-    var plannedLocations = [  ]
+    const [plannedLocations, setPlan] = useState([{title: "Ian Potter Museum", latlng: [-37.79739396, 144.9641567]}, 
+    {title: "UniMelb Sports", latlng: [-37.7942, 144.9621]}, 
+    {title: "Newman College", latlng: [-37.7954, 144.9633]} ]);
+    
+
 
     let markers = MelbourneLandmarks.map((data) => 
-        <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: () => { SetPlan(data, plannedLocations) }}}>
+        <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: (e) => { 
+                                                                                                    console.log(data);
+                                                                                                    setPlan(...plannedLocations, {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude]})}}}>
             <Tooltip>
             Name: {data['Feature Name']}<br />
             Location Type: {data.Theme}<br />
@@ -43,6 +49,7 @@ export default function PlanPage() {
         </Marker>
     );
 
+    console.log(plannedLocations);
 
     return (
         <>

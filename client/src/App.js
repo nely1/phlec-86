@@ -33,7 +33,7 @@ export var LoggedIn = true;
 
 export default function App() {
     const dispatch = useDispatch();
-    const [LoggedIn, setLoggedIn] = useState(false);
+    const [LoggedIn, setLoggedIn] = useState(localStorage.getItem('profile') ? true : false);
     useEffect(() => { dispatch(loginUser); }, [dispatch]);
     
     return (
