@@ -16,21 +16,20 @@ $(document).ready(function () {
 
 export default function RecordPage() {
     const [images, setImages] = useState([
-        {
-            url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
-            alt: "one",
-        },
-        {
-            url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
-            alt: "two",
-        },
-        {
-            url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
-            alt: "",
-        },
+        // {
+        //     url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
+        //     alt: "one",
+        // },
+        // {
+        //     url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
+        //     alt: "two",
+        // },
+        // {
+        //     url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
+        //     alt: "",
+        // },
     ]);
-
-    const [tags, setTags] = useState(["Beach", "Forest", "Hills"]);
+    const [tags, setTags] = useState([]);
 
     function fileSelectionHandler(event) {
         // console.log(event.target.files[0].name);
