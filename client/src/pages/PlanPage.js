@@ -41,15 +41,13 @@ export default function PlanPage() {
     let markers = MelbourneLandmarks.map((data) => 
         <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: (e) => { 
                                                                                                     console.log(data);
-                                                                                                    setPlan(...plannedLocations, {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude]})}}}>
+                                                                                                    setPlan([...plannedLocations, {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude]}])}}}>
             <Tooltip>
             Name: {data['Feature Name']}<br />
             Location Type: {data.Theme}<br />
             </Tooltip>
         </Marker>
     );
-
-    console.log(plannedLocations);
 
     return (
         <>
@@ -65,7 +63,7 @@ export default function PlanPage() {
                         {markers}
 
                         <LocationMarker />
-                        <Routing plannedLocations = {plannedLocations} />  
+                        <Routing key = {JSON.stringify(plannedLocations[plannedLocations.length - 1])} plannedLocations = {plannedLocations} />  
                         {/* <Landmarks /> */}
                     </MapContainer>  
                     
