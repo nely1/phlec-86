@@ -1,13 +1,10 @@
 import React from 'react';
-import ListBox from 'react-listbox';
 
 import './ExplorePage.css';
 
 import SearchBar from '../components/SearchBar';
 import ExploreCard from '../components/ExploreCard';
 import ReviewCard from '../components/ReviewCard';
-
-const CARDS_PER_PAGE = 3;
 
 
 
@@ -30,9 +27,6 @@ export default function ExplorePage() {
         {user: "Pat01", content: "The food is good, but the screaming won't stop.", score: 7.9},
         {user: "anon", content: "Terrible... just terrible", score: 4.2},
         {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
-        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
-        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
-        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
     ]
 
     let reviews = dummyReviews.map((review) => <li><ReviewCard key={review.user} data={review} /></li>)
@@ -51,12 +45,12 @@ export default function ExplorePage() {
                     <ul className="reviews">
                         {reviews}
                     </ul>
-                    {/* if (user has review)*/}
+                    {/* if (loggedIn && ! user has review)*/}
                     <div className="reviewCard userReview">
                         <form className="userReview">
                             <textarea className="userReviewContent"/>
-                        </form>
                         <input class="styledButton untoggledButton" type="submit" value="Post"/>
+                        </form>
                     </div>
                 </div>
             </div>            

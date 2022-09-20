@@ -112,14 +112,14 @@ ul.reviews li {
 }
 
 .userReview {
-    overflow: auto;
-    height: 8em;
+    /* overflow: auto; */
+    height: 8em; 
     width: 15em;
     margin-bottom: 2em;
 }
 
 .userReviewContent {
-    height: 10em;
+    height: 8em;
     width: 17em;
     background-color: white;
 }
