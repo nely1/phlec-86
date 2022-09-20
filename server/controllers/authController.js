@@ -35,6 +35,7 @@ export const signUpUser = async (req, res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
+    const userName = req.body.userName;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
 
@@ -60,10 +61,8 @@ export const signUpUser = async (req, res) => {
                 firstName: firstName, 
                 lastName: lastName, 
                 email: email, 
-                password: password, 
-                favourites: [], 
-                userName: 'chuuniham',
-                plans: []});
+                password: password,  
+                userName: userName});
             
 
             res.status(200).json({message: 'Account created'});   
