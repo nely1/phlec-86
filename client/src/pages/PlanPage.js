@@ -1,6 +1,6 @@
 import React from 'react';
 import L from "leaflet";
-import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents, useMapEvent, Polyline } from 'react-leaflet'
+import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents, useMapEvent, Tooltip } from 'react-leaflet'
 import "./PlanPage.css";
 import Routing from "./RoutingMachine";
 import MelbourneLandmarks from "./LandmarksData.json"
@@ -10,8 +10,19 @@ function LocationMarker() {
         map.setView(e.latlng, map.getZoom(), {
           animate: true,
         })
-      })
-  }
+    })
+}
+
+function SetPlan(props, planArr) {
+    planArr.push(
+        {
+            title: props['Feature Name'],
+            latlng: [props.Latitude, props.Longitude],
+            theme: props.Theme,
+        }
+    )
+    console.log(planArr); 
+}
 
 // This funciton does not work, possible causes is that the latitude and longitude in the JSON file are swapped
 // function Landmarks(){
@@ -21,36 +32,17 @@ function LocationMarker() {
 // }  
 
 export default function PlanPage() {
-    var dummyPopups = 
-    [
-    {title: "Ian Potter Museum", latlng: [-37.79739396, 144.9641567], planned: true}, 
-    {title: "UniMelb Sports", latlng: [-37.7942, 144.9621], planned: true}, 
-    {title: "Newman College", latlng: [-37.7954, 144.9633], planned: true}, 
-    ]
-
-    /* Currently all the markers are planned, and all planned markers are handled by the routing machine */
-
-    /* Use this for popups that are not going to be planned */
-    var coords = [];
-    for (let i = 0; i < dummyPopups.length; i++) {
-        if (dummyPopups[i].planned){
-            coords.push(dummyPopups[i].latlng);
-        }
-    }
+    var plannedLocations = [  ]
 
     let markers = MelbourneLandmarks.map((data) => 
-    <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}>
-        <Popup>
-        Name: {data['Feature Name']}<br />
-        </Popup>
-    </Marker>
+        <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: () => { SetPlan(data, plannedLocations) }}}>
+            <Tooltip>
+            Name: {data['Feature Name']}<br />
+            Location Type: {data.Theme}<br />
+            </Tooltip>
+        </Marker>
     );
 
-
-    /* Routing option that doesn't consider physics and the natural world */
-    // console.log(coords);
-    //<Polyline pathOptions={routeColor} positions={coords} />
-    // const routeColor = { color: 'blue' }
 
     return (
         <>
@@ -66,9 +58,8 @@ export default function PlanPage() {
                         {markers}
 
                         <LocationMarker />
+                        <Routing plannedLocations = {plannedLocations} />  
                         {/* <Landmarks /> */}
-                        <Routing plannedLocations = {dummyPopups} />    
-
                     </MapContainer>  
                     
                 </div>
