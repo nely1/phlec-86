@@ -5,7 +5,8 @@ export default function ImageCarousel({ images }) {
     function goToImage(index) {
         setCurrentIndex(index);
     }
-    console.log(images.length);
+    // if (images.length !== 0) console.log(URL.createObjectURL(images[0]));
+
     return (
         <>
             {images.length !== 0 ? (
@@ -13,7 +14,7 @@ export default function ImageCarousel({ images }) {
                     {/* <div onClick={goToPrev}>ARROW</div> */}
                     <img
                         className="CarouselImage"
-                        src={images[currentIndex].url}
+                        src={URL.createObjectURL(images[currentIndex])}
                         alt={images[currentIndex].alt}
                     ></img>
                     {/* <div onClick={goToNext}>ARROW</div> */}

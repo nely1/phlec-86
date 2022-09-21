@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-    useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { loginUser } from "./actions/login";
@@ -36,7 +30,9 @@ export var LoggedIn = true;
 
 export default function App() {
     const dispatch = useDispatch();
-    const [LoggedIn, setLoggedIn] = useState(false);
+    const [LoggedIn, setLoggedIn] = useState(
+        localStorage.getItem("profile") ? true : false
+    );
     useEffect(() => {
         dispatch(loginUser);
     }, [dispatch]);

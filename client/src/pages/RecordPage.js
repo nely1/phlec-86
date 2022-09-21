@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import FileBase from "react-file-base64";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import "./RecordPage.css";
 import $ from "jquery";
+import { postAlbum } from "../actions/album";
 
 // Code referenced from https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
 $(document).ready(function () {
@@ -32,26 +35,27 @@ export default function RecordPage() {
     const [tags, setTags] = useState([]);
 
     function fileSelectionHandler(event) {
-        // console.log(event.target.files[0].name);
+        // console.log(event.target.files[0]);
         // images.push({ url: event.target.files[0].name, alt: "" });
 
-        setImages([
-            ...images,
-            {
-                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
-                alt: "",
-            },
-        ]);
+        setImages([...images, event.target.files[0]]);
     }
+
+    const dispatch = useDispatch();
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(event.target.recordAlbumName.value);
-        console.log(event.target.recordDescription.value);
-        console.log(event.target.recordLocation.value);
-        console.log(tags);
-        console.log(event.target.recordRating.value);
-        console.log(event.target.addPhoto);
+        const userCurrent = JSON.parse(localStorage.getItem("profile"));
+        // console.log(images);
+        const toUpload = {
+            name: event.target.recordAlbumName.value,
+            score: event.target.recordRating.value,
+            location: event.target.recordLocation.value,
+            description: event.target.recordDescription.value,
+            userid: userCurrent._id,
+            labels: tags,
+        };
+        dispatch(postAlbum(toUpload));
     }
     return (
         <form onSubmit={handleSubmit} id="recordForm">
@@ -65,7 +69,14 @@ export default function RecordPage() {
                         <label htmlFor="addPhoto" className="text3">
                             Add photo +
                         </label>
-
+                        {/* <FileBase
+                            className="RecordPageInputPhoto"
+                            type="file"
+                            multiple={false}
+                            onDone={({ base64 }) =>
+                                setImages({ ...images, selectedFile: base64 })
+                            }
+                        ></FileBase> */}
                         <input
                             type="file"
                             id="addPhoto"
