@@ -36,7 +36,7 @@ function HomePage({loginState}) {
                 <div className="HomePageGrid">
                     <div className="HomePageGridItem">
                         <div className="HomePageTitle">
-                            <h1>Welcome Back, {loggedIn.userName}</h1>
+                            <h1>Welcome Back, {userInfo.userName}</h1>
                             <p className="text2">Our top Picks For The Day</p>
                         </div>
                     </div>
@@ -96,6 +96,8 @@ function HomePage({loginState}) {
         </>
     );
 
+  }
 }
 
 export default HomePage;
+

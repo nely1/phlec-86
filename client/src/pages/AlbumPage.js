@@ -8,6 +8,7 @@ import './AlbumPage.css'
 export default function AlbumPage({loginState}) {
     const history = useNavigate();
     const albums = useSelector((state) => state.album);
+    const dispatch = useDispatch();
     
     useEffect(() => {
         dispatch(getAlbums());

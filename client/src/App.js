@@ -43,9 +43,6 @@ export default function App() {
     }
     
     return (
-
-
-    return (
         <>
 
         <Router>
@@ -59,7 +56,7 @@ export default function App() {
                 <Route path={SIGNUP} element={<SignUpPage />}></Route>
                 <Route path={RECORD} element={<RecordPage loginState = {LoggedIn}/>}></Route>
                 <Route path={ALBUM} element={<AlbumPage loginState = {LoggedIn}/>}></Route>
-                <Route path={ALBUM_VIEW} element={<AlbumViewPage element={<AlbumPage loginState = {LoggedIn}/>/>} ></Route>
+                <Route path={ALBUM_VIEW} element={<AlbumPage loginState = {LoggedIn}/>} ></Route>
                 <Route path={EXPLORE} element={<ExplorePage />}></Route>
             </Routes> 
         </Router>

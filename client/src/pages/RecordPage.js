@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ImageCarousel from "../components/ImageCarousel";
@@ -31,20 +31,20 @@ export default function RecordPage({loginState}) {
   const [mainImage] = useState(() => { return 'https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'});
 
   const [images, setImages] = useState([
-    {
-      url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
-      alt: "one",
-    },
-    {
+    // {
+    //   url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
+    //   alt: "one",
+    // },
+    // {
 
-      url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
+    //   url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
 
-      alt: "two",
-    },
-    {
-      url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
-      alt: "",
-    },
+    //   alt: "two",
+    // },
+    // {
+    //   url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
+    //   alt: "",
+    // },
   ]);
   
   const [tags, setTags] = useState([]);
@@ -88,12 +88,13 @@ export default function RecordPage({loginState}) {
 
 
     console.log(images);
-  }
+  
 
 
   if (!loginState) {
-    return (<></>)
+  return (<></>)
   }
+  else {
   return (
         <form onSubmit={handleSubmit} id="recordForm">
             <div className="RecordPageGrid">
@@ -164,8 +165,7 @@ export default function RecordPage({loginState}) {
                         <button
                             type="submit"
                             className="RecordPageSave text3"
-                            value="Submit"
-                        >
+                            value="Submit">
                             Submit
                         </button>
                     </div>
@@ -173,4 +173,6 @@ export default function RecordPage({loginState}) {
             </div>
         </form>
     );
+  }
 }
+
