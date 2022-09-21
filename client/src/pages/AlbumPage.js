@@ -1,15 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAlbums } from "../actions/album";
+import AlbumPlaceBox from "../components/AlbumPlaceBox";
 import './AlbumPage.css'
 
 export default function AlbumPage({loginState}) {
     const history = useNavigate();
-
+    const albums = useSelector((state) => state.album);
+    
+    useEffect(() => {
+        dispatch(getAlbums());
+    }, [dispatch]);
+    
     useEffect(() => {
         if (!loginState) {
           history("/Login");
         } 
       }, [history, loginState]);
+      
+    // const albums = [
+    //     {
+    //         place: "Melbourne",
+    //         date: "01/02/2022",
+    //         numberPhotos: 2,
+    //         image: {
+    //             url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
+    //             alt: "",
+    //         },
+    //     },
+    //     {
+    //         place: "Sydney",
+    //         date: "09/04/1999",
+    //         numberPhotos: 20,
+    //         image: {
+    //             url: "https://www.sydney.com/sites/sydney/files/styles/open_graph/public/2022-02/164142-Sydney%20Harbour%20-%20sunrise%20over%20Circular%20Quay.jpg?itok=AKlqtCiC",
+    //             alt: "",
+    //         },
+    //     },
+    // ];
 
 
     if (!loginState) {
@@ -17,36 +46,23 @@ export default function AlbumPage({loginState}) {
     }  
     return (
         <>
-            <div className='AlbumPageParameter'>
-                <h2>Filter:</h2>
-                <h2>Tags:</h2>
-                <input className='AlbumPageSearch' placeholder='Search...'></input>
+            <div className="AlbumPageParameter">
+                <h2>Search:</h2>
+                <input
+                    className="AlbumPageSearch"
+                    placeholder="Find Your Past Albums"
+                ></input>
             </div>
-            
-        {/* This would be a good candidate for a component, and should probably
-            * put them in a specific grid/flexbox so that they are more responsive. */}
-            <div className='AlbumPageGrid'>
-                <div className='AlbumPageItems'>
-                    <div className='tmpBox'></div>
-                    <h3>PlaceName</h3>
-                    <p className='text3'>Date & Time + Number of Photos</p>
-                </div>
-                <div className='AlbumPageItems'>
-                    <div className='tmpBox'></div>
-                    <h3>PlaceName</h3>
-                    <p className='text3'>Date & Time + Number of Photos</p>
-                </div>
-                <div className='AlbumPageItems'>
-                    <div className='tmpBox'></div>
-                    <h3>PlaceName</h3>
-                    <p className='text3'>Date & Time + Number of Photos</p>
-                </div>
-                <div className='AlbumPageItems'>
-                    <div className='tmpBox'></div>
-                    <h3>PlaceName</h3>
-                    <p className='text3'>Date & Time + Number of Photos</p>
-                </div>
+
+            {/* This would be a good candidate for a component, and should probably
+             * put them in a specific grid/flexbox so that they are more responsive. */}
+            <div className="AlbumPageGrid">
+                {albums.map((album, index) => (
+                    <a href="Albumview" key={index}>
+                        <AlbumPlaceBox album={albums[index]}></AlbumPlaceBox>
+                    </a>
+                ))}
             </div>
         </>
-    )
+    );
 }

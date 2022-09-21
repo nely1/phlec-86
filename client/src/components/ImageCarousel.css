@@ -16,3 +16,12 @@
     cursor: pointer;
     font-size: 20px;
 }
+
+.PlaceHolder {
+    background-color: gray;
+    height: 60vh;
+    width: 63vw;
+    margin-left: 2vw;
+    margin-top: 5vh;
+    border-radius: 10px;
+}

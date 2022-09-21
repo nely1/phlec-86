@@ -2,14 +2,20 @@
     display: flex;
     flex-direction: row;
 
-    position: relative;
-    left: 5%;
-    top: 3em;
+    width: 100%;
+
+    padding-top: 2%;
+    padding-left: 3vw;
 }
 
 .exploreCards {
+    padding-top: 3vw;
+}
+
+.Explore-Reviews {
+    display: flex;
+    flex-direction: row;
     position: relative;
-    top: 5em;
 }
 
 .card {
@@ -24,10 +30,12 @@ ul.exploreCards li {
     padding: 0;
     margin: 0;
 
-    height: 250px;
+    height: 30%;
     width: 1325px;
 
     margin-left: 2.5%;
+    margin-bottom: 2%;
+    border-radius: 10px;
 }
 
 .exploreCards h3 {
@@ -37,11 +45,83 @@ ul.exploreCards li {
 }
 
 .exploreCards img {
-    height: 180px;
-    width: 310px;
+    height: 21%;
+    width: 15%;
 
     position: relative;
-    top: 33px;
-    left: 20px;
+    top: 25%;
+    left: 2%;
 }
+
+
+.reviewCards {
+    margin-left: 3vw;
+    margin-top: 3vw;
+    margin-bottom: 3vh;
+    background-color: var(--color-primary-lightgrey);
+
+
+    border-radius: 10px;
+}
+
+.reviewCard {
+    height: 7em;
+    width: 13em;
+
+    margin-left: 1vw;
+    margin-top: 1vw;
+    border-radius: 10px;
+    
+}
+
+.reviewContent {
+    
+}
+
+.reviews {
+    width: 18vw;
+    overflow: auto;
+    height: 30em;
+}
+
+ul.reviews {
+    
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+
+    width: 18em;
+
+
+}
+
+ul.reviews li {
+    background-color: var(--color-primary-lightgreen);
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    height: 10em;
+    width: 15em;
+
+    margin-left: 1vw;
+    border-radius: 10px;
+
+}
+
+.userReview {
+    /* overflow: auto; */
+    height: 8em; 
+    width: 15em;
+    margin-bottom: 2em;
+}
+
+.userReviewContent {
+    height: 8em;
+    width: 17em;
+    background-color: white;
+}
+
 

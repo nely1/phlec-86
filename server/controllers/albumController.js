@@ -1,8 +1,14 @@
-import album from '../data/albumModel.js';
+import album from "../data/albumModel.js";
 
 const display = async (req, res) => {
-    console.log(req);
-    const albums = await album.find({}, {}).lean();
-}
 
-export default {display };
+    try {
+        const albums = await album.find();
+        res.status(200).json(albums);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+
+export default { display };

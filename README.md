@@ -1,22 +1,29 @@
 # Welcome to the Github page for PhlecTravels
 
-We are a small team of 5 students doing the capstone project for the subject IT Project COMP30022.
+We are a small team of 5 students doing the capstone project for the subject IT Project COMP30022. 
 
-_Pretend that this sentence is a really good intro to the team and the about this project stuff_
+<img src="https://media0.giphy.com/media/BRie5xjBZcHhj06NfL/giphy.gif?cid=ecf05e47vrdv66d5e0h6v869fzqq3i365hcdsbf88hdx92sp&rid=giphy.gif" width="120" height="120" />
 
 # Repository structure/layout and coding guidelines:
 
-> (Structure learnt in subject INFO30005 Web Information Technologies)\
-> Note - Description of structure is based of memory and is not official definitions  
-> Official definitions here: https://developer.mozilla.org/en-US/docs/Glossary/MVC
+> This web app adopts the structure that is commonly used in MERN (MongoDB, Express, React, Node) stacks.
+
+The repository is divided into client and server folders, for the front end and back end respectively. 
+[Overview of how the front end communicates with the back end ->](https://d33wubrfki0l68.cloudfront.net/08d01ed85246d3ece01963408572f3f6dfb49d41/4bc12/assets/images/reduxasyncdataflowdiagram-d97ff38a0f4da0f327163170ccc13e80.gif)
+
+The structure of the client folder (the src folder)
+- **actions**:
+- **api**:
+- **components**:
+- **pages**:
+- **reducers**:
+
+The structure of the server folder
 
 - **controllers**: Handles interactions with the database and the user, and other logic needed for a specific page
 - **models**: Stores the schema/structure of our databases
-- **public**: Stores the css (other uses or this folder was not taught)
 - **routes**: Instructs how the server should redirect users whenever they click a link or submit a form
-- **views**: Stores the front-end webpages (other uses or this folder was not taught)
-- **app.js**: The web app server that will listen for user requests, (after completing the prerequisites below) start
-  the server locally using the command **node app.js** and navigate to: http://localhost:3000/
+- **index.js**: The web app server that will listen for API requests from the client/front-end
 
 ## Coding guidelines:
 
@@ -70,82 +77,16 @@ function.
    - c. Download and install Node: https://nodejs.org/en/download/ . - In Linux, install using **sudo apt install nodejs npm** or equivalent commands.
    - d. Verify the installation with **node -v** and **npm -v**.
    - e. Install node dependencies using **npm init** . - Accept all the defaults given in the prompt (just press Enter)
-   - f. Install the Express framework using **npm install express**.
 
-   f. If you are having trouble, contact your nearest Discord teammate.
+2. To use the database: Must have a .env file in the server folder with the following line (replace the string with the connection string):
+   CONNECTION_URL="super secret database url that was shared in a secure environment"
 
-2. To use the database: Must have a .env file with the following line:
-   MONGO_URL="super secret database url that was shared in a secure environment"
+3. To install dependencies, use **npm install** (in the client and server folders respectively) to install all the required dependencies to use the app
 
-3. To be continued...
+4. To have communication between front and back end, two separate terminals have to be started. Run **npm start** while in the client and server folders respectively.
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Learn more about creating a MERN app
+- Creating a React App docs: https://create-react-app.dev/docs/getting-started
+- Full process of building a full stack MERN app: https://www.youtube.com/watch?v=ngc9gnGgUdA
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
