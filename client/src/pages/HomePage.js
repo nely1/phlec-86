@@ -16,24 +16,10 @@ function HomePage() {
     }, [history, loggedIn]);
 
     /* using hooks. Might help with backend (?) */
-    const user = "pat012";
     const recentImage =
         "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
 
-    const images = [
-        {
-            url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
-            alt: "one",
-        },
-        {
-            url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
-            alt: "two",
-        },
-        {
-            url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
-            alt: "three",
-        },
-    ];
+    const images = [];
 
     return (
         <>
@@ -41,7 +27,7 @@ function HomePage() {
                 <div className="HomePageGrid">
                     <div className="HomePageGridItem">
                         <div className="HomePageTitle">
-                            <h1>Welcome Back, {user}</h1>
+                            <h1>Welcome Back, {loggedIn.userName}</h1>
                             <p className="text2">Our top Picks For The Day</p>
                         </div>
                     </div>
