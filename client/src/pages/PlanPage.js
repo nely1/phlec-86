@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import L from "leaflet";
-import { MapContainer, TileLayer, useMap, Marker, Popup, useMapEvents, useMapEvent, Tooltip } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker,useMapEvent, Tooltip } from 'react-leaflet'
 import "./PlanPage.css";
-import Routing from "./RoutingMachine";
+import Routing from "../components/RoutingMachine";
 import MelbourneLandmarks from "./LandmarksData.json"
 
 function LocationMarker() {
@@ -33,13 +32,11 @@ function LocationMarker() {
 
 export default function PlanPage() {
     const [plannedLocations, setPlan] = useState([]);
-    
-
 
     let markers = MelbourneLandmarks.map((data) => 
-        <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: (e) => { 
-                                                                                                    console.log(data);
-                                                                                                    setPlan([...plannedLocations, {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude]}])}}}>
+        <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: () => { 
+                                                                                                    var newEntry = {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude], theme: data.Theme};
+                                                                                                    setPlan([...plannedLocations, newEntry])}}}>
             <Tooltip>
             Name: {data['Feature Name']}<br />
             Location Type: {data.Theme}<br />
@@ -61,7 +58,7 @@ export default function PlanPage() {
                         {markers}
 
                         <LocationMarker />
-                        <Routing key = {JSON.stringify(plannedLocations[plannedLocations.length - 1])} plannedLocations = {plannedLocations} />  
+                        <Routing key = {plannedLocations.length} plannedLocations = {plannedLocations} />  
                         {/* <Landmarks /> */}
                     </MapContainer>  
                     

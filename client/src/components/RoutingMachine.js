@@ -35,7 +35,7 @@ const createRoutineMachineLayer = (props) => {
 
     
     createMarker: function(i, wp, nWps) {
-      return L.marker(wp.latLng, {icon: redIcon }).bindPopup(popupMsg[i]);
+      return L.marker(wp.latLng, {icon: redIcon }).bindTooltip(popupMsg[i]);
     },
     
 
