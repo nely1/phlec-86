@@ -31,6 +31,7 @@ export default function AlbumViewPage() {
     function changeEditState() {
         setEdit((prevEdit) => !prevEdit);
     }
+
     const [images, setImages] = useState([
         // {
         //     url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",

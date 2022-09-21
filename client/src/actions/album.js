@@ -8,3 +8,12 @@ export const postAlbum = (album) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const getAlbums = () => async (dispatch) => {
+    try {
+        const { data } = await api.getAlbums();
+        dispatch({ type: "FETCH_ALL", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};

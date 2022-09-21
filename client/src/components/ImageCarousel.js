@@ -6,7 +6,7 @@ export default function ImageCarousel({ images }) {
         setCurrentIndex(index);
     }
     // if (images.length !== 0) console.log(URL.createObjectURL(images[0]));
-
+    // console.log(images.length);
     return (
         <>
             {images.length !== 0 ? (
@@ -31,6 +31,7 @@ export default function ImageCarousel({ images }) {
                     </div>
                 </div>
             ) : null}
+            {images.length === 0 ? <div className="PlaceHolder"></div> : null}
         </>
     );
 }
