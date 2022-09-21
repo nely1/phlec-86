@@ -52,10 +52,10 @@ export default function App() {
                 <Route path={LOGOUT} element={ <LandingPageBody/>}></Route>
                 <Route path={LOGIN} element={<LoginPage loginState = {LoggedIn} setLogin = {setLoggedIn}/>}></Route>
                 <Route path={LANDING}  element={<LandingPageBody />}></Route> 
-                <Route path={HOME} element={<HomePage /> }></Route>
+                <Route path={HOME} element={<HomePage loginState = {LoggedIn}/> }></Route>
                 <Route path={SIGNUP} element={<SignUpPage />}></Route>
-                <Route path={RECORD} element={<RecordPage />}></Route>
-                <Route path={ALBUM} element={<AlbumPage />}></Route>
+                <Route path={RECORD} element={<RecordPage loginState = {LoggedIn}/>}></Route>
+                <Route path={ALBUM} element={<AlbumPage loginState = {LoggedIn}/>}></Route>
                 <Route path={EXPLORE} element={<ExplorePage />}></Route>
             </Routes> 
         </Router>

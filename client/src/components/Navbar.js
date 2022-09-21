@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import { Link, NavLink, useLocation} from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginStatus } from '../App';
 import decode from 'jwt-decode';
@@ -28,6 +28,7 @@ export default function Navbar ({loggedIn, setLogin}) {
     const dispatch = useDispatch();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const location = useLocation();
+    const history = useNavigate();
 
     const logout = () => { 
         dispatch({type: "LOGOUT"});
@@ -51,6 +52,7 @@ export default function Navbar ({loggedIn, setLogin}) {
         }
     
         setUser(JSON.parse(localStorage.getItem('profile')));
+        
         
       }, [location]);
 

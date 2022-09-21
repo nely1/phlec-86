@@ -22,7 +22,7 @@ export const loginUser = async (req,res) => {
         }
         else{
             
-            const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "10s"});
+            const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "1h"});
             res.status(200).json({result: user, token});
 
             console.log("Somewhat logged in");
