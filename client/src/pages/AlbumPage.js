@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { getAlbums } from "../actions/album";
 import AlbumPlaceBox from "../components/AlbumPlaceBox";
-import "./AlbumPage.css";
-export default function AlbumPage() {
-    const dispatch = useDispatch();
+import './AlbumPage.css'
+
+export default function AlbumPage({loginState}) {
+    const history = useNavigate();
     const albums = useSelector((state) => state.album);
-    // console.log(albums);
+    
     useEffect(() => {
         dispatch(getAlbums());
     }, [dispatch]);
+    
+    useEffect(() => {
+        if (!loginState) {
+          history("/Login");
+        } 
+      }, [history, loginState]);
+      
     // const albums = [
     //     {
     //         place: "Melbourne",
@@ -31,6 +39,11 @@ export default function AlbumPage() {
     //         },
     //     },
     // ];
+
+
+    if (!loginState) {
+        return (<></>);
+    }  
     return (
         <>
             <div className="AlbumPageParameter">

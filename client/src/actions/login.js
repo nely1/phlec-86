@@ -3,8 +3,8 @@ import * as api from '../api';
 export const loginUser = (loginDetails, history) => async (dispatch) => {
     try {
         const {data} = await api.loginUser(loginDetails.loginDetails);
-        dispatch({ type: "LOGIN"});
-        localStorage.setItem('profile', JSON.stringify({ ...data.result }));
+
+        dispatch({ type: "LOGIN", data});
         loginDetails.setLogin(true);
         
         // navigate to landing page

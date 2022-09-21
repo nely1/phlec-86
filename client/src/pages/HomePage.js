@@ -1,26 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageCarousel from "../components/ImageCarousel";
 import "./HomePage.css";
+import LoginPage from './LoginPage';
 
-function HomePage() {
-    const loggedIn = JSON.parse(localStorage.getItem("profile"));
-    const history = useNavigate();
 
-    useEffect(() => {
-        if (!loggedIn) {
-            history("/Login");
-        } else {
-            console.log(loggedIn);
-        }
-    }, [history, loggedIn]);
+function HomePage({loginState}) {
 
-    /* using hooks. Might help with backend (?) */
-    const recentImage =
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
+  
+  const userInfo = JSON.parse(localStorage.getItem("profile"));
+  console.log(userInfo);
+  const history = useNavigate();
+
+  useEffect(() => {
+    if (!loginState) {
+      history("/Login");
+    } 
+  }, [history, userInfo]);
+
+  /* using hooks. Might help with backend (?) */
+  const user = userInfo.result.userName;
+  const recentImage =
+    "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
+
 
     const images = [];
 
+  if (!loginState) {
+    return (<></>)
+  }
+  else {
     return (
         <>
             <div className="HomePageBase">
@@ -80,10 +89,13 @@ function HomePage() {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+
         </>
     );
+
 }
 
 export default HomePage;
