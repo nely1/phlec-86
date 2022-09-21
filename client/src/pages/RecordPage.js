@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import FileBase from "react-file-base64";
+import { useNavigate } from "react-router-dom";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import "./RecordPage.css";
@@ -40,23 +40,36 @@ export default function RecordPage() {
 
         setImages([...images, event.target.files[0]]);
     }
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const userCurrent = JSON.parse(localStorage.getItem("profile"));
-        // console.log(images);
+        let test = await getBase64(images[0]);
         const toUpload = {
             name: event.target.recordAlbumName.value,
             score: event.target.recordRating.value,
             location: event.target.recordLocation.value,
             description: event.target.recordDescription.value,
             userid: userCurrent._id,
+            images: [test],
             labels: tags,
         };
         dispatch(postAlbum(toUpload));
+        navigate("/album");
     }
+
+    const getBase64 = (file) =>
+        //https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
+        new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+
     return (
         <form onSubmit={handleSubmit} id="recordForm">
             <div className="RecordPageGrid">
