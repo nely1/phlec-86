@@ -34,11 +34,11 @@ export default function RecordPage() {
     ]);
     const [tags, setTags] = useState([]);
 
-    function fileSelectionHandler(event) {
+    async function fileSelectionHandler(event) {
         // console.log(event.target.files[0]);
         // images.push({ url: event.target.files[0].name, alt: "" });
 
-        setImages([...images, event.target.files[0]]);
+        setImages([...images, await getBase64(event.target.files[0])]);
     }
     const navigate = useNavigate();
 
@@ -47,14 +47,14 @@ export default function RecordPage() {
     async function handleSubmit(event) {
         event.preventDefault();
         const userCurrent = JSON.parse(localStorage.getItem("profile"));
-        let test = await getBase64(images[0]);
+        // let test = await getBase64(images[0]);
         const toUpload = {
             name: event.target.recordAlbumName.value,
             score: event.target.recordRating.value,
             location: event.target.recordLocation.value,
             description: event.target.recordDescription.value,
             userid: userCurrent._id,
-            images: [test],
+            images: images,
             labels: tags,
         };
         dispatch(postAlbum(toUpload));

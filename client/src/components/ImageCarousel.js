@@ -14,8 +14,8 @@ export default function ImageCarousel({ images }) {
                     {/* <div onClick={goToPrev}>ARROW</div> */}
                     <img
                         className="CarouselImage"
-                        src={URL.createObjectURL(images[currentIndex])}
-                        alt={images[currentIndex].alt}
+                        src={images[currentIndex]}
+                        alt={""}
                     ></img>
                     {/* <div onClick={goToNext}>ARROW</div> */}
                     <div className="dotsContainer">
