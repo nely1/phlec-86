@@ -7,7 +7,6 @@ import "./RecordPage.css";
 import $ from "jquery";
 import { postAlbum } from "../actions/album";
 
-
 // Code referenced from https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
 $(document).ready(function () {
     $(window).keydown(function (event) {
@@ -18,39 +17,20 @@ $(document).ready(function () {
     });
 });
 
-export default function RecordPage({loginState}) {
+export default function RecordPage({ loginState }) {
+    const history = useNavigate();
 
-  const history = useNavigate();
+    useEffect(() => {
+        if (!loginState) {
+            history("/Login");
+        }
+    }, [history, loginState]);
 
-  useEffect(() => {
-    if (!loginState) {
-      history("/Login");
-    } 
-  }, [history, loginState]);
+    const [images, setImages] = useState([]);
 
-  const [mainImage] = useState(() => { return 'https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'});
+    const [tags, setTags] = useState([]);
 
-  const [images, setImages] = useState([
-    // {
-    //   url: "http://cdn.cnn.com/cnnnext/dam/assets/181010131059-australia-best-beaches-cossies-beach-cocos3.jpg",
-    //   alt: "one",
-    // },
-    // {
-
-    //   url: "https://whatsonblog.melbourne.vic.gov.au/wp-content/uploads/2020/07/DJI_0031_D-Hannah.jpg",
-
-    //   alt: "two",
-    // },
-    // {
-    //   url: "https://images.pexels.com/photos/130576/pexels-photo-130576.jpeg?cs=srgb&dl=pexels-pok-rie-130576.jpg&fm=jpg",
-    //   alt: "",
-    // },
-  ]);
-  
-  const [tags, setTags] = useState([]);
-
-
-  async function fileSelectionHandler(event) {
+    async function fileSelectionHandler(event) {
         // console.log(event.target.files[0]);
         // images.push({ url: event.target.files[0].name, alt: "" });
 
@@ -86,28 +66,24 @@ export default function RecordPage({loginState}) {
             reader.onerror = (error) => reject(error);
         });
 
-
     console.log(images);
-  
 
-
-  if (!loginState) {
-  return (<></>)
-  }
-  else {
-  return (
-        <form onSubmit={handleSubmit} id="recordForm">
-            <div className="RecordPageGrid">
-                <div>
-                    <h1 className="RecordPageTitle">
-                        Save Your Favourite Moments
-                    </h1>
-                    <ImageCarousel images={images}></ImageCarousel>
-                    <div className="RecordPageAddPhoto">
-                        <label htmlFor="addPhoto" className="text3">
-                            Add photo +
-                        </label>
-                        {/* <FileBase
+    if (!loginState) {
+        return <></>;
+    } else {
+        return (
+            <form onSubmit={handleSubmit} id="recordForm">
+                <div className="RecordPageGrid">
+                    <div>
+                        <h1 className="RecordPageTitle">
+                            Save Your Favourite Moments
+                        </h1>
+                        <ImageCarousel images={images}></ImageCarousel>
+                        <div className="RecordPageAddPhoto">
+                            <label htmlFor="addPhoto" className="text3">
+                                Add photo +
+                            </label>
+                            {/* <FileBase
                             className="RecordPageInputPhoto"
                             type="file"
                             multiple={false}
@@ -115,64 +91,64 @@ export default function RecordPage({loginState}) {
                                 setImages({ ...images, selectedFile: base64 })
                             }
                         ></FileBase> */}
+                            <input
+                                type="file"
+                                id="addPhoto"
+                                name="addPhoto"
+                                accept="image/*"
+                                className="RecordPageInputPhoto"
+                                onChange={fileSelectionHandler}
+                            ></input>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="RecordPageAlbumNameTitle">Album name</h3>
                         <input
-                            type="file"
-                            id="addPhoto"
-                            name="addPhoto"
-                            accept="image/*"
-                            className="RecordPageInputPhoto"
-                            onChange={fileSelectionHandler}
+                            className="RecordPageAlbumNameInput"
+                            type="text"
+                            placeholder=" Name..."
+                            id="recordAlbumName"
+                            name="recordAlbumName"
                         ></input>
+                        <h3 className="RecordPageDescription">Description</h3>
+                        <textarea
+                            className="RecordPageDescriptionInput"
+                            placeholder=" Type Your Description Here"
+                            id="recordDescription"
+                            name="recordDescription"
+                        ></textarea>
+                        <h3 className="RecordPageDescription">Location</h3>
+                        <input
+                            className="RecordPageAlbumNameInput"
+                            type="text"
+                            placeholder=" Location..."
+                            id="recordLocation"
+                            name="recordLocation"
+                        ></input>
+                        <h3 className="RecordPageTagTitle">Tags</h3>
+                        <TagInput tags={tags} setTags={setTags}></TagInput>
+                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        <input
+                            className="RecordPageRatingBar"
+                            type="range"
+                            min="0"
+                            max="10"
+                            defaultValue="5"
+                            id="recordRating"
+                            name="recordRating"
+                        ></input>
+                        <div className="RecordPageSave">
+                            <button
+                                type="submit"
+                                className="RecordPageSave text3"
+                                value="Submit"
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h3 className="RecordPageAlbumNameTitle">Album name</h3>
-                    <input
-                        className="RecordPageAlbumNameInput"
-                        type="text"
-                        placeholder=" Name..."
-                        id="recordAlbumName"
-                        name="recordAlbumName"
-                    ></input>
-                    <h3 className="RecordPageDescription">Description</h3>
-                    <textarea
-                        className="RecordPageDescriptionInput"
-                        placeholder=" Type Your Description Here"
-                        id="recordDescription"
-                        name="recordDescription"
-                    ></textarea>
-                    <h3 className="RecordPageDescription">Location</h3>
-                    <input
-                        className="RecordPageAlbumNameInput"
-                        type="text"
-                        placeholder=" Location..."
-                        id="recordLocation"
-                        name="recordLocation"
-                    ></input>
-                    <h3 className="RecordPageTagTitle">Tags</h3>
-                    <TagInput tags={tags} setTags={setTags}></TagInput>
-                    <h3 className="RecordPageTagTitle">Rating</h3>
-                    <input
-                        className="RecordPageRatingBar"
-                        type="range"
-                        min="0"
-                        max="10"
-                        defaultValue="5"
-                        id="recordRating"
-                        name="recordRating"
-                    ></input>
-                    <div className="RecordPageSave">
-                        <button
-                            type="submit"
-                            className="RecordPageSave text3"
-                            value="Submit">
-                            Submit
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    );
-  }
+            </form>
+        );
+    }
 }
-

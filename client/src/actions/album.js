@@ -9,9 +9,9 @@ export const postAlbum = (album) => async (dispatch) => {
     }
 };
 
-export const getAlbums = () => async (dispatch) => {
+export const getAlbums = (userInfo) => async (dispatch) => {
     try {
-        const { data } = await api.getAlbums();
+        const { data } = await api.getAlbums(userInfo.result._id);
         dispatch({ type: "FETCH_ALL", payload: data });
     } catch (error) {
         console.log(error);

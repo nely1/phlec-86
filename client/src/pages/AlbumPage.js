@@ -1,50 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAlbums } from "../actions/album";
 import AlbumPlaceBox from "../components/AlbumPlaceBox";
-import './AlbumPage.css'
+import "./AlbumPage.css";
 
-export default function AlbumPage({loginState}) {
+export default function AlbumPage({ loginState }) {
     const history = useNavigate();
     const albums = useSelector((state) => state.album);
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
-        dispatch(getAlbums());
+        dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
     }, [dispatch]);
-    
+
     useEffect(() => {
         if (!loginState) {
-          history("/Login");
-        } 
-      }, [history, loginState]);
-      
-    // const albums = [
-    //     {
-    //         place: "Melbourne",
-    //         date: "01/02/2022",
-    //         numberPhotos: 2,
-    //         image: {
-    //             url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
-    //             alt: "",
-    //         },
-    //     },
-    //     {
-    //         place: "Sydney",
-    //         date: "09/04/1999",
-    //         numberPhotos: 20,
-    //         image: {
-    //             url: "https://www.sydney.com/sites/sydney/files/styles/open_graph/public/2022-02/164142-Sydney%20Harbour%20-%20sunrise%20over%20Circular%20Quay.jpg?itok=AKlqtCiC",
-    //             alt: "",
-    //         },
-    //     },
-    // ];
-
+            history("/Login");
+        }
+    }, [history, loginState]);
 
     if (!loginState) {
-        return (<></>);
-    }  
+        return <></>;
+    }
     return (
         <>
             <div className="AlbumPageParameter">
