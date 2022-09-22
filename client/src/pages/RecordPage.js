@@ -49,9 +49,10 @@ export default function RecordPage({ loginState }) {
             score: event.target.recordRating.value,
             location: event.target.recordLocation.value,
             description: event.target.recordDescription.value,
-            userid: userCurrent._id,
+            userid: userCurrent.result._id,
             images: images,
             labels: tags,
+            date: event.target.dateAlbum.value,
         };
         dispatch(postAlbum(toUpload));
         navigate("/album");
@@ -75,9 +76,7 @@ export default function RecordPage({ loginState }) {
             <form onSubmit={handleSubmit} id="recordForm">
                 <div className="RecordPageGrid">
                     <div>
-                        <h1 className="RecordPageTitle">
-                            Save Your Favourite Moments
-                        </h1>
+                        <h1 className="RecordPageTitle">Save Your Favourite Moments</h1>
                         <ImageCarousel images={images}></ImageCarousel>
                         <div className="RecordPageAddPhoto">
                             <label htmlFor="addPhoto" className="text3">
@@ -137,12 +136,10 @@ export default function RecordPage({ loginState }) {
                             id="recordRating"
                             name="recordRating"
                         ></input>
+                        <h3 className="RecordPageTagTitle">Date</h3>
+                        <input type="date" id="dateAlbum" name="dateAlbum"></input>
                         <div className="RecordPageSave">
-                            <button
-                                type="submit"
-                                className="RecordPageSave text3"
-                                value="Submit"
-                            >
+                            <button type="submit" className="RecordPageSave text3" value="Submit">
                                 Submit
                             </button>
                         </div>

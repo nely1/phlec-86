@@ -23,14 +23,12 @@ export default function AlbumPage({ loginState }) {
     if (!loginState) {
         return <></>;
     }
+    console.log(albums);
     return (
         <>
             <div className="AlbumPageParameter">
                 <h2>Search:</h2>
-                <input
-                    className="AlbumPageSearch"
-                    placeholder="Find Your Past Albums"
-                ></input>
+                <input className="AlbumPageSearch" placeholder="Find Your Past Albums"></input>
             </div>
 
             {/* This would be a good candidate for a component, and should probably
