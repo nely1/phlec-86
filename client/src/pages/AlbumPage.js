@@ -35,7 +35,7 @@ export default function AlbumPage({ loginState }) {
              * put them in a specific grid/flexbox so that they are more responsive. */}
             <div className="AlbumPageGrid">
                 {albums.map((album, index) => (
-                    <a href="Albumview" key={index}>
+                    <a href={"/Albumview/" + albums[index]._id} key={index}>
                         <AlbumPlaceBox album={albums[index]}></AlbumPlaceBox>
                     </a>
                 ))}

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-
-import { Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginStatus } from '../App';
-import decode from 'jwt-decode';
-import NavButton  from './NavButton';
-import './Navbar.css';
-
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginStatus } from "../App";
+import decode from "jwt-decode";
+import NavButton from "./NavButton";
+import "./Navbar.css";
 
 /* This will probably be changed when Auth is added */
 
@@ -24,9 +22,7 @@ export const Pages = Object.freeze({
 export default function Navbar({ loggedIn, setLogin }) {
     let buttons, loginButton;
     const dispatch = useDispatch();
-    const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("profile"))
-    );
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
     const location = useLocation();
     const history = useNavigate();
 
@@ -52,7 +48,6 @@ export default function Navbar({ loggedIn, setLogin }) {
         }
         setUser(JSON.parse(localStorage.getItem("profile")));
     }, [location]);
-
 
     // If not logged in, load only the login button
     if (loggedIn === false) {
@@ -88,13 +83,8 @@ export default function Navbar({ loggedIn, setLogin }) {
                 </div>
             </Link>
             <ul className="navbarButtons">{buttons}</ul>
-            <img
-                className="profileImage"
-                src="profiledefault.png"
-                alt="Default Profile"
-            />
+            <img className="profileImage" src={process.env.PUBLIC_URL + "/profiledefault.png"} alt="Default Profile" />
             {loginButton}
         </div>
     );
 }
-
