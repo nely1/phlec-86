@@ -6,6 +6,7 @@ import { loginUser } from "./actions/login";
 
 import Navbar from "./components/Navbar";
 
+
 import LandingPageBody from "./pages/LandingPageBody";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -14,6 +15,7 @@ import RecordPage from "./pages/RecordPage";
 import AlbumPage from "./pages/AlbumPage";
 import ExplorePage from "./pages/ExplorePage";
 import AlbumViewPage from "./pages/AlbumViewPage";
+import PlanPage from './pages/PlanPage';
 
 const ROOT = "/";
 const LOGIN = "/Login";
@@ -25,6 +27,7 @@ const RECORD = "/Record";
 const ALBUM = "/Album";
 const ALBUM_VIEW = "/AlbumView";
 const EXPLORE = "/Explore";
+const PLAN = '/Plan';
 
 export var LoggedIn = true;
 
@@ -52,6 +55,7 @@ export default function App() {
 
     return (
         <>
+
             <Router>
                 <Navbar loggedIn={LoggedIn} setLogin={setLoggedIn} />
                 <Routes>
@@ -85,6 +89,7 @@ export default function App() {
                         element={<AlbumViewPage loginState={LoggedIn} />}
                     ></Route>
                     <Route path={EXPLORE} element={<ExplorePage />}></Route>
+                    <Route path={PLAN} element={<PlanPage />}></Route>
                 </Routes>
             </Router>
         </>
