@@ -21,6 +21,6 @@ userRouter.get("/albumview/:id", albumController.displayOne);
 
 userRouter.get("/explore", exploreController.getReview);
 
-userRouter.post("/explore/:id", auth,  exploreController.postReview);
+userRouter.post("/explore/:id",  exploreController.postReview);
 
 export default userRouter;
