@@ -108,6 +108,7 @@ export default function RecordPage({ loginState }) {
                             placeholder=" Name..."
                             id="recordAlbumName"
                             name="recordAlbumName"
+                            required
                         ></input>
                         <h3 className="RecordPageDescription">Description</h3>
                         <textarea
@@ -115,6 +116,7 @@ export default function RecordPage({ loginState }) {
                             placeholder=" Type Your Description Here"
                             id="recordDescription"
                             name="recordDescription"
+                            required
                         ></textarea>
                         <h3 className="RecordPageDescription">Location</h3>
                         <input
@@ -123,6 +125,7 @@ export default function RecordPage({ loginState }) {
                             placeholder=" Location..."
                             id="recordLocation"
                             name="recordLocation"
+                            required
                         ></input>
                         <h3 className="RecordPageTagTitle">Tags</h3>
                         <TagInput tags={tags} setTags={setTags}></TagInput>

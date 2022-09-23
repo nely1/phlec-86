@@ -4,6 +4,8 @@ const albumReducer = (album = [], action) => {
             return [...album, action.payload];
         case "FETCH_ALL":
             return action.payload;
+        case "FETCH_ONE":
+            return action.payload;
         default:
             return album;
     }

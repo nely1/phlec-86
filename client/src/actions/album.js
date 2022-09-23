@@ -17,3 +17,12 @@ export const getAlbums = (userInfo) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const getAlbumOne = (albumId) => async (dispatch) => {
+    try {
+        const { data } = await api.getAlbumOne(albumId);
+        dispatch({ type: "FETCH_ONE", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};

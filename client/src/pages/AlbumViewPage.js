@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAlbumOne } from "../actions/album";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import TagViewOnly from "../components/TagViewOnly";
@@ -15,7 +18,14 @@ $(document).ready(function () {
     });
 });
 
-export default function AlbumViewPage() {
+export default function AlbumViewPage({ loginState }) {
+    const locationHook = useLocation();
+    const album = useSelector((state) => state.album);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAlbumOne(locationHook.state.albumId));
+    }, [dispatch]);
     function fileSelectionHandler(event) {
         setImages([
             ...images,
@@ -45,16 +55,26 @@ export default function AlbumViewPage() {
         setAlbumName(event.target.viewName.value);
         setAlbumDescription(event.target.viewDescription.value);
         setLocation(event.target.viewLocation.value);
-        console.log(event.target.viewName.value);
-        console.log(event.target.viewDescription.value);
-        console.log(event.target.viewLocation.value);
-        console.log(event.target.viewRating.value);
+        // console.log(event.target.viewName.value);
+        // console.log(event.target.viewDescription.value);
+        // console.log(event.target.viewLocation.value);
+        // console.log(event.target.viewRating.value);
     }
+    const history = useNavigate();
+    useEffect(() => {
+        if (!loginState) {
+            history("/Login");
+        }
+    }, [history, loginState]);
+    if (!loginState || album.length !== 1) {
+        return <></>;
+    }
+    console.log(album);
     return (
         <form onSubmit={handleSubmit}>
             <div className="AlbumViewGrid">
                 <div>
-                    <ImageCarousel images={images}></ImageCarousel>
+                    <ImageCarousel images={album[0].images}></ImageCarousel>
                     {edit ? (
                         <div className="RecordPageAddPhoto">
                             <label htmlFor="addPhoto" className="text3">
@@ -75,20 +95,20 @@ export default function AlbumViewPage() {
                 </div>
                 {!edit ? (
                     <div className="AlbumViewPageLeft">
-                        <h1>{albumName}</h1>
+                        <h1>{album[0].name}</h1>
                         <h3 className="RecordPageDescription">Description</h3>
                         <textarea
                             readOnly="readonly"
                             className="RecordPageDescriptionInput"
-                            value={albumDescription}
+                            value={album[0].description}
                         ></textarea>
                         <h3>Tags:</h3>
-                        <TagViewOnly tags={tags} visable="true"></TagViewOnly>
+                        <TagViewOnly tags={album[0].labels} visable="true"></TagViewOnly>
                         <h3>Location:</h3>
                         <input
                             className="RecordPageAlbumNameInput"
                             type="text"
-                            value={location}
+                            value={album[0].location}
                             readOnly="readonly"
                         ></input>
                         <h3 className="RecordPageTagTitle">Rating</h3>
@@ -97,14 +117,19 @@ export default function AlbumViewPage() {
                             type="range"
                             min="0"
                             max="10"
-                            value={rating}
+                            value={album[0].score}
+                            readOnly="readonly"
+                        ></input>
+                        <h3 className="RecordPageTagTitle">Date</h3>
+                        <input
+                            type="date"
+                            id="dateAlbum"
+                            name="dateAlbum"
+                            value={album[0].date}
                             readOnly="readonly"
                         ></input>
                         <p> </p>
-                        <button
-                            onClick={changeEditState}
-                            className="text3 AlbumViewEditButton"
-                        >
+                        <button onClick={changeEditState} className="text3 AlbumViewEditButton">
                             EDIT
                         </button>
                     </div>
@@ -146,10 +171,7 @@ export default function AlbumViewPage() {
                             name="viewRating"
                         ></input>
                         <p></p>
-                        <button
-                            type="submit"
-                            className="text3 AlbumViewEditButton"
-                        >
+                        <button type="submit" className="text3 AlbumViewEditButton">
                             Save Edit
                         </button>
                     </div>
