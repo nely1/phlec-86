@@ -18,3 +18,7 @@ export const getAlbums = (id) => API.get(`/user/${id}/albums`);
 export const getAlbumOne = (id) => API.get(`/user/albumview/${id}`);
 
 export const signUpUser = (signUpDetails) => API.post("/login/signUp", signUpDetails);
+
+export const getReview = () => API.get("/user/explore");
+
+export const postReview = (id, review) => API.post(`/user/explore/${id}`, review);

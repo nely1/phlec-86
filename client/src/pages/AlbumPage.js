@@ -10,15 +10,18 @@ export default function AlbumPage({ loginState }) {
     const albums = useSelector((state) => state.album);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+    // }, [dispatch]);
 
     useEffect(() => {
         if (!loginState) {
             history("/Login");
         }
-    }, [history, loginState]);
+        else {
+            dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+        }
+    }, [history, loginState, dispatch]);
 
     if (!loginState) {
         return <></>;

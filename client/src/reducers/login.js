@@ -1,6 +1,4 @@
 
-
-
 const authReducer =  (state = {loginDetails: null}, action) => {
     if (action.type === 'LOGIN'){
 
