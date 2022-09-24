@@ -19,4 +19,6 @@ export const getAlbumOne = (id) => API.get(`/user/albumview/${id}`);
 
 export const updateAlbumOne = (id, updatedAlbum) => API.patch(`/user/albumview/${id}`, updatedAlbum);
 
+export const deleteAlbum = (id) => API.delete(`/user/albumview/${id}`);
+
 export const signUpUser = (signUpDetails) => API.post("/login/signUp", signUpDetails);

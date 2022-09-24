@@ -30,4 +30,12 @@ const updateAlbum = async (req, res) => {
     res.json(updatedAlbum);
 };
 
-export default { display, displayOne, updateAlbum };
+const deleteAlbum = async (req, res) => {
+    const albumId = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(albumId)) return res.status(404).send("No album with that id");
+
+    await album.findByIdAndRemove(albumId);
+
+    res.json({ message: "Album deleted successfully" });
+};
+export default { display, displayOne, updateAlbum, deleteAlbum };

@@ -35,3 +35,12 @@ export const updateAlbum = (albumId, album) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const deleteAlbum = (albumId) => async (dispatch) => {
+    try {
+        await api.deleteAlbum(albumId);
+        dispatch({ type: "DELETE_ONE", payload: albumId });
+    } catch (error) {
+        console.log(error);
+    }
+};

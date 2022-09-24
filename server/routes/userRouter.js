@@ -20,4 +20,6 @@ userRouter.get("/albumview/:id", albumController.displayOne);
 
 userRouter.patch("/albumview/:id", albumController.updateAlbum);
 
+userRouter.delete("/albumview/:id", albumController.deleteAlbum);
+
 export default userRouter;

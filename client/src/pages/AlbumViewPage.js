@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAlbumOne, updateAlbum } from "../actions/album";
+import { getAlbumOne, updateAlbum, deleteAlbum } from "../actions/album";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import TagViewOnly from "../components/TagViewOnly";
@@ -22,6 +22,7 @@ export default function AlbumViewPage({ loginState }) {
     const albumId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
     const album = useSelector((state) => (albumId ? state.album.find((a) => a._id === albumId) : null));
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getAlbumOne(albumId));
@@ -42,6 +43,11 @@ export default function AlbumViewPage({ loginState }) {
             images.splice(currentImageIndex, 1);
             setImages([...images]);
         }
+    }
+
+    function deleteAlbumFunc() {
+        dispatch(deleteAlbum(albumId));
+        navigate("/album");
     }
 
     useEffect(() => {
@@ -193,9 +199,18 @@ export default function AlbumViewPage({ loginState }) {
                         <h3 className="RecordPageTagTitle">Date</h3>
                         <input type="date" id="dateAlbum" name="dateAlbum" defaultValue={album.date}></input>
                         <p></p>
-                        <button type="submit" className="text3 AlbumViewEditButton">
-                            Save Edit
-                        </button>
+                        <div className="LeftButtons">
+                            <button
+                                type="button"
+                                onClick={deleteAlbumFunc}
+                                className="text3 AlbumViewDeleteAlbumButton"
+                            >
+                                Delete Album
+                            </button>
+                            <button type="submit" className="text3 AlbumViewEditButton2">
+                                Save Edit
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
