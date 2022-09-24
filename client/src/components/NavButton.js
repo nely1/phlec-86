@@ -9,7 +9,6 @@ export default function NavButton (props) {
         
         let path = "/" + props.page;
         if (props.children === "Logout"){
-            console.log(props);
             props.logoutFunc();
         }
         navigate(path);  
