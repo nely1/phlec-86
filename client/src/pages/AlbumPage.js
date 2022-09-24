@@ -6,9 +6,11 @@ import AlbumPlaceBox from "../components/AlbumPlaceBox";
 import "./AlbumPage.css";
 
 export default function AlbumPage({ loginState }) {
-    const history = useNavigate();
     const albums = useSelector((state) => state.album);
+    console.log(albums);
     const dispatch = useDispatch();
+    const history = useNavigate();
+    
 
     // useEffect(() => {
     //     dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));

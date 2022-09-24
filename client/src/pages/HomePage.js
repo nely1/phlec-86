@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {useDispatch, useSelector} from 'react-redux';
+import { getAlbums } from "../actions/album";
 import ImageCarousel from "../components/ImageCarousel";
 import "./HomePage.css";
 import LoginPage from "./LoginPage";
 
 function HomePage({ loginState }) {
+    const albums = useSelector((state) => state.album);
+    const lastAlbum = albums[albums.length - 1];
+    console.log(lastAlbum);
     const userInfo = JSON.parse(localStorage.getItem("profile"));
-    console.log(userInfo);
+
+    const dispatch = useDispatch();
     const history = useNavigate();
 
     useEffect(() => {
         if (!loginState) {
             history("/Login");
         }
-    }, [history, userInfo]);
+        else {
+            dispatch(getAlbums(JSON.parse(localStorage.getItem('profile'))))
+        }
+    }, [dispatch, loginState, history]);
+
+
+    // Get the most recent album
+    
 
     /* using hooks. Might help with backend (?) */
     const recentImage =
