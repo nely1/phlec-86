@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImageCarousel from "../components/ImageCarousel";
 import "./HomePage.css";
-import LoginPage from "./LoginPage";
 
 function HomePage({ loginState }) {
     const userInfo = JSON.parse(localStorage.getItem("profile"));
-    console.log(userInfo);
+    // console.log(userInfo);
     const history = useNavigate();
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         if (!loginState) {
             history("/Login");
         }
-    }, [history, userInfo]);
+    }, [history, userInfo, loginState]);
 
     /* using hooks. Might help with backend (?) */
     const recentImage =
@@ -21,6 +21,7 @@ function HomePage({ loginState }) {
 
     const images = [];
 
+    console.log(currentImageIndex); // To prevent error in console
     if (!loginState) {
         return <></>;
     } else {
@@ -30,12 +31,8 @@ function HomePage({ loginState }) {
                     <div className="HomePageGrid">
                         <div className="HomePageGridItem">
                             <div className="HomePageTitle">
-                                <h1>
-                                    Welcome Back, {userInfo.result.userName}
-                                </h1>
-                                <p className="text2">
-                                    Our top Picks For The Day
-                                </p>
+                                <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                <p className="text2">Our top Picks For The Day</p>
                             </div>
                         </div>
                         <div className="HomePageGridItem">
@@ -49,16 +46,17 @@ function HomePage({ loginState }) {
                                         <h1>7 Days Away!</h1>
                                     </div>
                                     <div className="HomePageUpComingGoTo ">
-                                        <span className="material-symbols-outlined">
-                                            double_arrow
-                                        </span>
+                                        <span className="material-symbols-outlined">double_arrow</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="HomePageGridItem">
                             <div className="HomePageMainPictureContainer">
-                                <ImageCarousel images={images}></ImageCarousel>
+                                <ImageCarousel
+                                    images={images}
+                                    setCurrentImageIndex={setCurrentImageIndex}
+                                ></ImageCarousel>
                             </div>
                         </div>
                         <div className="HomePageGridItem">
@@ -73,14 +71,10 @@ function HomePage({ loginState }) {
                                         alt="HomePageMemoriesImage"
                                     ></img>
                                     <div className="HomePageRecentMemoriesBottomOverlay">
-                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">
-                                            Lake Mir
-                                        </p>
+                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">Lake Mir</p>
                                         <div className="HomePageRecentMemoriesgGoTo">
                                             <a href="albumview">
-                                                <span className="material-symbols-outlined">
-                                                    double_arrow
-                                                </span>
+                                                <span className="material-symbols-outlined">double_arrow</span>
                                             </a>
                                         </div>
                                     </div>

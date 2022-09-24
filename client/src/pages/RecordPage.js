@@ -30,6 +30,8 @@ export default function RecordPage({ loginState }) {
 
     const [tags, setTags] = useState([]);
 
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
     async function fileSelectionHandler(event) {
         // console.log(event.target.files[0]);
         // images.push({ url: event.target.files[0].name, alt: "" });
@@ -67,7 +69,7 @@ export default function RecordPage({ loginState }) {
             reader.onerror = (error) => reject(error);
         });
 
-    console.log(images);
+    console.log(currentImageIndex); // To prevent error in console
 
     if (!loginState) {
         return <></>;
@@ -77,7 +79,7 @@ export default function RecordPage({ loginState }) {
                 <div className="RecordPageGrid">
                     <div>
                         <h1 className="RecordPageTitle">Save Your Favourite Moments</h1>
-                        <ImageCarousel images={images}></ImageCarousel>
+                        <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                         <div className="RecordPageAddPhoto">
                             <label htmlFor="addPhoto" className="text3">
                                 Add photo +

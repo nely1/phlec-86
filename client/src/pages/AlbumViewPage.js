@@ -37,13 +37,20 @@ export default function AlbumViewPage({ loginState }) {
         setEdit((prevEdit) => !prevEdit);
     }
 
+    function deletePhoto(i) {
+        if (images.length > 0) {
+            images.splice(currentImageIndex, 1);
+            setImages([...images]);
+        }
+    }
+
     useEffect(() => {
-        // console.log(album);
         setImages(album ? album.images : []);
         setTags(album ? album.labels : []);
     }, [album]);
     const [images, setImages] = useState(album ? album.images : []);
     const [tags, setTags] = useState(album ? album.labels : []);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     function handleSubmit(event) {
         changeEditState();
@@ -76,26 +83,32 @@ export default function AlbumViewPage({ loginState }) {
     if (!loginState || !album) {
         return <></>;
     }
-    // console.log(album);
+
+    // console.log(images[currentImageIndex]);
     return (
         <form onSubmit={handleSubmit}>
             <div className="AlbumViewGrid">
                 <div>
-                    <ImageCarousel images={images}></ImageCarousel>
+                    <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                     {edit ? (
-                        <div className="RecordPageAddPhoto">
-                            <label htmlFor="addPhoto" className="text3">
-                                Add photo +
-                            </label>
+                        <>
+                            <button type="button" onClick={deletePhoto} className="text3 AlbumViewDeletePhotoButton">
+                                Delete Photo
+                            </button>
+                            <div className="AlbumViewPageAddPhoto">
+                                <label htmlFor="addPhoto" className="text3 AlbumViewPageAddPhotoText">
+                                    Add photo +
+                                </label>
 
-                            <input
-                                type="file"
-                                id="addPhoto"
-                                accept="image/*"
-                                className="RecordPageInputPhoto"
-                                onChange={fileSelectionHandler}
-                            ></input>
-                        </div>
+                                <input
+                                    type="file"
+                                    id="addPhoto"
+                                    accept="image/*"
+                                    className="RecordPageInputPhoto"
+                                    onChange={fileSelectionHandler}
+                                ></input>
+                            </div>
+                        </>
                     ) : (
                         <p></p>
                     )}
