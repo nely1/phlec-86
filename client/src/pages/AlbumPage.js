@@ -1,38 +1,45 @@
-import React from 'react'
-import './AlbumPage.css'
-export default function AlbumPage() {
-  return (
-    <>
-        <div className='AlbumPageParameter'>
-            <h2>Filter:</h2>
-            <h2>Tags:</h2>
-            <input className='AlbumPageSearch' placeholder='Search...'></input>
-        </div>
-        
-      {/* This would be a good candidate for a component, and should probably
-        * put them in a specific grid/flexbox so that they are more responsive. */}
-        <div className='AlbumPageGrid'>
-            <div className='AlbumPageItems'>
-                <div className='tmpBox'></div>
-                <h3>PlaceName</h3>
-                <p className='text3'>Date & Time + Number of Photos</p>
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAlbums } from "../actions/album";
+import AlbumPlaceBox from "../components/AlbumPlaceBox";
+import "./AlbumPage.css";
+
+export default function AlbumPage({ loginState }) {
+    const history = useNavigate();
+    const albums = useSelector((state) => state.album);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (!loginState) {
+            history("/Login");
+        }
+    }, [history, loginState]);
+
+    if (!loginState) {
+        return <></>;
+    }
+    // console.log(albums);
+    return (
+        <>
+            <div className="AlbumPageParameter">
+                <h2>Search:</h2>
+                <input className="AlbumPageSearch" placeholder="Find Your Past Albums"></input>
             </div>
-            <div className='AlbumPageItems'>
-                <div className='tmpBox'></div>
-                <h3>PlaceName</h3>
-                <p className='text3'>Date & Time + Number of Photos</p>
+
+            {/* This would be a good candidate for a component, and should probably
+             * put them in a specific grid/flexbox so that they are more responsive. */}
+            <div className="AlbumPageGrid">
+                {albums.map((album, index) => (
+                    <Link to={"/Albumview/" + albums[index]._id} key={index}>
+                        <AlbumPlaceBox album={albums[index]}></AlbumPlaceBox>
+                    </Link>
+                ))}
             </div>
-            <div className='AlbumPageItems'>
-                <div className='tmpBox'></div>
-                <h3>PlaceName</h3>
-                <p className='text3'>Date & Time + Number of Photos</p>
-            </div>
-            <div className='AlbumPageItems'>
-                <div className='tmpBox'></div>
-                <h3>PlaceName</h3>
-                <p className='text3'>Date & Time + Number of Photos</p>
-            </div>
-        </div>
-    </>
-  )
+        </>
+    );
 }

@@ -1,13 +1,14 @@
 .AlbumPageParameter {
     display: flex;
     flex-direction: row;
-    gap: 16.7vw;
+    gap: 5vw;
     margin-top: 5vh;
     margin-left: 7vw;
 }
 
 .AlbumPageSearch {
-    width: 40vw;
+    width: 70vw;
+    height: 5vh;
     border-radius: 10px;
     padding-left: 0.5vw
     ;
@@ -21,13 +22,5 @@
     margin-right: 3vw;
 }
 
-.tmpBox {
-    background-color: gray;
-    height: 26vh;
-    width: 26vw;
-    margin-bottom: 0.5vh;
-}
 
-.AlbumPageItems {
-    padding-top: 4vh;
-}
+
