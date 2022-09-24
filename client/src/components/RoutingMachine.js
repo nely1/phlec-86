@@ -35,7 +35,7 @@ const createRoutineMachineLayer = (props) => {
 
     
     createMarker: function(i, wp, nWps) {
-      return L.marker(wp.latLng, {icon: redIcon }).bindTooltip(popupMsg[i]);
+      return L.marker(wp.latLng, {icon: redIcon }).bindTooltip(popupMsg[i]).on('click', function(e){control.spliceWaypoints(i,1); props.plannedLocations.splice(i, 1);});
     },
     
 

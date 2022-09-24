@@ -32,10 +32,12 @@ function LocationMarker() {
 
 export default function PlanPage() {
     const [plannedLocations, setPlan] = useState([]);
+    const [counter, setCounter] = useState(0);
 
     let markers = MelbourneLandmarks.map((data) => 
         <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: () => { 
                                                                                                     var newEntry = {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude], theme: data.Theme};
+                                                                                                    setCounter(counter + 1);
                                                                                                     setPlan([...plannedLocations, newEntry])}}}>
             <Tooltip>
             Name: {data['Feature Name']}<br />
@@ -58,7 +60,7 @@ export default function PlanPage() {
                         {markers}
 
                         <LocationMarker />
-                        <Routing key = {plannedLocations.length} plannedLocations = {plannedLocations} />  
+                        <Routing key = {counter} plannedLocations = {plannedLocations} />  
                         {/* <Landmarks /> */}
                     </MapContainer>  
                     
