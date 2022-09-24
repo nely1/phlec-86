@@ -9,6 +9,7 @@ const schema = new mongoose.Schema({
     images: [String], //TO BE REMOVED. USING ONLY FOR TESTING
     userid: { type: mongoose.Schema.Types.ObjectId },
     labels: [String],
+    date: String,
 });
 
 const albumModel = mongoose.model("albumModel", schema);

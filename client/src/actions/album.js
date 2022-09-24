@@ -17,3 +17,30 @@ export const getAlbums = (userInfo) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const getAlbumOne = (albumId) => async (dispatch) => {
+    try {
+        const { data } = await api.getAlbumOne(albumId);
+        dispatch({ type: "FETCH_ONE", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const updateAlbum = (albumId, album) => async (dispatch) => {
+    try {
+        const { data } = await api.updateAlbumOne(albumId, album);
+        dispatch({ type: "UPDATE_ONE", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deleteAlbum = (albumId) => async (dispatch) => {
+    try {
+        await api.deleteAlbum(albumId);
+        dispatch({ type: "DELETE_ONE", payload: albumId });
+    } catch (error) {
+        console.log(error);
+    }
+};

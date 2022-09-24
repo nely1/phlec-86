@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAlbums } from "../actions/album";
 import AlbumPlaceBox from "../components/AlbumPlaceBox";
@@ -23,23 +23,21 @@ export default function AlbumPage({ loginState }) {
     if (!loginState) {
         return <></>;
     }
+    // console.log(albums);
     return (
         <>
             <div className="AlbumPageParameter">
                 <h2>Search:</h2>
-                <input
-                    className="AlbumPageSearch"
-                    placeholder="Find Your Past Albums"
-                ></input>
+                <input className="AlbumPageSearch" placeholder="Find Your Past Albums"></input>
             </div>
 
             {/* This would be a good candidate for a component, and should probably
              * put them in a specific grid/flexbox so that they are more responsive. */}
             <div className="AlbumPageGrid">
                 {albums.map((album, index) => (
-                    <a href="Albumview" key={index}>
+                    <Link to={"/Albumview/" + albums[index]._id} key={index}>
                         <AlbumPlaceBox album={albums[index]}></AlbumPlaceBox>
-                    </a>
+                    </Link>
                 ))}
             </div>
         </>

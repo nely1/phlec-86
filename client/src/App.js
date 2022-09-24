@@ -25,7 +25,7 @@ const LOGOUT = "/Logout";
 const SIGNUP = "/SignUp";
 const RECORD = "/Record";
 const ALBUM = "/Album";
-const ALBUM_VIEW = "/AlbumView";
+const ALBUM_VIEW = "/AlbumView/:id";
 const EXPLORE = "/Explore";
 const PLAN = '/Plan';
 
@@ -34,9 +34,7 @@ export var LoggedIn = true;
 export default function App() {
     const dispatch = useDispatch();
 
-    const [LoggedIn, setLoggedIn] = useState(
-        localStorage.getItem("profile") ? true : false
-    );
+    const [LoggedIn, setLoggedIn] = useState(localStorage.getItem("profile") ? true : false);
     useEffect(() => {
         dispatch(loginUser);
     }, [dispatch]);
@@ -46,11 +44,7 @@ export default function App() {
     };
 
     const element = (page) => {
-        return localStorage.getItem("profile") ? (
-            page
-        ) : (
-            <LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />
-        );
+        return localStorage.getItem("profile") ? page : <LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />;
     };
 
     return (
@@ -61,33 +55,13 @@ export default function App() {
                 <Routes>
                     <Route path={ROOT} element={<LandingPageBody />}></Route>
                     <Route path={LOGOUT} element={<LandingPageBody />}></Route>
-                    <Route
-                        path={LOGIN}
-                        element={
-                            <LoginPage
-                                loginState={LoggedIn}
-                                setLogin={setLoggedIn}
-                            />
-                        }
-                    ></Route>
+                    <Route path={LOGIN} element={<LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />}></Route>
                     <Route path={LANDING} element={<LandingPageBody />}></Route>
-                    <Route
-                        path={HOME}
-                        element={<HomePage loginState={LoggedIn} />}
-                    ></Route>
+                    <Route path={HOME} element={<HomePage loginState={LoggedIn} />}></Route>
                     <Route path={SIGNUP} element={<SignUpPage />}></Route>
-                    <Route
-                        path={RECORD}
-                        element={<RecordPage loginState={LoggedIn} />}
-                    ></Route>
-                    <Route
-                        path={ALBUM}
-                        element={<AlbumPage loginState={LoggedIn} />}
-                    ></Route>
-                    <Route
-                        path={ALBUM_VIEW}
-                        element={<AlbumViewPage loginState={LoggedIn} />}
-                    ></Route>
+                    <Route path={RECORD} element={<RecordPage loginState={LoggedIn} />}></Route>
+                    <Route path={ALBUM} element={<AlbumPage loginState={LoggedIn} />}></Route>
+                    <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
                     <Route path={EXPLORE} element={<ExplorePage />}></Route>
                     <Route path={PLAN} element={<PlanPage />}></Route>
                 </Routes>

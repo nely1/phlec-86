@@ -30,6 +30,8 @@ export default function RecordPage({ loginState }) {
 
     const [tags, setTags] = useState([]);
 
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
     async function fileSelectionHandler(event) {
         // console.log(event.target.files[0]);
         // images.push({ url: event.target.files[0].name, alt: "" });
@@ -49,9 +51,10 @@ export default function RecordPage({ loginState }) {
             score: event.target.recordRating.value,
             location: event.target.recordLocation.value,
             description: event.target.recordDescription.value,
-            userid: userCurrent._id,
+            userid: userCurrent.result._id,
             images: images,
             labels: tags,
+            date: event.target.dateAlbum.value,
         };
         dispatch(postAlbum(toUpload));
         navigate("/album");
@@ -66,7 +69,7 @@ export default function RecordPage({ loginState }) {
             reader.onerror = (error) => reject(error);
         });
 
-    console.log(images);
+    console.log(currentImageIndex); // To prevent error in console
 
     if (!loginState) {
         return <></>;
@@ -75,10 +78,8 @@ export default function RecordPage({ loginState }) {
             <form onSubmit={handleSubmit} id="recordForm">
                 <div className="RecordPageGrid">
                     <div>
-                        <h1 className="RecordPageTitle">
-                            Save Your Favourite Moments
-                        </h1>
-                        <ImageCarousel images={images}></ImageCarousel>
+                        <h1 className="RecordPageTitle">Save Your Favourite Moments</h1>
+                        <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                         <div className="RecordPageAddPhoto">
                             <label htmlFor="addPhoto" className="text3">
                                 Add photo +
@@ -109,6 +110,7 @@ export default function RecordPage({ loginState }) {
                             placeholder=" Name..."
                             id="recordAlbumName"
                             name="recordAlbumName"
+                            required
                         ></input>
                         <h3 className="RecordPageDescription">Description</h3>
                         <textarea
@@ -116,6 +118,7 @@ export default function RecordPage({ loginState }) {
                             placeholder=" Type Your Description Here"
                             id="recordDescription"
                             name="recordDescription"
+                            required
                         ></textarea>
                         <h3 className="RecordPageDescription">Location</h3>
                         <input
@@ -124,6 +127,7 @@ export default function RecordPage({ loginState }) {
                             placeholder=" Location..."
                             id="recordLocation"
                             name="recordLocation"
+                            required
                         ></input>
                         <h3 className="RecordPageTagTitle">Tags</h3>
                         <TagInput tags={tags} setTags={setTags}></TagInput>
@@ -137,12 +141,10 @@ export default function RecordPage({ loginState }) {
                             id="recordRating"
                             name="recordRating"
                         ></input>
+                        <h3 className="RecordPageTagTitle">Date</h3>
+                        <input type="date" id="dateAlbum" name="dateAlbum"></input>
                         <div className="RecordPageSave">
-                            <button
-                                type="submit"
-                                className="RecordPageSave text3"
-                                value="Submit"
-                            >
+                            <button type="submit" className="RecordPageSave text3" value="Submit">
                                 Submit
                             </button>
                         </div>
