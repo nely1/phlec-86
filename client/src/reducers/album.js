@@ -6,6 +6,8 @@ const albumReducer = (album = [], action) => {
             return action.payload;
         case "FETCH_ONE":
             return action.payload;
+        case "UPDATE_ONE":
+            return album.map((singleAlbum) => (singleAlbum._id === action.payload._id ? action.payload : singleAlbum));
         default:
             return album;
     }

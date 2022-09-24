@@ -18,4 +18,6 @@ userRouter.get("/:id/albums", albumController.display);
 
 userRouter.get("/albumview/:id", albumController.displayOne);
 
+userRouter.patch("/albumview/:id", albumController.updateAlbum);
+
 export default userRouter;

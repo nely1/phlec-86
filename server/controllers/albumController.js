@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import album from "../data/albumModel.js";
 
 const display = async (req, res) => {
@@ -20,4 +21,13 @@ const displayOne = async (req, res) => {
     }
 };
 
-export default { display, displayOne };
+const updateAlbum = async (req, res) => {
+    const changes = req.body;
+    const albumId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(albumId)) return res.status(404).send("No album with that id");
+    const updatedAlbum = await album.findByIdAndUpdate(albumId, changes, { new: true });
+    res.json(updatedAlbum);
+};
+
+export default { display, displayOne, updateAlbum };
