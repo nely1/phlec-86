@@ -12,24 +12,6 @@ function LocationMarker() {
     })
 }
 
-// function SetPlan(props, planArr) {
-//     planArr.push(
-//         {
-//             title: props['Feature Name'],
-//             latlng: [props.Latitude, props.Longitude],
-//             theme: props.Theme,
-//         }
-//     )
-//     console.log(planArr); 
-// }
-
-// This funciton does not work, possible causes is that the latitude and longitude in the JSON file are swapped
-// function Landmarks(){
-//     const map = useMap();
-//     const landmarks = new L.GeoJSON(MelbourneLandmarks);
-//     landmarks.addTo(map);
-// }  
-
 export default function PlanPage() {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
@@ -38,7 +20,8 @@ export default function PlanPage() {
         <Marker key={data.Latitude} position={[data.Latitude, data.Longitude]}  eventHandlers = {{ click: () => { 
                                                                                                     var newEntry = {title: data['Feature Name'], latlng: [data.Latitude, data.Longitude], theme: data.Theme};
                                                                                                     setCounter(counter + 1);
-                                                                                                    setPlan([...plannedLocations, newEntry])}}}>
+                                                                                                    setPlan([...plannedLocations, newEntry])
+                                                                                                    console.log(plannedLocations)}}}>
             <Tooltip>
             Name: {data['Feature Name']}<br />
             Location Type: {data.Theme}<br />
@@ -61,7 +44,7 @@ export default function PlanPage() {
 
                         <LocationMarker />
                         <Routing key = {counter} plannedLocations = {plannedLocations} />  
-                        {/* <Landmarks /> */}
+
                     </MapContainer>  
                     
                 </div>
@@ -74,7 +57,19 @@ export default function PlanPage() {
                         <div className="HomePageUpComingBottom">
                             <h2>Name: Boy's Night Out</h2>
                             <div className="HomePageUpComingTimeBox">
-                                <h2>1. The Good Place</h2>
+                                <div className = "locationNames">
+                                    <ol>
+                                        {
+                                            plannedLocations.map(
+                                                location => (
+                                                    <li key={location.title}> 
+                                                        <h3>{location.title}</h3>
+                                                    </li>
+                                                )
+                                            )
+                                        }
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>

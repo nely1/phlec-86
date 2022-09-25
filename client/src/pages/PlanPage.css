@@ -46,8 +46,9 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
 
 .HomePageUpComingTimeBox {
     background-color: var(--color-primary-yellow);
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 1vh 1vw;
+    padding-left: 3vh;
 }
 
 .HomePageUpComingGoTo {
@@ -73,4 +74,8 @@ h1{
 
 h2{
     font-size: 35px;
+}
+
+h3{
+    font-size: 20px;
 }
