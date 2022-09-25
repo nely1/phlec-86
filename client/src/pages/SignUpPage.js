@@ -28,12 +28,11 @@ function SignUpPage() {
 
     return (
         <>
-<<<<<<< Updated upstream
             <div className="SignUpPage">
                 <div className="SignUpPageBox">
                     <h1 className="SignUpPageTitle">Create your account</h1>
                     <form className="SignUpPageForm" onSubmit={handleSubmit}>
-                        <p className="text4">First Name </p>
+                        <p className="PersonalInfo">First Name </p>
                         <label className="SignUpPageInputBox">
                             <input
                                 className="SignUpPageInputField"
@@ -43,7 +42,7 @@ function SignUpPage() {
                                 onChange={(e) => setSignUpDetails({ ...signUpDetails, firstName: e.target.value })}
                             ></input>
                         </label>
-                        <p className="text4">Last Name </p>
+                        <p className="PersonalInfo">Last Name </p>
                         <label className="SignUpPageInputBox">
                             <input
                                 className="SignUpPageInputField"
@@ -53,7 +52,7 @@ function SignUpPage() {
                                 onChange={(e) => setSignUpDetails({ ...signUpDetails, lastName: e.target.value })}
                             ></input>
                         </label>
-                        <p className="text4">Username </p>
+                        <p className="PersonalInfo">Username </p>
                         <label className="SignUpPageInputBox">
                             <input
                                 className="SignUpPageInputField"
@@ -63,7 +62,7 @@ function SignUpPage() {
                                 onChange={(e) => setSignUpDetails({ ...signUpDetails, userName: e.target.value })}
                             ></input>
                         </label>
-                        <p className="text4">Email Address </p>
+                        <p className="PersonalInfo">Email Address </p>
                         <label className="SignUpPageInputBox">
                             <input
                                 className="SignUpPageInputField"
@@ -73,7 +72,7 @@ function SignUpPage() {
                                 onChange={(e) => setSignUpDetails({ ...signUpDetails, email: e.target.value })}
                             ></input>
                         </label>
-                        <p className="text4">Password </p>
+                        <p className="PersonalInfo">Password </p>
                         <label className="SignUpPageInputBox">
                             <input
                                 className="SignUpPageInputField"
@@ -83,7 +82,7 @@ function SignUpPage() {
                                 onChange={(e) => setSignUpDetails({ ...signUpDetails, password: e.target.value })}
                             ></input>
                         </label>
-                        <p className="text4">Confirm Password </p>
+                        <p className="PersonalInfo">Confirm Password </p>
                         <label className="SignUpPageInputBox">
                             <input
                                 className="SignUpPageInputField"
@@ -104,41 +103,6 @@ function SignUpPage() {
                     </form>
                 </div>
             </div>
-=======
-        <div className='SignUpPage'>
-          <div className='SignUpPageBox'>
-              <h1 className='SignUpPageTitle'>Create your account</h1>
-              <form className='SignUpPageForm'>
-                <p className='PersonalInfo'>First Name </p>
-                  <label className='SignUpPageInputBox'>
-                      <input className='SignUpPageInputField' type="text" ></input>
-                  </label>
-                <p className='PersonalInfo'>Last Name </p>
-                  <label className='SignUpPageInputBox'>
-                      <input className='SignUpPageInputField' type="text" ></input>
-                  </label>
-                <p className='PersonalInfo'>Username </p>
-                  <label className='SignUpPageInputBox'>
-                      <input className='SignUpPageInputField' type="text" ></input>
-                  </label>
-                <p className='PersonalInfo'>Email Address </p>
-                  <label className='SignUpPageInputBox'>
-                      <input className='SignUpPageInputField' type="text" ></input>
-                  </label>
-                <p className='PersonalInfo'>Password </p>
-                  <label className='SignUpPageInputBox'>
-                      <input className='SignUpPageInputField' type="password" ></input>
-                  </label>
-                <p className='PersonalInfo'>Confirm Password </p>
-                  <label className='SignUpPageInputBox'>
-                      <input className='SignUpPageInputField' type="password" ></input>
-                  </label>
-                <Link to='/Login'><input className='SignUpPageSubmitButton heading2' type="submit" value="Create an account"></input></Link> {/* Change this for auth?  */}
-
-              </form>
-          </div>
-        </div>
->>>>>>> Stashed changes
         </>
     );
 }
