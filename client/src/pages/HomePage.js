@@ -19,7 +19,9 @@ function HomePage({ loginState }) {
     const recentImage =
         "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
 
-    const images = [];
+    const images = [
+        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+    ];
 
     console.log(currentImageIndex); // To prevent error in console
     if (!loginState) {
