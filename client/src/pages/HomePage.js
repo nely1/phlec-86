@@ -16,14 +16,16 @@ function HomePage({ loginState }) {
     }, [history, userInfo, loginState]);
 
     /* using hooks. Might help with backend (?) */
+    // TO CHANGE: recentImage and images in the future with content from backend.
     const recentImage =
         "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
 
     const images = [
         "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
+        "https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBzY2VuZXJ5fGVufDB8fDB8fA%3D%3D&w=1000&q=80",
     ];
 
-    console.log(currentImageIndex); // To prevent error in console
+    console.log(currentImageIndex); // To prevent error in console. DON'T REMOVE
     if (!loginState) {
         return <></>;
     } else {
