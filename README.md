@@ -39,7 +39,7 @@ Brief overview of coding conventions:
 - **JSON objects**:
   - Place the opening bracket on the same line as the object name.
   - Use colon plus one space between each property and its value.
-  - Do not add a comma after the last property-value pair.
+  - Add a comma after the last property-value pair.
   - Place the closing bracket on a new line, without leading spaces.
   - Always end an object definition with a semicolon.
 
