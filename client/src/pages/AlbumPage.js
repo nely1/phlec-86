@@ -23,7 +23,6 @@ export default function AlbumPage({ loginState }) {
     if (!loginState) {
         return <></>;
     }
-    // console.log(albums);
     return (
         <>
             <div className="AlbumPageParameter">
@@ -31,8 +30,6 @@ export default function AlbumPage({ loginState }) {
                 <input className="AlbumPageSearch" placeholder="Find Your Past Albums"></input>
             </div>
 
-            {/* This would be a good candidate for a component, and should probably
-             * put them in a specific grid/flexbox so that they are more responsive. */}
             <div className="AlbumPageGrid">
                 {albums.map((album, index) => (
                     <Link to={"/Albumview/" + albums[index]._id} key={index}>

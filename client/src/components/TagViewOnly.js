@@ -5,11 +5,15 @@ export default function TagViewOnly({ tags, visable }) {
         <div className="tagContainer">
             {tags.map((tag, index) => (
                 <div className="tagItem" key={index}>
-                    <span className="tagLabel text3">{tag}</span>
+                    <span data-testid="tags" className="tagLabel text3">
+                        {tag}
+                    </span>
                 </div>
             ))}
         </div>
     ) : (
-        <></>
+        <>
+            <div data-testid="tagContainer"></div>
+        </>
     );
 }

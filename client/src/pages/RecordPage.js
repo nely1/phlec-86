@@ -33,9 +33,6 @@ export default function RecordPage({ loginState }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     async function fileSelectionHandler(event) {
-        // console.log(event.target.files[0]);
-        // images.push({ url: event.target.files[0].name, alt: "" });
-
         setImages([...images, await getBase64(event.target.files[0])]);
     }
     const navigate = useNavigate();
@@ -45,7 +42,6 @@ export default function RecordPage({ loginState }) {
     async function handleSubmit(event) {
         event.preventDefault();
         const userCurrent = JSON.parse(localStorage.getItem("profile"));
-        // let test = await getBase64(images[0]);
         const toUpload = {
             name: event.target.recordAlbumName.value,
             score: event.target.recordRating.value,
@@ -69,7 +65,7 @@ export default function RecordPage({ loginState }) {
             reader.onerror = (error) => reject(error);
         });
 
-    console.log(currentImageIndex); // To prevent error in console
+    console.log(currentImageIndex); // To prevent error in console. DON'T REMOVE
 
     if (!loginState) {
         return <></>;
@@ -84,14 +80,6 @@ export default function RecordPage({ loginState }) {
                             <label htmlFor="addPhoto" className="text3">
                                 Add photo +
                             </label>
-                            {/* <FileBase
-                            className="RecordPageInputPhoto"
-                            type="file"
-                            multiple={false}
-                            onDone={({ base64 }) =>
-                                setImages({ ...images, selectedFile: base64 })
-                            }
-                        ></FileBase> */}
                             <input
                                 type="file"
                                 id="addPhoto"

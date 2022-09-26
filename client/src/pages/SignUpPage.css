@@ -23,9 +23,11 @@
 .SignUpPageInputBox {
     display: grid;
     grid-template-columns: 600px;
+    height: 3vh;
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
+    
 }
 
 .SignUpPageInputField {
