@@ -7,15 +7,11 @@ export default function ImageCarousel({ images, setCurrentImageIndex }) {
         setCurrentIndex(index);
         setCurrentImageIndex(index);
     }
-    // if (images.length !== 0) console.log(URL.createObjectURL(images[0]));
-    // console.log(images.length);
     return (
         <>
             {images.length !== 0 ? (
                 <div>
-                    {/* <div onClick={goToPrev}>ARROW</div> */}
                     <img className="CarouselImage" src={images[currentIndex]} alt={""}></img>
-                    {/* <div onClick={goToNext}>ARROW</div> */}
                     <div className="dotsContainer">
                         {images.map((images, index) => (
                             <div className="dots" key={index} onClick={() => goToImage(index)}>
