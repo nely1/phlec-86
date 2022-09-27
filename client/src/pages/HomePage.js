@@ -35,7 +35,7 @@ function HomePage({ loginState }) {
                     <div className="HomePageGrid">
                         <div className="HomePageGridItem">
                             <div className="HomePageTitle">
-                                <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                <h1>Welcome , {userInfo.result.userName}</h1>
                                 <p className="text2">Our top Picks For The Day</p>
                             </div>
                         </div>
