@@ -31,4 +31,7 @@ jobs:
       working-directory: ./server
     - run: npm ci
       working-directory: ./client
+    - name: build
+      run: npm run build --if-present
+      working-directory: ./client
 
