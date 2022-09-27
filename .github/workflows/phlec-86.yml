@@ -36,4 +36,6 @@ jobs:
       env:
         CI: false
       working-directory: ./client
+    - run: npm test
+      working-directory: ./client
 
