@@ -31,5 +31,7 @@ jobs:
       working-directory: ./server
     - run: npm run build --if-present
       working-directory: ./client
+      env: 
+         CI: false
     - run: npm test
       working-directory: ./client
