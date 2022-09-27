@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 app.use(flash());
 
+app.get('/', (req, res) => {
+    res.send('Welcome to phlec-86 API.');
+})
+
 app.use(
     session({
         secret: process.env.SESSION_SECRET || 'keyboard cat',
