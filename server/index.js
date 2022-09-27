@@ -6,7 +6,6 @@ import cors from "cors";
 import flash from "express-flash";
 import userRouter from "./routes/userRouter.js";
 import authRouter from "./routes/authRouter.js";
-import postRoutes from "./routes/posts.js";
 
 const app = express();
 dotenv.config();
@@ -18,10 +17,13 @@ app.use(cors());
 app.use(flash());
 app.use("/login", authRouter);
 app.use("/user", userRouter);
-app.use("/posts", postRoutes);
+
+app.get("/", (req, res) => {
+    res.send("HELLO. PHLEC API");
+});
 const PORT = process.env.PORT || 5000;
 
 mongoose
-    .connect(process.env.CONNECTION_URL, { useNewURLParser: true, useUnifiedTopology: true })
+    .connect(process.env.CONNECTION_URL, { useNewURLParser: true, useUnifiedTopology: true, dbName: "phlecTravels" })
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
     .catch((error) => console.log(error.message));

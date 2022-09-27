@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({ baseUrl: "http://localhost:5000" });
-
+const url = "https://phlec-testing.herokuapp.com";
 API.interceptors.request.use((req) => {
     if (localStorage.getItem("profile")) {
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem("profile"))}`;
@@ -9,16 +9,16 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-export const loginUser = (loginDetails) => API.post("/login", loginDetails);
+export const loginUser = (loginDetails) => axios.post(`${url}/login`, loginDetails);
 
-export const createAlbum = (newAlbum) => API.post("/user/record", newAlbum);
+export const createAlbum = (newAlbum) => axios.post(`${url}/user/record`, newAlbum);
 
-export const getAlbums = (id) => API.get(`/user/${id}/albums`);
+export const getAlbums = (id) => axios.get(`${url}/user/${id}/albums`);
 
-export const getAlbumOne = (id) => API.get(`/user/albumview/${id}`);
+export const getAlbumOne = (id) => axios.get(`${url}/user/albumview/${id}`);
 
-export const updateAlbumOne = (id, updatedAlbum) => API.patch(`/user/albumview/${id}`, updatedAlbum);
+export const updateAlbumOne = (id, updatedAlbum) => axios.patch(`${url}/user/albumview/${id}`, updatedAlbum);
 
-export const deleteAlbum = (id) => API.delete(`/user/albumview/${id}`);
+export const deleteAlbum = (id) => axios.delete(`${url}/user/albumview/${id}`);
 
-export const signUpUser = (signUpDetails) => API.post("/login/signUp", signUpDetails);
+export const signUpUser = (signUpDetails) => axios.post(`${url}/login/signUp`, signUpDetails);
