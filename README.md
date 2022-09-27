@@ -21,7 +21,7 @@ The structure of the client folder (the src folder)
 The structure of the server folder
 
 - **controllers**: Handles interactions with the database and the user, and other logic needed for a specific page
-- **models**: Stores the schema/structure of our databases
+- **data (models)**: Stores the schema/structure of our databases
 - **routes**: Instructs how the server should redirect users whenever they click a link or submit a form
 - **index.js**: The web app server that will listen for API requests from the client/front-end
 
