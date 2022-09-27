@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({ baseUrl: "http://localhost:5000" });
+// Change url to http://localhost:5000. If want to use local server
 const url = "https://phlec-testing.herokuapp.com";
 API.interceptors.request.use((req) => {
     if (localStorage.getItem("profile")) {
