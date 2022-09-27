@@ -23,9 +23,11 @@
 .SignUpPageInputBox {
     display: grid;
     grid-template-columns: 600px;
+    height: 3vh;
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
+    
 }
 
 .SignUpPageInputField {
@@ -43,7 +45,7 @@
     color: var(--color-text-secondary);
 }
 
-.text4 {
+.PersonalInfo {
     font-family: 'Fira Sans';
     font-style: normal;
     font-weight: 700;

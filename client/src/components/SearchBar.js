@@ -7,7 +7,7 @@ export default function SearchBar() {
     return (
         <div className="exploreSearch">
         <form id="exploreSearch">
-        <input type="text" id="search" />
+        <input type="search" id="search" />
         <input className="styledButton untoggledButton" type="submit" value="Search" />
         </form>
         </div>

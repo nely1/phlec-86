@@ -1,0 +1,76 @@
+.leaflet-container{
+    width: 60vw;
+    height: 85vh;
+}
+
+/* Disables the itenary from showing, the itenary is a list of directions */
+div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; height: 0px !important; }
+
+.PlanPageGrid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.PlanPageTitle {
+    text-align: center;
+    margin-top: 5vh;
+
+}
+
+.PlanPageUpComing {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-secondary);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 2vw;
+    border-radius: 10px;
+}
+
+.PlanPageUpComingTop {
+    background-color: var(--color-secondary-green);
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+}
+
+.PlanPageUpComingBottom {
+    background-color: var(--color-primary-lightgreen);
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.PlanPageUpComingTimeBox {
+    background-color: var(--color-primary-yellow);
+    border-radius: 10px;
+    margin: 1vh 1vw;
+}
+
+.PlanPageUpComingGoTo {
+    background-color: var(--color-secondary-green);
+    width: 60px;
+    height: 45px;
+    border-radius: 10px;
+    margin-left: 25vw;
+}
+
+.material-symbols-outlined {
+    font-size: 42px;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+h1{
+    font-size: 45px;
+}
+
+h2{
+    font-size: 35px;
+}

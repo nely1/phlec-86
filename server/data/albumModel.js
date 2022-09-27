@@ -1,14 +1,16 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const schema = new mongoose.Schema({ 
-    name: {type: String, required: true},
+const schema = new mongoose.Schema({
+    name: { type: String, required: true },
     score: Number,
     description: String,
-    photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'photoModel'}],
-    userid: {type: mongoose.Schema.Types.ObjectId, ref: 'photoModel'},
-    labels: [{type: mongoose.Schema.Types.ObjectId, ref: 'labelModel'}]
-    
-}) 
+    location: String,
+    photos: [{ type: mongoose.Schema.Types.ObjectId, ref: "photoModel" }],
+    images: [String], //TO BE REMOVED. USING ONLY FOR TESTING
+    userid: { type: mongoose.Schema.Types.ObjectId },
+    labels: [String],
+    date: String,
+});
 
-const albumModel = mongoose.model('albumModel', schema) 
-export default albumModel 
+const albumModel = mongoose.model("albumModel", schema);
+export default albumModel;
