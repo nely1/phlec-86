@@ -19,7 +19,7 @@ app.use("/login", authRouter);
 app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
-    res.send("HELLO. PHLEC API");
+    res.send("HELLO. PHLEC API, testing something");
 });
 const PORT = process.env.PORT || 5000;
 
