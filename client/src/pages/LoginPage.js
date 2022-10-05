@@ -61,11 +61,6 @@ function LoginPage({ setLogin, loginState }) {
                             <p>Sign Up</p>
                         </a>
                     </div>
-                    <div className="LoginPageAlternativesItem2 text1">
-                        <a href="/ResetPassword">
-                            <p>Forgot Password</p>
-                        </a>
-                    </div>
                 </div>
             </div>
         </>
