@@ -21,7 +21,7 @@ The structure of the client folder (the src folder)
 The structure of the server folder
 
 - **controllers**: Handles interactions with the database and the user, and other logic needed for a specific page
-- **models**: Stores the schema/structure of our databases
+- **data (models)**: Stores the schema/structure of our databases
 - **routes**: Instructs how the server should redirect users whenever they click a link or submit a form
 - **index.js**: The web app server that will listen for API requests from the client/front-end
 
@@ -39,7 +39,7 @@ Brief overview of coding conventions:
 - **JSON objects**:
   - Place the opening bracket on the same line as the object name.
   - Use colon plus one space between each property and its value.
-  - Do not add a comma after the last property-value pair.
+  - Add a comma after the last property-value pair.
   - Place the closing bracket on a new line, without leading spaces.
   - Always end an object definition with a semicolon.
 
