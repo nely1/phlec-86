@@ -24,7 +24,7 @@ export default function AlbumViewPage({ loginState }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [sliderValue, setSliderValue] = useState(album.score);
+    const [sliderValue, setSliderValue] = useState(album?.score);
 
     // Hover effect referenced from https://bobbyhadz.com/blog/react-show-element-on-hover
     const [isHovering, setIsHovering] = useState(false);
@@ -103,7 +103,6 @@ export default function AlbumViewPage({ loginState }) {
         return <></>;
     }
 
-    // console.log(images[currentImageIndex]);
     return (
         <form onSubmit={handleSubmit}>
             <div className="AlbumViewGrid">

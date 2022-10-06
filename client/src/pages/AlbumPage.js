@@ -25,6 +25,7 @@ export default function AlbumPage({ loginState }) {
     if (!loginState) {
         return <></>;
     }
+    // console.log(albums);
     return (
         <>
             <div className="AlbumPageParameter">

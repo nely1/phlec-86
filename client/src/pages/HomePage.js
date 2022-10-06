@@ -45,7 +45,7 @@ function HomePage({ loginState }) {
         }
         images = createArrayOfFirstPhoto(albums);
     }
-
+    // console.log(albums);
     if (!loginState) {
         return <></>;
     } else {
