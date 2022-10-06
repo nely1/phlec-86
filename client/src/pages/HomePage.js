@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ImageCarousel from "../components/ImageCarousel";
+import { getAlbums } from "../actions/album";
 import "./HomePage.css";
 
 function HomePage({ loginState }) {
     const userInfo = JSON.parse(localStorage.getItem("profile"));
-    // console.log(userInfo);
     const history = useNavigate();
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    let setCurrentImageIndex = () => null;
 
     useEffect(() => {
         if (!loginState) {
@@ -15,17 +16,34 @@ function HomePage({ loginState }) {
         }
     }, [history, userInfo, loginState]);
 
-    /* using hooks. Might help with backend (?) */
-    // TO CHANGE: recentImage and images in the future with content from backend.
-    const recentImage =
+    const albums = useSelector((state) => state.album);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+    }, [dispatch]);
+
+    let createArrayOfFirstPhoto = (albums) => {
+        let newArray = [];
+        for (const element of albums) {
+            if (element?.images[0]) {
+                newArray.push(element.images[0]);
+            }
+        }
+        return newArray;
+    };
+    let recentImage =
         "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
 
-    const images = [
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
-        "https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBzY2VuZXJ5fGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-    ];
+    let images;
 
-    console.log(currentImageIndex); // To prevent error in console. DON'T REMOVE
+    if (albums) {
+        if (albums[albums.length - 1]?.images[0]) {
+            recentImage = albums[albums.length - 1].images[0];
+        }
+        images = createArrayOfFirstPhoto(albums);
+    }
+
     if (!loginState) {
         return <></>;
     } else {
@@ -75,9 +93,11 @@ function HomePage({ loginState }) {
                                         alt="HomePageMemoriesImage"
                                     ></img>
                                     <div className="HomePageRecentMemoriesBottomOverlay">
-                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">Lake Mir</p>
+                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                            {albums[albums.length - 1]?.name}
+                                        </p>
                                         <div className="HomePageRecentMemoriesgGoTo">
-                                            <a href="albumview">
+                                            <a href={"/albumView/" + albums[albums.length - 1]?._id}>
                                                 <span className="material-symbols-outlined">double_arrow</span>
                                             </a>
                                         </div>

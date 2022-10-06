@@ -30,7 +30,7 @@ export default function RecordPage({ loginState }) {
 
     const [tags, setTags] = useState([]);
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    let setCurrentImageIndex = () => null;
 
     async function fileSelectionHandler(event) {
         setImages([...images, await getBase64(event.target.files[0])]);
@@ -64,8 +64,6 @@ export default function RecordPage({ loginState }) {
             reader.onload = () => resolve(reader.result);
             reader.onerror = (error) => reject(error);
         });
-
-    console.log(currentImageIndex); // To prevent error in console. DON'T REMOVE
 
     if (!loginState) {
         return <></>;
