@@ -95,13 +95,26 @@ function HomePage({ loginState }) {
                                         alt="HomePageMemoriesImage"
                                     ></img>
                                     <div className="HomePageRecentMemoriesBottomOverlay">
-                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">
-                                            {albums[albums.length - 1]?.name}
-                                        </p>
+                                        {albums.length > 0 ? (
+                                            <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                                {albums[albums.length - 1]?.name}
+                                            </p>
+                                        ) : (
+                                            <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                                No albums exist. Click through to add one!
+                                            </p>
+                                        )}
+
                                         <div className="HomePageRecentMemoriesgGoTo">
-                                            <a href={"/albumView/" + albums[albums.length - 1]?._id}>
-                                                <span className="material-symbols-outlined">double_arrow</span>
-                                            </a>
+                                            {albums.length > 0 ? (
+                                                <a href={"/albumView/" + albums[albums.length - 1]?._id}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            ) : (
+                                                <a href={"/record"}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
