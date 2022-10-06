@@ -24,6 +24,19 @@ export default function AlbumViewPage({ loginState }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [sliderValue, setSliderValue] = useState(album.score);
+
+    // Hover effect referenced from https://bobbyhadz.com/blog/react-show-element-on-hover
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    };
+
     useEffect(() => {
         dispatch(getAlbumOne(albumId));
     }, [dispatch, albumId]);
@@ -83,7 +96,7 @@ export default function AlbumViewPage({ loginState }) {
     const history = useNavigate();
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, loginState]);
     if (!loginState || !album) {
@@ -137,7 +150,11 @@ export default function AlbumViewPage({ loginState }) {
                             value={album.location}
                             readOnly="readonly"
                         ></input>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
                         <input
                             className="AlbumViewPageRatingBar"
                             type="range"
@@ -145,6 +162,8 @@ export default function AlbumViewPage({ loginState }) {
                             max="10"
                             value={album.score}
                             readOnly="readonly"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
                         ></input>
                         <h3 className="RecordPageTagTitle">Date</h3>
                         <input
@@ -186,7 +205,11 @@ export default function AlbumViewPage({ loginState }) {
                             id="viewLocation"
                             name="viewLocation"
                         ></input>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
                         <input
                             className="AlbumViewPageRatingBar"
                             type="range"
@@ -195,6 +218,9 @@ export default function AlbumViewPage({ loginState }) {
                             defaultValue={album.score}
                             id="viewRating"
                             name="viewRating"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                            onChange={(e) => setSliderValue(e.target.value)}
                         ></input>
                         <h3 className="RecordPageTagTitle">Date</h3>
                         <input type="date" id="dateAlbum" name="dateAlbum" defaultValue={album.date}></input>
