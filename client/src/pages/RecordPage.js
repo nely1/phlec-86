@@ -22,7 +22,7 @@ export default function RecordPage({ loginState }) {
 
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, loginState]);
 
@@ -30,7 +30,20 @@ export default function RecordPage({ loginState }) {
 
     const [tags, setTags] = useState([]);
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [sliderValue, setSliderValue] = useState(5);
+
+    // Hover effect referenced from https://bobbyhadz.com/blog/react-show-element-on-hover
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    };
+
+    let setCurrentImageIndex = () => null;
 
     async function fileSelectionHandler(event) {
         setImages([...images, await getBase64(event.target.files[0])]);
@@ -64,8 +77,6 @@ export default function RecordPage({ loginState }) {
             reader.onload = () => resolve(reader.result);
             reader.onerror = (error) => reject(error);
         });
-
-    console.log(currentImageIndex); // To prevent error in console. DON'T REMOVE
 
     if (!loginState) {
         return <></>;
@@ -119,7 +130,12 @@ export default function RecordPage({ loginState }) {
                         ></input>
                         <h3 className="RecordPageTagTitle">Tags</h3>
                         <TagInput tags={tags} setTags={setTags}></TagInput>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
+
                         <input
                             className="RecordPageRatingBar"
                             type="range"
@@ -128,9 +144,12 @@ export default function RecordPage({ loginState }) {
                             defaultValue="5"
                             id="recordRating"
                             name="recordRating"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                            onChange={(e) => setSliderValue(e.target.value)}
                         ></input>
                         <h3 className="RecordPageTagTitle">Date</h3>
-                        <input type="date" id="dateAlbum" name="dateAlbum"></input>
+                        <input type="date" id="dateAlbum" name="dateAlbum" required></input>
                         <div className="RecordPageSave">
                             <button type="submit" className="RecordPageSave text3" value="Submit">
                                 Submit
