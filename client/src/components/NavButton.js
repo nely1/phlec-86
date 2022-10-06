@@ -11,6 +11,10 @@ export default function NavButton(props) {
         navigate(path);
     };
 
+    function capFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
     const location = useLocation();
 
     let toggled = location.pathname === "/" + props.page;
@@ -23,13 +27,9 @@ export default function NavButton(props) {
         toggled = true;
         return (
             <button className="loginoutButton" onClick={routeChange}>
-                {props.page}
+                {capFirstLetter(props.page)}
             </button>
         );
-    }
-
-    function capFirstLetter(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
     return (

@@ -57,7 +57,7 @@ function LoginPage({ setLogin, loginState }) {
                 </div>
                 <div className="LoginPageAlternatives">
                     <div className="LoginPageAlternativesItem1 text1">
-                        <a href="/SignUp">
+                        <a href="/signUp">
                             <p>Sign Up</p>
                         </a>
                     </div>

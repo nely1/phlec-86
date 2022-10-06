@@ -12,7 +12,7 @@ function HomePage({ loginState }) {
 
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, userInfo, loginState]);
 

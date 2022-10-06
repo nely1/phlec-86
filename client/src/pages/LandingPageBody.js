@@ -20,7 +20,7 @@ function LandingPageBody() {
                             </a>
                         </div>
                         <div className="landingBodyLogOut landingBodyLogInOutButton">
-                            <a href="/SignUp">
+                            <a href="/signUp">
                                 <h1>Sign Up</h1>
                             </a>
                         </div>

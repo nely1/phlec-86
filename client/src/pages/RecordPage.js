@@ -22,7 +22,7 @@ export default function RecordPage({ loginState }) {
 
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, loginState]);
 

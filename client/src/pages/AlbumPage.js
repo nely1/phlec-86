@@ -16,7 +16,7 @@ export default function AlbumPage({ loginState }) {
 
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, loginState]);
 

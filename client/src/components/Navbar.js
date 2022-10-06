@@ -63,7 +63,7 @@ export default function Navbar({ loggedIn, setLogin }) {
         loginButton = (
             <NavButton
                 className="loginoutButton"
-                page="Logout"
+                page="logout"
                 setLogin={setLogin}
                 logoutFunc={() => {
                     logout();
