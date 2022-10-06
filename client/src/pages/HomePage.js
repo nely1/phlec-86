@@ -33,11 +33,13 @@ function HomePage({ loginState }) {
         return newArray;
     };
     let recentImage =
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb";
 
-    let images;
+    let images = [
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
+    ];
 
-    if (albums) {
+    if (albums.length > 0) {
         if (albums[albums.length - 1]?.images[0]) {
             recentImage = albums[albums.length - 1].images[0];
         }
