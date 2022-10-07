@@ -48,6 +48,7 @@ export default function PlanPage() {
                         latlng: [data.Latitude, data.Longitude],
                         theme: data.Theme,
                     };
+                    setCounter(counter + 1);
                     setPlan([...plannedLocations, newEntry]);
                 },
             }}
@@ -106,6 +107,7 @@ export default function PlanPage() {
                     </div>
                 </div>
             </div>
+        </div>
         </>
     );
 }
