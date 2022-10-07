@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from "react";
 
-
-import { Link, NavLink, useLocation, useNavigate} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginStatus } from '../App';
-import decode from 'jwt-decode';
-import NavButton  from './NavButton';
-import './Navbar.css';
-
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginStatus } from "../App";
+import decode from "jwt-decode";
+import NavButton from "./NavButton";
+import "./Navbar.css";
 
 /* This will probably be changed when Auth is added */
 
 // Enum for the pages in the navbar
 export const Pages = Object.freeze({
-    Home: "Home",
-    Record: "Record",
-    Album: "Album",
-    Explore: "Explore",
-    Plan: "Plan",
-    Settings: "Settings",
+    Home: "home",
+    Record: "record",
+    Album: "album",
+    Explore: "explore",
+    Plan: "plan",
+    Settings: "settings",
 });
 
 export default function Navbar({ loggedIn, setLogin }) {
     let buttons, loginButton;
     const dispatch = useDispatch();
-    const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("profile"))
-    );
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
     const location = useLocation();
     const history = useNavigate();
 
@@ -53,7 +49,6 @@ export default function Navbar({ loggedIn, setLogin }) {
         setUser(JSON.parse(localStorage.getItem("profile")));
     }, [location]);
 
-
     // If not logged in, load only the login button
     if (loggedIn === false) {
         loginButton = <NavButton page="Login">Login</NavButton>;
@@ -68,7 +63,7 @@ export default function Navbar({ loggedIn, setLogin }) {
         loginButton = (
             <NavButton
                 className="loginoutButton"
-                page="Logout"
+                page="logout"
                 setLogin={setLogin}
                 logoutFunc={() => {
                     logout();
@@ -81,20 +76,25 @@ export default function Navbar({ loggedIn, setLogin }) {
 
     return (
         <div className="navbarBase">
-            <Link to="/Home" className="navbarLogo">
-                <div className="navbarLogo" href="/">
-                    <div className="logoSpacer"></div>
-                    <div className="logoText">Phlec Travels</div>
-                </div>
-            </Link>
+            {loggedIn ? (
+                <Link to="/home" className="navbarLogo">
+                    <div className="navbarLogo">
+                        <div className="logoSpacer"></div>
+                        <div className="logoText">Phlec Travels</div>
+                    </div>
+                </Link>
+            ) : (
+                <Link to="/" className="navbarLogo">
+                    <div className="navbarLogo">
+                        <div className="logoSpacer"></div>
+                        <div className="logoText">Phlec Travels</div>
+                    </div>
+                </Link>
+            )}
+
             <ul className="navbarButtons">{buttons}</ul>
-            <img
-                className="profileImage"
-                src="profiledefault.png"
-                alt="Default Profile"
-            />
+            <img className="profileImage" src={process.env.PUBLIC_URL + "/profiledefault.png"} alt="Default Profile" />
             {loginButton}
         </div>
     );
 }
-

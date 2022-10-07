@@ -1,11 +1,11 @@
-.SignUpPage {
+.SettingsPage {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
 }
 
-.SignUpPageBox {
+.SettingsPageBox {
     position: absolute;
     top: 18%;
     width: 960px;
@@ -14,23 +14,21 @@
     align-items: center;
 }
 
-.SignUpPageTitle {
+.SettingsTitle {
     margin-bottom: 25%;
     font-size: 50px;
     text-align: center;
 }
 
-.SignUpPageInputBox {
-    display: grid;
-    grid-template-columns: 600px;
-    height: 3vh;
+.SettingsPageInputBox {
+    display: inline;
+    grid-template-columns: 100px;
     text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
-    
 }
 
-.SignUpPageInputField {
+.SettingsPageInputField {
     border: solid 1px black;
     border-radius: 10px;
 }
@@ -46,19 +44,44 @@
 }
 
 .PersonalInfo {
+    width: 600px;
     font-family: 'Fira Sans';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
     text-align: left;
+    display: inline;
 }
 
-.SignUpPageForm {
+.SettingsPageForm {
     position: absolute;
-    top: 25%;
+    top: 40px;
     width: 960px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.profileImage2 {
+    height: 120px;
+    width: 120px;
+    position: absolute;
+    left: -50px;   
+    right: 50%;  
+    top: 10px;     
+    bottom: 20%; 
+}
+
+.ChangeButton {
+    width: 80px;
+    height: 40px;
+    right: 200px;
+    top: 75px;
+    margin-top: 10px;
+    border: none;
+    background-color: var(--color-primary-green);
+    border-radius: 10px;
+    color: var(--color-text-secondary);
+    position: absolute;
 }

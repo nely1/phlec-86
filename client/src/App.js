@@ -6,7 +6,6 @@ import { loginUser } from "./actions/login";
 
 import Navbar from "./components/Navbar";
 
-
 import LandingPageBody from "./pages/LandingPageBody";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -15,28 +14,28 @@ import RecordPage from "./pages/RecordPage";
 import AlbumPage from "./pages/AlbumPage";
 import ExplorePage from "./pages/ExplorePage";
 import AlbumViewPage from "./pages/AlbumViewPage";
-import PlanPage from './pages/PlanPage';
+import PlanPage from "./pages/PlanPage";
+import SettingsPage from "./pages/SettingsPage";
 
 const ROOT = "/";
-const LOGIN = "/Login";
-const LANDING = "/Landing";
-const HOME = "/Home";
-const LOGOUT = "/Logout";
-const SIGNUP = "/SignUp";
-const RECORD = "/Record";
-const ALBUM = "/Album";
-const ALBUM_VIEW = "/AlbumView";
-const EXPLORE = "/Explore";
-const PLAN = '/Plan';
+const LOGIN = "/login";
+const LANDING = "/landing";
+const HOME = "/home";
+const LOGOUT = "/logout";
+const SIGNUP = "/signUp";
+const RECORD = "/record";
+const ALBUM = "/album";
+const ALBUM_VIEW = "/albumView/:id";
+const EXPLORE = "/explore";
+const PLAN = "/plan";
+const SETTINGS = "/settings";
 
 export var LoggedIn = true;
 
 export default function App() {
     const dispatch = useDispatch();
 
-    const [LoggedIn, setLoggedIn] = useState(
-        localStorage.getItem("profile") ? true : false
-    );
+    const [LoggedIn, setLoggedIn] = useState(localStorage.getItem("profile") ? true : false);
     useEffect(() => {
         dispatch(loginUser);
     }, [dispatch]);
@@ -46,50 +45,26 @@ export default function App() {
     };
 
     const element = (page) => {
-        return localStorage.getItem("profile") ? (
-            page
-        ) : (
-            <LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />
-        );
+        return localStorage.getItem("profile") ? page : <LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />;
     };
 
     return (
         <>
-
             <Router>
                 <Navbar loggedIn={LoggedIn} setLogin={setLoggedIn} />
                 <Routes>
                     <Route path={ROOT} element={<LandingPageBody />}></Route>
                     <Route path={LOGOUT} element={<LandingPageBody />}></Route>
-                    <Route
-                        path={LOGIN}
-                        element={
-                            <LoginPage
-                                loginState={LoggedIn}
-                                setLogin={setLoggedIn}
-                            />
-                        }
-                    ></Route>
+                    <Route path={LOGIN} element={<LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />}></Route>
                     <Route path={LANDING} element={<LandingPageBody />}></Route>
-                    <Route
-                        path={HOME}
-                        element={<HomePage loginState={LoggedIn} />}
-                    ></Route>
+                    <Route path={HOME} element={<HomePage loginState={LoggedIn} />}></Route>
                     <Route path={SIGNUP} element={<SignUpPage />}></Route>
-                    <Route
-                        path={RECORD}
-                        element={<RecordPage loginState={LoggedIn} />}
-                    ></Route>
-                    <Route
-                        path={ALBUM}
-                        element={<AlbumPage loginState={LoggedIn} />}
-                    ></Route>
-                    <Route
-                        path={ALBUM_VIEW}
-                        element={<AlbumViewPage loginState={LoggedIn} />}
-                    ></Route>
+                    <Route path={RECORD} element={<RecordPage loginState={LoggedIn} />}></Route>
+                    <Route path={ALBUM} element={<AlbumPage loginState={LoggedIn} />}></Route>
+                    <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
                     <Route path={EXPLORE} element={<ExplorePage />}></Route>
                     <Route path={PLAN} element={<PlanPage />}></Route>
+                    <Route path={SETTINGS} element={<SettingsPage />}></Route>
                 </Routes>
             </Router>
         </>

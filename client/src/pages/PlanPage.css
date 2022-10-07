@@ -6,18 +6,18 @@
 /* Disables the itenary from showing, the itenary is a list of directions */
 div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; height: 0px !important; }
 
-.HomePageGrid {
+.PlanPageGrid {
     display: grid;
     grid-template-columns: 2fr 2fr;
 }
 
-.HomePageTitle {
+.PlanPageTitle {
     text-align: center;
     margin-top: 5vh;
 
 }
 
-.HomePageUpComing {
+.PlanPageUpComing {
     display: flex;
     flex-direction: column;
     color: var(--color-text-secondary);
@@ -28,7 +28,7 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     border-radius: 10px;
 }
 
-.HomePageUpComingTop {
+.PlanPageUpComingTop {
     background-color: var(--color-secondary-green);
     width: 100%;
     border-radius: 10px 10px 0 0;
@@ -36,7 +36,7 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     padding-top: 1vh;
 }
 
-.HomePageUpComingBottom {
+.PlanPageUpComingBottom {
     background-color: var(--color-primary-lightgreen);
     width: 100%;
     border-radius: 0 0 10px 10px;
@@ -44,14 +44,14 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     padding-bottom: 2vh;
 }
 
-.HomePageUpComingTimeBox {
+.PlanPageUpComingTimeBox {
     background-color: var(--color-primary-yellow);
     border-radius: 5px;
     margin: 1vh 1vw;
     padding-left: 3vh;
 }
 
-.HomePageUpComingGoTo {
+.PlanPageUpComingGoTo {
     background-color: var(--color-secondary-green);
     width: 60px;
     height: 45px;

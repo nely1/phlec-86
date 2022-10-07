@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAlbumOne, updateAlbum, deleteAlbum } from "../actions/album";
 import ImageCarousel from "../components/ImageCarousel";
 import TagInput from "../components/TagInput";
 import TagViewOnly from "../components/TagViewOnly";
@@ -15,15 +18,31 @@ $(document).ready(function () {
     });
 });
 
-export default function AlbumViewPage() {
-    function fileSelectionHandler(event) {
-        setImages([
-            ...images,
-            {
-                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Melburnian_Skyline.jpg/1200px-Melburnian_Skyline.jpg",
-                alt: "",
-            },
-        ]);
+export default function AlbumViewPage({ loginState }) {
+    const albumId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
+    const album = useSelector((state) => (albumId ? state.album.find((a) => a._id === albumId) : null));
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [sliderValue, setSliderValue] = useState(album?.score);
+
+    // Hover effect referenced from https://bobbyhadz.com/blog/react-show-element-on-hover
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    };
+
+    useEffect(() => {
+        dispatch(getAlbumOne(albumId));
+    }, [dispatch, albumId]);
+
+    async function fileSelectionHandler(event) {
+        setImages([...images, await getBase64(event.target.files[0])]);
     }
 
     const [edit, setEdit] = useState(false);
@@ -32,55 +51,94 @@ export default function AlbumViewPage() {
         setEdit((prevEdit) => !prevEdit);
     }
 
-    const [images, setImages] = useState([]);
-    const [tags, setTags] = useState(["Beach", "Forest", "Hills"]);
-    const [rating, setRating] = useState(7);
-    const [albumName, setAlbumName] = useState("Frangorn Forrest");
-    const [albumDescription, setAlbumDescription] = useState("");
-    const [location, setLocation] = useState("");
+    function deletePhoto(i) {
+        if (images.length > 0) {
+            images.splice(currentImageIndex, 1);
+            setImages([...images]);
+        }
+    }
+
+    function deleteAlbumFunc() {
+        dispatch(deleteAlbum(albumId));
+        navigate("/album");
+    }
+
+    useEffect(() => {
+        setImages(album ? album.images : []);
+        setTags(album ? album.labels : []);
+    }, [album]);
+    const [images, setImages] = useState(album ? album.images : []);
+    const [tags, setTags] = useState(album ? album.labels : []);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
     function handleSubmit(event) {
         changeEditState();
         event.preventDefault();
-        setRating(event.target.viewRating.value);
-        setAlbumName(event.target.viewName.value);
-        setAlbumDescription(event.target.viewDescription.value);
-        setLocation(event.target.viewLocation.value);
-        console.log(event.target.viewName.value);
-        console.log(event.target.viewDescription.value);
-        console.log(event.target.viewLocation.value);
-        console.log(event.target.viewRating.value);
+        const toUpdate = {
+            name: event.target.viewName.value,
+            score: event.target.viewRating.value,
+            location: event.target.viewLocation.value,
+            description: event.target.viewDescription.value,
+            images: images,
+            labels: tags,
+            date: event.target.dateAlbum.value,
+        };
+        dispatch(updateAlbum(albumId, toUpdate));
     }
+    const getBase64 = (file) =>
+        //https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
+        new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+    const history = useNavigate();
+    useEffect(() => {
+        if (!loginState) {
+            history("/login");
+        }
+    }, [history, loginState]);
+    if (!loginState || !album) {
+        return <></>;
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="AlbumViewGrid">
                 <div>
-                    <ImageCarousel images={images}></ImageCarousel>
+                    <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                     {edit ? (
-                        <div className="RecordPageAddPhoto">
-                            <label htmlFor="addPhoto" className="text3">
-                                Add photo +
-                            </label>
+                        <>
+                            <button type="button" onClick={deletePhoto} className="text3 AlbumViewDeletePhotoButton">
+                                Delete Photo
+                            </button>
+                            <div className="AlbumViewPageAddPhoto">
+                                <label htmlFor="addPhoto" className="text3 AlbumViewPageAddPhotoText">
+                                    Add photo +
+                                </label>
 
-                            <input
-                                type="file"
-                                id="addPhoto"
-                                accept="image/*"
-                                className="RecordPageInputPhoto"
-                                onChange={fileSelectionHandler}
-                            ></input>
-                        </div>
+                                <input
+                                    type="file"
+                                    id="addPhoto"
+                                    accept="image/*"
+                                    className="RecordPageInputPhoto"
+                                    onChange={fileSelectionHandler}
+                                ></input>
+                            </div>
+                        </>
                     ) : (
                         <p></p>
                     )}
                 </div>
                 {!edit ? (
                     <div className="AlbumViewPageLeft">
-                        <h1>{albumName}</h1>
+                        <h1>{album.name}</h1>
                         <h3 className="RecordPageDescription">Description</h3>
                         <textarea
                             readOnly="readonly"
                             className="RecordPageDescriptionInput"
-                            value={albumDescription}
+                            value={album.description}
                         ></textarea>
                         <h3>Tags:</h3>
                         <TagViewOnly tags={tags} visable="true"></TagViewOnly>
@@ -88,23 +146,34 @@ export default function AlbumViewPage() {
                         <input
                             className="RecordPageAlbumNameInput"
                             type="text"
-                            value={location}
+                            value={album.location}
                             readOnly="readonly"
                         ></input>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
                         <input
                             className="AlbumViewPageRatingBar"
                             type="range"
                             min="0"
                             max="10"
-                            value={rating}
+                            value={album.score}
+                            readOnly="readonly"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                        ></input>
+                        <h3 className="RecordPageTagTitle">Date</h3>
+                        <input
+                            type="date"
+                            id="dateAlbum"
+                            name="dateAlbum"
+                            value={album.date}
                             readOnly="readonly"
                         ></input>
                         <p> </p>
-                        <button
-                            onClick={changeEditState}
-                            className="text3 AlbumViewEditButton"
-                        >
+                        <button onClick={changeEditState} className="text3 AlbumViewEditButton">
                             EDIT
                         </button>
                     </div>
@@ -112,7 +181,7 @@ export default function AlbumViewPage() {
                     <div className="AlbumViewPageLeft">
                         <input
                             type="text"
-                            defaultValue={albumName}
+                            defaultValue={album.name}
                             id="viewName"
                             name="viewName"
                             className="heading2"
@@ -120,7 +189,7 @@ export default function AlbumViewPage() {
                         <h3 className="RecordPageDescription">Description</h3>
                         <textarea
                             className="RecordPageDescriptionInput"
-                            defaultValue={albumDescription}
+                            defaultValue={album.description}
                             id="viewDescription"
                             name="viewDescription"
                         ></textarea>
@@ -131,27 +200,42 @@ export default function AlbumViewPage() {
                         <input
                             className="RecordPageAlbumNameInput"
                             type="text"
-                            defaultValue={location}
+                            defaultValue={album.location}
                             id="viewLocation"
                             name="viewLocation"
                         ></input>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
                         <input
                             className="AlbumViewPageRatingBar"
                             type="range"
                             min="0"
                             max="10"
-                            defaultValue={rating}
+                            defaultValue={album.score}
                             id="viewRating"
                             name="viewRating"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                            onChange={(e) => setSliderValue(e.target.value)}
                         ></input>
+                        <h3 className="RecordPageTagTitle">Date</h3>
+                        <input type="date" id="dateAlbum" name="dateAlbum" defaultValue={album.date}></input>
                         <p></p>
-                        <button
-                            type="submit"
-                            className="text3 AlbumViewEditButton"
-                        >
-                            Save Edit
-                        </button>
+                        <div className="LeftButtons">
+                            <button
+                                type="button"
+                                onClick={deleteAlbumFunc}
+                                className="text3 AlbumViewDeleteAlbumButton"
+                            >
+                                Delete Album
+                            </button>
+                            <button type="submit" className="text3 AlbumViewEditButton2">
+                                Save Edit
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>

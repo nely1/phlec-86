@@ -36,9 +36,22 @@
     text-align: center;
     display: inline-block;
     border-radius: 10px;
-    margin-top: 15vh;
-    margin-left: 25vw;
+    margin-top: 2vh;
+    margin-left: 27vw;
     cursor: pointer;
+ }
+
+ .AlbumViewEditButton2 {
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 2vh;
+  margin-left: 15vw;
+  cursor: pointer;
  }
 
  .ToAlbumButton {
@@ -58,4 +71,51 @@
    height: 10vh;
    border-radius: 10px;
 
+ }
+
+ .AlbumViewDeletePhotoButton {
+   background-color: var(--color-primary-green);
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   display: inline-block;
+   border-radius: 10px;
+   margin-top: 2vh;
+   margin-left: 5vw;
+   cursor: pointer;
+ }
+
+ .AlbumViewPageAddPhoto{
+   background-color: var(--color-primary-green);
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   display: inline-block;
+   border-radius: 10px;
+   margin-top: 0vh;
+   margin-left: 38vw;
+   cursor: pointer;
+ }
+
+ .AlbumViewPageAddPhotoText{
+   cursor: pointer;
+ }
+
+ .AlbumViewDeleteAlbumButton{
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 2vh;
+  margin-left: 0vw;
+  cursor: pointer;
+ }
+
+ .LeftButtons {
+  display: flex;
  }

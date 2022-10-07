@@ -2,10 +2,11 @@ import jwt from 'jsonwebtoken';
 import User from '../data/userModel.js' ;
 import bcrypt from 'bcryptjs';
 
-  
-export const loginUser = async (req,res) => {
+
+export const loginUser = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
+
     const user  = await User.findOne({ email });
     
         try {
@@ -34,6 +35,7 @@ export const loginUser = async (req,res) => {
     }
 }
 
+
 export const signUpUser = async (req, res) => {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
@@ -41,16 +43,11 @@ export const signUpUser = async (req, res) => {
     const userName = req.body.userName;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
- 
-
-
 
     try {
-        const user = await User.findOne({email});
+        const user = await User.findOne({ email });
 
         console.log("Successfully reached authentication");
-        
-        
 
         if (user) {
             res.status(404).json({message: 'User already exists'});
@@ -70,19 +67,14 @@ export const signUpUser = async (req, res) => {
                 password: hashedPassword, 
                 favourites: [], 
                 userName: userName,
-                plans: []});
+                plans: [],
+            });
 
-            
-
-            res.status(200).json({message: 'Account created',newUser});   
+            res.status(200).json({ message: "Account created", newUser });
             console.log("account created");
-           
         }
-    }
-    catch (error) {
-        res.status(500).json({message: 'Unknown error occured, please try again later'});
+    } catch (error) {
+        res.status(500).json({ message: "Unknown error occured, please try again later" });
         console.log(error.message);
     }
-    
-}
-
+};
