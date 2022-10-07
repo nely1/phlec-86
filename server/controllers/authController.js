@@ -38,7 +38,7 @@ export const signUpUser = async (req, res) => {
     const userName = req.body.userName;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
-    const userName = req.body.userName;
+ 
 
 
 

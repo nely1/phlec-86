@@ -1,6 +1,7 @@
 import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 // Documentation to customise routing: http://www.liedman.net/leaflet-routing-machine/api/#l-routing-control
 
@@ -17,6 +18,11 @@ var redIcon = new L.Icon({
 
 const createRoutineMachineLayer = (props) => {
 
+  const planRemoveItem = (item) => {
+    props.plannedLocations.splice(item, 1); 
+    props.setPlan([...props.plannedLocations]);
+    console.log(props.plannedLocations);
+  }
   var coords = [];
   var popupMsg = [];
 
@@ -35,7 +41,7 @@ const createRoutineMachineLayer = (props) => {
 
     
     createMarker: function(i, wp, nWps) {
-      return L.marker(wp.latLng, {icon: redIcon }).bindTooltip(popupMsg[i]).on('click', function(e){control.spliceWaypoints(i,1); props.plannedLocations.splice(i, 1);});
+      return L.marker(wp.latLng, {icon: redIcon }).bindTooltip(popupMsg[i]).on('click', function(e){control.spliceWaypoints(i,1); planRemoveItem(i)});
     },
     
 

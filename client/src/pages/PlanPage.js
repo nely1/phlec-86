@@ -43,7 +43,7 @@ export default function PlanPage() {
                         {markers}
 
                         <LocationMarker />
-                        <Routing key = {counter} plannedLocations = {plannedLocations} />  
+                        <Routing key = {counter} plannedLocations = {plannedLocations} setPlan = {setPlan} />  
 
                     </MapContainer>  
                     
