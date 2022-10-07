@@ -12,6 +12,7 @@ function LocationMarker() {
     });
 }
 
+
 // function SetPlan(props, planArr) {
 //     planArr.push(
 //         {
@@ -30,8 +31,11 @@ function LocationMarker() {
 //     landmarks.addTo(map);
 // }
 
+
 export default function PlanPage() {
     const [plannedLocations, setPlan] = useState([]);
+    const [counter, setCounter] = useState(0);
+
 
     let markers = MelbourneLandmarks.map((data) => (
         <Marker
@@ -69,21 +73,33 @@ export default function PlanPage() {
                             />
                             {markers}
 
-                            <LocationMarker />
-                            <Routing key={plannedLocations.length} plannedLocations={plannedLocations} />
-                            {/* <Landmarks /> */}
-                        </MapContainer>
-                    </div>
+                        <LocationMarker />
+                        <Routing key = {counter} plannedLocations = {plannedLocations} setPlan = {setPlan} />  
 
-                    <div className="PlanPageGridItem">
-                        <div className="PlanPageUpComing">
-                            <div className="PlanPageUpComingTop">
-                                <h1>Plan the tour</h1>
-                            </div>
-                            <div className="PlanPageUpComingBottom">
-                                <h2>Name: Boy's Night Out</h2>
-                                <div className="PlanPageUpComingTimeBox">
-                                    <h2>1. The Good Place</h2>
+                    </MapContainer>  
+                    
+                </div>
+
+                <div className="HomePageGridItem">
+                    <div className="HomePageUpComing">
+                        <div className="HomePageUpComingTop">
+                            <h1>Plan the tour</h1>
+                        </div>
+                        <div className="HomePageUpComingBottom">
+                            <h2>Name: Boy's Night Out</h2>
+                            <div className="HomePageUpComingTimeBox">
+                                <div className = "locationNames">
+                                    <ol>
+                                        {
+                                            plannedLocations.map(
+                                                location => (
+                                                    <li key={location.title}> 
+                                                        <h3>{location.title}</h3>
+                                                    </li>
+                                                )
+                                            )
+                                        }
+                                    </ol>
                                 </div>
                             </div>
                         </div>
