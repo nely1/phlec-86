@@ -1,35 +1,38 @@
 import jwt from 'jsonwebtoken';
-import User from '../data/userModel.js' 
+import User from '../data/userModel.js' ;
+import bcrypt from 'bcryptjs';
 
   
 export const loginUser = async (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
-
-    User.findOne({ email }, {}, {}, (err, user) => {
-        console.log("Successfully reached authentication");
+    const user  = await User.findOne({ email });
+    
+        try {
+            console.log("Successfully reached authentication");
         
-        if (err) {
-            res.status(500).json({message: 'Unknown error occured, please try again later'});
-        }
+            if (!user) {
+                res.status(404).json({message: 'Incorrect email or password'});
+            }
 
-        else if (!user) {
-            res.status(404).json({message: 'Incorrect email or password'});
-        }
-
-        else if (!user.verifyPassword(password)){
-            res.status(404).json({message: 'Incorrect email or password'});
-        }
-        else{
+            const isPasswordCorrect = await bcrypt.compare(password, user.password);
             
-            const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "1h"});
-            res.status(200).json({result: user, token});
+            if (!isPasswordCorrect){
+                res.status(404).json({message: 'Incorrect email or password'});
+            }
+            else{
 
-            console.log("Somewhat logged in");
-           
-        }
-     })
+                const token = jwt.sign({email: user.email, id: user._id}, "super secret stuff", {expiresIn: "1h"});
+                res.status(200).json({result: user, token});
+
+                console.log("Somewhat logged in");
+            
+            }
     }
+    catch (err) {
+        res.status(500).json({message: 'Unknown error occured, please try again later'});
+    }
+}
 
 export const signUpUser = async (req, res) => {
     const firstName = req.body.firstName;
@@ -58,11 +61,13 @@ export const signUpUser = async (req, res) => {
         }
         else{
             
+            const hashedPassword = await bcrypt.hash(password, 12);
+
             const newUser = await User.create({
                 firstName: firstName, 
                 lastName: lastName, 
                 email: email, 
-                password: password, 
+                password: hashedPassword, 
                 favourites: [], 
                 userName: userName,
                 plans: []});
