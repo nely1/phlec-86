@@ -1,39 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import { getAlbums } from "../actions/album";
+import { useDispatch, useSelector } from "react-redux";
 import ImageCarousel from "../components/ImageCarousel";
+import { getAlbums } from "../actions/album";
 import "./HomePage.css";
-import LoginPage from "./LoginPage";
 
 function HomePage({ loginState }) {
-    const albums = useSelector((state) => state.album);
-    const lastAlbum = albums[albums.length - 1];
-    console.log(lastAlbum);
     const userInfo = JSON.parse(localStorage.getItem("profile"));
-
-    const dispatch = useDispatch();
     const history = useNavigate();
+    let setCurrentImageIndex = () => null;
 
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
-        else {
-            dispatch(getAlbums(JSON.parse(localStorage.getItem('profile'))))
+    }, [history, userInfo, loginState]);
+
+    const albums = useSelector((state) => state.album);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+    }, [dispatch]);
+
+    let createArrayOfFirstPhoto = (albums) => {
+        let newArray = [];
+        for (const element of albums) {
+            if (element?.images[0]) {
+                newArray.push(element.images[0]);
+            }
         }
-    }, [dispatch, loginState, history]);
+        return newArray;
+    };
+    let recentImage =
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb";
 
+    let images = [
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
+    ];
 
-    // Get the most recent album
-    
-
-    /* using hooks. Might help with backend (?) */
-    const recentImage =
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
-
-    const images = [];
-
+    if (albums.length > 0) {
+        if (albums[albums.length - 1]?.images[0]) {
+            recentImage = albums[albums.length - 1].images[0];
+        }
+        images = createArrayOfFirstPhoto(albums);
+    }
+    // console.log(albums);
     if (!loginState) {
         return <></>;
     } else {
@@ -43,12 +57,8 @@ function HomePage({ loginState }) {
                     <div className="HomePageGrid">
                         <div className="HomePageGridItem">
                             <div className="HomePageTitle">
-                                <h1>
-                                    Welcome Back, {userInfo.result.userName}
-                                </h1>
-                                <p className="text2">
-                                    Our top Picks For The Day
-                                </p>
+                                <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                <p className="text2">Our top Picks For The Day</p>
                             </div>
                         </div>
                         <div className="HomePageGridItem">
@@ -62,16 +72,17 @@ function HomePage({ loginState }) {
                                         <h1>7 Days Away!</h1>
                                     </div>
                                     <div className="HomePageUpComingGoTo ">
-                                        <span className="material-symbols-outlined">
-                                            double_arrow
-                                        </span>
+                                        <span className="material-symbols-outlined">double_arrow</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="HomePageGridItem">
                             <div className="HomePageMainPictureContainer">
-                                <ImageCarousel images={images}></ImageCarousel>
+                                <ImageCarousel
+                                    images={images}
+                                    setCurrentImageIndex={setCurrentImageIndex}
+                                ></ImageCarousel>
                             </div>
                         </div>
                         <div className="HomePageGridItem">
@@ -86,15 +97,26 @@ function HomePage({ loginState }) {
                                         alt="HomePageMemoriesImage"
                                     ></img>
                                     <div className="HomePageRecentMemoriesBottomOverlay">
-                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">
-                                            Lake Mir
-                                        </p>
+                                        {albums.length > 0 ? (
+                                            <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                                {albums[albums.length - 1]?.name}
+                                            </p>
+                                        ) : (
+                                            <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                                No albums exist. Click through to add one!
+                                            </p>
+                                        )}
+
                                         <div className="HomePageRecentMemoriesgGoTo">
-                                            <a href="albumview">
-                                                <span className="material-symbols-outlined">
-                                                    double_arrow
-                                                </span>
-                                            </a>
+                                            {albums.length > 0 ? (
+                                                <a href={"/albumView/" + albums[albums.length - 1]?._id}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            ) : (
+                                                <a href={"/record"}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

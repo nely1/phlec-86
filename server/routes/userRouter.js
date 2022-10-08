@@ -4,7 +4,6 @@ import discoverController from "../controllers/discoverController.js";
 import exploreController from "../controllers/exploreController.js";
 import planningController from "../controllers/planningController.js";
 import recordController from "../controllers/recordController.js";
-import auth from "../middleware/auth.js";
 
 const userRouter = express.Router();
 
@@ -22,5 +21,9 @@ userRouter.get("/albumview/:id", albumController.displayOne);
 userRouter.get("/explore", exploreController.getReview);
 
 userRouter.post("/explore/:id",  exploreController.postReview);
+
+userRouter.patch("/albumview/:id", albumController.updateAlbum);
+
+userRouter.delete("/albumview/:id", albumController.deleteAlbum);
 
 export default userRouter;

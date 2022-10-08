@@ -7,8 +7,8 @@ const schema = new mongoose.Schema({
     password: {type:String, required: true},
     role: {type: String, enum: ['admin' , 'user'], default: 'user'},
     theme: {type: String, enum: ['light', 'dark'], default: 'light' },
-    favourties: [{type: mongoose.Schema.Types.ObjectId, ref: 'locationModel'}],
-    plans: [{type: mongoose.Schema.Types.ObjectId, ref: 'planModel'}]
+    favourties: [{type: mongoose.Schema.Types.ObjectId, ref: 'locationModel', default: []}],
+    plans: [{type: mongoose.Schema.Types.ObjectId, ref: 'planModel', default: []}]
 }) 
 
 schema.methods.verifyPassword = function (password) {
