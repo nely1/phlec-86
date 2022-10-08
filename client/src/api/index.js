@@ -21,4 +21,6 @@ export const signUpUser = (signUpDetails) => API.post("/login/signUp", signUpDet
 
 export const getReview = () => API.get("/user/explore");
 
+export const getReviews = (id) => API.get("/user/${id}/reviews");
+
 export const postReview = (id, review) => API.post(`/user/explore/${id}`, review);

@@ -1,60 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getReview } from "../actions/explore";
 
-import './ExplorePage.css';
+import "./ExplorePage.css";
 
-import SearchBar from '../components/SearchBar';
-import ExploreCard from '../components/ExploreCard';
-import ReviewCard from '../components/ReviewCard';
+import SearchBar from "../components/SearchBar";
+import ExploreCard from "../components/ExploreCard";
+import ReviewCard from "../components/ReviewCard";
 
 
 
 export default function ExplorePage() {
-
-    /* Retrieve data from db 
-    data = RetrieveData();
-    */
+    // const reviews = useSelector((state) => state.review);
+    const locations = useSelector((state) => state.location);
     
-    const dummyData = [{title: "Aurora Borealis", score: 6.9, views: 420}, 
-                     {title: "Mount Doom",      score: 0.8, views: 1000}, 
-                     {title: "Planet Druidia",  score: 7.3, views: 42}]
-    let cards = dummyData.map((data) => 
-        <li><ExploreCard key={data.title} data={data} /></li>
-    );
+    console.log("locations: " + locations);
+    const dispatch = useDispatch();
 
-    console.log(cards);
-    
-    const dummyReviews = [
-        {user: "Pat01", content: "The food is good, but the screaming won't stop.", score: 7.9},
-        {user: "anon", content: "Terrible... just terrible", score: 4.2},
-        {user: "hikerman42", content: "Great for eating, not for walking.", score: 6.8},
-    ]
+    const [selected, setSelected] = useState(0);
 
-    let reviews = dummyReviews.map((review) => <li><ReviewCard key={review.user} data={review} /></li>)
+    useEffect(() => {
+        dispatch(getReview(JSON.parse(localStorage.getItem("review"))));
+    }, [dispatch])
+
+
+
     return (
         <div>
             <div className="exploreFilters">
                 <SearchBar /> 
-                {/* <Filter /> */}
-                {/* Wishlist */} 
             </div>
             <div className="Explore-Reviews">
                 <ul className="exploreCards" >
-                    {cards}
+                    {locations}
                 </ul>
                 <div className="reviewCards">
                     <ul className="reviews">
-                        {reviews}
+                        {/*reviews*/}
                     </ul>
-                    {/* if (loggedIn && ! user has review)*/}
+                    {/* if (loggedIn && ! user has review) */}
                     <div className="reviewCard userReview">
                         <form className="userReview">
                             <textarea className="userReviewContent"/>
-                        <input class="styledButton untoggledButton" type="submit" value="Post"/>
+                        <input className="styledButton untoggledButton" type="submit" value="Post"/>
                         </form>
                     </div>
                 </div>
             </div>            
         </div>
-        
     );
 }
