@@ -12,24 +12,26 @@ function LocationMarker() {
     });
 }
 
+// Emergency redo location model code
+// import locations from '../data/locationModel.js' 
+// import { createRequire } from "module"; // Bring in the ability to create the 'require' method
+// const require = createRequire(import.meta.url); // construct the require method
+// const landmarks = require('../data/LandmarksData.json') // use the require method
 
-// function SetPlan(props, planArr) {
-//     planArr.push(
-//         {
-//             title: props['Feature Name'],
-//             latlng: [props.Latitude, props.Longitude],
-//             theme: props.Theme,
-//         }
-//     )
-//     console.log(planArr);
-// }
+// export const loginUser = async (req, res) => {
+//     const email = req.body.email;
+//     const password = req.body.password;
 
-// This funciton does not work, possible causes is that the latitude and longitude in the JSON file are swapped
-// function Landmarks(){
-//     const map = useMap();
-//     const landmarks = new L.GeoJSON(MelbourneLandmarks);
-//     landmarks.addTo(map);
-// }
+//     for (const location of landmarks){
+//         const newLandmark = await locations.create({
+//             theme: location.Theme, 
+//             subTheme: location['Sub Theme'], 
+//             name: location['Feature Name'],
+//             latitude: location.Latitude,
+//             longitude: location.Longitude,
+//             reviews: [],
+//         });
+//     }
 
 
 export default function PlanPage() {
@@ -74,34 +76,55 @@ export default function PlanPage() {
                             />
                             {markers}
 
-                        <LocationMarker />
-                        <Routing key = {counter} plannedLocations = {plannedLocations} setPlan = {setPlan} />  
+                            <LocationMarker />
+                            <Routing key = {counter} plannedLocations = {plannedLocations} setPlan = {setPlan} />  
+                        </MapContainer>     
+                    </div>
 
-                    </MapContainer>  
-                    
-                </div>
-
-                <div className="HomePageGridItem">
-                    <div className="HomePageUpComing">
-                        <div className="HomePageUpComingTop">
-                            <h1>Plan the tour</h1>
+                <div className="PlanPageGridItem">
+                    <div className="PlanPageUpComing">
+                        <div className="PlanPageUpComingTop">
+                            <h2>Plan the tour</h2>
                         </div>
-                        <div className="HomePageUpComingBottom">
-                            <h2>Name: Boy's Night Out</h2>
-                            <div className="HomePageUpComingTimeBox">
+                        <div className="PlanPageUpComingBottom">
+                            <h3>Trip name: &nbsp;&nbsp;
+                            <input
+                                className="PlanPageNameInput"
+                                type="data"
+                                placeholder=" Name..."
+                                id="planName"
+                                name="planName"
+                                required
+                            ></input>
+                            </h3>
+
+                            <h3>Set the date: &nbsp;&nbsp;
+                            <input type="date" id="datePlan" name="datePlan" required></input>
+                            </h3>
+
+                            <hr></hr>
+
+                            <h1>Your destinations:</h1>
+                            <div className="PlanPageUpComingTimeBox">
                                 <div className = "locationNames">
                                     <ol>
                                         {
                                             plannedLocations.map(
                                                 location => (
                                                     <li key={location.title}> 
-                                                        <h3>{location.title}</h3>
+                                                        <h4>{location.title}</h4>
                                                     </li>
                                                 )
                                             )
                                         }
                                     </ol>
                                 </div>
+                            </div>
+
+                            <div className="PlanPageSave">
+                                <button type="submit" className="planPageSave text3" value="Submit">
+                                    Submit
+                                </button>
                             </div>
                         </div>
                     </div>
