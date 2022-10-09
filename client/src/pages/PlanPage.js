@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
 import "./PlanPage.css";
+import { getLandmarks } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 import MelbourneLandmarks from "./LandmarksData.json";
 
@@ -38,6 +40,25 @@ export default function PlanPage() {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
 
+    const landmarks = useSelector((state) => state.landmarks);
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getLandmarks());
+    }, [dispatch]);
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const userCurrent = JSON.parse(localStorage.getItem("profile"));
+        const toUpload = {
+            userid: userCurrent.result._id,
+            tripName: event.target.planName.value,
+            locations: plannedLocations,
+            scheduleDate: event.target.datePlan.value,
+        };
+        console.log(landmarks);
+    }
+
 
     let markers = MelbourneLandmarks.map((data) => (
         <Marker
@@ -71,7 +92,8 @@ export default function PlanPage() {
                     <div className="PlanPageGridItem">
                         <MapContainer center={[-37.80911373, 144.9742219]} zoom={25} scrollWheelZoom={true}>
                             <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> 
+                                contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
                             {markers}
@@ -86,46 +108,49 @@ export default function PlanPage() {
                         <div className="PlanPageUpComingTop">
                             <h2>Plan the tour</h2>
                         </div>
+
                         <div className="PlanPageUpComingBottom">
-                            <h3>Trip name: &nbsp;&nbsp;
-                            <input
-                                className="PlanPageNameInput"
-                                type="data"
-                                placeholder=" Name..."
-                                id="planName"
-                                name="planName"
-                                required
-                            ></input>
-                            </h3>
+                            <form onSubmit={handleSubmit} id="planForm">
+                                <h3>Trip name: &nbsp;&nbsp;
+                                <input
+                                    className="PlanPageNameInput"
+                                    type="data"
+                                    placeholder=" Name..."
+                                    id="planName"
+                                    name="planName"
+                                    required
+                                ></input>
+                                </h3>
 
-                            <h3>Set the date: &nbsp;&nbsp;
-                            <input type="date" id="datePlan" name="datePlan" required></input>
-                            </h3>
+                                <h3>Set the date: &nbsp;&nbsp;
+                                <input type="date" id="datePlan" name="datePlan" required></input>
+                                </h3>
 
-                            <hr></hr>
+                                <hr></hr>
 
-                            <h1>Your destinations:</h1>
-                            <div className="PlanPageUpComingTimeBox">
-                                <div className = "locationNames">
-                                    <ol>
-                                        {
-                                            plannedLocations.map(
-                                                location => (
-                                                    <li key={location.title}> 
-                                                        <h4>{location.title}</h4>
-                                                    </li>
+                                <h1>Your destinations:</h1>
+                                <div className="PlanPageUpComingTimeBox">
+                                    <div className = "locationNames">
+                                        <ol>
+                                            {
+                                                plannedLocations.map(
+                                                    location => (
+                                                        <li key={location.title}> 
+                                                            <h4>{location.title}</h4>
+                                                        </li>
+                                                    )
                                                 )
-                                            )
-                                        }
-                                    </ol>
+                                            }
+                                        </ol>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="PlanPageSave">
-                                <button type="submit" className="planPageSave text3" value="Submit">
-                                    Submit
-                                </button>
-                            </div>
+                                <div className="PlanPageSave">
+                                    <button type="submit" className="planPageSave text3" value="Submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -68,7 +68,6 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     width: 7vw;
     height: 5vh;
     margin-left: 40%;
-    padding-left: 1vh;
     border-radius: 10px;
     justify-content: center;
     border-style: none;
@@ -118,4 +117,5 @@ button{
     background: none;
     border: none;
     color: white;
+    cursor: pointer;
 }

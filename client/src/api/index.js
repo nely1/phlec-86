@@ -24,3 +24,5 @@ export const updateAlbumOne = (id, updatedAlbum) => axios.patch(`${url}/user/alb
 export const deleteAlbum = (id) => axios.delete(`${url}/user/albumview/${id}`);
 
 export const signUpUser = (signUpDetails) => axios.post(`${url}/login/signUp`, signUpDetails);
+
+export const getLandmarks = () => axios.get(`${url}/user/plan`);
