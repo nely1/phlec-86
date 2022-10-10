@@ -26,3 +26,5 @@ export const deleteAlbum = (id) => axios.delete(`${url}/user/albumview/${id}`);
 export const signUpUser = (signUpDetails) => axios.post(`${url}/login/signUp`, signUpDetails);
 
 export const getLandmarks = () => axios.get(`${url}/user/plan`);
+
+export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);

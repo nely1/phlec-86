@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
 import "./PlanPage.css";
-import { getLandmarks } from "../actions/plan";
+import { getLandmarks, postPlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
-import MelbourneLandmarks from "./LandmarksData.json";
 
 function LocationMarker() {
     const map = useMapEvent("click", (e) => {
@@ -40,7 +40,8 @@ export default function PlanPage() {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
 
-    const landmarks = useSelector((state) => state.landmarks);
+    const landmarks = useSelector((state) => state.plan);
+    const history = useNavigate();
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -50,26 +51,34 @@ export default function PlanPage() {
     async function handleSubmit(event) {
         event.preventDefault();
         const userCurrent = JSON.parse(localStorage.getItem("profile"));
+
+        const locationID = [];
+        for (const loc of plannedLocations){
+            locationID.push(loc.id);
+        }
+
         const toUpload = {
             userid: userCurrent.result._id,
             tripName: event.target.planName.value,
-            locations: plannedLocations,
+            locations: locationID,
             scheduleDate: event.target.datePlan.value,
         };
-        console.log(landmarks);
+        dispatch(postPlan(toUpload));
+        history("/home");
     }
 
 
-    let markers = MelbourneLandmarks.map((data) => (
+    let markers = landmarks.map((data) => (
         <Marker
-            key={data.Latitude}
-            position={[data.Latitude, data.Longitude]}
+            key={data.latitude}
+            position={[data.latitude, data.longitude]}
             eventHandlers={{
                 click: () => {
                     var newEntry = {
-                        title: data["Feature Name"],
-                        latlng: [data.Latitude, data.Longitude],
-                        theme: data.Theme,
+                        id: data._id,
+                        title: data.name,
+                        latlng: [data.latitude, data.longitude],
+                        theme: data.theme,
                     };
                     setCounter(counter + 1);
                     setPlan([...plannedLocations, newEntry]);

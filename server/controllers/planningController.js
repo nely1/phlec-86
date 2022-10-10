@@ -25,7 +25,18 @@ const display = async (req, res) => {
     catch (error) {
         res.status(404).json({message: error.message});
     }
-
 }
 
-export default {display };
+const upload = async (req, res) => {
+    const newPlan = req.body;
+
+    const planRoute = new plan(newPlan);
+
+    try {
+        await planRoute.save();
+        res.status(201).json(planRoute);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};
+export default { display, upload };
