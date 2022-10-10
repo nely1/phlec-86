@@ -2,9 +2,9 @@ const planReducer = (plan = [], action) => {
     switch (action.type) {
         case "DELETE_ONE":
             return plan.filter((plan) => plan._id !== action.payload);
-        case "CREATE":
+        case "CREATE_PLAN":
             return [...plan, action.payload];
-        case "FETCH_ALL": // Get all landmarks
+        case "FETCH_LANDMARKS": // Get all landmarks
             return action.payload;
         case "FETCH_ONE": // Get chosen plan
             return action.payload;
