@@ -10,6 +10,7 @@ userRouter.get("/record", recordController.display);
 userRouter.post("/record", recordController.upload);
 
 userRouter.get("/plan", planningController.display);
+userRouter.post("/plan", planningController.upload);
 
 userRouter.get("/discover", discoverController.display);
 
