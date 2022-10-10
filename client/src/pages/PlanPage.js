@@ -14,9 +14,6 @@ function LocationMarker() {
     });
 }
 
-// Mental notes: 
-// Delay in loading landmarks from database 
-
 
 // Emergency redo location model code
 // import locations from '../data/locationModel.js' 
@@ -40,11 +37,11 @@ function LocationMarker() {
 //     }
 
 
-export default function PlanPage() {
+export default function PlanPage({ loginState }) {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
+    const landmarks = useSelector((state) => state?.plan);
 
-    const landmarks = useSelector((state) => state.plan);
     const history = useNavigate();
 
     const dispatch = useDispatch();
@@ -71,6 +68,10 @@ export default function PlanPage() {
         history("/record");
     }
 
+    
+    if (!loginState || landmarks.length === 0) {
+        return <></>;
+    }
 
     let markers = landmarks.map((data) => (
         <Marker
