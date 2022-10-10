@@ -14,6 +14,10 @@ function LocationMarker() {
     });
 }
 
+// Mental notes: 
+// Delay in loading landmarks from database 
+
+
 // Emergency redo location model code
 // import locations from '../data/locationModel.js' 
 // import { createRequire } from "module"; // Bring in the ability to create the 'require' method
@@ -61,10 +65,10 @@ export default function PlanPage() {
             userid: userCurrent.result._id,
             tripName: event.target.planName.value,
             locations: locationID,
-            scheduleDate: event.target.datePlan.value,
+            scheduledDate: event.target.datePlan.value,
         };
         dispatch(postPlan(toUpload));
-        history("/home");
+        history("/record");
     }
 
 
@@ -132,12 +136,12 @@ export default function PlanPage() {
                                 </h3>
 
                                 <h3>Set the date: &nbsp;&nbsp;
-                                <input type="date" id="datePlan" name="datePlan" required></input>
+                                <input type="datetime-local" id="datePlan" name="datePlan" required></input>
                                 </h3>
 
                                 <hr></hr>
 
-                                <h1>Your destinations:</h1>
+                                <h5>Your destinations:</h5>
                                 <div className="PlanPageUpComingTimeBox">
                                     <div className = "locationNames">
                                         <ol>

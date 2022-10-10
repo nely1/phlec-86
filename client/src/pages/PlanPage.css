@@ -74,12 +74,6 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     cursor: pointer;
 }
 
-h1{
-    padding-top: 1%;
-    font-size: 25px;
-    line-height: 5vh;
-}
-
 h2{
     font-size: 35px;
 }
@@ -96,6 +90,12 @@ h4{
     padding-left: 1%;
     padding-bottom: 1.5%;
     padding-top: 1.5%;
+}
+
+h5{
+    padding-top: 1%;
+    font-size: 25px;
+    line-height: 5vh;
 }
 
 ol{
