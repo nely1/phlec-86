@@ -9,10 +9,11 @@ export const postPlan = (plan) => async (dispatch) => {
     }
 };
 
-export const getLandmarks = () => async (dispatch) => {
+export const getPlans = (userInfo) => async (dispatch) => {
     try {
-        const { data } = await api.getLandmarks();
-        dispatch({ type: "FETCH_LANDMARKS", payload: data });
+        const { data } = await api.getPlans(userInfo.result._id);
+        dispatch({ type: "FETCH_PLANS", payload: data });
+        console.log(data);
     } catch (error) {
         console.log(error);
     }
