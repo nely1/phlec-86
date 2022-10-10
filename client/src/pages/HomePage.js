@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ImageCarousel from "../components/ImageCarousel";
 import { getAlbums } from "../actions/album";
+import { getPlans } from "../actions/plan";
 import "./HomePage.css";
 
 function HomePage({ loginState }) {
@@ -17,10 +18,12 @@ function HomePage({ loginState }) {
     }, [history, userInfo, loginState]);
 
     const albums = useSelector((state) => state.album);
+    const plans = useSelector((state) => state.plan);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+        dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
     }, [dispatch]);
 
     let createArrayOfFirstPhoto = (albums) => {

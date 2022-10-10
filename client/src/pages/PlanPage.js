@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
 import "./PlanPage.css";
-import { getLandmarks, postPlan } from "../actions/plan";
+import { getLocations } from "../actions/location";
+import { getPlans, postPlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 
 function LocationMarker() {
@@ -40,13 +41,15 @@ function LocationMarker() {
 export default function PlanPage({ loginState }) {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
-    const landmarks = useSelector((state) => state?.plan);
+    const landmarks = useSelector((state) => state?.location);
+    const plans = useSelector((state) => state?.plan);
 
     const history = useNavigate();
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getLandmarks());
+        dispatch(getLocations());
+        dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
     }, [dispatch]);
 
     async function handleSubmit(event) {
@@ -69,7 +72,7 @@ export default function PlanPage({ loginState }) {
     }
 
     
-    if (!loginState || landmarks.length === 0) {
+    if (!loginState) {
         return <></>;
     }
 
