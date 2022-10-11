@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux';
 import { getAlbums } from "../actions/album";
-import { useDispatch, useSelector } from "react-redux";
 import ImageCarousel from "../components/ImageCarousel";
-import { getAlbums } from "../actions/album";
 import { getPlans } from "../actions/plan";
 import "./HomePage.css";
 

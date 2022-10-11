@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getReview } from "../actions/explore";
+import { getLocations } from "../actions/location";
 
 import "./ExplorePage.css";
 
@@ -12,18 +12,38 @@ import ReviewCard from "../components/ReviewCard";
 
 export default function ExplorePage() {
     // const reviews = useSelector((state) => state.review);
-    const locations = useSelector((state) => state.location);
-    
-    console.log("locations: " + locations);
-    const dispatch = useDispatch();
 
     const [selected, setSelected] = useState(0);
+    console.log(selected);
+
+    const locations = useSelector((state) => state?.location);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
-        dispatch(getReview(JSON.parse(localStorage.getItem("review"))));
-    }, [dispatch])
+        dispatch(getLocations());
+    }, [dispatch]);
+
+    let locationArray = [];
+
+    // convert to array
+    locations.map((loc) => {locationArray.push(loc)})
+    console.log(locationArray);
+    for (let i = 0; i < locations.length; i++) {
+        locationArray[i] = <li key={i} onClick={() => {setSelected(i)}}><ExploreCard selected={selected == i ? true : false} data={locationArray[i]} /></li>;
+    }
 
 
+    /*
+    */
+
+    function isSelected(i) {
+        if (selected == i) {
+            return true;
+        } else {
+            return false
+        }
+    }
 
     return (
         <div>
@@ -32,7 +52,7 @@ export default function ExplorePage() {
             </div>
             <div className="Explore-Reviews">
                 <ul className="exploreCards" >
-                    {locations}
+                    {locationArray}
                 </ul>
                 <div className="reviewCards">
                     <ul className="reviews">
@@ -50,3 +70,4 @@ export default function ExplorePage() {
         </div>
     );
 }
+

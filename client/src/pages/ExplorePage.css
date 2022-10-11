@@ -1,3 +1,9 @@
+
+:root {
+    --explore-card-width: 1325px;
+}
+
+
 .exploreFilters {
     display: flex;
     flex-direction: row;
@@ -9,7 +15,10 @@
 }
 
 .exploreCards {
-    padding-top: 3vw;
+    margin-top: 3vw;
+    height: 90vh;
+    overflow: auto;
+
 }
 
 .Explore-Reviews {
@@ -23,6 +32,22 @@
     flex-direction: row;
 }
 
+.cardTitle {
+    width: var(--explore-card-width); 
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.arrowRight {
+    position: relative;
+    left: 95%;
+    bottom: 30%;
+}
+
+
 ul.exploreCards li {
     background-color: var(--color-primary-lightgrey);
 
@@ -30,8 +55,8 @@ ul.exploreCards li {
     padding: 0;
     margin: 0;
 
-    height: 30%;
-    width: 1325px;
+    height: 25vh;
+    width: var(--explore-card-width);
 
     margin-left: 2.5%;
     margin-bottom: 2%;
