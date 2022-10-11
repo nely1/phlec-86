@@ -1,19 +1,25 @@
 import plan from "../data/planModel.js";
-import user from "../data/userModel.js";
 
-const display = async (req, res) => {
-    const plans = await plan.find({},{}).lean();
-    const thisUser = await user.find({},{}).lean();
+const fetchPlans = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const plans = await plan.find({ userid: userId });
+        res.status(200).json(plans);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+const upload = async (req, res) => {
+    const newPlan = req.body;
+
+    const planRoute = new plan(newPlan);
 
     try {
-        const thisUser = await user.find({},{}).lean();
-
-        res.status(200).json(thisUser);
+        await planRoute.save();
+        res.status(201).json(planRoute);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
     }
-    catch (error) {
-        res.status(404).json({message: error.message});
-    }
-
-}
-
-export default {display };
+};
+export default { upload, fetchPlans };

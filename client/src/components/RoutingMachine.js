@@ -27,7 +27,7 @@ const createRoutineMachineLayer = (props) => {
 
   for (let i = 0; i < props.plannedLocations.length; i++) {
     coords.push(props.plannedLocations[i].latlng);
-    popupMsg.push("Name: " + props.plannedLocations[i].title + "<br />" + "Theme: " + props.plannedLocations[i].theme);
+    popupMsg.push("Name: " + props.plannedLocations[i].title + "<br />" + "Location Type: " + props.plannedLocations[i].theme);
   }
 
   var control = L.Routing.control({
