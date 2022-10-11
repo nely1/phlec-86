@@ -43,7 +43,7 @@ export default function PlanPage({ loginState }) {
     const [counter, setCounter] = useState(0);
     const landmarks = useSelector((state) => state?.location);
     const plans = useSelector((state) => state?.plan);
-
+    console.log(plans)
     const history = useNavigate();
 
     const dispatch = useDispatch();

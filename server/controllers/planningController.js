@@ -3,7 +3,7 @@ import plan from "../data/planModel.js";
 const fetchPlans = async (req, res) => {
     try {
         const userId = req.params.id;
-        const plans = await plan.find({ userid: userId });
+        const plans = await plan.find({ userid: userId, scheduledDate: {$gte : new Date()}}).sort({scheduledDate: 1});
         res.status(200).json(plans);
     } catch (error) {
         res.status(404).json({ message: error.message });
