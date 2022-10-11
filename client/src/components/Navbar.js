@@ -11,12 +11,12 @@ import "./Navbar.css";
 
 // Enum for the pages in the navbar
 export const Pages = Object.freeze({
-    Home: "Home",
-    Record: "Record",
-    Album: "Album",
-    Explore: "Explore",
-    Plan: "Plan",
-    Settings: "Settings",
+    Home: "home",
+    Record: "record",
+    Album: "album",
+    Explore: "explore",
+    Plan: "plan",
+    Settings: "settings",
 });
 
 export default function Navbar({ loggedIn, setLogin }) {
@@ -63,7 +63,7 @@ export default function Navbar({ loggedIn, setLogin }) {
         loginButton = (
             <NavButton
                 className="loginoutButton"
-                page="Logout"
+                page="logout"
                 setLogin={setLogin}
                 logoutFunc={() => {
                     logout();
@@ -76,12 +76,22 @@ export default function Navbar({ loggedIn, setLogin }) {
 
     return (
         <div className="navbarBase">
-            <Link to="/Home" className="navbarLogo">
-                <div className="navbarLogo" href="/">
-                    <div className="logoSpacer"></div>
-                    <div className="logoText">Phlec Travels</div>
-                </div>
-            </Link>
+            {loggedIn ? (
+                <Link to="/home" className="navbarLogo">
+                    <div className="navbarLogo">
+                        <div className="logoSpacer"></div>
+                        <div className="logoText">Phlec Travels</div>
+                    </div>
+                </Link>
+            ) : (
+                <Link to="/" className="navbarLogo">
+                    <div className="navbarLogo">
+                        <div className="logoSpacer"></div>
+                        <div className="logoText">Phlec Travels</div>
+                    </div>
+                </Link>
+            )}
+
             <ul className="navbarButtons">{buttons}</ul>
             <img className="profileImage" src={process.env.PUBLIC_URL + "/profiledefault.png"} alt="Default Profile" />
             {loginButton}

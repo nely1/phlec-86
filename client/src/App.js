@@ -6,7 +6,6 @@ import { loginUser } from "./actions/login";
 
 import Navbar from "./components/Navbar";
 
-
 import LandingPageBody from "./pages/LandingPageBody";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -15,21 +14,21 @@ import RecordPage from "./pages/RecordPage";
 import AlbumPage from "./pages/AlbumPage";
 import ExplorePage from "./pages/ExplorePage";
 import AlbumViewPage from "./pages/AlbumViewPage";
-import PlanPage from './pages/PlanPage';
-import SettingsPage from './pages/SettingsPage';
+import PlanPage from "./pages/PlanPage";
+import SettingsPage from "./pages/SettingsPage";
 
 const ROOT = "/";
-const LOGIN = "/Login";
-const LANDING = "/Landing";
-const HOME = "/Home";
-const LOGOUT = "/Logout";
-const SIGNUP = "/SignUp";
-const RECORD = "/Record";
-const ALBUM = "/Album";
-const ALBUM_VIEW = "/AlbumView/:id";
-const EXPLORE = "/Explore";
-const PLAN = '/Plan';
-const SETTINGS = '/Settings';
+const LOGIN = "/login";
+const LANDING = "/landing";
+const HOME = "/home";
+const LOGOUT = "/logout";
+const SIGNUP = "/signUp";
+const RECORD = "/record";
+const ALBUM = "/album";
+const ALBUM_VIEW = "/albumView/:id";
+const EXPLORE = "/explore";
+const PLAN = "/plan";
+const SETTINGS = "/settings";
 
 export var LoggedIn = true;
 
@@ -51,7 +50,6 @@ export default function App() {
 
     return (
         <>
-
             <Router>
                 <Navbar loggedIn={LoggedIn} setLogin={setLoggedIn} />
                 <Routes>
@@ -65,7 +63,7 @@ export default function App() {
                     <Route path={ALBUM} element={<AlbumPage loginState={LoggedIn} />}></Route>
                     <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
                     <Route path={EXPLORE} element={<ExplorePage />}></Route>
-                    <Route path={PLAN} element={<PlanPage />}></Route>
+                    <Route path={PLAN} element={<PlanPage loginState={LoggedIn} />}></Route>
                     <Route path={SETTINGS} element={<SettingsPage />}></Route>
                 </Routes>
             </Router>

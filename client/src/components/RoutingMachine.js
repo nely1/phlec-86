@@ -1,6 +1,7 @@
 import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 // Documentation to customise routing: http://www.liedman.net/leaflet-routing-machine/api/#l-routing-control
 
@@ -15,33 +16,38 @@ var redIcon = new L.Icon({
 });
 
 const createRoutineMachineLayer = (props) => {
-    var coords = [];
-    var popupMsg = [];
 
-    for (let i = 0; i < props.plannedLocations.length; i++) {
-        coords.push(props.plannedLocations[i].latlng);
-        popupMsg.push(
-            "Name: " + props.plannedLocations[i].title + "<br />" + "Theme: " + props.plannedLocations[i].theme
-        );
-    }
+  const planRemoveItem = (item) => {
+    props.plannedLocations.splice(item, 1); 
+    props.setPlan([...props.plannedLocations]);
+    console.log(props.plannedLocations);
+  }
+  var coords = [];
+  var popupMsg = [];
 
-    var control = L.Routing.control({
-        waypoints: coords,
+  for (let i = 0; i < props.plannedLocations.length; i++) {
+    coords.push(props.plannedLocations[i].latlng);
+    popupMsg.push("Name: " + props.plannedLocations[i].title + "<br />" + "Location Type: " + props.plannedLocations[i].theme);
+  }
 
-        lineOptions: {
-            styles: [{ color: "red" }],
-            missingRouteStyles: [
-                { color: "yellow", opacity: 0.75, weight: 7 },
-                { color: "black", weight: 2, dashArray: "7,12" },
-            ],
-        },
+  var control = L.Routing.control({
+    waypoints: coords,
 
-        createMarker: function (i, wp, nWps) {
-            return L.marker(wp.latLng, { icon: redIcon }).bindTooltip(popupMsg[i]);
-        },
-    });
+    lineOptions: {
+      styles: [{ color: 'red'}],
+      missingRouteStyles: [{color: 'yellow', opacity: 0.75, weight: 7},{color: 'black', weight: 2, dashArray: '7,12'}],
+    },
 
-    return control;
+    
+    createMarker: function(i, wp, nWps) {
+      return L.marker(wp.latLng, {icon: redIcon }).bindTooltip(popupMsg[i]).on('click', function(e){control.spliceWaypoints(i,1); planRemoveItem(i)});
+    },
+    
+
+  });
+
+  return control;
+
 };
 
 const RoutingMachine = createControlComponent(createRoutineMachineLayer);

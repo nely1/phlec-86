@@ -11,11 +11,6 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     grid-template-columns: 2fr 2fr;
 }
 
-.PlanPageTitle {
-    text-align: center;
-    margin-top: 5vh;
-
-}
 
 .PlanPageUpComing {
     display: flex;
@@ -32,8 +27,6 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     background-color: var(--color-secondary-green);
     width: 100%;
     border-radius: 10px 10px 0 0;
-    padding-bottom: 1vh;
-    padding-top: 1vh;
 }
 
 .PlanPageUpComingBottom {
@@ -46,16 +39,17 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
 
 .PlanPageUpComingTimeBox {
     background-color: var(--color-primary-yellow);
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 1vh 1vw;
+    padding-left: 3vh;
 }
 
-.PlanPageUpComingGoTo {
-    background-color: var(--color-secondary-green);
-    width: 60px;
-    height: 45px;
+
+.PlanPageNameInput {
     border-radius: 10px;
-    margin-left: 25vw;
+    width: 32vw;
+    height: 3vh;
+    padding-left: 0.5vw;
 }
 
 .material-symbols-outlined {
@@ -67,10 +61,62 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     'opsz' 48
 }
 
-h1{
-    font-size: 45px;
+.PlanPageSave {
+    display: flex;
+    background-color: var(--color-primary-green);
+    color: var(--color-text-secondary);
+    width: 7vw;
+    height: 5vh;
+    margin-left: 40%;
+    border-radius: 10px;
+    justify-content: center;
+    border-style: none;
+    cursor: pointer;
 }
 
 h2{
     font-size: 35px;
+}
+
+h3{
+    text-align: left;
+    font-size: 20px;
+    padding-left: 8%;
+}
+
+h4{
+    text-align: left;
+    font-size: 21px;
+    padding-left: 1%;
+    padding-bottom: 1.5%;
+    padding-top: 1.5%;
+}
+
+h5{
+    font-family: 'Fira Sans';
+    padding-top: 1%;
+    font-size: 25px;
+    line-height: 5vh;
+}
+
+ol{
+    font-family: 'Fira Sans';
+    font-size: 21px;
+    padding-left: 2%;
+}
+
+input[type=data]{
+    padding-right: 10px;
+    width: 50%;
+    max-width: 250px;
+    border-style: none;
+    border-bottom: 2px solid rgb(112,112,112);
+    background-color: white; 
+}
+
+button{
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }

@@ -1,15 +1,13 @@
-import * as api from '../api/index.js';
+import * as api from "../api/index.js";
 
 export const signUpUser = (signUpDetails, history) => async (dispatch) => {
     try {
-        const {data} = await api.signUpUser(signUpDetails);
+        const { data } = await api.signUpUser(signUpDetails);
 
-        dispatch({type: "SIGNUP", data});
+        dispatch({ type: "SIGNUP", data });
 
-        history('/Login');
-    }
-
-    catch (error) {
+        history("/login");
+    } catch (error) {
         console.log(error.message);
     }
-}
+};

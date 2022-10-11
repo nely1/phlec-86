@@ -63,17 +63,19 @@
 }
 
 .HomePageRecentMemoriesBottomOverlay {
+    display: flex;
     position: relative;
     height: 20%;
     top: -20%;
     background-color: rgba(255, 255, 255, 0.50);
     border-radius: 0 0 10px 10px;
     text-align: left;
+    padding-top: 1vh;
+    justify-content: space-between;
 }
 
 .HomePageRecentMemoriesBottomOverlayText {
     margin-left: 1vw;
-    padding-top: 1vh;
     color: var(--color-text-primary);
     opacity: 100%;
 }
@@ -83,10 +85,9 @@
     width: 60px;
     height: 45px;
     border-radius: 10px;
-    margin-left: 25vw;
     position: relative;
-    top: -2vh;
     text-align: center;
+    margin-right: 1vw;
 }
 
 .HomePageMainPictureContainer {
