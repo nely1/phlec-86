@@ -3,6 +3,13 @@
     grid-template-columns: 2fr 1fr;
 }
 
+.HomePageBoxLeft {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
 .HomePageTitle {
     text-align: center;
     margin-top: 5vh;
@@ -42,12 +49,16 @@
     margin: 1vh 1vw;
 }
 
+.HomePageUpComingLower {
+    display: flex;
+    justify-content: space-between;
+}
 .HomePageUpComingGoTo {
     background-color: var(--color-secondary-green);
     width: 60px;
     height: 45px;
     border-radius: 10px;
-    margin-left: 25vw;
+    margin-right: 1vw;
 }
 
 .HomePageRecentMemoriesBottom {
@@ -66,7 +77,7 @@
     display: flex;
     position: relative;
     height: 20%;
-    top: -20%;
+    top: -22%;
     background-color: rgba(255, 255, 255, 0.50);
     border-radius: 0 0 10px 10px;
     text-align: left;
@@ -92,7 +103,6 @@
 
 .HomePageMainPictureContainer {
     position: absolute;
-    top: 25vh;
     border-radius: 10px;
 }
 

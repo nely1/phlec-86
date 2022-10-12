@@ -74,11 +74,11 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     cursor: pointer;
 }
 
-h2{
+.PlanH2{
     font-size: 35px;
 }
 
-h3{
+.PlanH3{
     text-align: left;
     font-size: 20px;
     padding-left: 8%;

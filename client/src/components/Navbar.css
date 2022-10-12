@@ -135,8 +135,7 @@
 
 
     position: absolute;
-    left: 85%;   
-    right: 10%;  
+    left: 83vw;     
     top: 2%;     
     bottom: 20%; 
 }
@@ -150,8 +149,7 @@
     height: 40px;
 
     position: absolute;
-    left:   90%;  
-    right:  5%;  
+    left:   90vw;  
     top:    3.25%; 
     bottom: 28%;
 
