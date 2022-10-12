@@ -15,35 +15,13 @@ function LocationMarker() {
     });
 }
 
-
-// Emergency redo location model code
-// import locations from '../data/locationModel.js' 
-// import { createRequire } from "module"; // Bring in the ability to create the 'require' method
-// const require = createRequire(import.meta.url); // construct the require method
-// const landmarks = require('../data/LandmarksData.json') // use the require method
-
-// export const loginUser = async (req, res) => {
-//     const email = req.body.email;
-//     const password = req.body.password;
-
-//     for (const location of landmarks){
-//         const newLandmark = await locations.create({
-//             theme: location.Theme, 
-//             subTheme: location['Sub Theme'], 
-//             name: location['Feature Name'],
-//             latitude: location.Latitude,
-//             longitude: location.Longitude,
-//             reviews: [],
-//         });
-//     }
-
-
 export default function PlanPage({ loginState }) {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
     const landmarks = useSelector((state) => state?.location);
+    console.log(landmarks)
     const plans = useSelector((state) => state?.plan);
-    console.log(plans)
+
     const history = useNavigate();
 
     const dispatch = useDispatch();
@@ -94,9 +72,9 @@ export default function PlanPage({ loginState }) {
             }}
         >
             <Tooltip>
-                Name: {data["Feature Name"]}
+                Name: {data["name"]}
                 <br />
-                Location Type: {data.Theme}
+                Location Type: {data.theme}
                 <br />
             </Tooltip>
         </Marker>
@@ -140,7 +118,7 @@ export default function PlanPage({ loginState }) {
                                 </h3>
 
                                 <h3>Set the date: &nbsp;&nbsp;
-                                <input type="datetime-local" id="datePlan" name="datePlan" required></input>
+                                <input type="date" id="datePlan" name="datePlan" required></input>
                                 </h3>
 
                                 <hr></hr>

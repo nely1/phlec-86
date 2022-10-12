@@ -19,6 +19,7 @@ function HomePage({ loginState }) {
 
     const albums = useSelector((state) => state.album);
     const plans = useSelector((state) => state.plan);
+    let msg = "";
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -52,6 +53,12 @@ function HomePage({ loginState }) {
 
     if (plans.length > 0) {
         let recentPlan = plans[0];
+        const timeRemaining = (new Date(recentPlan.scheduledDate).getDate()- new Date().getDate());
+        if (timeRemaining === 0){
+            msg = "Today!";
+        } else {
+            msg = timeRemaining + " days away!";
+        }
     }
 
 
@@ -77,7 +84,7 @@ function HomePage({ loginState }) {
                                     <div className="HomePageUpComingBottom">
                                         <h2>{plans[0].tripName}</h2>
                                         <div className="HomePageUpComingTimeBox">
-                                            <h1>7 Days Away!</h1>
+                                            <h1>{msg}</h1>
                                         </div>
                                         <div className="HomePageUpComingGoTo ">
                                             <span className="material-symbols-outlined">double_arrow</span>
@@ -88,7 +95,9 @@ function HomePage({ loginState }) {
                                         <h2>Adventure awaits...</h2>
                                         <h2>Plan a new trip!</h2>
                                         <div className="HomePageUpComingGoTo ">
-                                            <span className="material-symbols-outlined">double_arrow</span>
+                                            <a href={"/plan"}>
+                                                <span className="material-symbols-outlined">double_arrow</span>
+                                            </a>
                                         </div>
                                     </div>
                                 )}
