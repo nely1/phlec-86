@@ -1,20 +1,18 @@
 .landingBodyGridItemLeft {
     justify-items: center;
-    height: 68vh;
 }
 
 .landingBodyGrid {
     display: grid;
     width: 100%;
     margin: 10vh 0;
-    height: 70vh;
+    min-height: 70vh;
     grid-template-columns: 40% 60%;
     background-color: var(--color-secondary-grey);
 
 }
 
 .landingBodyText {
-
     text-align: justify;
     margin: 5%;
 }
@@ -38,6 +36,7 @@
     background-color: var(--color-primary-yellow);
     width: 275px;
     border-radius: 10px;
+    margin: 1vw;
 }
 
 .landingBodyLogIn {

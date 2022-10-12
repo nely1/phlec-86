@@ -52,6 +52,7 @@
     line-height: 24px;
     text-align: left;
     display: inline;
+    padding: 0.5vh;
 }
 
 .SettingsPageForm {
@@ -66,10 +67,9 @@
 .profileImage2 {
     height: 120px;
     width: 120px;
-    position: absolute;
-    left: -50px;   
-    right: 50%;  
-    top: 10px;     
+    position: absolute; 
+    top: 10px;
+    left: -2vw;     
     bottom: 20%; 
 }
 

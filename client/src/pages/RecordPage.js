@@ -89,7 +89,7 @@ export default function RecordPage({ loginState }) {
                         <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                         <div className="RecordPageAddPhoto">
                             <label htmlFor="addPhoto" className="text3">
-                                Add photo +
+                                Add photo
                             </label>
                             <input
                                 type="file"
