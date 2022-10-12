@@ -22,8 +22,9 @@
 }
 
 .Explore-Reviews {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 20px;
     position: relative;
 }
 
@@ -41,12 +42,13 @@
     -webkit-transform: rotate(-45deg);
 }
 
-.arrowRight {
-    position: relative;
-    left: 95%;
-    bottom: 30%;
-}
 
+.arrowRight {
+	display: inline-block;
+	position: relative;
+	left: 78.5em;
+	top: -25%;
+}
 
 ul.exploreCards li {
     background-color: var(--color-primary-lightgrey);

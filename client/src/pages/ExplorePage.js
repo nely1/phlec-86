@@ -11,13 +11,13 @@ import ReviewCard from "../components/ReviewCard";
 
 
 export default function ExplorePage() {
-    // const reviews = useSelector((state) => state.review);
 
     const [selected, setSelected] = useState(0);
-    console.log(selected);
 
     const locations = useSelector((state) => state?.location);
     const dispatch = useDispatch();
+
+    
 
 
     useEffect(() => {
@@ -26,16 +26,21 @@ export default function ExplorePage() {
 
     let locationArray = [];
 
-    // convert to array
+    // convert data to array
     locations.map((loc) => {locationArray.push(loc)})
+    let reviews = locations[selected];
+
     console.log(locationArray);
     for (let i = 0; i < locations.length; i++) {
-        locationArray[i] = <li key={i} onClick={() => {setSelected(i)}}><ExploreCard selected={selected == i ? true : false} data={locationArray[i]} /></li>;
+        locationArray[i] = 
+            <li key={i} onClick={() => { setSelected(i); reviews = locationArray[selected].reviews }}>
+                <ExploreCard selected={selected == i ? true : false} data={ locationArray[i] } />
+            </li>;
     }
 
-
-    /*
-    */
+    if (reviews !== undefined) {
+        reviews.map((review) => {<li><ReviewCard data={review} /></li>})
+    }
 
     function isSelected(i) {
         if (selected == i) {
@@ -56,7 +61,8 @@ export default function ExplorePage() {
                 </ul>
                 <div className="reviewCards">
                     <ul className="reviews">
-                        {/*reviews*/}
+                        { reviews === undefined ? <div></div> : reviews }
+                        
                     </ul>
                     {/* if (loggedIn && ! user has review) */}
                     <div className="reviewCard userReview">
