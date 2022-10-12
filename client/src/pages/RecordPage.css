@@ -20,7 +20,7 @@
     display: flex;
     background-color: var(--color-primary-green);
     color: var(--color-text-secondary);
-    width: 9vw;
+    width: 10vw;
     margin-right:1.5vw;
     margin-top: 2vh;
     height: 4vh;
@@ -29,6 +29,7 @@
     align-items: center;
     float: right;
     cursor: pointer;
+    margin-bottom: 2vh;
 }
 
 .RecordPageAlbumNameTitle {

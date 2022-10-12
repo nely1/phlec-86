@@ -49,7 +49,6 @@ function HomePage({ loginState }) {
         }
         images = createArrayOfFirstPhoto(albums);
     }
-    // console.log(albums);
 
     if (plans.length > 0) {
         let recentPlan = plans[0];
@@ -61,7 +60,6 @@ function HomePage({ loginState }) {
         }
     }
 
-
     if (!loginState) {
         return <></>;
     } else {
@@ -69,12 +67,21 @@ function HomePage({ loginState }) {
             <>
                 <div className="HomePageBase">
                     <div className="HomePageGrid">
-                        <div className="HomePageGridItem">
-                            <div className="HomePageTitle">
-                                <h1>Welcome Back, {userInfo.result.userName}</h1>
-                                <p className="text2">Our top Picks For The Day</p>
+                        <div className="HomePageBoxLeft">
+                            <div className="HomePageGridItem">
+                                <div className="HomePageTitle">
+                                    <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                    <p className="text2">Your Highlights</p>
+                                </div>
+                            </div>
+                            <div className="HomePageMainPictureContainer">
+                                <ImageCarousel
+                                    images={images}
+                                    setCurrentImageIndex={setCurrentImageIndex}
+                                ></ImageCarousel>
                             </div>
                         </div>
+
                         <div className="HomePageGridItem">
                             <div className="HomePageUpComing">
                                 <div className="HomePageUpComingTop">
@@ -103,14 +110,7 @@ function HomePage({ loginState }) {
                                 )}
                             </div>
                         </div>
-                        <div className="HomePageGridItem">
-                            <div className="HomePageMainPictureContainer">
-                                <ImageCarousel
-                                    images={images}
-                                    setCurrentImageIndex={setCurrentImageIndex}
-                                ></ImageCarousel>
-                            </div>
-                        </div>
+                        <div className="HomePageGridItem"></div>
                         <div className="HomePageGridItem">
                             <div className="HomePageRecentMemories">
                                 <div className="HomePageRecentMemoriesTop">

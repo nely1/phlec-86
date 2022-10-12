@@ -35,7 +35,7 @@ export default function PlanPage({ loginState }) {
         const userCurrent = JSON.parse(localStorage.getItem("profile"));
 
         const locationID = [];
-        for (const loc of plannedLocations){
+        for (const loc of plannedLocations) {
             locationID.push(loc.id);
         }
 
@@ -49,7 +49,6 @@ export default function PlanPage({ loginState }) {
         history("/record");
     }
 
-    
     if (!loginState) {
         return <></>;
     }
@@ -94,63 +93,60 @@ export default function PlanPage({ loginState }) {
                             {markers}
 
                             <LocationMarker />
-                            <Routing key = {counter} plannedLocations = {plannedLocations} setPlan = {setPlan} />  
-                        </MapContainer>     
+                            <Routing key={counter} plannedLocations={plannedLocations} setPlan={setPlan} />
+                        </MapContainer>
                     </div>
 
-                <div className="PlanPageGridItem">
-                    <div className="PlanPageUpComing">
-                        <div className="PlanPageUpComingTop">
-                            <h2>Plan the tour</h2>
-                        </div>
+                    <div className="PlanPageGridItem">
+                        <div className="PlanPageUpComing">
+                            <div className="PlanPageUpComingTop">
+                                <h2 className="PlanH2">Plan the tour</h2>
+                            </div>
 
-                        <div className="PlanPageUpComingBottom">
-                            <form onSubmit={handleSubmit} id="planForm">
-                                <h3>Trip name: &nbsp;&nbsp;
-                                <input
-                                    className="PlanPageNameInput"
-                                    type="data"
-                                    placeholder=" Name..."
-                                    id="planName"
-                                    name="planName"
-                                    required
-                                ></input>
-                                </h3>
+                            <div className="PlanPageUpComingBottom">
+                                <form onSubmit={handleSubmit} id="planForm">
+                                    <h3 className="PlanH3">
+                                        Trip name: &nbsp;&nbsp;
+                                        <input
+                                            className="PlanPageNameInput"
+                                            type="data"
+                                            placeholder=" Name..."
+                                            id="planName"
+                                            name="planName"
+                                            required
+                                        ></input>
+                                    </h3>
 
-                                <h3>Set the date: &nbsp;&nbsp;
-                                <input type="date" id="datePlan" name="datePlan" required></input>
-                                </h3>
+                                    <h3 className="PlanH3">
+                                        Set the date: &nbsp;&nbsp;
+                                        <input type="datetime-local" id="datePlan" name="datePlan" required></input>
+                                    </h3>
 
-                                <hr></hr>
+                                    <hr></hr>
 
-                                <h5>Your destinations:</h5>
-                                <div className="PlanPageUpComingTimeBox">
-                                    <div className = "locationNames">
-                                        <ol>
-                                            {
-                                                plannedLocations.map(
-                                                    location => (
-                                                        <li key={location.title}> 
-                                                            <h4>{location.title}</h4>
-                                                        </li>
-                                                    )
-                                                )
-                                            }
-                                        </ol>
+                                    <h5>Your destinations:</h5>
+                                    <div className="PlanPageUpComingTimeBox">
+                                        <div className="locationNames">
+                                            <ol>
+                                                {plannedLocations.map((location) => (
+                                                    <li key={location.title}>
+                                                        <h4>{location.title}</h4>
+                                                    </li>
+                                                ))}
+                                            </ol>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div className="PlanPageSave">
-                                    <button type="submit" className="planPageSave text3" value="Submit">
-                                        Submit
-                                    </button>
-                                </div>
-                            </form>
+                                    <div className="PlanPageSave">
+                                        <button type="submit" className="planPageSave text3" value="Submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </>
     );
 }
