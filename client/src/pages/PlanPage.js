@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "./PlanOverviewPage.css";
+import "./PlanPage.css";
 import { getPlans, postPlan } from "../actions/plan";
 
 function getMsg(num) {
@@ -63,7 +63,9 @@ export default function PlanPage({ loginState }) {
 
                     <a href={"/plan"}>
                         <div className="AddPlan" id ="AddPlan">
-                            + Plan a new trip
+                            <a href={"/planView"}>                      
+                                + Plan a new trip
+                            </a>
                         </div>
                     </a>
                 </div>
