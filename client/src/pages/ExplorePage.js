@@ -7,30 +7,37 @@ import "./ExplorePage.css";
 import SearchBar from "../components/SearchBar";
 import ExploreCard from "../components/ExploreCard";
 import ReviewCard from "../components/ReviewCard";
+import { useNavigate } from "react-router-dom";
 
 
 
-export default function ExplorePage() {
+export default function ExplorePage({loginState}) {
 
     const [selected, setSelected] = useState(0);
 
     const locations = useSelector((state) => state?.location);
     const dispatch = useDispatch();
+    const history = useNavigate();
 
     
-
-
     useEffect(() => {
-        dispatch(getLocations());
-    }, [dispatch]);
+        if (!loginState) {
+            history("/login");
+        }
+        else {
+            dispatch(getLocations());
+        }
+    }, [history, loginState, dispatch]);
+
+    
 
     let locationArray = [];
 
     // convert data to array
     locations.map((loc) => {locationArray.push(loc)})
-    let reviews = locations[selected];
+    let reviews = locationArray[selected];
 
-    console.log(locationArray);
+    console.log(reviews);
     for (let i = 0; i < locations.length; i++) {
         locationArray[i] = 
             <li key={i} onClick={() => { setSelected(i); reviews = locationArray[selected].reviews }}>
@@ -48,6 +55,10 @@ export default function ExplorePage() {
         } else {
             return false
         }
+    }
+
+    if (!loginState) {
+        return <></>;
     }
 
     return (

@@ -2,7 +2,7 @@ import location from "../data/locationModel.js";
 
 const fetchLocations = async (req, res) => {
     try {
-        const locations = await location.find({},{}).lean();
+        const locations = await location.find({},{});
         res.status(200).json(locations);
     }
     catch (error) {

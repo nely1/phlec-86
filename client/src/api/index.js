@@ -21,9 +21,9 @@ export const getAlbumOne = (id) => axios.get(`${url}/user/albumview/${id}`);
 
 export const getReview = () => API.get("/user/explore");
 
-export const getReviews = (id) => API.get("/user/${id}/reviews");
+export const getReviews = (id) => axios.get(`${url}/user/${id}/reviews`);
 
-export const postReview = (id, review) => API.post(`/user/explore/${id}`, review);
+export const postReview = (id, review) => axios.post(`${url}/user/explore/${id}`, review);
 
 export const updateAlbumOne = (id, updatedAlbum) => axios.patch(`${url}/user/albumview/${id}`, updatedAlbum);
 
