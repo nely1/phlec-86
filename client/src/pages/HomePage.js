@@ -20,7 +20,6 @@ function HomePage({ loginState }) {
     const albums = useSelector((state) => state.album);
     const plans = useSelector((state) => state.plan);
     let msg = "";
-    let msg = "";
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -50,7 +49,6 @@ function HomePage({ loginState }) {
         }
         images = createArrayOfFirstPhoto(albums);
     }
-    // console.log(albums);
 
     if (plans.length > 0) {
         let recentPlan = plans[0];
@@ -61,7 +59,6 @@ function HomePage({ loginState }) {
             msg = timeRemaining + " days away!";
         }
     }
-
 
     if (!loginState) {
         return <></>;
@@ -88,13 +85,13 @@ function HomePage({ loginState }) {
                         <div className="HomePageGridItem">
                             <div className="HomePageUpComing">
                                 <div className="HomePageUpComingTop">
-                                    <h2>Upcoming Trips</h2>
+                                    <h1>Upcoming Trips</h1>
                                 </div>
                                 {plans.length > 0 ? (
                                     <div className="HomePageUpComingBottom">
                                         <h2>{plans[0].tripName}</h2>
                                         <div className="HomePageUpComingTimeBox">
-                                            <h2>{msg}</h2>
+                                            <h1>{msg}</h1>
                                         </div>
                                         <div className="HomePageUpComingGoTo ">
                                             <span className="material-symbols-outlined">double_arrow</span>
@@ -111,14 +108,6 @@ function HomePage({ loginState }) {
                                         </div>
                                     </div>
                                 )}
-                            </div>
-                        </div>
-                        <div className="HomePageGridItem">
-                            <div className="HomePageMainPictureContainer">
-                                <ImageCarousel
-                                    images={images}
-                                    setCurrentImageIndex={setCurrentImageIndex}
-                                ></ImageCarousel>
                             </div>
                         </div>
                         <div className="HomePageGridItem"></div>
