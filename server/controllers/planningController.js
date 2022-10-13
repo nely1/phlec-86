@@ -12,9 +12,18 @@ const fetchPlans = async (req, res) => {
     }
 };
 
+const fetchPlanOne = async (req, res) => {
+    try {
+        const planId = req.params.id;
+        const plans = await plan.find({ _id: planId });
+        res.status(200).json(plans);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
 const upload = async (req, res) => {
     const newPlan = req.body;
-
     const planRoute = new plan(newPlan);
 
     try {
@@ -24,4 +33,4 @@ const upload = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 };
-export default { upload, fetchPlans };
+export default { upload, fetchPlans, fetchPlanOne };

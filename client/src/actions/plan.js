@@ -18,3 +18,12 @@ export const getPlans = (userInfo) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const getPlanOne = (planId) => async (dispatch) => {
+    try {
+        const { data } = await api.getPlanOne(planId);
+        dispatch({ type: "FETCH_ONE_PLAN", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};
