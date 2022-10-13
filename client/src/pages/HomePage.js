@@ -54,7 +54,7 @@ function HomePage({ loginState }) {
         let recentPlan = plans[0];
         const timeRemaining = (new Date(recentPlan.scheduledDate).getDate()- new Date().getDate());
         if (timeRemaining === 0){
-            msg = "Today!";
+            msg = "Today is the day!";
         } else {
             msg = timeRemaining + " days away!";
         }
@@ -85,7 +85,7 @@ function HomePage({ loginState }) {
                         <div className="HomePageGridItem">
                             <div className="HomePageUpComing">
                                 <div className="HomePageUpComingTop">
-                                    <h2>Upcoming Trips</h2>
+                                    <h1>Upcoming Trips</h1>
                                 </div>
                                 {plans.length > 0 ? (
                                     <div className="HomePageUpComingBottom">
