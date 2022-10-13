@@ -6,6 +6,8 @@ const planReducer = (plan = [], action) => {
             return [...plan, action.payload];
         case "FETCH_PLANS":
             return action.payload;
+        case "FETCH_ONE_PLAN":
+            return action.payload;
         // case "UPDATE_ONE":
         //     return plan.map((singlePlan) => (singlePlan._id === action.payload._id ? action.payload : singlePlan));
         default:

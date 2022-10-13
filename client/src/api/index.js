@@ -30,3 +30,5 @@ export const getLocations = () => axios.get(`${url}/user/location`);
 export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 
 export const getPlans = (id) => axios.get(`${url}/user/${id}/plan`);
+
+export const getPlanOne = (id) => axios.get(`${url}/user/plan/${id}`);

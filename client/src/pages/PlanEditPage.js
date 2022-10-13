@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
 import "./PlanViewPage.css";
 import { getLocations } from "../actions/location";
-import { getPlans, postPlan } from "../actions/plan";
+import { getPlanOne } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 
 function LocationMarker() {
@@ -15,16 +15,19 @@ function LocationMarker() {
     });
 }
 
-export default function PlanViewPage({ loginState }) {
+export default function PlanEditPage({ loginState }) {
+    const planId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
     const landmarks = useSelector((state) => state?.location);
-
+    const prevPlan = useSelector((state) => state?.plan);
+    console.log(prevPlan)
     const history = useNavigate();
 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getLocations());
+        dispatch(getPlanOne(planId));
     }, [dispatch]);
 
     async function handleSubmit(event) {
@@ -42,12 +45,45 @@ export default function PlanViewPage({ loginState }) {
             locations: locationID,
             scheduledDate: event.target.datePlan.value,
         };
-        dispatch(postPlan(toUpload));
+        console.log(toUpload);
+        // dispatch(updatePlan(toUpload));
         history("/plan");
     }
 
-    
-    if (!loginState) {
+    var dateFormatted = "";
+    if (prevPlan.length > 0){
+        for (const loc of prevPlan[0].locations){
+            for (const melbLoc of landmarks){
+                if (loc === melbLoc._id){
+                    var newLoc = true;
+                    var newEntry = {
+                        id: melbLoc._id,
+                        title: melbLoc.name,
+                        latlng: [melbLoc.latitude, melbLoc.longitude],
+                        theme: melbLoc.theme,
+                    };
+                    for (const plannedLoc of plannedLocations){
+                        if (JSON.stringify(plannedLoc) === JSON.stringify(newEntry)){
+                            newLoc = false;
+                            break;
+                        }
+                    }
+                    if (newLoc){
+                        setCounter(counter + 1);
+                        setPlan([...plannedLocations, newEntry]);
+                    }
+                    break;
+                }
+            }
+        }
+
+        dateFormatted = new Date(prevPlan[0].scheduledDate).getFullYear() + "-" + ("0" + 
+            (new Date(prevPlan[0].scheduledDate).getMonth() + 1)).slice(-2) + "-" + ("0" + 
+            new Date(prevPlan[0].scheduledDate).getDate()).slice(-2);
+    }
+    console.log(dateFormatted)
+
+    if (!loginState|| prevPlan.length === 0) {
         return <></>;
     }
 
@@ -76,7 +112,7 @@ export default function PlanViewPage({ loginState }) {
             </Tooltip>
         </Marker>
     ));
-
+        
     return (
         <>
             <div className="PlanPageBase">
@@ -110,7 +146,7 @@ export default function PlanViewPage({ loginState }) {
                                     <input
                                         className="PlanPageNameInput"
                                         type="data"
-                                        placeholder=" Name..."
+                                        defaultValue= {prevPlan[0].tripName}
                                         id="planName"
                                         name="planName"
                                         required
@@ -119,7 +155,12 @@ export default function PlanViewPage({ loginState }) {
 
                                 <div className="PlanH3">
                                     Set the date: &nbsp;&nbsp;
-                                    <input type="date" id="datePlan" name="datePlan" required></input>
+                                    <input 
+                                        type="date"
+                                        id="datePlan" 
+                                        name="datePlan"
+                                        defaultValue={dateFormatted}
+                                        required></input>
                                 </div>
 
                                 <hr></hr>
