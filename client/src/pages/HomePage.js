@@ -20,6 +20,7 @@ function HomePage({ loginState }) {
     const albums = useSelector((state) => state.album);
     const plans = useSelector((state) => state.plan);
     let msg = "";
+    let msg = "";
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -69,12 +70,21 @@ function HomePage({ loginState }) {
             <>
                 <div className="HomePageBase">
                     <div className="HomePageGrid">
-                        <div className="HomePageGridItem">
-                            <div className="HomePageTitle">
-                                <h1>Welcome Back, {userInfo.result.userName}</h1>
-                                <p className="text2">Our top Picks For The Day</p>
+                        <div className="HomePageBoxLeft">
+                            <div className="HomePageGridItem">
+                                <div className="HomePageTitle">
+                                    <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                    <p className="text2">Your Highlights</p>
+                                </div>
+                            </div>
+                            <div className="HomePageMainPictureContainer">
+                                <ImageCarousel
+                                    images={images}
+                                    setCurrentImageIndex={setCurrentImageIndex}
+                                ></ImageCarousel>
                             </div>
                         </div>
+
                         <div className="HomePageGridItem">
                             <div className="HomePageUpComing">
                                 <div className="HomePageUpComingTop">
@@ -111,6 +121,7 @@ function HomePage({ loginState }) {
                                 ></ImageCarousel>
                             </div>
                         </div>
+                        <div className="HomePageGridItem"></div>
                         <div className="HomePageGridItem">
                             <div className="HomePageRecentMemories">
                                 <div className="HomePageRecentMemoriesTop">
