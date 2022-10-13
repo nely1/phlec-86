@@ -32,11 +32,15 @@ export default function ExplorePage({loginState}) {
     
 
     let locationArray = [];
+    let reviews;
 
     // convert data to array
     locations.map((loc) => {locationArray.push(loc)})
-    let reviews = locationArray[selected];
+    if (locationArray.length > 0) {
+        reviews = locationArray[selected].reviews; 
+        }
 
+    
     console.log(reviews);
     for (let i = 0; i < locations.length; i++) {
         locationArray[i] = 
