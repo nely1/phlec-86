@@ -94,7 +94,9 @@ function HomePage({ loginState }) {
                                             <h2>{msg}</h2>
                                         </div>
                                         <div className="HomePageUpComingGoTo ">
-                                            <span className="material-symbols-outlined">double_arrow</span>
+                                            <a href={"/planView"}>
+                                                <span className="material-symbols-outlined">double_arrow</span>
+                                            </a>
                                         </div>
                                     </div>
                                 ) : (
@@ -102,7 +104,7 @@ function HomePage({ loginState }) {
                                         <h2>Adventure awaits...</h2>
                                         <h2>Plan a new trip!</h2>
                                         <div className="HomePageUpComingGoTo ">
-                                            <a href={"/plan"}>
+                                            <a href={"/planView"}>
                                                 <span className="material-symbols-outlined">double_arrow</span>
                                             </a>
                                         </div>

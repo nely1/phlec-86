@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
-import "./PlanPage.css";
+import "./PlanViewPage.css";
 import { getLocations } from "../actions/location";
 import { getPlans, postPlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
@@ -15,7 +15,7 @@ function LocationMarker() {
     });
 }
 
-export default function PlanPage({ loginState }) {
+export default function PlanViewPage({ loginState }) {
     const [plannedLocations, setPlan] = useState([]);
     const [counter, setCounter] = useState(0);
     const landmarks = useSelector((state) => state?.location);
@@ -46,7 +46,7 @@ export default function PlanPage({ loginState }) {
             scheduledDate: event.target.datePlan.value,
         };
         dispatch(postPlan(toUpload));
-        history("/record");
+        history("/plan");
     }
 
     
@@ -101,25 +101,29 @@ export default function PlanPage({ loginState }) {
                 <div className="PlanPageGridItem">
                     <div className="PlanPageUpComing">
                         <div className="PlanPageUpComingTop">
-                            <h2>Plan the tour</h2>
+                            <div className="PlanH2">
+                                Plan the tour
+                            </div>
                         </div>
 
                         <div className="PlanPageUpComingBottom">
                             <form onSubmit={handleSubmit} id="planForm">
-                                <h3>Trip name: &nbsp;&nbsp;
-                                <input
-                                    className="PlanPageNameInput"
-                                    type="data"
-                                    placeholder=" Name..."
-                                    id="planName"
-                                    name="planName"
-                                    required
-                                ></input>
-                                </h3>
+                                <div className="PlanH3">
+                                    Trip name: &nbsp;&nbsp;
+                                    <input
+                                        className="PlanPageNameInput"
+                                        type="data"
+                                        placeholder=" Name..."
+                                        id="planName"
+                                        name="planName"
+                                        required
+                                    ></input>
+                                </div>
 
-                                <h3>Set the date: &nbsp;&nbsp;
-                                <input type="date" id="datePlan" name="datePlan" required></input>
-                                </h3>
+                                <div className="PlanH3">
+                                    Set the date: &nbsp;&nbsp;
+                                    <input type="date" id="datePlan" name="datePlan" required></input>
+                                </div>
 
                                 <hr></hr>
 
