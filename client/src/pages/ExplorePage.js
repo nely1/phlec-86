@@ -38,7 +38,7 @@ export default function ExplorePage({loginState}) {
     locations.map((loc) => {locationArray.push(loc)})
     if (locationArray.length > 0) {
         reviews = locationArray[selected].reviews; 
-        }
+    }
 
     
     console.log(reviews);
@@ -53,6 +53,7 @@ export default function ExplorePage({loginState}) {
         reviews.map((review) => {<li><ReviewCard data={review} /></li>})
     }
 
+    /*
     function isSelected(i) {
         if (selected == i) {
             return true;
@@ -60,6 +61,7 @@ export default function ExplorePage({loginState}) {
             return false
         }
     }
+    */
 
     if (!loginState) {
         return <></>;

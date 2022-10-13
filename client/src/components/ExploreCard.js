@@ -17,6 +17,7 @@ export default function ExploreCard(props) {
                 <h3>{data.theme}</h3>
                 {/* Views*/}
                 <h3>{data.likes}</h3>
+            </div>
                 {
                     props.selected == true ?
                     <svg className="arrowRight" width="25" height="30" viewBox="0 0 25 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +27,6 @@ export default function ExploreCard(props) {
                     : <div></div>
                     
                 }
-            </div>
-</div>
-);
+        </div>
+    );
 }
