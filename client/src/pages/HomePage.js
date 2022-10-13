@@ -85,13 +85,13 @@ function HomePage({ loginState }) {
                         <div className="HomePageGridItem">
                             <div className="HomePageUpComing">
                                 <div className="HomePageUpComingTop">
-                                    <h1>Upcoming Trips</h1>
+                                    <h2>Upcoming Trips</h2>
                                 </div>
                                 {plans.length > 0 ? (
                                     <div className="HomePageUpComingBottom">
                                         <h2>{plans[0].tripName}</h2>
                                         <div className="HomePageUpComingTimeBox">
-                                            <h1>{msg}</h1>
+                                            <h2>{msg}</h2>
                                         </div>
                                         <div className="HomePageUpComingGoTo ">
                                             <span className="material-symbols-outlined">double_arrow</span>
