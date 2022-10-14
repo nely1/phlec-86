@@ -15,6 +15,8 @@ import AlbumPage from "./pages/AlbumPage";
 import ExplorePage from "./pages/ExplorePage";
 import AlbumViewPage from "./pages/AlbumViewPage";
 import PlanPage from "./pages/PlanPage";
+import PlanViewPage from "./pages/PlanViewPage";
+import PlanEditPage from "./pages/PlanEditPage";
 import SettingsPage from "./pages/SettingsPage";
 
 const ROOT = "/";
@@ -28,6 +30,8 @@ const ALBUM = "/album";
 const ALBUM_VIEW = "/albumView/:id";
 const EXPLORE = "/explore";
 const PLAN = "/plan";
+const PLAN_VIEW = "/planView";
+const PLAN_EDIT = "/planEdit/:id";
 const SETTINGS = "/settings";
 
 export var LoggedIn = true;
@@ -64,6 +68,8 @@ export default function App() {
                     <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
                     <Route path={EXPLORE} element={<ExplorePage />}></Route>
                     <Route path={PLAN} element={<PlanPage loginState={LoggedIn} />}></Route>
+                    <Route path={PLAN_VIEW} element={<PlanViewPage loginState={LoggedIn} />}></Route>
+                    <Route path={PLAN_EDIT} element={<PlanEditPage loginState={LoggedIn} />}></Route>
                     <Route path={SETTINGS} element={<SettingsPage />}></Route>
                 </Routes>
             </Router>

@@ -54,7 +54,7 @@ function HomePage({ loginState }) {
         let recentPlan = plans[0];
         const timeRemaining = (new Date(recentPlan.scheduledDate).getDate()- new Date().getDate());
         if (timeRemaining === 0){
-            msg = "Today!";
+            msg = "Today is the day!";
         } else {
             msg = timeRemaining + " days away!";
         }
@@ -91,10 +91,12 @@ function HomePage({ loginState }) {
                                     <div className="HomePageUpComingBottom">
                                         <h2>{plans[0].tripName}</h2>
                                         <div className="HomePageUpComingTimeBox">
-                                            <h1>{msg}</h1>
+                                            <h2>{msg}</h2>
                                         </div>
                                         <div className="HomePageUpComingGoTo ">
-                                            <span className="material-symbols-outlined">double_arrow</span>
+                                            <a href={"/planView"}>
+                                                <span className="material-symbols-outlined">double_arrow</span>
+                                            </a>
                                         </div>
                                     </div>
                                 ) : (
@@ -102,7 +104,7 @@ function HomePage({ loginState }) {
                                         <h2>Adventure awaits...</h2>
                                         <h2>Plan a new trip!</h2>
                                         <div className="HomePageUpComingGoTo ">
-                                            <a href={"/plan"}>
+                                            <a href={"/planView"}>
                                                 <span className="material-symbols-outlined">double_arrow</span>
                                             </a>
                                         </div>
