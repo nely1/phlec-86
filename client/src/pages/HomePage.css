@@ -49,6 +49,7 @@
     margin: 1vh 1vw;
 }
 
+
 .HomePageUpComingLower {
     display: flex;
     justify-content: space-between;
@@ -63,7 +64,7 @@
 
 .HomePageRecentMemoriesBottom {
     border-radius: 0 0 10px 10px;
-    height: 35vh;
+    height: 40vh;
     width: 100%;
 }
 

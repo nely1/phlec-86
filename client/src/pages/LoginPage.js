@@ -49,12 +49,12 @@ function LoginPage({ setLogin, loginState }) {
                         <input className="LoginPageSubmitButton heading2" type="submit" value="Sign In"></input>{" "}
                         {/* Change this for auth?  */}
                     </form>
-                </div>
-                <div className="LoginPageAlternatives">
-                    <div className="LoginPageAlternativesItem1 text1">
-                        <a href="/signUp">
-                            <p>Sign Up</p>
-                        </a>
+                    <div className="LoginPageAlternatives">
+                        <div className="LoginPageAlternativesItem1 text1">
+                            <a href="/signUp">
+                                <p>Sign Up</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
