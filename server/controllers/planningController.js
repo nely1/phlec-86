@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import plan from "../data/planModel.js";
 
 const fetchPlans = async (req, res) => {
@@ -33,4 +34,23 @@ const upload = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 };
-export default { upload, fetchPlans, fetchPlanOne };
+
+const updatePlan = async (req, res) => {
+    const changes = req.body;
+    const planId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(planId)) return res.status(404).send("No plan with that id");
+    const updatedPlan = await plan.findByIdAndUpdate(planId, changes, { new: true });
+    res.json(updatedPlan);
+};
+
+const deletePlan = async (req, res) => {
+    const planId = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(planId)) return res.status(404).send("No plan with that id");
+
+    await plan.findByIdAndRemove(planId);
+
+    res.json({ message: "Plan deleted successfully" });
+};
+
+export default { upload, fetchPlans, fetchPlanOne, updatePlan, deletePlan };
