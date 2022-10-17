@@ -103,14 +103,14 @@ export default function AlbumViewPage({ loginState }) {
         return <></>;
     }
 
-    console.log(album.date)
+    console.log(album.date);
     return (
         <form onSubmit={handleSubmit}>
             <div className="AlbumViewGrid">
                 <div>
                     <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                     {edit ? (
-                        <>
+                        <div className="AlbumViewButton3">
                             <button type="button" onClick={deletePhoto} className="text3 AlbumViewDeletePhotoButton">
                                 Delete Photo
                             </button>
@@ -127,7 +127,7 @@ export default function AlbumViewPage({ loginState }) {
                                     onChange={fileSelectionHandler}
                                 ></input>
                             </div>
-                        </>
+                        </div>
                     ) : (
                         <p></p>
                     )}
