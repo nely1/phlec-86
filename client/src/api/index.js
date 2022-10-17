@@ -32,3 +32,7 @@ export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 export const getPlans = (id) => axios.get(`${url}/user/${id}/plan`);
 
 export const getPlanOne = (id) => axios.get(`${url}/user/plan/${id}`);
+
+export const updatePlan = (id, plan) => axios.patch(`${url}/user/plan/${id}`, plan);
+
+export const deletePlan = (id) => axios.delete(`${url}/user/plan/${id}`);

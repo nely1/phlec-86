@@ -74,6 +74,37 @@ div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; 
     cursor: pointer;
 }
 
+.PlanPageButtons {
+    margin-top: 2%;
+    display: flex;
+}
+
+.PlanPageSaveChanges {
+    background-color: var(--color-primary-green);
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 47%;
+    margin-right: 2.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.PlanPageDelete {
+    background-color: var(--color-primary-green);
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 2.5%;
+    padding: 2%;
+}
+
 .PlanH2{
     font-family: 'Fira Sans';
     font-weight: bold;
