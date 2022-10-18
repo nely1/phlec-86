@@ -18,7 +18,7 @@ export default function ExploreCard(props) {
                     {/* Average Score */}
                     <h3>{data.theme}</h3>
                     {/* Views*/}
-                    <h3>{data.likes}</h3>
+//                    <h3>{data.likes}</h3>
                 </div>
                     {
                         props.selected == true ?

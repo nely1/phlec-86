@@ -15,6 +15,7 @@ export default function ExplorePage({loginState}) {
     const dispatch = useDispatch();
     const history = useNavigate();
     const [selected, setSelected] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
     const locations = useSelector((state) => state?.location);
 
     const id = JSON.parse(localStorage.getItem("profile"));
@@ -64,23 +65,41 @@ export default function ExplorePage({loginState}) {
     */
     let locationArray = [];
     for (let index = 0; index < locations.length; index++) {
-        locationArray.push(
-            <li key={ index } onClick={() => { setSelected(index); }}>
-                <ExploreCard selected={selected == index} data={ locations[index] } />
+        locationArray.push(locations[index]);
+    }
+
+
+    locationArray = locationArray.filter((val) => {
+        if (searchTerm === "") {
+            return val;
+        } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return val;
+        }
+    }).map((location, index) => {
+        return(
+            <li key={ index } onClick={ () => { setSelected(index); }}>
+                <ExploreCard selected={selected === index} data={ location } />
             </li>
         );
-    }
+    });
+
+
+    
 
     console.log(locationArray);
     if (!loginState) {
         return <></>;
     }
 
+    function updateSearch(event) {
+        setSearchTerm(event.target.value);
+        console.log("search term = " + searchTerm);
+    }
 
     return (
         <div>
             <div className="exploreFilters">
-                <SearchBar /> 
+                <SearchBar onChange={ updateSearch }/> 
             </div>
             <div className="Explore-Reviews">
                 <ul className="exploreCards" >
@@ -89,7 +108,7 @@ export default function ExplorePage({loginState}) {
                 <div className="reviewCards">
                     <ul className="reviews">
                         { /* reviews === undefined ? <div></div> : reviews */ }
-                        { reviews }
+                        { (reviews.length === 0) ? <h3>No reviews yet.</h3> : reviews }
                         
                     </ul>
                     {/* if (loggedIn && ! user has review) */}

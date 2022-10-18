@@ -13,10 +13,7 @@ const fetchLocations = async (req, res) => {
 
 const postReview = async (req, res) => {
     const changes = req.body;
-    const locationId = req.params.id;
-    console.log("Posting Review!"); 
-    console.log("changes = " + JSON.stringify(req.body));
-    console.log("locationId = " + locationId );
+    const locationId = changes._id;
 
     if (!mongoose.Types.ObjectId.isValid(locationId)) {
         return(res.status(404).send("Location with id " + locationId + " not found"));
