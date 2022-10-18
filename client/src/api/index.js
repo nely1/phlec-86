@@ -33,7 +33,7 @@ export const signUpUser = (signUpDetails) => axios.post(`${url}/login/signUp`, s
 
 export const getLocations = () => axios.get(`${url}/user/location`);
 
-export const postReview = (location) => {console.log(location); axios.post(`${url}/user/location/${location._id}`, location)};
+export const postReview = (id, location) => {console.log("location = " + location); axios.post(`${url}/user/location/${id}`, location)};
 
 export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 

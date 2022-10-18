@@ -102,7 +102,11 @@ ul.exploreCards li {
 }
 
 .reviewContent {
-    
+    padding-top: 1em;
+    height: 7em;
+    width: 12em;
+    overflow: auto;
+    background-color: var(--color-primary-lightgreen);
 }
 
 .reviews {

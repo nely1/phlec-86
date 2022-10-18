@@ -9,11 +9,11 @@ export const getLocations = () => async (dispatch) => {
     }
 };
 
-export const postReview = (location) => async (dispatch) => {
+export const postReview = (id, location) => async (dispatch) => {
     try {
         console.log("review.location._id = " + JSON.stringify(location._id));
-        const data = JSON.stringify(location); //await api.postReview(location._id);
-        console.log("data = " + data);
+        const data = await api.postReview(id, location); //await api.postReview(location._id);
+        console.log("data = " + JSON.stringify(data));
         dispatch({ type: "CREATE_REVIEW", payload: data });
     } catch (error) {
         console.log(error);
