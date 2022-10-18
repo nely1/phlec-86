@@ -4,11 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import "./PlanPage.css";
 import { getPlans } from "../actions/plan";
 
-function getMsg(num) {
-    if (num === 0){
-        return "Today"
+function getMsg(scheduledDate) {
+    const timeRemaining = (new Date(scheduledDate).getDate() - new Date().getDate());
+    const daysRemaining = Math.floor((new Date(scheduledDate).getTime()- new Date().getTime()) 
+    / (1000*60*60*24));
+    if (timeRemaining === 0) {
+        return "Today";
+    } else if (timeRemaining === 1){
+        return "1 day away";
+    } else {
+        return daysRemaining + " days away";
     }
-    return num + " days away"
 }
 
 export default function PlanPage({ loginState }) {
@@ -23,17 +29,17 @@ export default function PlanPage({ loginState }) {
     if (!loginState) {
         return <></>;
     }
-
+    console.log(plans);
     let planItem = plans.map((data) => (      
-        <div class="PlanDisplay">
-            <p class="TripName">{data.tripName}</p>
-            <p class="Countdown">{getMsg(new Date(data.scheduledDate).getDate()- new Date().getDate())} 
+        <div className="PlanDisplay" key ={data._id}>
+            <p className="TripName">{data.tripName}</p>
+            <div className="Countdown">{getMsg(data.scheduledDate)} 
             &nbsp;&nbsp;&nbsp;  
-                <div class = "EditBtn">
+                <div className = "EditBtn">
                     <a href={"/planEdit/" + data._id }>  
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="40" 
-                        height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" fill="none" 
-                        stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-edit" width="40" 
+                        height="40" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" fill="none" 
+                        strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
                             <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
@@ -41,20 +47,20 @@ export default function PlanPage({ loginState }) {
                         </svg> 
                     </a>
                 </div>
-            </p>
+            </div>
         </div>
 
     ));
 
     return (
         <>
-            <div class="Band">
-                <div class="Card" id="PlanCard">
-                    <div class = "PlanOverviewTitle">
+            <div className="Band">
+                <div className="Card" id="PlanCard">
+                    <div className = "PlanOverviewTitle">
                         Upcoming Trips:
                     </div>
 
-                    <div class = "PlanDesc">
+                    <div className = "PlanDesc">
                         <span id = "PlanName">Plan name</span>
                         <span id = "TimeLeft">Countdown</span>
 
@@ -62,11 +68,9 @@ export default function PlanPage({ loginState }) {
 
                     {planItem}
 
-                    <a href={"/plan"}>
-                        <div className="AddPlan" id ="AddPlan">
-                            <a href={"/planView"}>                      
-                                + Plan a new trip
-                            </a>
+                    <a href={"/planView"}>
+                        <div className="AddPlan" id ="AddPlan">                                             
+                            + Plan a new trip                          
                         </div>
                     </a>
                 </div>
