@@ -7,8 +7,7 @@ import "./ExplorePage.css";
 
 import SearchBar from "../components/SearchBar";
 import ExploreCard from "../components/ExploreCard";
-import ReviewCard from "../components/ReviewCard";
-import { useNavigate } from "react-router-dom";
+import ReviewCard from "../components/ReviewCard"; import { useNavigate } from "react-router-dom";
 
 export default function ExplorePage({loginState}) {
 
