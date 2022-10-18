@@ -23,7 +23,7 @@ export const getReview = () => API.get("/user/explore");
 
 export const getReviews = (id) => axios.get(`${url}/user/${id}/reviews`);
 
-export const postReview = (id, review) => axios.post(`${url}/user/explore/${id}`, review);
+// export const postReview = (id, review) => axios.post(`${url}/user/explore/${id}`, review);
 
 export const updateAlbumOne = (id, updatedAlbum) => axios.patch(`${url}/user/albumview/${id}`, updatedAlbum);
 
@@ -32,6 +32,8 @@ export const deleteAlbum = (id) => axios.delete(`${url}/user/albumview/${id}`);
 export const signUpUser = (signUpDetails) => axios.post(`${url}/login/signUp`, signUpDetails);
 
 export const getLocations = () => axios.get(`${url}/user/location`);
+
+export const postReview = (location) => {console.log(location); axios.post(`${url}/user/location/${location._id}`, location)};
 
 export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 

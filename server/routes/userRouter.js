@@ -24,7 +24,7 @@ userRouter.get("/albumview/:id", albumController.displayOne);
 
 userRouter.get("/explore", exploreController.getReview);
 
-userRouter.post("/explore/:id",  exploreController.postReview);
+userRouter.post("/location/:id/",  locationController.postReview);
 
 userRouter.patch("/albumview/:id", albumController.updateAlbum);
 
