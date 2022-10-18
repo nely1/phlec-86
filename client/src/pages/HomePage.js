@@ -55,6 +55,8 @@ function HomePage({ loginState }) {
         const timeRemaining = new Date(recentPlan.scheduledDate).getDate() - new Date().getDate();
         if (timeRemaining === 0) {
             msg = "Today is the day!";
+        } else if (timeRemaining === 1){
+            msg = "1 day away!"
         } else {
             msg = timeRemaining + " days away!";
         }
@@ -96,7 +98,7 @@ function HomePage({ loginState }) {
                                         <div className="HomePageUpComingLower">
                                             <p></p>
                                             <div className="HomePageUpComingGoTo ">
-                                                <a href={"/planView"}>
+                                                <a href={"/planEdit/" + plans[0]._id}>
                                                     <span className="material-symbols-outlined">double_arrow</span>
                                                 </a>
                                             </div>

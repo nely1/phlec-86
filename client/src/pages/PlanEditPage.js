@@ -28,7 +28,7 @@ export default function PlanEditPage({ loginState }) {
     useEffect(() => {
         dispatch(getLocations());
         dispatch(getPlanOne(planId));
-    }, [dispatch]);
+    }, [dispatch, planId]);
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -55,7 +55,7 @@ export default function PlanEditPage({ loginState }) {
     }
 
     var dateFormatted = "";
-    if (prevPlan.length > 0 && load != 1){
+    if (prevPlan.length > 0 && load !== 1){
         for (const loc of prevPlan[0].locations){
             for (const melbLoc of landmarks){
                 if (loc === melbLoc._id){
@@ -81,7 +81,7 @@ export default function PlanEditPage({ loginState }) {
             }
         }
 
-        if (prevPlan[0].locations.length == plannedLocations.length){
+        if (prevPlan[0].locations.length === plannedLocations.length){
             setLoad(1);
         }
 
@@ -89,7 +89,6 @@ export default function PlanEditPage({ loginState }) {
             (new Date(prevPlan[0].scheduledDate).getMonth() + 1)).slice(-2) + "-" + ("0" + 
             new Date(prevPlan[0].scheduledDate).getDate()).slice(-2);
     }
-    console.log(dateFormatted)
 
     if (!loginState|| prevPlan.length === 0) {
         return <></>;
