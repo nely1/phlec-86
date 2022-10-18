@@ -70,6 +70,7 @@ export default function AlbumViewPage({ loginState }) {
     const [images, setImages] = useState(album ? album.images : []);
     const [tags, setTags] = useState(album ? album.labels : []);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 
     function handleSubmit(event) {
         changeEditState();
@@ -226,16 +227,37 @@ export default function AlbumViewPage({ loginState }) {
                         <input type="date" id="dateAlbum" name="dateAlbum" defaultValue={album.date}></input>
                         <p></p>
                         <div className="LeftButtons">
-                            <button
-                                type="button"
-                                onClick={deleteAlbumFunc}
-                                className="text3 AlbumViewDeleteAlbumButton"
-                            >
-                                Delete Album
-                            </button>
-                            <button type="submit" className="text3 AlbumViewEditButton2">
-                                Save Edit
-                            </button>
+                            {deleteConfirmation ? (
+                                <>
+                                    <button
+                                        type="button"
+                                        className="text3 AlbumViewEditButton2"
+                                        onClick={() => setDeleteConfirmation(false)}
+                                    >
+                                        Cancel Delete
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={deleteAlbumFunc}
+                                        className="text3 AlbumViewDeleteAlbumButton"
+                                    >
+                                        Delete Confirm
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button
+                                        type="button"
+                                        onClick={() => setDeleteConfirmation(true)}
+                                        className="text3 AlbumViewDeleteAlbumButton"
+                                    >
+                                        Delete Album
+                                    </button>
+                                    <button type="submit" className="text3 AlbumViewEditButton2">
+                                        Save Edit
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </div>
                 )}
