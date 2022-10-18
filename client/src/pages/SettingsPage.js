@@ -58,12 +58,22 @@ function SettingsPage() {
                     ) : (
                         <>
                             <p className='PersonalInfo'> 
-                                Name : &emsp;&emsp;&emsp;
+                                First Name : &ensp;&nbsp;
                                 <label className = 'SettingsPageInputBox'>                
                                     <input 
                                         className='SettingsPageInputField' 
                                         type='text'
                                         onChange={(e) => setUserDetails({...userDetails, firstName: e.target.value})}
+                                    ></input>
+                                </label>   
+                            </p>   
+                            <p className='PersonalInfo'> 
+                                Last Name : &ensp;&nbsp;
+                                <label className = 'SettingsPageInputBox'>                
+                                    <input 
+                                        className='SettingsPageInputField' 
+                                        type='text'
+                                        onChange={(e) => setUserDetails({...userDetails, lastName: e.target.value})}
                                     ></input>
                                 </label>   
                             </p>   
