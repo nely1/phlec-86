@@ -4,13 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import "./PlanPage.css";
 import { getPlans } from "../actions/plan";
 
-function getMsg(num) {
-    if (num === 0){
+function getMsg(scheduledDate) {
+    const timeRemaining = (new Date(scheduledDate).getDate() - new Date().getDate());
+    const daysRemaining = Math.floor((new Date(scheduledDate).getTime()- new Date().getTime()) 
+    / (1000*60*60*24));
+    if (timeRemaining === 0) {
         return "Today";
-    } else if (num === 1){
+    } else if (timeRemaining === 1){
         return "1 day away";
+    } else {
+        return daysRemaining + " days away";
     }
-    return num + " days away";
 }
 
 export default function PlanPage({ loginState }) {
@@ -29,7 +33,7 @@ export default function PlanPage({ loginState }) {
     let planItem = plans.map((data) => (      
         <div className="PlanDisplay" key ={data._id}>
             <p className="TripName">{data.tripName}</p>
-            <div className="Countdown">{getMsg(new Date(data.scheduledDate).getDate()- new Date().getDate())} 
+            <div className="Countdown">{getMsg(data.scheduledDate)} 
             &nbsp;&nbsp;&nbsp;  
                 <div className = "EditBtn">
                     <a href={"/planEdit/" + data._id }>  

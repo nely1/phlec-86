@@ -52,13 +52,15 @@ function HomePage({ loginState }) {
 
     if (plans.length > 0) {
         let recentPlan = plans[0];
-        const timeRemaining = new Date(recentPlan.scheduledDate).getDate() - new Date().getDate();
+        const timeRemaining = (new Date(recentPlan.scheduledDate).getDate() - new Date().getDate());
+        const daysRemaining = Math.floor((new Date(recentPlan.scheduledDate).getTime()- new Date().getTime()) 
+        / (1000*60*60*24));
         if (timeRemaining === 0) {
             msg = "Today is the day!";
         } else if (timeRemaining === 1){
-            msg = "1 day away!"
+            msg = "1 day away!";
         } else {
-            msg = timeRemaining + " days away!";
+            msg = daysRemaining + " days away!";
         }
     }
 

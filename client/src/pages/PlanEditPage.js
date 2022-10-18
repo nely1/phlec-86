@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
 import "./PlanViewPage.css";
 import { getLocations } from "../actions/location";
-import { getPlanOne, updatePlan, deletePlan, updatePlan, deletePlan } from "../actions/plan";
+import { getPlanOne, updatePlan, deletePlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 
 function LocationMarker() {
@@ -45,6 +45,7 @@ export default function PlanEditPage({ loginState }) {
             locations: locationID,
             scheduledDate: event.target.datePlan.value,
         };
+        console.log(plannedLocations);
         dispatch(updatePlan(planId, toUpload));
         history("/plan");
     }
@@ -55,8 +56,9 @@ export default function PlanEditPage({ loginState }) {
     }
 
     var dateFormatted = "";
-    if (prevPlan.length > 0 && load != 1 && load !== 1){
-        for (const loc of prevPlan[0].locations){
+    if (prevPlan.length > 0 && load !== 1){
+        for (let index = prevPlan[0].locations.length - 1; index >= 0; index--){
+            const loc = prevPlan[0].locations[index];
             for (const melbLoc of landmarks){
                 if (loc === melbLoc._id){
                     var newLoc = true;
@@ -81,10 +83,6 @@ export default function PlanEditPage({ loginState }) {
             }
         }
 
-        if (prevPlan[0].locations.length == plannedLocations.length){
-            setLoad(1);
-        }
-
         if (prevPlan[0].locations.length === plannedLocations.length){
             setLoad(1);
         }
@@ -93,7 +91,6 @@ export default function PlanEditPage({ loginState }) {
             (new Date(prevPlan[0].scheduledDate).getMonth() + 1)).slice(-2) + "-" + ("0" + 
             new Date(prevPlan[0].scheduledDate).getDate()).slice(-2);
     }
-    console.log(dateFormatted)
 
     if (!loginState|| prevPlan.length === 0) {
         return <></>;
@@ -203,9 +200,7 @@ export default function PlanEditPage({ loginState }) {
                                         Save Changes
                                     </button>
                                 </span>
-                            </form>
-                            
-                            
+                            </form>       
                         </div>
                     </div>
                 </div>
