@@ -27,3 +27,21 @@ export const getPlanOne = (planId) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const updatePlan = (planId, plan) => async (dispatch) => {
+    try {
+        const { data } = await api.updatePlan(planId, plan);
+        dispatch({ type: "UPDATE_ONE_PLAN", payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deletePlan = (planId) => async (dispatch) => {
+    try {
+        await api.deletePlan(planId);
+        dispatch({ type: "DELETE_ONE_PLAN", payload: planId });
+    } catch (error) {
+        console.log(error);
+    }
+};

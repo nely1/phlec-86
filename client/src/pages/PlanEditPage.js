@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
 import "./PlanViewPage.css";
 import { getLocations } from "../actions/location";
-import { getPlanOne } from "../actions/plan";
+import { getPlanOne, updatePlan, deletePlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 
 function LocationMarker() {
@@ -18,10 +18,10 @@ function LocationMarker() {
 export default function PlanEditPage({ loginState }) {
     const planId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
     const [plannedLocations, setPlan] = useState([]);
+    const [load, setLoad] = useState(0);
     const [counter, setCounter] = useState(0);
     const landmarks = useSelector((state) => state?.location);
     const prevPlan = useSelector((state) => state?.plan);
-    console.log(prevPlan)
     const history = useNavigate();
 
     const dispatch = useDispatch();
@@ -45,13 +45,17 @@ export default function PlanEditPage({ loginState }) {
             locations: locationID,
             scheduledDate: event.target.datePlan.value,
         };
-        console.log(toUpload);
-        // dispatch(updatePlan(toUpload));
+        dispatch(updatePlan(planId, toUpload));
+        history("/plan");
+    }
+
+    function deletePlanFunc() {
+        dispatch(deletePlan(planId));
         history("/plan");
     }
 
     var dateFormatted = "";
-    if (prevPlan.length > 0){
+    if (prevPlan.length > 0 && load != 1){
         for (const loc of prevPlan[0].locations){
             for (const melbLoc of landmarks){
                 if (loc === melbLoc._id){
@@ -75,6 +79,10 @@ export default function PlanEditPage({ loginState }) {
                     break;
                 }
             }
+        }
+
+        if (prevPlan[0].locations.length == plannedLocations.length){
+            setLoad(1);
         }
 
         dateFormatted = new Date(prevPlan[0].scheduledDate).getFullYear() + "-" + ("0" + 
@@ -182,12 +190,17 @@ export default function PlanEditPage({ loginState }) {
                                     </div>
                                 </div>
 
-                                <div className="PlanPageSave">
-                                    <button type="submit" className="planPageSave text3" value="Submit">
-                                        Submit
+                                <span className="PlanPageButtons">
+                                    <button type="button" className="PlanPageDelete  text3" onClick={deletePlanFunc}>
+                                        Delete trip
                                     </button>
-                                </div>
+
+                                    <button type="submit" className="PlanPageSaveChanges text3" value="Submit">
+                                        Save Changes
+                                    </button>
+                                </span>
                             </form>
+                            
                         </div>
                     </div>
                 </div>
