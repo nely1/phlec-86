@@ -24,6 +24,19 @@ export default function AlbumViewPage({ loginState }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [sliderValue, setSliderValue] = useState(album?.score);
+
+    // Hover effect referenced from https://bobbyhadz.com/blog/react-show-element-on-hover
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    };
+
     useEffect(() => {
         dispatch(getAlbumOne(albumId));
     }, [dispatch, albumId]);
@@ -57,6 +70,7 @@ export default function AlbumViewPage({ loginState }) {
     const [images, setImages] = useState(album ? album.images : []);
     const [tags, setTags] = useState(album ? album.labels : []);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 
     function handleSubmit(event) {
         changeEditState();
@@ -83,21 +97,21 @@ export default function AlbumViewPage({ loginState }) {
     const history = useNavigate();
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, loginState]);
     if (!loginState || !album) {
         return <></>;
     }
 
-    // console.log(images[currentImageIndex]);
+    console.log(album.date);
     return (
         <form onSubmit={handleSubmit}>
             <div className="AlbumViewGrid">
                 <div>
                     <ImageCarousel images={images} setCurrentImageIndex={setCurrentImageIndex}></ImageCarousel>
                     {edit ? (
-                        <>
+                        <div className="AlbumViewButton3">
                             <button type="button" onClick={deletePhoto} className="text3 AlbumViewDeletePhotoButton">
                                 Delete Photo
                             </button>
@@ -114,7 +128,7 @@ export default function AlbumViewPage({ loginState }) {
                                     onChange={fileSelectionHandler}
                                 ></input>
                             </div>
-                        </>
+                        </div>
                     ) : (
                         <p></p>
                     )}
@@ -137,7 +151,11 @@ export default function AlbumViewPage({ loginState }) {
                             value={album.location}
                             readOnly="readonly"
                         ></input>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
                         <input
                             className="AlbumViewPageRatingBar"
                             type="range"
@@ -145,6 +163,8 @@ export default function AlbumViewPage({ loginState }) {
                             max="10"
                             value={album.score}
                             readOnly="readonly"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
                         ></input>
                         <h3 className="RecordPageTagTitle">Date</h3>
                         <input
@@ -186,7 +206,11 @@ export default function AlbumViewPage({ loginState }) {
                             id="viewLocation"
                             name="viewLocation"
                         ></input>
-                        <h3 className="RecordPageTagTitle">Rating</h3>
+                        {isHovering ? (
+                            <h3 className="RecordPageTagTitle">{"Rating: " + sliderValue}</h3>
+                        ) : (
+                            <h3 className="RecordPageTagTitle">Rating</h3>
+                        )}
                         <input
                             className="AlbumViewPageRatingBar"
                             type="range"
@@ -195,21 +219,45 @@ export default function AlbumViewPage({ loginState }) {
                             defaultValue={album.score}
                             id="viewRating"
                             name="viewRating"
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                            onChange={(e) => setSliderValue(e.target.value)}
                         ></input>
                         <h3 className="RecordPageTagTitle">Date</h3>
                         <input type="date" id="dateAlbum" name="dateAlbum" defaultValue={album.date}></input>
                         <p></p>
                         <div className="LeftButtons">
-                            <button
-                                type="button"
-                                onClick={deleteAlbumFunc}
-                                className="text3 AlbumViewDeleteAlbumButton"
-                            >
-                                Delete Album
-                            </button>
-                            <button type="submit" className="text3 AlbumViewEditButton2">
-                                Save Edit
-                            </button>
+                            {deleteConfirmation ? (
+                                <>
+                                    <button
+                                        type="button"
+                                        className="text3 AlbumViewEditButton2"
+                                        onClick={() => setDeleteConfirmation(false)}
+                                    >
+                                        Cancel Delete
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={deleteAlbumFunc}
+                                        className="text3 AlbumViewDeleteAlbumButton"
+                                    >
+                                        Delete Confirm
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <button
+                                        type="button"
+                                        onClick={() => setDeleteConfirmation(true)}
+                                        className="text3 AlbumViewDeleteAlbumButton"
+                                    >
+                                        Delete Album
+                                    </button>
+                                    <button type="submit" className="text3 AlbumViewEditButton2">
+                                        Save Edit
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </div>
                 )}

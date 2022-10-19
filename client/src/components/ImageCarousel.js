@@ -21,7 +21,16 @@ export default function ImageCarousel({ images, setCurrentImageIndex }) {
                     </div>
                 </div>
             ) : null}
-            {images.length === 0 ? <div className="PlaceHolder"></div> : null}
+            {images.length === 0 ? (
+                <div className="PlaceHolder">
+                    <div className="NoImageText">
+                        {" "}
+                        <h1>
+                            Add new images<br></br> Current Album is Empty
+                        </h1>
+                    </div>
+                </div>
+            ) : null}
         </>
     );
 }

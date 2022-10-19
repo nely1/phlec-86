@@ -25,3 +25,10 @@
     margin-top: 5vh;
     border-radius: 10px;
 }
+
+.NoImageText {
+    display: flex;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+}

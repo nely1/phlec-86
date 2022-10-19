@@ -1,31 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import ImageCarousel from "../components/ImageCarousel";
+import { getAlbums } from "../actions/album";
+import { getPlans } from "../actions/plan";
 import "./HomePage.css";
 
 function HomePage({ loginState }) {
     const userInfo = JSON.parse(localStorage.getItem("profile"));
-    // console.log(userInfo);
     const history = useNavigate();
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    let setCurrentImageIndex = () => null;
 
     useEffect(() => {
         if (!loginState) {
-            history("/Login");
+            history("/login");
         }
     }, [history, userInfo, loginState]);
 
-    /* using hooks. Might help with backend (?) */
-    // TO CHANGE: recentImage and images in the future with content from backend.
-    const recentImage =
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
+    const albums = useSelector((state) => state.album);
+    const plans = useSelector((state) => state.plan);
+    let msg = "";
+    const dispatch = useDispatch();
 
-    const images = [
-        "https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80",
-        "https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBzY2VuZXJ5fGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+    useEffect(() => {
+        dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
+        dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
+    }, [dispatch]);
+
+    let createArrayOfFirstPhoto = (albums) => {
+        let newArray = [];
+        for (const element of albums) {
+            if (element?.images[0]) {
+                newArray.push(element.images[0]);
+            }
+        }
+        return newArray;
+    };
+    let recentImage =
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb";
+
+    let images = [
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&w=1080&fit=max&q=80&fm=jpg&crop=entropy&cs=tinysrgb",
     ];
 
-    console.log(currentImageIndex); // To prevent error in console. DON'T REMOVE
+    if (albums.length > 0) {
+        if (albums[albums.length - 1]?.images[0]) {
+            recentImage = albums[albums.length - 1].images[0];
+        }
+        images = createArrayOfFirstPhoto(albums);
+    }
+
+    if (plans.length > 0) {
+        let recentPlan = plans[0];
+        const timeRemaining = (new Date(recentPlan.scheduledDate).getDate() - new Date().getDate());
+        const daysRemaining = Math.floor((new Date(recentPlan.scheduledDate).getTime()- new Date().getTime()) 
+        / (1000*60*60*24));
+        if (timeRemaining === 0) {
+            msg = "Today is the day!";
+        } else if (timeRemaining === 1){
+            msg = "1 day away!";
+        } else {
+            msg = daysRemaining + " days away!";
+        }
+    }
+
     if (!loginState) {
         return <></>;
     } else {
@@ -33,29 +71,13 @@ function HomePage({ loginState }) {
             <>
                 <div className="HomePageBase">
                     <div className="HomePageGrid">
-                        <div className="HomePageGridItem">
-                            <div className="HomePageTitle">
-                                <h1>Welcome Back, {userInfo.result.userName}</h1>
-                                <p className="text2">Our top Picks For The Day</p>
-                            </div>
-                        </div>
-                        <div className="HomePageGridItem">
-                            <div className="HomePageUpComing">
-                                <div className="HomePageUpComingTop">
-                                    <h2>Upcoming Trips</h2>
-                                </div>
-                                <div className="HomePageUpComingBottom">
-                                    <h2>Joe's exotic tour</h2>
-                                    <div className="HomePageUpComingTimeBox">
-                                        <h1>7 Days Away!</h1>
-                                    </div>
-                                    <div className="HomePageUpComingGoTo ">
-                                        <span className="material-symbols-outlined">double_arrow</span>
-                                    </div>
+                        <div className="HomePageBoxLeft">
+                            <div className="HomePageGridItem">
+                                <div className="HomePageTitle">
+                                    <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                    <p className="text2">Your Highlights</p>
                                 </div>
                             </div>
-                        </div>
-                        <div className="HomePageGridItem">
                             <div className="HomePageMainPictureContainer">
                                 <ImageCarousel
                                     images={images}
@@ -63,6 +85,44 @@ function HomePage({ loginState }) {
                                 ></ImageCarousel>
                             </div>
                         </div>
+
+                        <div className="HomePageGridItem">
+                            <div className="HomePageUpComing">
+                                <div className="HomePageUpComingTop">
+                                    <h2>Upcoming Trips</h2>
+                                </div>
+                                {plans.length > 0 ? (
+                                    <div className="HomePageUpComingBottom">
+                                        <h2>{plans[0].tripName}</h2>
+                                        <div className="HomePageUpComingTimeBox">
+                                            <h2>{msg}</h2>
+                                        </div>
+                                        <div className="HomePageUpComingLower">
+                                            <p></p>
+                                            <div className="HomePageUpComingGoTo ">
+                                                <a href={"/planEdit/" + plans[0]._id}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="HomePageUpComingBottom">
+                                        <h2>Adventure awaits...</h2>
+                                        <h2>Plan a new trip!</h2>
+                                        <div className="HomePageUpComingLower">
+                                            <p></p>
+                                            <div className="HomePageUpComingGoTo ">
+                                                <a href={"/planView"}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="HomePageGridItem"></div>
                         <div className="HomePageGridItem">
                             <div className="HomePageRecentMemories">
                                 <div className="HomePageRecentMemoriesTop">
@@ -75,11 +135,26 @@ function HomePage({ loginState }) {
                                         alt="HomePageMemoriesImage"
                                     ></img>
                                     <div className="HomePageRecentMemoriesBottomOverlay">
-                                        <p className="text3 HomePageRecentMemoriesBottomOverlayText">Lake Mir</p>
+                                        {albums.length > 0 ? (
+                                            <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                                {albums[albums.length - 1]?.name}
+                                            </p>
+                                        ) : (
+                                            <p className="text3 HomePageRecentMemoriesBottomOverlayText">
+                                                No albums exist. Click through to add one!
+                                            </p>
+                                        )}
+
                                         <div className="HomePageRecentMemoriesgGoTo">
-                                            <a href="albumview">
-                                                <span className="material-symbols-outlined">double_arrow</span>
-                                            </a>
+                                            {albums.length > 0 ? (
+                                                <a href={"/albumView/" + albums[albums.length - 1]?._id}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            ) : (
+                                                <a href={"/record"}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

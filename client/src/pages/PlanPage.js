@@ -1,95 +1,81 @@
-import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, useMapEvent, Tooltip } from "react-leaflet";
-import "./PlanPage.css";
-import Routing from "../components/RoutingMachine";
-import MelbourneLandmarks from "./LandmarksData.json";
 
-function LocationMarker() {
-    const map = useMapEvent("click", (e) => {
-        map.setView(e.latlng, map.getZoom(), {
-            animate: true,
-        });
-    });
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./PlanPage.css";
+import { getPlans } from "../actions/plan";
+
+function getMsg(scheduledDate) {
+    const timeRemaining = (new Date(scheduledDate).getDate() - new Date().getDate());
+    const daysRemaining = Math.floor((new Date(scheduledDate).getTime()- new Date().getTime()) 
+    / (1000*60*60*24));
+    if (timeRemaining === 0) {
+        return "Today";
+    } else if (timeRemaining === 1){
+        return "1 day away";
+    } else {
+        return daysRemaining + " days away";
+    }
 }
 
-// function SetPlan(props, planArr) {
-//     planArr.push(
-//         {
-//             title: props['Feature Name'],
-//             latlng: [props.Latitude, props.Longitude],
-//             theme: props.Theme,
-//         }
-//     )
-//     console.log(planArr);
-// }
+export default function PlanPage({ loginState }) {
 
-// This funciton does not work, possible causes is that the latitude and longitude in the JSON file are swapped
-// function Landmarks(){
-//     const map = useMap();
-//     const landmarks = new L.GeoJSON(MelbourneLandmarks);
-//     landmarks.addTo(map);
-// }
+    const plans = useSelector((state) => state?.plan);
 
-export default function PlanPage() {
-    const [plannedLocations, setPlan] = useState([]);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
+    }, [dispatch]);
 
-    let markers = MelbourneLandmarks.map((data) => (
-        <Marker
-            key={data.Latitude}
-            position={[data.Latitude, data.Longitude]}
-            eventHandlers={{
-                click: () => {
-                    var newEntry = {
-                        title: data["Feature Name"],
-                        latlng: [data.Latitude, data.Longitude],
-                        theme: data.Theme,
-                    };
-                    setPlan([...plannedLocations, newEntry]);
-                },
-            }}
-        >
-            <Tooltip>
-                Name: {data["Feature Name"]}
-                <br />
-                Location Type: {data.Theme}
-                <br />
-            </Tooltip>
-        </Marker>
+    if (!loginState) {
+        return <></>;
+    }
+    console.log(plans);
+    let planItem = plans.map((data) => (      
+        <div className="PlanDisplay" key ={data._id}>
+            <p className="TripName">{data.tripName}</p>
+            <div className="Countdown">{getMsg(data.scheduledDate)} 
+            &nbsp;&nbsp;&nbsp;  
+                <div className = "EditBtn">
+                    <a href={"/planEdit/" + data._id }>  
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-edit" width="40" 
+                        height="40" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" fill="none" 
+                        strokeLinecap="round" strokeLinejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                            <line x1="16" y1="5" x2="19" y2="8" />
+                        </svg> 
+                    </a>
+                </div>
+            </div>
+        </div>
+
     ));
 
     return (
         <>
-            <div className="PlanPageBase">
-                <div className="PlanPageGrid">
-                    <div className="PlanPageGridItem">
-                        <MapContainer center={[-37.80911373, 144.9742219]} zoom={25} scrollWheelZoom={true}>
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            {markers}
-
-                            <LocationMarker />
-                            <Routing key={plannedLocations.length} plannedLocations={plannedLocations} />
-                            {/* <Landmarks /> */}
-                        </MapContainer>
+            <div className="Band">
+                <div className="Card" id="PlanCard">
+                    <div className = "PlanOverviewTitle">
+                        Upcoming Trips:
                     </div>
 
-                    <div className="PlanPageGridItem">
-                        <div className="PlanPageUpComing">
-                            <div className="PlanPageUpComingTop">
-                                <h1>Plan the tour</h1>
-                            </div>
-                            <div className="PlanPageUpComingBottom">
-                                <h2>Name: Boy's Night Out</h2>
-                                <div className="PlanPageUpComingTimeBox">
-                                    <h2>1. The Good Place</h2>
-                                </div>
-                            </div>
+                    <div className = "PlanDesc">
+                        <span id = "PlanName">Plan name</span>
+                        <span id = "TimeLeft">Countdown</span>
+
+                    </div>
+
+                    {planItem}
+
+                    <a href={"/planView"}>
+                        <div className="AddPlan" id ="AddPlan">                                             
+                            + Plan a new trip                          
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </>
     );
 }
+
