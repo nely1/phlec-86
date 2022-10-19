@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SettingsPage.css';
 import {useDispatch} from  'react-redux';
@@ -25,7 +25,7 @@ function SettingsPage() {
         setChange((prev) => !prev);
     }
 
-    function handleChange(event) {
+    function HandleChange(event) {
         changingState();
         event.preventDefault();
         dispatch(changeProfile(userDetails, userInfo, history));
@@ -56,7 +56,7 @@ function SettingsPage() {
                             <button className='ChangeButton text3' onClick={changingState}> Change </button>
                         </>
                     ) : (
-                        <>
+                        <form className = 'SettingsPageForm' onSubmit={HandleChange}>
                             <p className='PersonalInfo'> 
                                 First Name : &ensp;&nbsp;
                                 <label className = 'SettingsPageInputBox'>                
@@ -93,6 +93,8 @@ function SettingsPage() {
                                     <input 
                                         className='SettingsPageInputField' 
                                         type='text'
+                                        pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                                        title="Invalid email address"
                                         onChange={(e) => setUserDetails({...userDetails, email: e.target.value})}
                                     ></input>
                                 </label>    
@@ -113,12 +115,16 @@ function SettingsPage() {
                                     <input 
                                         className='SettingsPageInputField' 
                                         type='password'
+                                        required = "required"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                                        title="Must contain at least one number and one uppercase and lowercase letter, and be 
+                                        at least 8 characters"
                                         onChange={(e) => setUserDetails({...userDetails, password: e.target.value})}
                                     ></input>
                                 </label>
                             </p>           
-                            <button className='ChangeButton text3' onClick={handleChange}> Save </button>
-                        </>
+                            <button className='ChangeButton text3' type = 'submit'> Save </button>
+                        </form>
                     ) }  
                 </div>
             </div>
