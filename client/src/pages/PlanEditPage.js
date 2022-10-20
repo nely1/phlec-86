@@ -45,7 +45,7 @@ export default function PlanEditPage({ loginState }) {
             locations: locationID,
             scheduledDate: event.target.datePlan.value,
         };
-        console.log(plannedLocations);
+
         dispatch(updatePlan(planId, toUpload));
         history("/plan");
     }
@@ -56,9 +56,11 @@ export default function PlanEditPage({ loginState }) {
     }
 
     var dateFormatted = "";
+
     if (prevPlan.length > 0 && load !== 1){
         for (let index = prevPlan[0].locations.length - 1; index >= 0; index--){
             const loc = prevPlan[0].locations[index];
+
             for (const melbLoc of landmarks){
                 if (loc === melbLoc._id){
                     var newLoc = true;
