@@ -9,7 +9,7 @@ const planReducer = (plan = [], action) => {
         case "FETCH_ONE_PLAN":
             return action.payload;
         case "UPDATE_ONE_PLAN":
-            return [plan, action.payload];
+            return plan;
         default:
             return plan;
     }
