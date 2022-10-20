@@ -75,7 +75,7 @@ function HomePage({ loginState }) {
                         <div className="HomePageBoxLeft">
                             <div className="HomePageGridItem">
                                 <div className="HomePageTitle">
-                                    <h1>Welcome, {userInfo.result.userName}</h1>
+                                    <h1>Welcome Back, {userInfo.result.userName}</h1>
                                     <p className="text2">Your Highlights</p>
                                 </div>
                             </div>
