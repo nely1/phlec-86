@@ -41,16 +41,24 @@ const updatePlan = async (req, res) => {
 
     if (!mongoose.Types.ObjectId.isValid(planId)) return res.status(404).send("No plan with that id");
     const updatedPlan = await plan.findByIdAndUpdate(planId, changes, { new: true });
-    res.json(updatedPlan);
+    const userId = updatedPlan.userid;
+    const plans = await plan.find({
+        userid: userId, scheduledDate: {$gte : new Date().setHours(0,0,0,0)}
+    }).sort({scheduledDate: 1});
+
+    res.json(plans);
 };
 
 const deletePlan = async (req, res) => {
     const planId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(planId)) return res.status(404).send("No plan with that id");
-
+    const userId = await plan.findById(planId);
     await plan.findByIdAndRemove(planId);
 
-    res.json({ message: "Plan deleted successfully" });
+    const plans = await plan.find({
+        userid: userId.userid, scheduledDate: {$gte : new Date().setHours(0,0,0,0)}
+    }).sort({scheduledDate: 1});
+    res.json(plans);
 };
 
 export default { upload, fetchPlans, fetchPlanOne, updatePlan, deletePlan };
