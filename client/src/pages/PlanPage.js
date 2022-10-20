@@ -25,7 +25,7 @@ export default function PlanPage({ loginState }) {
     useEffect(() => {
         dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
     }, [dispatch]);
-
+    
     if (!loginState) {
         return <></>;
     }
