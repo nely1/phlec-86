@@ -49,7 +49,6 @@ export default function PlanPage({ loginState }) {
                 </div>
             </div>
         </div>
-
     ));
 
     return (
@@ -63,7 +62,6 @@ export default function PlanPage({ loginState }) {
                     <div className = "PlanDesc">
                         <span id = "PlanName">Plan name</span>
                         <span id = "TimeLeft">Countdown</span>
-
                     </div>
 
                     {planItem}
