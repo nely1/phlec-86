@@ -6,7 +6,7 @@ import { getPlans } from "../actions/plan";
 
 function getMsg(scheduledDate) {
     const timeRemaining = (new Date(scheduledDate).getDate() - new Date().getDate());
-    const daysRemaining = Math.floor((new Date(scheduledDate).getTime()- new Date().getTime()) 
+    const daysRemaining = Math.ceil((new Date(scheduledDate).getTime()- new Date().getTime()) 
     / (1000*60*60*24));
     if (timeRemaining === 0) {
         return "Today";
@@ -25,11 +25,11 @@ export default function PlanPage({ loginState }) {
     useEffect(() => {
         dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
     }, [dispatch]);
-
+    
     if (!loginState) {
         return <></>;
     }
-    console.log(plans);
+    
     let planItem = plans.map((data) => (      
         <div className="PlanDisplay" key ={data._id}>
             <p className="TripName">{data.tripName}</p>
@@ -49,7 +49,6 @@ export default function PlanPage({ loginState }) {
                 </div>
             </div>
         </div>
-
     ));
 
     return (
@@ -63,7 +62,6 @@ export default function PlanPage({ loginState }) {
                     <div className = "PlanDesc">
                         <span id = "PlanName">Plan name</span>
                         <span id = "TimeLeft">Countdown</span>
-
                     </div>
 
                     {planItem}

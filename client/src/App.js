@@ -66,7 +66,7 @@ export default function App() {
                     <Route path={RECORD} element={<RecordPage loginState={LoggedIn} />}></Route>
                     <Route path={ALBUM} element={<AlbumPage loginState={LoggedIn} />}></Route>
                     <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
-                    <Route path={EXPLORE} element={<ExplorePage />}></Route>
+                    <Route path={EXPLORE} element={<ExplorePage loginState={LoggedIn}/>}></Route>
                     <Route path={PLAN} element={<PlanPage loginState={LoggedIn} />}></Route>
                     <Route path={PLAN_VIEW} element={<PlanViewPage loginState={LoggedIn} />}></Route>
                     <Route path={PLAN_EDIT} element={<PlanEditPage loginState={LoggedIn} />}></Route>

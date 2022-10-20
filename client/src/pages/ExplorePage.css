@@ -1,3 +1,9 @@
+
+:root {
+    --explore-card-width: 1325px;
+}
+
+
 .exploreFilters {
     display: flex;
     flex-direction: row;
@@ -9,18 +15,42 @@
 }
 
 .exploreCards {
-    padding-top: 3vw;
+    margin-top: 3vw;
+    height: 90vh;
+    overflow: auto;
+
 }
 
 .Explore-Reviews {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 20px;
     position: relative;
 }
 
 .card {
     display: flex;
     flex-direction: row;
+}
+
+.cardInfo {
+    width: 100%;
+}
+
+h3 {
+    padding-left: !important 20px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+
+.arrowRight {
+	position: relative;
+    top: 85px;
+    left: -25px;
 }
 
 ul.exploreCards li {
@@ -30,8 +60,7 @@ ul.exploreCards li {
     padding: 0;
     margin: 0;
 
-    height: 30%;
-    width: 1325px;
+    height: 200px;
 
     margin-left: 2.5%;
     margin-bottom: 2%;
@@ -45,17 +74,15 @@ ul.exploreCards li {
 }
 
 .exploreCards img {
-    height: 21%;
-    width: 15%;
+    height: 130px;
+    width: 210px;
 
     position: relative;
-    top: 25%;
+    top: 35px;
     left: 2%;
 }
 
-
 .reviewCards {
-    margin-left: 3vw;
     margin-top: 3vw;
     margin-bottom: 3vh;
     background-color: var(--color-primary-lightgrey);
@@ -75,7 +102,11 @@ ul.exploreCards li {
 }
 
 .reviewContent {
-    
+    padding-top: 1em;
+    height: 7em;
+    width: 12em;
+    overflow: auto;
+    background-color: var(--color-primary-lightgreen);
 }
 
 .reviews {
