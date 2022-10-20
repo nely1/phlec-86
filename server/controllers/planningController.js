@@ -52,12 +52,13 @@ const updatePlan = async (req, res) => {
 const deletePlan = async (req, res) => {
     const planId = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(planId)) return res.status(404).send("No plan with that id");
-    const userId = await plan.findById(planId);
+    const userId = (await plan.findById(planId)).userid;
     await plan.findByIdAndRemove(planId);
 
     const plans = await plan.find({
-        userid: userId.userid, scheduledDate: {$gte : new Date().setHours(0,0,0,0)}
+        userid: userId, scheduledDate: {$gte : new Date().setHours(0,0,0,0)}
     }).sort({scheduledDate: 1});
+
     res.json(plans);
 };
 

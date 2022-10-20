@@ -38,8 +38,8 @@ export const updatePlan = (planId, plan) => async (dispatch) => {
 
 export const deletePlan = (planId) => async (dispatch) => {
     try {
-        await api.deletePlan(planId);
-        dispatch({ type: "DELETE_ONE_PLAN", payload: planId });
+        const { data } = await api.deletePlan(planId);
+        dispatch({ type: "DELETE_ONE_PLAN", payload: data });
     } catch (error) {
         console.log(error);
     }
