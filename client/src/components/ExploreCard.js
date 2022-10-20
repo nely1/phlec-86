@@ -7,18 +7,75 @@ export default function ExploreCard(props) {
         
         let data = props.data;
 
+        let image;
+
+        switch(data.theme) {
+            case "Transport":
+                image = "/images/Transport.jpg";
+                break;
+            case "Mixed Use":
+                image = "/images/Mixed_Use.jpg";
+                break;
+            case "Place Of Assembly":
+                image = "/images/Mixed_Use.jpg";
+                break;
+            case "Leisure/Recreation":
+                image = "/images/Leisure.jpg";
+                break;
+            case "Place of Worship":
+                image = "/images/Worship.jpg";
+                break;
+            case "Health Services":
+                image = "/images/Health.png";
+                break;
+            case "Community Use":
+                image = "/images/Community.jpg";
+                break;
+            case "Retail":
+                image = "/images/Retail.jpg";
+                break;
+            case "Education Centre":
+                image = "/images/Education.jpg";
+                break;
+            case "Office":
+                image = "/images/Office.png";
+                break;
+            case "Vacant Land":
+                image = "/images/Vacant.jpg";
+                break;
+            case "Purpose Built":
+                image = "/images/Purpose.jpg";
+                break;
+            case "Specialist Residential Accomodation":
+                image = "/images/Specialist.webp";
+                break;
+            case "Residential Accomodation":
+                image = "/images/Residental.jpg";
+                break;
+            case "Industrial":
+                image = "/images/Industrial.jpg";
+                break;
+            case "Warehouse/Store":
+                image = "/images/Warehouse.webp";
+                break;
+            default: 
+                image = "/images/Blank.jpg"
+            
+        }
+
+        image = process.env.PUBLIC_URL + image;
         return (
             <div className="card">
-                {/* Need img source here 
-                    props.data.img */ }
-                <img src="https://images.pexels.com/photos/1933316/pexels-photo-1933316.jpeg?cs=srgb&dl=pexels-stein-egil-liland-1933316.jpg&fm=jpg" />
+                
+                <div className="exploreImage">
+                    <img src={ image } />
+                </div>
                 <div className="cardInfo" >
                     <h3 className="cardTitle">{data.name}</h3>
                     {/* <Labels />*/}
                     {/* Average Score */}
                     <h3>{data.theme}</h3>
                     {/* Views*/}
-//                    <h3>{data.likes}</h3>
                 </div>
                     {
                         props.selected == true ?

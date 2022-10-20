@@ -85,14 +85,19 @@ export default function ExplorePage({loginState}) {
 
     
 
-    console.log(locationArray);
     if (!loginState) {
         return <></>;
     }
 
     function updateSearch(event) {
         setSearchTerm(event.target.value);
-        console.log("search term = " + searchTerm);
+    }
+    
+    let themes = []
+    for (let i = 0; i < locations.length; i++) {
+        if (!themes.includes(locations[i].theme)) {
+            themes.push(locations[i].theme); 
+        } 
     }
 
     return (

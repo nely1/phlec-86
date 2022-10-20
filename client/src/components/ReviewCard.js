@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function ReviewCard(props) {
 
-    console.log("props.data = " + props.data)
     return (
         <div className="reviewCard">
             <div className="reviewContent">
