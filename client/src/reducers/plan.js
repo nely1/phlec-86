@@ -1,7 +1,7 @@
 const planReducer = (plan = [], action) => {
     switch (action.type) {
         case "DELETE_ONE_PLAN":
-            return [...plan, action.payload];
+            return [action.payload];
         case "CREATE_PLAN":
             return [...plan, action.payload];
         case "FETCH_PLANS":
@@ -9,7 +9,7 @@ const planReducer = (plan = [], action) => {
         case "FETCH_ONE_PLAN":
             return action.payload;
         case "UPDATE_ONE_PLAN":
-            return plan;
+            return [action.payload];
         default:
             return plan;
     }
