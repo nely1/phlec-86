@@ -52,12 +52,13 @@ function HomePage({ loginState }) {
 
     if (plans.length > 0) {
         let recentPlan = plans[0];
-        const timeRemaining = (new Date(recentPlan.scheduledDate).getDate() - new Date().getDate());
-        const daysRemaining = Math.floor((new Date(recentPlan.scheduledDate).getTime()- new Date().getTime()) 
-        / (1000*60*60*24));
+        const timeRemaining = new Date(recentPlan.scheduledDate).getDate() - new Date().getDate();
+        const daysRemaining = Math.floor(
+            (new Date(recentPlan.scheduledDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+        );
         if (timeRemaining === 0) {
             msg = "Today is the day!";
-        } else if (timeRemaining === 1){
+        } else if (timeRemaining === 1) {
             msg = "1 day away!";
         } else {
             msg = daysRemaining + " days away!";
@@ -74,7 +75,7 @@ function HomePage({ loginState }) {
                         <div className="HomePageBoxLeft">
                             <div className="HomePageGridItem">
                                 <div className="HomePageTitle">
-                                    <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                    <h1>Welcome, {userInfo.result.userName}</h1>
                                     <p className="text2">Your Highlights</p>
                                 </div>
                             </div>
