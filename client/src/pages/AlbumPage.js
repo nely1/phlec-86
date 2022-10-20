@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAlbums } from "../actions/album";
 import AlbumPlaceBox from "../components/AlbumPlaceBox";
 import "./AlbumPage.css";
- 
+
 export default function AlbumPage({ loginState }) {
     const albums = useSelector((state) => state.album);
     console.log("albums: " + albums);
@@ -30,7 +30,6 @@ export default function AlbumPage({ loginState }) {
     if (!loginState) {
         return <></>;
     }
-    // console.log(albums);
     return (
         <>
             <div className="AlbumPageParameter">

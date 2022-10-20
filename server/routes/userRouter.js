@@ -15,6 +15,10 @@ userRouter.get("/location", locationController.fetchLocations);
 
 userRouter.post("/plan", planningController.upload);
 userRouter.get("/:id/plan", planningController.fetchPlans);
+userRouter.get("/plan/:id", planningController.fetchPlanOne);
+userRouter.patch("/plan/:id", planningController.updatePlan);
+userRouter.delete("/plan/:id", planningController.deletePlan);
+
 
 userRouter.get("/discover", discoverController.display);
 

@@ -1,6 +1,6 @@
 import "./LoginPage.css";
 
-import { React, useState } from "react";
+import { React } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../actions/login";
@@ -9,19 +9,14 @@ function LoginPage({ setLogin, loginState }) {
     // React States
 
     const history = useNavigate();
-    const [loginDetails, setLoginDetails] = useState({
-        email: "",
-        password: "",
-    });
 
     const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
         //Prevent page reload
         event.preventDefault();
-
-        console.log(loginState);
-
+        const loginDetails = { email: event.target.email.value, password: event.target.password.value };
+        // console.log(loginDetails);
         dispatch(loginUser({ loginDetails, setLogin }, history));
     };
 
@@ -37,29 +32,29 @@ function LoginPage({ setLogin, loginState }) {
                                 className="LoginPageInputField"
                                 type="text"
                                 name="email"
-                                value={loginDetails.email}
-                                onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })}
+                                placeholder="Enter Your Email"
+                                required
                             ></input>
                         </label>
                         <label className="LoginPageInputBox">
                             <p className="text1">Password: </p>
                             <input
                                 className="LoginPageInputField"
+                                placeholder="Enter Your Password"
                                 type="password"
                                 name="password"
-                                value={loginDetails.password}
-                                onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })}
+                                required
                             ></input>
                         </label>
                         <input className="LoginPageSubmitButton heading2" type="submit" value="Sign In"></input>{" "}
                         {/* Change this for auth?  */}
                     </form>
-                </div>
-                <div className="LoginPageAlternatives">
-                    <div className="LoginPageAlternativesItem1 text1">
-                        <a href="/signUp">
-                            <p>Sign Up</p>
-                        </a>
+                    <div className="LoginPageAlternatives">
+                        <div className="LoginPageAlternativesItem1 text1">
+                            <a href="/signUp">
+                                <p>Sign Up</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,162 @@
+.leaflet-container{
+    width: 60vw;
+    height: 85vh;
+}
+
+/* Disables the itenary from showing, the itenary is a list of directions */
+div.leaflet-top.leaflet-right{ display: none !important; width: 0px !important; height: 0px !important; }
+
+.PlanPageGrid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+
+.PlanPageUpComing {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-secondary);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 2vw;
+    border-radius: 10px;
+}
+
+.PlanPageUpComingTop {
+    background-color: var(--color-secondary-green);
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.PlanPageUpComingBottom {
+    background-color: var(--color-primary-lightgreen);
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.PlanPageUpComingTimeBox {
+    background-color: var(--color-primary-yellow);
+    border-radius: 5px;
+    margin: 1vh 1vw;
+    padding-left: 3vh;
+}
+
+
+.PlanPageNameInput {
+    border-radius: 10px;
+    width: 32vw;
+    height: 3vh;
+    padding-left: 0.5vw;
+}
+
+.material-symbols-outlined {
+    font-size: 42px;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.PlanPageSave {
+    display: flex;
+    background-color: var(--color-primary-green);
+    color: var(--color-text-secondary);
+    width: 7vw;
+    height: 5vh;
+    margin-left: 40%;
+    border-radius: 10px;
+    justify-content: center;
+    border-style: none;
+    cursor: pointer;
+}
+
+.PlanPageButtons {
+    margin-top: 2%;
+    display: flex;
+}
+
+.PlanPageSaveChanges {
+    background-color: var(--color-primary-green);
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 47%;
+    margin-right: 2.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.PlanPageDelete {
+    background-color: var(--color-primary-green);
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 2.5%;
+    padding: 2%;
+}
+
+.PlanH2{
+    font-family: 'Fira Sans';
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.PlanH3{
+    font-family: 'Fira Sans';
+    font-weight: bold;
+    text-align: left;
+    font-size: 24px;
+    padding-left: 8%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+h4{
+    text-align: left;
+    font-size: 21px;
+    padding-left: 1%;
+    padding-bottom: 1.5%;
+    padding-top: 1.5%;
+}
+
+h5{
+    font-family: 'Fira Sans';
+    padding-top: 1%;
+    font-size: 28px;
+    line-height: 5vh;
+}
+
+ol{
+    font-family: 'Fira Sans';
+    font-weight: bold;
+    font-size: 21px;
+    padding-left: 2%;
+}
+
+input[type=data]{
+    padding-right: 10px;
+    width: 50%;
+    max-width: 250px;
+    border-style: none;
+    border-bottom: 2px solid rgb(112,112,112);
+    background-color: white; 
+}
+
+button{
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

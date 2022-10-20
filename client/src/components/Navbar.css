@@ -135,10 +135,9 @@
 
 
     position: absolute;
-    left: 1632px; /* 85%; */
-    right: 192px; /* 10%; */
-    top: 22px ;   /* 2%;  */
-    bottom: 216px; /* 20%; */
+    left: 83vw;     
+    top: 2%;     
+    bottom: 20%; 
 }
 
 .loginoutButton {
@@ -150,10 +149,9 @@
     height: 40px;
 
     position: absolute;
-    left:   1728px; /* 90%; */ 
-    right:  96px; /* 5%; */
-    top:    35px; /* 3.25%; */
-    bottom: 85px; /* 28%; */
+    left:   90vw;  
+    top:    3.25%; 
+    bottom: 28%;
 
     border: none;
     border-radius: 10px;

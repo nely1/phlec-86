@@ -19,6 +19,7 @@ function HomePage({ loginState }) {
 
     const albums = useSelector((state) => state.album);
     const plans = useSelector((state) => state.plan);
+    let msg = "";
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -48,7 +49,21 @@ function HomePage({ loginState }) {
         }
         images = createArrayOfFirstPhoto(albums);
     }
-    // console.log(albums);
+
+    if (plans.length > 0) {
+        let recentPlan = plans[0];
+        const timeRemaining = (new Date(recentPlan.scheduledDate).getDate() - new Date().getDate());
+        const daysRemaining = Math.floor((new Date(recentPlan.scheduledDate).getTime()- new Date().getTime()) 
+        / (1000*60*60*24));
+        if (timeRemaining === 0) {
+            msg = "Today is the day!";
+        } else if (timeRemaining === 1){
+            msg = "1 day away!";
+        } else {
+            msg = daysRemaining + " days away!";
+        }
+    }
+
     if (!loginState) {
         return <></>;
     } else {
@@ -56,29 +71,13 @@ function HomePage({ loginState }) {
             <>
                 <div className="HomePageBase">
                     <div className="HomePageGrid">
-                        <div className="HomePageGridItem">
-                            <div className="HomePageTitle">
-                                <h1>Welcome Back, {userInfo.result.userName}</h1>
-                                <p className="text2">Our top Picks For The Day</p>
-                            </div>
-                        </div>
-                        <div className="HomePageGridItem">
-                            <div className="HomePageUpComing">
-                                <div className="HomePageUpComingTop">
-                                    <h2>Upcoming Trips</h2>
-                                </div>
-                                <div className="HomePageUpComingBottom">
-                                    <h2>Joe's exotic tour</h2>
-                                    <div className="HomePageUpComingTimeBox">
-                                        <h1>7 Days Away!</h1>
-                                    </div>
-                                    <div className="HomePageUpComingGoTo ">
-                                        <span className="material-symbols-outlined">double_arrow</span>
-                                    </div>
+                        <div className="HomePageBoxLeft">
+                            <div className="HomePageGridItem">
+                                <div className="HomePageTitle">
+                                    <h1>Welcome Back, {userInfo.result.userName}</h1>
+                                    <p className="text2">Your Highlights</p>
                                 </div>
                             </div>
-                        </div>
-                        <div className="HomePageGridItem">
                             <div className="HomePageMainPictureContainer">
                                 <ImageCarousel
                                     images={images}
@@ -86,6 +85,44 @@ function HomePage({ loginState }) {
                                 ></ImageCarousel>
                             </div>
                         </div>
+
+                        <div className="HomePageGridItem">
+                            <div className="HomePageUpComing">
+                                <div className="HomePageUpComingTop">
+                                    <h2>Upcoming Trips</h2>
+                                </div>
+                                {plans.length > 0 ? (
+                                    <div className="HomePageUpComingBottom">
+                                        <h2>{plans[0].tripName}</h2>
+                                        <div className="HomePageUpComingTimeBox">
+                                            <h2>{msg}</h2>
+                                        </div>
+                                        <div className="HomePageUpComingLower">
+                                            <p></p>
+                                            <div className="HomePageUpComingGoTo ">
+                                                <a href={"/planEdit/" + plans[0]._id}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="HomePageUpComingBottom">
+                                        <h2>Adventure awaits...</h2>
+                                        <h2>Plan a new trip!</h2>
+                                        <div className="HomePageUpComingLower">
+                                            <p></p>
+                                            <div className="HomePageUpComingGoTo ">
+                                                <a href={"/planView"}>
+                                                    <span className="material-symbols-outlined">double_arrow</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="HomePageGridItem"></div>
                         <div className="HomePageGridItem">
                             <div className="HomePageRecentMemories">
                                 <div className="HomePageRecentMemoriesTop">

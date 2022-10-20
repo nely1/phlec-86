@@ -2,8 +2,8 @@ import axios from "axios";
 
 const API = axios.create({ baseUrl: "http://localhost:5000" });
 // Change url to http://localhost:5000. If want to use local server
-// const url = "https://phlec-86.herokuapp.com/";
-const url = "http://localhost:5000";
+const url = "https://phlec-86.herokuapp.com";
+// const url = "http://localhost:5000";
 API.interceptors.request.use((req) => {
     if (localStorage.getItem("profile")) {
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem("profile"))}`;
@@ -38,3 +38,9 @@ export const postReview = (id, location) => {console.log("location = " + locatio
 export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 
 export const getPlans = (id) => axios.get(`${url}/user/${id}/plan`);
+
+export const getPlanOne = (id) => axios.get(`${url}/user/plan/${id}`);
+
+export const updatePlan = (id, plan) => axios.patch(`${url}/user/plan/${id}`, plan);
+
+export const deletePlan = (id) => axios.delete(`${url}/user/plan/${id}`);
