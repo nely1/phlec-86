@@ -4,6 +4,7 @@ import album from "./album";
 import explore from "./explore";
 import plan from "./plan";
 import location from "./location";
+import settings from "./settings";
 
 export default combineReducers({
     login,
@@ -11,4 +12,5 @@ export default combineReducers({
     explore,
     plan,
     location,
+    settings,
 });
