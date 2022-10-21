@@ -92,13 +92,14 @@ export default function ExplorePage({loginState}) {
     function updateSearch(event) {
         setSearchTerm(event.target.value);
     }
-    
+
     let themes = []
     for (let i = 0; i < locations.length; i++) {
-        if (!themes.includes(locations[i].theme)) {
+        if (locations[i] !== undefined && !themes.includes(locations[i].theme)) {
             themes.push(locations[i].theme); 
         } 
     }
+    
 
     return (
         <div>
