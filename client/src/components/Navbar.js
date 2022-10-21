@@ -93,7 +93,7 @@ export default function Navbar({ loggedIn, setLogin }) {
             )}
 
             <ul className="navbarButtons">{buttons}</ul>
-            <img className="profileImage" src={process.env.PUBLIC_URL + "/profiledefault.png"} alt="Default Profile" />
+            <img className="profileImage" src={ process.env.PUBLIC_URL + "/profiledefault.png" } alt="Default Profile" />
             {loginButton}
         </div>
     );

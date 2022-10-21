@@ -19,6 +19,12 @@ export const getAlbums = (id) => axios.get(`${url}/user/${id}/albums`);
 
 export const getAlbumOne = (id) => axios.get(`${url}/user/albumview/${id}`);
 
+export const getReview = () => API.get("/user/explore");
+
+export const getReviews = (id) => axios.get(`${url}/user/${id}/reviews`);
+
+// export const postReview = (id, review) => axios.post(`${url}/user/explore/${id}`, review);
+
 export const updateAlbumOne = (id, updatedAlbum) => axios.patch(`${url}/user/albumview/${id}`, updatedAlbum);
 
 export const deleteAlbum = (id) => axios.delete(`${url}/user/albumview/${id}`);
@@ -27,11 +33,15 @@ export const signUpUser = (signUpDetails) => axios.post(`${url}/login/signUp`, s
 
 export const getLocations = () => axios.get(`${url}/user/location`);
 
+export const postReview = (id, location) => {console.log("location = " + location); axios.post(`${url}/user/location/${id}`, location)};
+
 export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 
 export const getPlans = (id) => axios.get(`${url}/user/${id}/plan`);
 
 export const getPlanOne = (id) => axios.get(`${url}/user/plan/${id}`);
+
+export const updateUserInfo = (id, userDetails) => axios.patch(`${url}/user/${id}/settings`, userDetails);
 
 export const updatePlan = (id, plan) => axios.patch(`${url}/user/plan/${id}`, plan);
 
