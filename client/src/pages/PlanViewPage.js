@@ -10,7 +10,7 @@ import {
 } from "react-leaflet";
 import "./PlanViewPage.css";
 import { getLocations } from "../actions/location";
-import { getPlans, postPlan } from "../actions/plan";
+import { postPlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 
 function LocationMarker() {
@@ -51,6 +51,13 @@ export default function PlanViewPage({ loginState }) {
     dispatch(postPlan(toUpload));
     history("/plan");
   }
+
+  const today = 
+    new Date().getFullYear() +
+    "-" +
+    ("0" + (new Date().getMonth() + 1)).slice(-2) + 
+    "-" + 
+    ("0" + new Date().getDate()).slice(-2);
 
   if (!loginState) {
     return <></>;
@@ -134,6 +141,7 @@ export default function PlanViewPage({ loginState }) {
                       type="date"
                       id="datePlan"
                       name="datePlan"
+                      min ={today}
                       required
                     ></input>
                   </div>
