@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginStatus } from "../App";
 import decode from "jwt-decode";
 import NavButton from "./NavButton";
 import "./Navbar.css";
@@ -24,7 +23,6 @@ export default function Navbar({ loggedIn, setLogin }) {
     const dispatch = useDispatch();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
     const location = useLocation();
-    const history = useNavigate();
 
     const logout = () => {
         dispatch({ type: "LOGOUT" });
@@ -35,19 +33,16 @@ export default function Navbar({ loggedIn, setLogin }) {
     useEffect(() => {
         const token = user?.token;
 
-        //console.log(token);
-
         if (token) {
             const decodedToken = decode(token);
             console.log(decodedToken.exp);
 
             if (decodedToken.exp * 1000 < new Date().getTime()) {
-                console.log("token expired");
                 logout();
             }
         }
         setUser(JSON.parse(localStorage.getItem("profile")));
-    }, [location]);
+    }, [location, user?.token]);
 
     // If not logged in, load only the login button
     if (loggedIn === false) {
@@ -93,7 +88,7 @@ export default function Navbar({ loggedIn, setLogin }) {
             )}
 
             <ul className="navbarButtons">{buttons}</ul>
-            <img className="profileImage" src={ process.env.PUBLIC_URL + "/profiledefault.png" } alt="Default Profile" />
+            <img className="profileImage" src={process.env.PUBLIC_URL + "/profiledefault.png"} alt="Default Profile" />
             {loginButton}
         </div>
     );

@@ -1,6 +1,4 @@
-
 .loginButton {
-
     padding-left: 10px;
     padding-right: 10px;
 
@@ -8,16 +6,15 @@
     height: 40px;
 
     position: absolute;
-    left: 1728px;   /* 90%; */
-    right: 96px;    /*  5%; */
-    top: 30px;      /* 3.25%; */
-    bottom: 540px;  /* 28%; */
+    left: 1728px; /* 90%; */
+    right: 96px; /*  5%; */
+    top: 30px; /* 3.25%; */
+    bottom: 540px; /* 28%; */
 
     border: none;
     border-radius: 10px;
-    
 
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -35,7 +32,7 @@
     top: 20%;
     bottom: 20%;
 
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -74,7 +71,7 @@
 }
 
 .buttonText {
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -84,11 +81,10 @@
 }
 
 .navButtonUntoggled {
-
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 2vw;
-    
+
     height: 40px;
 
     border: none;
@@ -96,29 +92,28 @@
 
     background-color: var(--color-primary-green);
 
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
     text-align: center;
     color: white;
-
 }
 
 .navButtonToggled {
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 2vw;
-    
+
     height: 40px;
 
     border: none;
     border-radius: 10px;
-    
+
     background-color: var(--color-primary-yellow);
 
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
@@ -132,16 +127,14 @@
 .profileImage {
     height: 60px;
     width: 60px;
-
-
+    visibility: hidden;
     position: absolute;
-    left: 83vw;     
-    top: 2%;     
-    bottom: 20%; 
+    left: 83vw;
+    top: 2%;
+    bottom: 20%;
 }
 
 .loginoutButton {
-
     padding-left: 10px;
     padding-right: 10px;
 
@@ -149,15 +142,14 @@
     height: 40px;
 
     position: absolute;
-    left:   90vw;  
-    top:    3.25%; 
+    left: 90vw;
+    top: 3.25%;
     bottom: 28%;
 
     border: none;
     border-radius: 10px;
-    
 
-    font-family: 'Fira Sans';
+    font-family: "Fira Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 25px;
