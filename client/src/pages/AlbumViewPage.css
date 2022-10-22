@@ -1,125 +1,125 @@
 .AlbumViewGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .AlbumViewPageRatingBar {
-    margin-top: 1vh;
-    -webkit-appearance: none;
-    width: 32.7vw;
-    height: 15px;
-    border-radius: 5px;
-    background: #d3d3d3;
+  margin-top: 1vh;
+  -webkit-appearance: none;
+  width: 32.7vw;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
 }
 
 .AlbumViewPageRatingBar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: var(--color-primary-yellow);
-    cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--color-primary-yellow);
+  cursor: pointer;
 }
 
 .AlbumViewPageLeft {
-    margin-left: 2vw;
-    margin-left: 1vw;
-    margin-top: 4vh;
+  margin-left: 2vw;
+  margin-left: 1vw;
+  margin-top: 4vh;
 }
 
 .AlbumViewEditButton {
-    background-color: var(--color-primary-green);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    margin-top: 2vh;
-    cursor: pointer;
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 2vh;
+  cursor: pointer;
 }
 
 .AlbumViewEditButton2 {
-    background-color: var(--color-primary-green);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    margin-top: 2vh;
-    cursor: pointer;
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 2vh;
+  cursor: pointer;
 }
 
 .ToAlbumButton {
-    background-color: var(--color-primary-green);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    margin-top: 12vh;
-    margin-left: 2vw;
-    cursor: pointer;
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 12vh;
+  margin-left: 2vw;
+  cursor: pointer;
 }
 
 #viewName {
-    height: 10vh;
-    border-radius: 10px;
-    width: 32.5vw;
+  height: 10vh;
+  border-radius: 10px;
+  width: 32.5vw;
 }
 
 .AlbumViewDeletePhotoButton {
-    background-color: var(--color-primary-green);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    cursor: pointer;
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .AlbumViewPageAddPhoto {
-    background-color: var(--color-primary-green);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    margin-top: 0vh;
-    cursor: pointer;
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 0vh;
+  cursor: pointer;
 }
 
 .AlbumViewPageAddPhotoText {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .AlbumViewDeleteAlbumButton {
-    background-color: var(--color-primary-green);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 10px;
-    margin-top: 2vh;
-    margin-left: 0vw;
-    cursor: pointer;
+  background-color: var(--color-primary-green);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 2vh;
+  margin-left: 0vw;
+  cursor: pointer;
 }
 
 .LeftButtons {
-    display: flex;
-    justify-content: space-between;
-    margin-right: 1vw;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1vw;
 }
 
 .AlbumViewButton3 {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 5vw;
-    margin-right: 5vw;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }

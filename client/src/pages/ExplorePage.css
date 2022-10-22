@@ -1,85 +1,82 @@
-
 :root {
-    --explore-card-width: 1325px;
+  --explore-card-width: 1325px;
 }
 
-
 .exploreFilters {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    width: 100%;
+  width: 100%;
 
-    padding-top: 2%;
-    padding-left: 3vw;
+  padding-top: 2%;
+  padding-left: 3vw;
 }
 
 .exploreCards {
-    margin-top: 3vw;
-    height: 100%;
-    overflow: auto;
-    border-radius: 10px;
-    padding-top: 1px;
+  margin-top: 3vw;
+  height: 100%;
+  overflow: auto;
+  border-radius: 10px;
+  padding-top: 1px;
 
 }
 
 .Explore-Reviews {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-gap: 20px;
-    height: 70vh;
-    position: relative;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 20px;
+  height: 70vh;
+  position: relative;
 }
 
 .card {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .cardInfo {
-    width: 100%;
+  width: 100%;
 }
 
 h3 {
-    padding-left: !important 20px;
+  padding-left: !important 20px;
 }
 
 .right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
-
 .arrowRight {
-	position: relative;
-    top: 85px;
-    left: -25px;
+  position: relative;
+  top: 85px;
+  left: -25px;
 }
 
 ul.exploreCards li {
-    background-color: var(--color-primary-lightgrey);
+  background-color: var(--color-primary-lightgrey);
 
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 
-    height: 200px;
-    width: 97%;
+  height: 200px;
+  width: 97%;
 
-    outline-style: solid;
-    outline-color: black;
-    outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 1px;
 
-    margin-left: 2.5%;
-    margin-top: 0%;
-    margin-bottom: 1%;
-    border-radius: 10px;
+  margin-left: 2.5%;
+  margin-top: 0%;
+  margin-bottom: 1%;
+  border-radius: 10px;
 }
 
 .exploreCards h3 {
-    position: relative;
-    top: 1em;
-    left: 1.5em;
+  position: relative;
+  top: 1em;
+  left: 1.5em;
 }
 
 .postReviewButton {
@@ -87,92 +84,82 @@ ul.exploreCards li {
 }
 
 .exploreCards img {
-    height: 130px;
-    width: 210px;
+  height: 130px;
+  width: 210px;
 
-    position: relative;
-    top: 35px;
-    left: 2%;
+  position: relative;
+  top: 35px;
+  left: 2%;
 }
 
 .reviewCards {
-    margin-top: 3vw;
-    margin-bottom: 3vh;
-    /* background-color: var(--color-primary-lightgrey); */
+  margin-top: 3vw;
+  margin-bottom: 3vh;
+  /* background-color: var(--color-primary-lightgrey); */
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 1px;
+  height: 100%;
+  width: 80%;
 
-    outline-style: solid;
-    outline-color: black;
-    outline-width: 1px;
-    height: 100%;
-    width: 80%;
-
-
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .reviewCard {
-    height: 7em;
-    width: 13em;
+  height: 7em;
+  width: 13em;
 
-    margin-left: 1vw;
-    margin-top: 1vw;
-    border-radius: 10px;
-    
+  margin-left: 1vw;
+  margin-top: 1vw;
+  border-radius: 10px;
 }
 
 .reviewContent {
-    padding-top: 1em;
-    height: 7em;
-    width: 12em;
-    overflow: auto;
-    background-color: var(--color-primary-lightgreen);
+  padding-top: 1em;
+  height: 7em;
+  width: 12em;
+  overflow: auto;
+  background-color: var(--color-primary-lightgreen);
 }
 
 .reviews {
-    width: 18vw;
-    overflow: auto;
-    height: 30em;
+  width: 18vw;
+  overflow: auto;
+  height: 30em;
 }
 
 ul.reviews {
-    
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 
-
-    width: 18em;
-
-
+  width: 18em;
 }
 
 ul.reviews li {
-    background-color: var(--color-primary-lightgreen);
+  background-color: var(--color-primary-lightgreen);
 
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 
-    height: 10em;
-    width: 15em;
+  height: 10em;
+  width: 15em;
 
-    margin-left: 1vw;
-    border-radius: 10px;
-
+  margin-left: 1vw;
+  border-radius: 10px;
 }
 
 .userReview {
-    /* overflow: auto; */
-    height: 8em; 
-    width: 15em;
-    position: relative;
-    bottom: -1em;
+  /* overflow: auto; */
+  height: 8em; 
+  width: 15em;
+  position: relative;
+  bottom: -1em;
 }
 
 .userReviewContent {
-    height: 8em;
-    width: 17em;
-    background-color: white;
+  height: 8em;
+  width: 17em;
+  background-color: white;
 }
-
-

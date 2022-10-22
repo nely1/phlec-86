@@ -6,60 +6,55 @@ import AlbumPlaceBox from "../components/AlbumPlaceBox";
 import "./AlbumPage.css";
 
 export default function AlbumPage({ loginState }) {
-    const albums = useSelector((state) => state.album);
-    console.log("albums: " + albums);
-    const dispatch = useDispatch();
-    const history = useNavigate();
-    
+  const albums = useSelector((state) => state.album);
+  const dispatch = useDispatch();
+  const history = useNavigate();
 
-    // useEffect(() => {
-    //     dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
-    // }, [dispatch]);
-
-    useEffect(() => {
-        if (!loginState) {
-            history("/login");
-        }
-        else {
-            dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
-        }
-    }, [history, loginState, dispatch]);
-
-    const [searchTerm, setSearchTerm] = useState("");
-
+  useEffect(() => {
     if (!loginState) {
-        return <></>;
+      history("/login");
+    } else {
+      dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
     }
-    return (
-        <>
-            <div className="AlbumPageParameter">
-                <h2>Search:</h2>
-                <input
-                    className="AlbumPageSearch"
-                    placeholder="Find Your Past Albums"
-                    onChange={(event) => {
-                        setSearchTerm(event.target.value);
-                    }}
-                ></input>
-            </div>
+  }, [history, loginState, dispatch]);
 
-            <div className="AlbumPageGrid">
-                {albums
-                    .filter((val) => {
-                        if (searchTerm === "") {
-                            return val;
-                        } else if (val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-                            return val;
-                        } else {
-                            return null;
-                        }
-                    })
-                    .map((val, index) => (
-                        <Link to={"/albumView/" + val._id} key={index}>
-                            <AlbumPlaceBox album={val}></AlbumPlaceBox>
-                        </Link>
-                    ))}
-            </div>
-        </>
-    );
+  const [searchTerm, setSearchTerm] = useState("");
+
+  if (!loginState) {
+    return <></>;
+  }
+  return (
+    <>
+      <div className="AlbumPageParameter">
+        <h2>Search:</h2>
+        <input
+          className="AlbumPageSearch"
+          placeholder="Find Your Past Albums"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        ></input>
+      </div>
+
+      <div className="AlbumPageGrid">
+        {albums
+          .filter((val) => {
+            if (searchTerm === "") {
+              return val;
+            } else if (
+              val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+            ) {
+              return val;
+            } else {
+              return null;
+            }
+          })
+          .map((val, index) => (
+            <Link to={"/albumView/" + val._id} key={index}>
+              <AlbumPlaceBox album={val}></AlbumPlaceBox>
+            </Link>
+          ))}
+      </div>
+    </>
+  );
 }

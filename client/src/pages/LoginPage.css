@@ -1,62 +1,60 @@
-
-
 .LoginPage {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
 }
 
 .LoginPageBox {
-    margin-top: 15vh;
-    width: 960px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  margin-top: 15vh;
+  width: 960px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .LoginPageTitle {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .LoginPageInputBox {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .LoginPageInputField {
-    border: none;
-    border: solid 1px black;
-    border-radius: 10px;
-    padding-left: 1vw;
+  border: none;
+  border: solid 1px black;
+  border-radius: 10px;
+  padding-left: 1vw;
 }
 
 .LoginPageSubmitButton {
-    width: 100%;
-    height: 80px;
-    margin-top: 10px;
-    border: none;
-    background-color: var(--color-primary-green);
-    border-radius: 10px;
-    color: var(--color-text-secondary);
-    cursor: pointer;
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  border: none;
+  background-color: var(--color-primary-green);
+  border-radius: 10px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
 }
 
 .LoginPageAlternatives {
-    display: grid;
-    width: 960px;
-    margin-top: 5vh;
-    grid-template-columns: 1fr 1fr;
-    color: #0099FF;
+  display: grid;
+  width: 960px;
+  margin-top: 5vh;
+  grid-template-columns: 1fr 1fr;
+  color: #0099ff;
 }
 
 .LoginPageAlternativesItem1 {
-    text-align: left;    
+  text-align: left;
 }
 
 .LoginPageAlternativesItem2 {
-    text-align: right;
+  text-align: right;
 }

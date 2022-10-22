@@ -1,9 +1,8 @@
-import mongoose from 'mongoose'; 
+import mongoose from "mongoose";
 
-const schema = new mongoose.Schema({ 
-    labelName: {type: String, required: true}
-    
-}) 
+const schema = new mongoose.Schema({
+  labelName: { type: String, required: true },
+});
 
-const labelModel = mongoose.model('labelModel', schema) 
-export default labelModel 
+const labelModel = mongoose.model("labelModel", schema);
+export default labelModel;
