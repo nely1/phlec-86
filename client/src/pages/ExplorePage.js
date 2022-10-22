@@ -120,7 +120,7 @@ export default function ExplorePage({loginState}) {
                     <div className="reviewCard userReview">
                         <form className="userReview" onSubmit={ handleSubmit }>
                             <textarea className="userReviewContent" id="review" name="review"/>
-                        <input className="styledButton untoggledButton" type="submit" value="Post"/>
+                        <input className="styledButton untoggledButton postReviewButton" type="submit" value="Post"/>
                         </form>
                     </div>
                 </div>

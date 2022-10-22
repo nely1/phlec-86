@@ -7,9 +7,13 @@ export default function ReviewCard(props) {
             <div className="reviewContent">
                 { props.children }
             </div>
+            { /*
+
+        
             <div className="username">
                 <b>{ props.user }</b>
             </div>
+            */ }
         </div>
     )
 }

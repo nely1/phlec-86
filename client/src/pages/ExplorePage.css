@@ -16,8 +16,10 @@
 
 .exploreCards {
     margin-top: 3vw;
-    height: 90vh;
+    height: 100%;
     overflow: auto;
+    border-radius: 10px;
+    padding-top: 1px;
 
 }
 
@@ -25,6 +27,7 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-gap: 20px;
+    height: 70vh;
     position: relative;
 }
 
@@ -61,9 +64,15 @@ ul.exploreCards li {
     margin: 0;
 
     height: 200px;
+    width: 97%;
+
+    outline-style: solid;
+    outline-color: black;
+    outline-width: 1px;
 
     margin-left: 2.5%;
-    margin-bottom: 2%;
+    margin-top: 0%;
+    margin-bottom: 1%;
     border-radius: 10px;
 }
 
@@ -71,6 +80,10 @@ ul.exploreCards li {
     position: relative;
     top: 1em;
     left: 1.5em;
+}
+
+.postReviewButton {
+    margin-right: 0px; 
 }
 
 .exploreCards img {
@@ -85,7 +98,13 @@ ul.exploreCards li {
 .reviewCards {
     margin-top: 3vw;
     margin-bottom: 3vh;
-    background-color: var(--color-primary-lightgrey);
+    /* background-color: var(--color-primary-lightgrey); */
+
+    outline-style: solid;
+    outline-color: black;
+    outline-width: 1px;
+    height: 100%;
+    width: 80%;
 
 
     border-radius: 10px;
@@ -146,7 +165,8 @@ ul.reviews li {
     /* overflow: auto; */
     height: 8em; 
     width: 15em;
-    margin-bottom: 2em;
+    position: relative;
+    bottom: -1em;
 }
 
 .userReviewContent {
