@@ -37,40 +37,63 @@ const SETTINGS = "/settings";
 export let LoggedIn = true;
 
 export default function App() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const [LoggedIn, setLoggedIn] = useState(localStorage.getItem("profile") ? true : false);
-    useEffect(() => {
-        dispatch(loginUser);
-    }, [dispatch]);
+  const [LoggedIn, setLoggedIn] = useState(
+    localStorage.getItem("profile") ? true : false
+  );
+  useEffect(() => {
+    dispatch(loginUser);
+  }, [dispatch]);
 
-    return (
-        <>
-            <Router>
-                <Navbar loggedIn={LoggedIn} setLogin={setLoggedIn} />
-                <Routes>
-                    <Route path={ROOT} element={<LandingPageBody />}></Route>
-                    <Route path={LOGOUT} element={<LandingPageBody />}></Route>
-                    <Route path={LOGIN} element={<LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />}></Route>
-                    <Route path={LANDING} element={<LandingPageBody />}></Route>
-                    <Route path={HOME} element={<HomePage loginState={LoggedIn} />}></Route>
-                    <Route path={SIGNUP} element={<SignUpPage />}></Route>
-                    <Route path={RECORD} element={<RecordPage loginState={LoggedIn} />}></Route>
-                    <Route path={ALBUM} element={<AlbumPage loginState={LoggedIn} />}></Route>
-                    <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
-                    <Route path={EXPLORE} element={<ExplorePage loginState={LoggedIn} />}></Route>
-                    <Route path={PLAN} element={<PlanPage loginState={LoggedIn} />}></Route>
-                    <Route path={PLAN_VIEW} element={<PlanViewPage loginState={LoggedIn} />}></Route>
-                    <Route path={PLAN_EDIT} element={<PlanEditPage loginState={LoggedIn} />}></Route>
-                    <Route path={SETTINGS} element={<SettingsPage />}></Route>
-                </Routes>
-            </Router>
-        </>
-    );
+  return (
+    <>
+      <Router>
+        <Navbar loggedIn={LoggedIn} setLogin={setLoggedIn} />
+        <Routes>
+          <Route path={ROOT} element={<LandingPageBody />}></Route>
+          <Route path={LOGOUT} element={<LandingPageBody />}></Route>
+          <Route
+            path={LOGIN}
+            element={<LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />}
+          ></Route>
+          <Route path={LANDING} element={<LandingPageBody />}></Route>
+          <Route
+            path={HOME}
+            element={<HomePage loginState={LoggedIn} />}
+          ></Route>
+          <Route path={SIGNUP} element={<SignUpPage />}></Route>
+          <Route
+            path={RECORD}
+            element={<RecordPage loginState={LoggedIn} />}
+          ></Route>
+          <Route
+            path={ALBUM}
+            element={<AlbumPage loginState={LoggedIn} />}
+          ></Route>
+          <Route
+            path={ALBUM_VIEW}
+            element={<AlbumViewPage loginState={LoggedIn} />}
+          ></Route>
+          <Route
+            path={EXPLORE}
+            element={<ExplorePage loginState={LoggedIn} />}
+          ></Route>
+          <Route
+            path={PLAN}
+            element={<PlanPage loginState={LoggedIn} />}
+          ></Route>
+          <Route
+            path={PLAN_VIEW}
+            element={<PlanViewPage loginState={LoggedIn} />}
+          ></Route>
+          <Route
+            path={PLAN_EDIT}
+            element={<PlanEditPage loginState={LoggedIn} />}
+          ></Route>
+          <Route path={SETTINGS} element={<SettingsPage />}></Route>
+        </Routes>
+      </Router>
+    </>
+  );
 }
-
-/*
-export function getLogin() {
-    return loggedIn;
-}
-*/

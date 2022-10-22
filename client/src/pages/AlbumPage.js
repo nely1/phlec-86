@@ -7,13 +7,8 @@ import "./AlbumPage.css";
 
 export default function AlbumPage({ loginState }) {
   const albums = useSelector((state) => state.album);
-  console.log("albums: " + albums);
   const dispatch = useDispatch();
   const history = useNavigate();
-
-  // useEffect(() => {
-  //     dispatch(getAlbums(JSON.parse(localStorage.getItem("profile"))));
-  // }, [dispatch]);
 
   useEffect(() => {
     if (!loginState) {
