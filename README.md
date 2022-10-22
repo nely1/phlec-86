@@ -8,16 +8,16 @@ We are a small team of 5 students doing the capstone project for the subject IT 
 
 > This web app adopts the structure that is commonly used in MERN (MongoDB, Express, React, Node) stacks.
 
-The repository is divided into client and server folders, for the front end and back end respectively.
+The repository is divided into client and server folders, for the front-end and back-end respectively.
 [Overview of how the front end communicates with the back end ->](https://d33wubrfki0l68.cloudfront.net/08d01ed85246d3ece01963408572f3f6dfb49d41/4bc12/assets/images/reduxasyncdataflowdiagram-d97ff38a0f4da0f327163170ccc13e80.gif)
 
 The structure of the client folder (the src folder)
 
-- **actions**:
-- **api**:
-- **components**:
-- **pages**:
-- **reducers**:
+- **actions**: Collection of actions that can change the state of the webpage (usually involves calls to the back-end server for data)
+- **api**: The API communicates between front-end and back-end servers to execute actions from the front-end
+- **components**: Reuseable parts of front-end code that can piece together a webpage
+- **pages**: Folder containing all the front-end web pages
+- **reducers**: When data is returned from the back-end, the reducer takes the state given and updates it
 
 The structure of the server folder
 
@@ -45,14 +45,14 @@ Brief overview of coding conventions:
   - Always end an object definition with a semicolon.
 
 ```
-    Example:
-    const schema = new mongoose.Schema({
-      name: {type: String, required: true},
-      username: {type: String, required: true},
-      email: {type: String, required: true},
-      password: {type: String, required: true},
-      profile_picture: String,
-      role: {type:String, required:true}
+  Example:
+  const schema = new mongoose.Schema({
+    name: {type: String, required: true},
+    username: {type: String, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
+    profile_picture: String,
+    role: {type:String, required:true}
     });
 ```
 
