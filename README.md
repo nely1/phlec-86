@@ -53,7 +53,7 @@ Brief overview of coding conventions:
     password: {type: String, required: true},
     profile_picture: String,
     role: {type:String, required:true}
-    });
+  });
 ```
 
 ## Documentation and commenting
