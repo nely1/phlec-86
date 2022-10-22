@@ -1,34 +1,34 @@
 .CarouselImage {
-    height: 60vh;
-    width: 63vw;
-    margin-left: 2vw;
-    margin-top: 5vh;
-    border-radius: 10px;
+  height: 60vh;
+  width: 63vw;
+  margin-left: 2vw;
+  margin-top: 5vh;
+  border-radius: 10px;
 }
 
 .dotsContainer {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .dots {
-    margin: 0 0.5vw;
-    cursor: pointer;
-    font-size: 20px;
+  margin: 0 0.5vw;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .PlaceHolder {
-    background-color: gray;
-    height: 60vh;
-    width: 63vw;
-    margin-left: 2vw;
-    margin-top: 5vh;
-    border-radius: 10px;
+  background-color: gray;
+  height: 60vh;
+  width: 63vw;
+  margin-left: 2vw;
+  margin-top: 5vh;
+  border-radius: 10px;
 }
 
 .NoImageText {
-    display: flex;
-    height: inherit;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  height: inherit;
+  align-items: center;
+  justify-content: center;
 }

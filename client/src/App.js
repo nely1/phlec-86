@@ -34,7 +34,7 @@ const PLAN_VIEW = "/planView";
 const PLAN_EDIT = "/planEdit/:id";
 const SETTINGS = "/settings";
 
-export var LoggedIn = true;
+export let LoggedIn = true;
 
 export default function App() {
     const dispatch = useDispatch();
@@ -43,14 +43,6 @@ export default function App() {
     useEffect(() => {
         dispatch(loginUser);
     }, [dispatch]);
-
-    const path = (name) => {
-        return localStorage.getItem("profile") ? name : LOGIN;
-    };
-
-    const element = (page) => {
-        return localStorage.getItem("profile") ? page : <LoginPage loginState={LoggedIn} setLogin={setLoggedIn} />;
-    };
 
     return (
         <>
@@ -66,7 +58,7 @@ export default function App() {
                     <Route path={RECORD} element={<RecordPage loginState={LoggedIn} />}></Route>
                     <Route path={ALBUM} element={<AlbumPage loginState={LoggedIn} />}></Route>
                     <Route path={ALBUM_VIEW} element={<AlbumViewPage loginState={LoggedIn} />}></Route>
-                    <Route path={EXPLORE} element={<ExplorePage loginState={LoggedIn}/>}></Route>
+                    <Route path={EXPLORE} element={<ExplorePage loginState={LoggedIn} />}></Route>
                     <Route path={PLAN} element={<PlanPage loginState={LoggedIn} />}></Route>
                     <Route path={PLAN_VIEW} element={<PlanViewPage loginState={LoggedIn} />}></Route>
                     <Route path={PLAN_EDIT} element={<PlanEditPage loginState={LoggedIn} />}></Route>

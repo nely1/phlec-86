@@ -1,107 +1,105 @@
-
 .RecordPageGrid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 
 .RecordPageTitle {
-    text-align: center;
-    padding-top: 4vh;
+  text-align: center;
+  padding-top: 4vh;
 }
 
 .RecordPageMainPicture {
-    height: 60vh;
-    width: 63vw;
-    padding-left: 2vw;
-    padding-top: 5vh;
+  height: 60vh;
+  width: 63vw;
+  padding-left: 2vw;
+  padding-top: 5vh;
 }
 
 .RecordPageAddPhoto {
-    display: flex;
-    background-color: var(--color-primary-green);
-    color: var(--color-text-secondary);
-    width: 10vw;
-    margin-right:1.5vw;
-    margin-top: 2vh;
-    height: 4vh;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    float: right;
-    cursor: pointer;
-    margin-bottom: 2vh;
+  display: flex;
+  background-color: var(--color-primary-green);
+  color: var(--color-text-secondary);
+  width: 10vw;
+  margin-right: 1.5vw;
+  margin-top: 2vh;
+  height: 4vh;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  cursor: pointer;
+  margin-bottom: 2vh;
 }
 
 .RecordPageAlbumNameTitle {
-    color: var(--color-secondary-grey);
-    margin-top: 10vh;
+  color: var(--color-secondary-grey);
+  margin-top: 10vh;
 }
 .RecordPageTagTitle {
-    margin-top: 2vh;
+  margin-top: 2vh;
 }
 
 .RecordPageAlbumNameInput {
-    border-radius: 10px;
-    width: 32vw;
-    height: 3vh;
-    padding-left: 0.5vw;
+  border-radius: 10px;
+  width: 32vw;
+  height: 3vh;
+  padding-left: 0.5vw;
 }
 
 .RecordPageDescription {
-    padding-top: 2vh;
-    padding-bottom: 0.5vh;
+  padding-top: 2vh;
+  padding-bottom: 0.5vh;
 }
 .RecordPageDescriptionInput {
-    width: 31.5vw;
-    border-radius: 10px;
-    height: 20vh;
-    padding: 0.5vw;
-
+  width: 31.5vw;
+  border-radius: 10px;
+  height: 20vh;
+  padding: 0.5vw;
 }
 
 .RecordPageSave {
-    display: flex;
-    background-color: var(--color-primary-green);
-    color: var(--color-text-secondary);
-    width: 7vw;
-    height: 5vh;
-    margin-right: 3vh;
-    padding-left: 1vh;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    float: right;
-    border-style: none;
-    cursor: pointer;
+  display: flex;
+  background-color: var(--color-primary-green);
+  color: var(--color-text-secondary);
+  width: 7vw;
+  height: 5vh;
+  margin-right: 3vh;
+  padding-left: 1vh;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  border-style: none;
+  cursor: pointer;
 }
 
 .RecordPageInputPhoto {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 
 .RecordPageInputPhoto input[type="string" i] {
-    visibility: hidden;
-    width: 0px;
-    height: 0px;
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
 }
 
 .RecordPageRatingBar {
-    margin-top: 1vh;
-    -webkit-appearance: none;
-    width: 20vw;
-    height: 15px;
-    border-radius: 5px;  
-    background: #d3d3d3;
-  }
-  
-  .RecordPageRatingBar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%; 
-    background:var(--color-primary-yellow);
-    cursor: pointer;
-  }
+  margin-top: 1vh;
+  -webkit-appearance: none;
+  width: 20vw;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+}
+
+.RecordPageRatingBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--color-primary-yellow);
+  cursor: pointer;
+}

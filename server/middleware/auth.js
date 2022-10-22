@@ -1,22 +1,21 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 const auth = async (req, res, next) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
+  try {
+    const token = req.headers.authorization.split(" ")[1];
 
-        let decodedData;
+    let decodedData;
 
-        if (token) {
-            decodedData = jwt.verify(token, 'super secret stuff')
+    if (token) {
+      decodedData = jwt.verify(token, "super secret stuff");
 
-            req.userId = decodedData?.id; 
-        }
-
-        next();
+      req.userId = decodedData?.id;
     }
-    catch (error) {
-        console.log(error.message);
-    }
-}
+
+    next();
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 export default auth;

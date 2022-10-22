@@ -3,33 +3,30 @@
  * We can split it up later if we need to */
 
 * {
-    margin: 0;
-    padding: 0;
-} 
+  margin: 0;
+  padding: 0;
+}
 body {
-    background-color: #ECFFE3;
+  background-color: #ecffe3;
 }
 :root {
-    /* Colours */
-    --color-primary-green:         #42855B;
-    --color-secondary-green:       #086B06;
+  /* Colours */
+  --color-primary-green: #42855b;
+  --color-secondary-green: #086b06;
 
-    --color-primary-lightgreen:    #90C18B;
+  --color-primary-lightgreen: #90c18b;
 
-    --color-primary-yellow:        #90B77D;
+  --color-primary-yellow: #90b77d;
 
-    --color-primary-grey:          #D9D9D9;
-    --color-secondary-grey:        #A5A5A5;
-    --color-primary-lightgrey:     #F6F6F6;
+  --color-primary-grey: #d9d9d9;
+  --color-secondary-grey: #a5a5a5;
+  --color-primary-lightgrey: #f6f6f6;
 
-    --color-text-primary:          #000000;
-    --color-text-secondary:        #FFFFFF;
+  --color-text-primary: #000000;
+  --color-text-secondary: #ffffff;
 
-    /* Fonts */
-    --font-primary: 'Fira Sans';
-
-
-
+  /* Fonts */
+  --font-primary: "Fira Sans";
 }
 
 /* Local font access commented out (temp?) */
@@ -38,98 +35,95 @@ body {
     src: url('./public/fonts/FiraSans-Regular.otf');
 } */
 
-
 /* styles from Figma 
  * sizes should probably me made relative. */
 
 h1 {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 64px;
-    line-height: 77px;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
 }
 
-h2, .heading2 {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
+h2,
+.heading2 {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
 }
 
 h3 {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
 }
 
 /* body class 
  * There's probably a better way to do this */
 .text1 {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 58px;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
 }
 
 .text2 {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 38px;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
 }
 
 .text3 {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 ul.no-bullets {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-
 .styledButton {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 30px;
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
 
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 2vw;
-    
-    height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 2vw;
 
-    border: none;
-    border-radius: 10px;
-    text-align: center;
+  height: 40px;
 
-    color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+
+  color: #ffffff;
 }
 
 .untoggledButton {
-    background-color: var(--color-primary-green);
+  background-color: var(--color-primary-green);
 }
 
 .toggledButton {
-    background-color: var(--color-primary-yellow);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-primary-yellow);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
-

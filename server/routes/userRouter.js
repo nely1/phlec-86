@@ -20,7 +20,6 @@ userRouter.get("/plan/:id", planningController.fetchPlanOne);
 userRouter.patch("/plan/:id", planningController.updatePlan);
 userRouter.delete("/plan/:id", planningController.deletePlan);
 
-
 userRouter.get("/discover", discoverController.display);
 
 userRouter.get("/:id/albums", albumController.display);
@@ -29,7 +28,7 @@ userRouter.get("/albumview/:id", albumController.displayOne);
 
 userRouter.get("/explore", exploreController.getReview);
 
-userRouter.post("/location/:id/",  locationController.postReview);
+userRouter.post("/location/:id/", locationController.postReview);
 
 userRouter.patch("/albumview/:id", albumController.updateAlbum);
 
