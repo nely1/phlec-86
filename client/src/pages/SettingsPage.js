@@ -17,7 +17,6 @@ function SettingsPage() {
     lastName: userInfo.result.lastName,
     userName: userInfo.result.userName,
     email: userInfo.result.email,
-    theme: userInfo.result.theme,
     password: userInfo.result.password,
   });
 
@@ -51,9 +50,6 @@ function SettingsPage() {
               </p>
               <p className="PersonalInfo">
                 Email : &emsp;&emsp;&emsp; {userInfo.result.email}
-              </p>
-              <p className="PersonalInfo">
-                Theme : &emsp;&emsp;&ensp; {userInfo.result.theme}
               </p>
               <p className="PersonalInfo">Password :</p>
               <button className="ChangeButton text3" onClick={changingState}>
@@ -118,18 +114,6 @@ function SettingsPage() {
                     title="Invalid email address"
                     onChange={(e) =>
                       setUserDetails({ ...userDetails, email: e.target.value })
-                    }
-                  ></input>
-                </label>
-              </p>
-              <p className="PersonalInfo">
-                Theme : &emsp;&emsp;&ensp;
-                <label className="SettingsPageInputBox">
-                  <input
-                    className="SettingsPageInputField"
-                    type="text"
-                    onChange={(e) =>
-                      setUserDetails({ ...userDetails, theme: e.target.value })
                     }
                   ></input>
                 </label>
