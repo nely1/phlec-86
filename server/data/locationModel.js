@@ -7,7 +7,8 @@ const schema = new mongoose.Schema({
   latitude: Number,
   longitude: Number,
   likes: { type: Number, default: 0 },
-  reviews: [String],
+  reviews: [String], // [{username: mongoose.Schema.Types.ObjectId, description: String}],
+
 });
 
 const locationModel = mongoose.model("locationModel", schema);

@@ -109,7 +109,6 @@ export default function AlbumViewPage({ loginState }) {
     return <></>;
   }
 
-  console.log(album.date);
   return (
     <form onSubmit={handleSubmit}>
       <div className="AlbumViewGrid">

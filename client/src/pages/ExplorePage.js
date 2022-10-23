@@ -127,7 +127,7 @@ export default function ExplorePage({ loginState }) {
                 name="review"
               />
               <input
-                className="styledButton untoggledButton"
+                className="styledButton untoggledButton postReviewButton"
                 type="submit"
                 value="Post"
               />

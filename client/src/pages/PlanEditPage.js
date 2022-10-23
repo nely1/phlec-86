@@ -106,6 +106,13 @@ export default function PlanEditPage({ loginState }) {
       ("0" + new Date(prevPlan[0].scheduledDate).getDate()).slice(-2);
   }
 
+  const today = 
+    new Date().getFullYear() +
+    "-" +
+    ("0" + (new Date().getMonth() + 1)).slice(-2) + 
+    "-" + 
+    ("0" + new Date().getDate()).slice(-2);
+
   if (!loginState || prevPlan.length === 0) {
     return <></>;
   }
@@ -189,6 +196,7 @@ export default function PlanEditPage({ loginState }) {
                       id="datePlan"
                       name="datePlan"
                       defaultValue={dateFormatted}
+                      min={today}
                       required
                     ></input>
                   </div>
