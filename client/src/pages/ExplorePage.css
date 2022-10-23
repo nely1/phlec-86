@@ -107,7 +107,7 @@ ul.exploreCards li {
 
 .reviewCard {
   height: 7em;
-  width: 13em;
+  width: 100%;
 
   margin-left: 1vw;
   margin-top: 1vw;
@@ -116,8 +116,8 @@ ul.exploreCards li {
 
 .reviewContent {
   padding-top: 1em;
-  height: 7em;
-  width: 12em;
+  height: 100%;
+  width: 90%;
   overflow: auto;
   background-color: var(--color-primary-lightgreen);
 }
@@ -133,7 +133,7 @@ ul.reviews {
   padding: 0;
   margin: 0;
 
-  width: 18em;
+  width: 95%;
 }
 
 ul.reviews li {
@@ -144,7 +144,7 @@ ul.reviews li {
   margin: 0;
 
   height: 10em;
-  width: 15em;
+  width: 90%;
 
   margin-left: 1vw;
   border-radius: 10px;
@@ -153,13 +153,14 @@ ul.reviews li {
 .userReview {
   /* overflow: auto; */
   height: 8em; 
-  width: 15em;
+  width: 100%;
   position: relative;
   bottom: -1em;
+  margin-left: 0.5vw;
 }
 
 .userReviewContent {
-  height: 8em;
-  width: 17em;
+  height: 85%;
+  width: 75%;
   background-color: white;
 }
