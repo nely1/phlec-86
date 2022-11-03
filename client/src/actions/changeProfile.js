@@ -13,5 +13,6 @@ export const changeProfile =
       history("/settings");
     } catch (error) {
       console.log(error.message);
+      alert("Email already exists");
     }
   };
