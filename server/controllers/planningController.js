@@ -38,8 +38,7 @@ const upload = async (req, res) => {
       scheduledDate: { $gte: new Date().setHours(0, 0, 0, 0) },
     })
     .sort({ scheduledDate: 1 });
-  console.log(plans);
-  res.status(201).json(plans);
+    res.status(201).json(plans);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
