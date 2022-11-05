@@ -18,6 +18,7 @@ function SettingsPage() {
     userName: userInfo.result.userName,
     email: userInfo.result.email,
     password: userInfo.result.password,
+    token: userInfo.token,
   });
 
   function changingState() {
@@ -110,6 +111,7 @@ function SettingsPage() {
                   <input
                     className="SettingsPageInputField"
                     type="text"
+                    required="required"
                     pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     title="Invalid email address"
                     onChange={(e) =>
