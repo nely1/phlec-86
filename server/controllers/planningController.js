@@ -32,7 +32,14 @@ const upload = async (req, res) => {
 
   try {
     await planRoute.save();
-    res.status(201).json(planRoute);
+    const plans = await plan
+    .find({
+      userid: newPlan.userId,
+      scheduledDate: { $gte: new Date().setHours(0, 0, 0, 0) },
+    })
+    .sort({ scheduledDate: 1 });
+  console.log(plans);
+  res.status(201).json(plans);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

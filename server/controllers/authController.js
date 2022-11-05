@@ -27,7 +27,8 @@ export const loginUser = async (req, res) => {
         "super secret stuff",
         { expiresIn: "1h" }
       );
-      res.status(200).json({ result: user, token });
+      const details = {plans: user.plans, userName:user.userName, favourties:user.favourties, _id: user._id}
+      res.status(200).json({ result: details, token });
 
       console.log("Somewhat logged in");
     }
