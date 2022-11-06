@@ -21,11 +21,14 @@ The structure of the client folder
   - **components**: Reuseable parts of front-end code that can piece together a webpage
   - **pages**: Folder containing all the front-end web pages
   - **reducers**: When data is returned from the back-end, the reducer takes the state given and updates it
+  - **App.js**: Connects all the paths of the webpages together
+  - **Index.js**: Runs the App.js file
 
 The structure of the server folder
 
 - **controllers**: Handles interactions with the database and the user, and other logic needed for a specific page
 - **data (models)**: Stores the schema/structure of our databases
+- **middleware**: Checks if users are authenticated to perform a certain action
 - **routes**: Instructs how the server should redirect users whenever they click a link or submit a form
 - **index.js**: The web app server that will listen for API requests from the client/front-end
 
