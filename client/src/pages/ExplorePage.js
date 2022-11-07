@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocations, postReview } from "../actions/location";
-// import { postReview } from "../actions/explore";
 
 import "./ExplorePage.css";
 
@@ -45,7 +44,6 @@ export default function ExplorePage({ loginState }) {
   let reviews = [];
 
   // convert data to array
-  //locationArray = locations.slice(0);
   if (locations[0] !== undefined) {
     reviews = locations[selected].reviews;
   }

@@ -1,3 +1,5 @@
+/* The following are the settings page reducers, contains state changes for fetching, updating user info */
+// Note: Reducer actions must have unique names across ALL reducers
 const settingsReducer = (userDetails = [], action) => {
   switch (action.type) {
     case "CHANGE_PROFILE":

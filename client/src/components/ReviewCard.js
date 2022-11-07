@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function ReviewCard(props) {
-    console.log(props);
   return (
     <div className="reviewCard">
       <div className="reviewContent">{props.data === undefined ? props.data : props.data.description}</div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import { loginUser } from "./actions/login";
 
 import Navbar from "./components/Navbar";
@@ -91,10 +90,7 @@ export default function App() {
             path={PLAN_EDIT}
             element={<PlanEditPage loginState={LoggedIn} />}
           ></Route>
-          <Route
-            path={SETTINGS} 
-            element={<SettingsPage loginState={LoggedIn}/>}
-          ></Route>
+          <Route path={SETTINGS} element={<SettingsPage />}></Route>
         </Routes>
       </Router>
     </>

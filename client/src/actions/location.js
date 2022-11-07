@@ -1,3 +1,4 @@
+/* The following are the API for the location page, contains action calls for fetching location data and its reviews */
 import * as api from "../api";
 
 export const getLocations = () => async (dispatch) => {

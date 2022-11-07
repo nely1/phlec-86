@@ -1,7 +1,7 @@
+/* The following are the reducers for fetching location data */
+// Note: Reducer actions must have unique names across ALL reducers
 const locationReducer = (location = [], action) => {
   switch (action.type) {
-    case "CREATE_REVIEW": // This action unused, but might be used for reviews?
-      return [...location, action.payload];
     case "FETCH_LOCATIONS":
       return action.payload;
     default:
