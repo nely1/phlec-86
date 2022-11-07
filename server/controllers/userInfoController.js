@@ -19,14 +19,7 @@ const updateUserInfo = async (req, res) => {
       }
     }
 
-    // const passwordSame = await bcrypt.compare(newProfile.password, currentUser.password);
-
-    // if (!passwordSame) {
-    //   newProfile.password = await bcrypt.hash(newProfile.password, 12);
-    // }
-
     newProfile.password = await bcrypt.hash(newProfile.password, 12);
-
     const updatedUser = await User.findByIdAndUpdate(userId, newProfile, {
       new: true,
     });

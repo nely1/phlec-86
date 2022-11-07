@@ -1,3 +1,5 @@
+/* Controller that performs CRUD actions for a planned trip, all actions will return the plans that are scheduled
+today and onwards */
 import mongoose from "mongoose";
 import plan from "../data/planModel.js";
 

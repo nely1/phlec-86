@@ -9,7 +9,6 @@ const display = async (req, res) => {
 
 const upload = async (req, res) => {
   const newAlbum = req.body;
-
   const theAlbum = new album(newAlbum);
 
   try {

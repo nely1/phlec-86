@@ -1,7 +1,10 @@
+/* Controller that handles logging in a user, and creating a session token */
 import jwt from "jsonwebtoken";
 import User from "../data/userModel.js";
 import bcrypt from "bcryptjs";
 
+// Checks the email and encrypted password of a user, note: same emails with different capitalization are treated as 
+// different emails 
 export const loginUser = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
