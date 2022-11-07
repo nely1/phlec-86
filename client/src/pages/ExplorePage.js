@@ -37,7 +37,7 @@ export default function ExplorePage({ loginState }) {
       description: event.target.review.value,
       username: username,
     };
-    console.log(reviewUpload);
+
     toUpload.reviews.push(reviewUpload);
     dispatch(postReview(id, toUpload));
   };
@@ -52,7 +52,7 @@ export default function ExplorePage({ loginState }) {
 
   if (locations[selected] !== undefined) {
     reviews = locations[selected].reviews.map((review) => {
-        console.log(review);
+  
       return (
         <li /* key={review.description} */>
           <ReviewCard data={review}>
@@ -62,14 +62,6 @@ export default function ExplorePage({ loginState }) {
     });
   }
 
-  /*
-    let locationArray = locations.map((data, index) => {
-        console.log(index);
-        <li key={ index } onClick={() => { setSelected(index); }}>
-            <ExploreCard selected={selected == index} data={ data } />
-        </li>;
-    }) 
-    */
   let locationArray = [];
   for (let index = 0; index < locations.length; index++) {
     locationArray.push(locations[index]);

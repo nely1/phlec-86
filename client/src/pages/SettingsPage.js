@@ -23,7 +23,7 @@ function SettingsPage({loginState}) {
       dispatch(getUserInfo(userInfo.result._id));
     }
   }, [history, loginState, dispatch, userInfo.result._id]);
-  console.log(user.firstName);
+
   const [userDetails, setUserDetails] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
@@ -44,8 +44,6 @@ function SettingsPage({loginState}) {
     });
     setLoad(load + 1);
   }
-
-  console.log(userDetails);
 
   function changingState() {
     setChange((prev) => !prev);
