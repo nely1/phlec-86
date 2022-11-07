@@ -9,7 +9,6 @@ export const loginUser = async (req, res) => {
   const user = await User.findOne({ email });
 
   try {
-    console.log("Successfully reached authentication");
 
     if (!user) {
       res.status(404).json({ message: "Incorrect email or password" });
@@ -30,7 +29,6 @@ export const loginUser = async (req, res) => {
       const details = {plans: user.plans, userName:user.userName, favourties:user.favourties, _id: user._id}
       res.status(200).json({ result: details, token });
 
-      console.log("Somewhat logged in");
     }
   } catch (err) {
     res
@@ -50,7 +48,6 @@ export const signUpUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
-    console.log("Successfully reached authentication");
 
     if (user) {
       res.status(404).json({ message: "User already exists" });
@@ -70,12 +67,11 @@ export const signUpUser = async (req, res) => {
       });
 
       res.status(200).json({ message: "Account created", newUser });
-      console.log("account created");
     }
   } catch (error) {
     res
       .status(500)
       .json({ message: "Unknown error occured, please try again later" });
-    console.log(error.message);
+
   }
 };

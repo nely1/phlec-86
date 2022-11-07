@@ -8,13 +8,11 @@ const updateUserInfo = async (req, res) => {
     const newEmail = newProfile.email;
     const token = newProfile.token;
     const currentUser = await User.findById(userId);
-    console.log(userId);
-    console.log(newProfile);
-    console.log(currentUser);
+
 
     if (newEmail !== currentUser.email) {
       const checkUser = await User.findOne({ email: newEmail });
-      console.log(checkUser);
+
       if (checkUser) {
         res.status(404).json({message: 'User already exists'});
         return;

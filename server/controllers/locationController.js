@@ -18,7 +18,6 @@ const postReview = async (req, res) => {
 
   if (!mongoose.Types.ObjectId.isValid(locationId)) {
     if (changes.reviews.every((review) => { mongoose.Types.ObjectId.isValid(review._id) }));
-    console.log(req.body);
     return res
       .status(404)
       .send("Location with id " + locationId + " not found");
