@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./PlanPage.css";
 import { getPlans } from "../actions/plan";
 
+// Calculate the corresponding time left until the planned date
 function getMsg(scheduledDate) {
   const timeRemaining =
     new Date(scheduledDate).getDate() - new Date().getDate();
@@ -21,12 +23,17 @@ function getMsg(scheduledDate) {
 
 export default function PlanPage({ loginState }) {
   const plans = useSelector((state) => state?.plan);
-
+  const history = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
-  }, [dispatch]);
+    if (!loginState) {
+      history("/login");
+    } else {
+      dispatch(getPlans(JSON.parse(localStorage.getItem("profile"))));
+    }
+  }, [loginState, history, dispatch]);
 
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect 
   if (!loginState) {
     return <></>;
   }

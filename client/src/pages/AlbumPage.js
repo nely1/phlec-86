@@ -20,6 +20,7 @@ export default function AlbumPage({ loginState }) {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect
   if (!loginState) {
     return <></>;
   }

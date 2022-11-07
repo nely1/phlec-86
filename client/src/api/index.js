@@ -1,3 +1,4 @@
+/* Sends an axios request to the back end */
 import axios from "axios";
 
 const API = axios.create({ baseUrl: "http://localhost:5000" });

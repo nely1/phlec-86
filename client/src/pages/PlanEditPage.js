@@ -13,6 +13,7 @@ import { getLocations } from "../actions/location";
 import { getPlanOne, updatePlan, deletePlan } from "../actions/plan";
 import Routing from "../components/RoutingMachine";
 
+// Gives a sliding effect when moving the map
 function LocationMarker() {
   const map = useMapEvent("click", (e) => {
     map.setView(e.latlng, map.getZoom(), {
@@ -66,6 +67,8 @@ export default function PlanEditPage({ loginState }) {
 
   var dateFormatted = "";
 
+  // Fetches all places of interest that were previously planned, along with the name and date of the plan
+  // For each planned place of interest, set the location marker to be in the planned state
   if (prevPlan.length > 0 && load !== 1) {
     for (let index = prevPlan[0].locations.length - 1; index >= 0; index--) {
       const loc = prevPlan[0].locations[index];
@@ -113,10 +116,13 @@ export default function PlanEditPage({ loginState }) {
     "-" + 
     ("0" + new Date().getDate()).slice(-2);
 
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect 
+  // Prevents displaying webpage unitl plans are loaded from database
   if (!loginState || prevPlan.length === 0) {
     return <></>;
   }
 
+  // Create a marker that has an on-click effect to set it as a planned location
   let markers = landmarks.map((data) => (
     <Marker
       key={data.latitude}

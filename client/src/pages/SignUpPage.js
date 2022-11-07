@@ -4,9 +4,6 @@ import "./SignUpPage.css";
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../actions/signUp";
 
-/* The layouts of the sign up page and the login page are similar, so these two pages can share 
-some styles in styles.css */
-
 function SignUpPage() {
   const history = useNavigate();
   const [signUpDetails, setSignUpDetails] = useState({

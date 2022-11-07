@@ -1,3 +1,4 @@
+/* The following are the plan page reducers, contains state changes for fetching, updating and deleting plans */
 const planReducer = (plan = [], action) => {
   switch (action.type) {
     case "DELETE_ONE_PLAN":

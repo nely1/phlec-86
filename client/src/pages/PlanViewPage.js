@@ -59,10 +59,12 @@ export default function PlanViewPage({ loginState }) {
     "-" + 
     ("0" + new Date().getDate()).slice(-2);
 
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect 
   if (!loginState) {
     return <></>;
   }
 
+  // Create a marker that has an on-click effect to set it as a planned location
   let markers = landmarks.map((data) => (
     <Marker
       key={data.latitude}
