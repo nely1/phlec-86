@@ -91,7 +91,10 @@ export default function App() {
             path={PLAN_EDIT}
             element={<PlanEditPage loginState={LoggedIn} />}
           ></Route>
-          <Route path={SETTINGS} element={<SettingsPage />}></Route>
+          <Route
+            path={SETTINGS} 
+            element={<SettingsPage loginState={LoggedIn}/>}
+          ></Route>
         </Routes>
       </Router>
     </>

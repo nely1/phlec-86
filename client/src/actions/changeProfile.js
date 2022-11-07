@@ -16,3 +16,14 @@ export const changeProfile =
       alert("Email already exists");
     }
   };
+
+export const getUserInfo = (userId) => async (dispatch) => {
+  try {
+    const {data} = await api.getUserInfo(userId);
+    
+    dispatch({type: "GET_USER_INFO", payload: data});
+  }
+  catch (error) {
+    console.log(error.message);
+  }
+}

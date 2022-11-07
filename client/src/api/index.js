@@ -50,7 +50,10 @@ export const getPlanOne = (id) => axios.get(`${url}/user/plan/${id}`);
 export const updateUserInfo = (id, userDetails) =>
   axios.patch(`${url}/user/${id}/settings`, userDetails);
 
-export const updatePlan = (id, plan) =>
+export const updatePlan = (id, plan) => 
   axios.patch(`${url}/user/plan/${id}`, plan);
 
+export const getUserInfo = (id) => axios.get(`${url}/user/${id}/settings`);
+
 export const deletePlan = (id) => axios.delete(`${url}/user/plan/${id}`);
+
