@@ -3,7 +3,8 @@ import axios from "axios";
 
 const API = axios.create({ baseUrl: "http://localhost:5000" });
 // Change url to http://localhost:5000. If want to use local server
-const url = "http://localhost:5000";
+// const url = "http://localhost:5000";
+const url = "https://phlec-86.herokuapp.com";
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     req.headers.Authorization = `Bearer ${JSON.parse(
@@ -37,10 +38,7 @@ export const signUpUser = (signUpDetails) =>
 
 export const getLocations = () => axios.get(`${url}/user/location`);
 
-export const postReview = (id, location) => {
-  console.log("location = " + location);
-  axios.post(`${url}/user/location/${id}`, location);
-};
+export const postReview = (id, location) => axios.post(`${url}/user/location/${id}`, location);
 
 export const createPlan = (plan) => axios.post(`${url}/user/plan`, plan);
 
