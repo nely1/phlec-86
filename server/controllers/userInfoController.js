@@ -32,6 +32,7 @@ const updateUserInfo = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(userId, newProfile, {
       new: true,
     });
+    
     res.status(200).json({result: updatedUser, token});
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -39,4 +40,16 @@ const updateUserInfo = async (req, res) => {
   return;
 };
 
-export default { updateUserInfo };
+
+const getUserInfo = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await User.findOne({_id: userId});
+    res.status(200).json(user);
+  }
+  catch (error) {
+    res.status(404).json({ message: error.message});
+  }
+}
+
+export default { updateUserInfo, getUserInfo };
