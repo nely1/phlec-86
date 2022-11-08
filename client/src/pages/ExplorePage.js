@@ -50,11 +50,9 @@ export default function ExplorePage({ loginState }) {
 
   if (locations[selected] !== undefined) {
     reviews = locations[selected].reviews.map((review) => {
-  
       return (
         <li /* key={review.description} */>
-          <ReviewCard data={review}>
-          </ReviewCard>
+          <ReviewCard data={review}></ReviewCard>
         </li>
       );
     });

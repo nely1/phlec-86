@@ -109,14 +109,14 @@ export default function PlanEditPage({ loginState }) {
       ("0" + new Date(prevPlan[0].scheduledDate).getDate()).slice(-2);
   }
 
-  const today = 
+  const today =
     new Date().getFullYear() +
     "-" +
-    ("0" + (new Date().getMonth() + 1)).slice(-2) + 
-    "-" + 
+    ("0" + (new Date().getMonth() + 1)).slice(-2) +
+    "-" +
     ("0" + new Date().getDate()).slice(-2);
 
-  // Prevents user from accessing page if not logged in, later redirected to login page in use effect 
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect
   // Prevents displaying webpage unitl plans are loaded from database
   if (!loginState || prevPlan.length === 0) {
     return <></>;

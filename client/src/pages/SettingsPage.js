@@ -5,16 +5,14 @@ import { useDispatch } from "react-redux";
 import { changeProfile, getUserInfo } from "../actions/changeProfile";
 import { useSelector } from "react-redux";
 
-function SettingsPage({loginState}) {
+function SettingsPage({ loginState }) {
   const [change, setChange] = useState(false);
   const userInfo = JSON.parse(localStorage.getItem("profile"));
   const user = useSelector((state) => state.settings);
   const [load, setLoad] = useState(0);
- 
+
   const dispatch = useDispatch();
   const history = useNavigate();
-
-  
 
   useEffect(() => {
     if (!loginState) {
@@ -33,7 +31,7 @@ function SettingsPage({loginState}) {
     token: userInfo.token,
   });
 
-  if ((user.userName != null) && load < 1) {
+  if (user.userName != null && load < 1) {
     setUserDetails({
       firstName: user.firstName,
       lastName: user.lastName,
@@ -56,7 +54,7 @@ function SettingsPage({loginState}) {
   }
 
   if (!loginState) {
-    return <></>
+    return <></>;
   }
   return (
     <>
@@ -70,12 +68,9 @@ function SettingsPage({loginState}) {
           {!change ? (
             <>
               <p className="PersonalInfo">
-                Name : &emsp;&emsp;&emsp;{" "}
-                {user.firstName + " " + user.lastName}
+                Name : &emsp;&emsp;&emsp; {user.firstName + " " + user.lastName}
               </p>
-              <p className="PersonalInfo">
-                Username : &emsp; {user.userName}
-              </p>
+              <p className="PersonalInfo">Username : &emsp; {user.userName}</p>
               <p className="PersonalInfo">
                 Email : &emsp;&emsp;&emsp; {user.email}
               </p>

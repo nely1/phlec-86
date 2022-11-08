@@ -17,7 +17,7 @@ let redIcon = new L.Icon({
 });
 
 const createRoutineMachineLayer = (props) => {
-  // Remove a location from the plan   
+  // Remove a location from the plan
   const planRemoveItem = (item) => {
     props.plannedLocations.splice(item, 1);
     props.setPlan([...props.plannedLocations]);

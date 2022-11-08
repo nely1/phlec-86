@@ -33,7 +33,7 @@ export default function PlanPage({ loginState }) {
     }
   }, [loginState, history, dispatch]);
 
-  // Prevents user from accessing page if not logged in, later redirected to login page in use effect 
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect
   if (!loginState) {
     return <></>;
   }

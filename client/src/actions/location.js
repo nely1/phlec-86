@@ -12,7 +12,7 @@ export const getLocations = () => async (dispatch) => {
 
 export const postReview = (id, location) => async (dispatch) => {
   try {
-    const data = await api.postReview(id, location);    
+    const data = await api.postReview(id, location);
     dispatch({ type: "CREATE_REVIEW", payload: data });
   } catch (error) {
     console.log(error);

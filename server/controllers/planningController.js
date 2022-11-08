@@ -35,11 +35,11 @@ const upload = async (req, res) => {
   try {
     await planRoute.save();
     const plans = await plan
-    .find({
-      userid: newPlan.userId,
-      scheduledDate: { $gte: new Date().setHours(0, 0, 0, 0) },
-    })
-    .sort({ scheduledDate: 1 });
+      .find({
+        userid: newPlan.userId,
+        scheduledDate: { $gte: new Date().setHours(0, 0, 0, 0) },
+      })
+      .sort({ scheduledDate: 1 });
     res.status(201).json(plans);
   } catch (error) {
     res.status(409).json({ message: error.message });

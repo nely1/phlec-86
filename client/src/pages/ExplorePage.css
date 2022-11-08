@@ -85,7 +85,7 @@ ul.exploreCards li {
 }
 
 .postReviewButton {
-  margin-right: 0px; 
+  margin-right: 0px;
   margin-top: 10px;
   margin-left: 1px;
 }
@@ -98,7 +98,6 @@ ul.exploreCards li {
   top: 35px;
   left: 2%;
 }
-
 
 .reviewCards {
   margin-top: 3vw;
@@ -131,7 +130,7 @@ ul.exploreCards li {
 }
 
 .reviewName {
-    width: 100%;
+  width: 100%;
 }
 
 .reviews {
@@ -164,7 +163,7 @@ ul.reviews li {
 
 .userReview {
   /* overflow: auto; */
-  height: 8em; 
+  height: 8em;
   width: 100%;
   position: relative;
   bottom: -1em;

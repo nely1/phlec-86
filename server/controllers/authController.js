@@ -3,8 +3,8 @@ import jwt from "jsonwebtoken";
 import User from "../data/userModel.js";
 import bcrypt from "bcryptjs";
 
-// Checks the email and encrypted password of a user, note: same emails with different capitalization are treated as 
-// different emails 
+// Checks the email and encrypted password of a user, note: same emails with different capitalization are treated as
+// different emails
 export const loginUser = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -12,7 +12,6 @@ export const loginUser = async (req, res) => {
   const user = await User.findOne({ email });
 
   try {
-
     if (!user) {
       res.status(404).json({ message: "Incorrect email or password" });
       return;
@@ -29,9 +28,13 @@ export const loginUser = async (req, res) => {
         "super secret stuff",
         { expiresIn: "1h" }
       );
-      const details = {plans: user.plans, userName:user.userName, favourties:user.favourties, _id: user._id}
+      const details = {
+        plans: user.plans,
+        userName: user.userName,
+        favourties: user.favourties,
+        _id: user._id,
+      };
       res.status(200).json({ result: details, token });
-
     }
   } catch (err) {
     res
@@ -50,7 +53,6 @@ export const signUpUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-
 
     if (user) {
       res.status(404).json({ message: "User already exists" });
@@ -75,6 +77,5 @@ export const signUpUser = async (req, res) => {
     res
       .status(500)
       .json({ message: "Unknown error occured, please try again later" });
-
   }
 };
