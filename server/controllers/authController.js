@@ -34,7 +34,8 @@ export const loginUser = async (req, res) => {
         favourties: user.favourties,
         _id: user._id,
       };
-      res.status(200).json({ result: details, token });
+      res
+      .json({ result: details, token });
     }
   } catch (err) {
     res

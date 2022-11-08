@@ -1,5 +1,4 @@
 import location from "../data/locationModel.js";
-import review from "../data/reviewModel.js";
 import mongoose from "mongoose";
 
 const fetchLocations = async (req, res) => {
