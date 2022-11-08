@@ -52,11 +52,11 @@ export default function PlanViewPage({ loginState }) {
     history("/plan");
   }
 
-  const today = 
+  const today =
     new Date().getFullYear() +
     "-" +
-    ("0" + (new Date().getMonth() + 1)).slice(-2) + 
-    "-" + 
+    ("0" + (new Date().getMonth() + 1)).slice(-2) +
+    "-" +
     ("0" + new Date().getDate()).slice(-2);
 
   if (!loginState) {
@@ -141,7 +141,7 @@ export default function PlanViewPage({ loginState }) {
                       type="date"
                       id="datePlan"
                       name="datePlan"
-                      min ={today}
+                      min={today}
                       required
                     ></input>
                   </div>

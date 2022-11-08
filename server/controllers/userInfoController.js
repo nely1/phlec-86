@@ -16,7 +16,7 @@ const updateUserInfo = async (req, res) => {
       const checkUser = await User.findOne({ email: newEmail });
       console.log(checkUser);
       if (checkUser) {
-        res.status(404).json({message: 'User already exists'});
+        res.status(404).json({ message: "User already exists" });
         return;
       }
     }
@@ -32,7 +32,7 @@ const updateUserInfo = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(userId, newProfile, {
       new: true,
     });
-    res.status(200).json({result: updatedUser, token});
+    res.status(200).json({ result: updatedUser, token });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

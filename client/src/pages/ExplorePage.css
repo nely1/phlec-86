@@ -18,7 +18,6 @@
   overflow: auto;
   border-radius: 10px;
   padding-top: 1px;
-
 }
 
 .Explore-Reviews {
@@ -80,7 +79,7 @@ ul.exploreCards li {
 }
 
 .postReviewButton {
-    margin-right: 0px; 
+  margin-right: 0px;
 }
 
 .exploreCards img {
@@ -152,7 +151,7 @@ ul.reviews li {
 
 .userReview {
   /* overflow: auto; */
-  height: 8em; 
+  height: 8em;
   width: 100%;
   position: relative;
   bottom: -1em;
