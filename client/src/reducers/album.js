@@ -1,3 +1,5 @@
+/* The following are the album page reducers, contains state changes for fetching, updating and deleting albums */
+// Note: Reducer actions must have unique names across ALL reducers
 const albumReducer = (album = [], action) => {
   switch (action.type) {
     case "DELETE_ONE":

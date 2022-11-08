@@ -105,6 +105,9 @@ export default function AlbumViewPage({ loginState }) {
       history("/login");
     }
   }, [history, loginState]);
+
+  // Prevents user from accessing page if not logged in, later redirected to login page in use effect
+  // Prevents displaying webpage unitl albums are loaded from database
   if (!loginState || !album) {
     return <></>;
   }

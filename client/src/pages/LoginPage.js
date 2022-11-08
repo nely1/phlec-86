@@ -6,20 +6,16 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../actions/login";
 
 function LoginPage({ setLogin, loginState }) {
-  // React States
-
   const history = useNavigate();
 
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
-    //Prevent page reload
     event.preventDefault();
     const loginDetails = {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    // console.log(loginDetails);
     dispatch(loginUser({ loginDetails, setLogin }, history));
   };
 
@@ -54,7 +50,6 @@ function LoginPage({ setLogin, loginState }) {
               type="submit"
               value="Sign In"
             ></input>{" "}
-            {/* Change this for auth?  */}
           </form>
           <div className="LoginPageAlternatives">
             <div className="LoginPageAlternativesItem1 text1">

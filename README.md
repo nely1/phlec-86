@@ -11,18 +11,24 @@ We are a small team of 5 students doing the capstone project for the subject IT 
 The repository is divided into client and server folders, for the front-end and back-end respectively.
 [Overview of how the front end communicates with the back end ->](https://d33wubrfki0l68.cloudfront.net/08d01ed85246d3ece01963408572f3f6dfb49d41/4bc12/assets/images/reduxasyncdataflowdiagram-d97ff38a0f4da0f327163170ccc13e80.gif)
 
-The structure of the client folder (the src folder)
+The structure of the client folder
 
-- **actions**: Collection of actions that can change the state of the webpage (usually involves calls to the back-end server for data)
-- **api**: The API communicates between front-end and back-end servers to execute actions from the front-end
-- **components**: Reuseable parts of front-end code that can piece together a webpage
-- **pages**: Folder containing all the front-end web pages
-- **reducers**: When data is returned from the back-end, the reducer takes the state given and updates it
+- Subfolder public folder:
+  - Stores static images, the phlecTravels icon, and general css styling. The fonts used in the website is pulled from Google Fonts.
+- Subfolder src folder:
+  - **actions**: Collection of actions that can change the state of the webpage (usually involves calls to the back-end server for data)
+  - **api**: Communicates between front-end and back-end servers to execute actions from the front-end
+  - **components**: Reuseable parts of front-end code that can piece together a webpage
+  - **pages**: Folder containing all the front-end web pages
+  - **reducers**: When data is returned from the back-end, the reducer takes the state given and updates it
+  - **App.js**: Connects all the paths of the webpages together
+  - **Index.js**: Runs the App.js file
 
 The structure of the server folder
 
 - **controllers**: Handles interactions with the database and the user, and other logic needed for a specific page
 - **data (models)**: Stores the schema/structure of our databases
+- **middleware**: Checks if users are authenticated to perform a certain action
 - **routes**: Instructs how the server should redirect users whenever they click a link or submit a form
 - **index.js**: The web app server that will listen for API requests from the client/front-end
 
@@ -80,7 +86,7 @@ function.
    - e. Install node dependencies using **npm init** . - Accept all the defaults given in the prompt (just press Enter)
 
 2. To use the database: Must have a .env file in the server folder with the following line (replace the string with the connection string):
-   CONNECTION_URL="super secret database url that was shared in a secure environment"
+   CONNECTION_URL="<connection string that was from the database cluster>"
 
 3. To install dependencies, use **npm install** (in the client and server folders respectively) to install all the required dependencies to use the app
 

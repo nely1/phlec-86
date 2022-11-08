@@ -1,4 +1,5 @@
 import location from "../data/locationModel.js";
+import review from "../data/reviewModel.js";
 import mongoose from "mongoose";
 
 const fetchLocations = async (req, res) => {
@@ -15,6 +16,11 @@ const postReview = async (req, res) => {
   const locationId = changes._id;
 
   if (!mongoose.Types.ObjectId.isValid(locationId)) {
+    if (
+      changes.reviews.every((review) => {
+        mongoose.Types.ObjectId.isValid(review._id);
+      })
+    );
     return res
       .status(404)
       .send("Location with id " + locationId + " not found");

@@ -1,3 +1,5 @@
+/* The following are the login page reducers, contains state changes for logging in, signing out and signing up */
+// Note: Reducer actions must have unique names across ALL reducers
 const authReducer = (state = { loginDetails: null }, action) => {
   if (action.type === "LOGIN") {
     localStorage.setItem("profile", JSON.stringify({ ...action?.data }));

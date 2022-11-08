@@ -10,7 +10,7 @@ import authRouter from "./routes/authRouter.js";
 const app = express();
 dotenv.config();
 
-// controls the size of the image
+// Controls the size of the image
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
+// Connects to the database
 mongoose
   .connect(process.env.CONNECTION_URL, {
     useNewURLParser: true,

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocations, postReview } from "../actions/location";
-// import { postReview } from "../actions/explore";
 
 import "./ExplorePage.css";
 
@@ -33,14 +32,18 @@ export default function ExplorePage({ loginState }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const toUpload = locations[selected];
-    toUpload.reviews.push(event.target.review.value);
+    const reviewUpload = {
+      description: event.target.review.value,
+      username: username,
+    };
+
+    toUpload.reviews.push(reviewUpload);
     dispatch(postReview(id, toUpload));
   };
 
   let reviews = [];
 
   // convert data to array
-  //locationArray = locations.slice(0);
   if (locations[0] !== undefined) {
     reviews = locations[selected].reviews;
   }
@@ -48,23 +51,13 @@ export default function ExplorePage({ loginState }) {
   if (locations[selected] !== undefined) {
     reviews = locations[selected].reviews.map((review) => {
       return (
-        <li key={review}>
-          <ReviewCard data={review} user={username}>
-            {review}
-          </ReviewCard>
+        <li /* key={review.description} */>
+          <ReviewCard data={review}></ReviewCard>
         </li>
       );
     });
   }
 
-  /*
-    let locationArray = locations.map((data, index) => {
-        console.log(index);
-        <li key={ index } onClick={() => { setSelected(index); }}>
-            <ExploreCard selected={selected == index} data={ data } />
-        </li>;
-    }) 
-    */
   let locationArray = [];
   for (let index = 0; index < locations.length; index++) {
     locationArray.push(locations[index]);
@@ -81,7 +74,7 @@ export default function ExplorePage({ loginState }) {
     .map((location, index) => {
       return (
         <li
-          key={index}
+          key={location._id}
           onClick={() => {
             setSelected(index);
           }}

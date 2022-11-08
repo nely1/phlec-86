@@ -50,6 +50,7 @@ function HomePage({ loginState }) {
     images = createArrayOfFirstPhoto(albums);
   }
 
+  // Display the most recent plan, along with the corresponding time remaining
   if (plans.length > 0) {
     let recentPlan = plans[0];
     const timeRemaining =
@@ -67,6 +68,7 @@ function HomePage({ loginState }) {
     }
   }
 
+  /* Prevents user from accessing page if not logged in, later redirected to login page in use effect */
   if (!loginState) {
     return <></>;
   } else {

@@ -1,3 +1,4 @@
+/* The following are the API for the plan page, contains action calls for fetching, updating and deleting plans */
 import * as api from "../api";
 
 export const postPlan = (plan) => async (dispatch) => {

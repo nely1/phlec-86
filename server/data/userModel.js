@@ -16,7 +16,6 @@ const schema = new mongoose.Schema({
 });
 
 schema.methods.verifyPassword = function (password) {
-  console.log("printed in userModel");
   if (password == this.password) {
     return true;
   } else {

@@ -1,7 +1,10 @@
+/* Controller that handles logging in a user, and creating a session token */
 import jwt from "jsonwebtoken";
 import User from "../data/userModel.js";
 import bcrypt from "bcryptjs";
 
+// Checks the email and encrypted password of a user, note: same emails with different capitalization are treated as
+// different emails
 export const loginUser = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -9,8 +12,6 @@ export const loginUser = async (req, res) => {
   const user = await User.findOne({ email });
 
   try {
-    console.log("Successfully reached authentication");
-
     if (!user) {
       res.status(404).json({ message: "Incorrect email or password" });
       return;
@@ -27,9 +28,13 @@ export const loginUser = async (req, res) => {
         "super secret stuff",
         { expiresIn: "1h" }
       );
-      res.status(200).json({ result: user, token });
-
-      console.log("Somewhat logged in");
+      const details = {
+        plans: user.plans,
+        userName: user.userName,
+        favourties: user.favourties,
+        _id: user._id,
+      };
+      res.status(200).json({ result: details, token });
     }
   } catch (err) {
     res
@@ -49,8 +54,6 @@ export const signUpUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
-    console.log("Successfully reached authentication");
-
     if (user) {
       res.status(404).json({ message: "User already exists" });
     } else if (password !== confirmPassword) {
@@ -69,12 +72,10 @@ export const signUpUser = async (req, res) => {
       });
 
       res.status(200).json({ message: "Account created", newUser });
-      console.log("account created");
     }
   } catch (error) {
     res
       .status(500)
       .json({ message: "Unknown error occured, please try again later" });
-    console.log(error.message);
   }
 };

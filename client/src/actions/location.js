@@ -1,3 +1,4 @@
+/* The following are the API for the location page, contains action calls for fetching location data and its reviews */
 import * as api from "../api";
 
 export const getLocations = () => async (dispatch) => {
@@ -11,9 +12,7 @@ export const getLocations = () => async (dispatch) => {
 
 export const postReview = (id, location) => async (dispatch) => {
   try {
-    console.log("review.location._id = " + JSON.stringify(location._id));
-    const data = await api.postReview(id, location); //await api.postReview(location._id);
-    console.log("data = " + JSON.stringify(data));
+    const data = await api.postReview(id, location);
     dispatch({ type: "CREATE_REVIEW", payload: data });
   } catch (error) {
     console.log(error);

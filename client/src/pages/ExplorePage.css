@@ -9,7 +9,13 @@
   width: 100%;
 
   padding-top: 2%;
-  padding-left: 3vw;
+  padding-left: 2vw;
+}
+
+.exploreSearch input {
+  height: 40px;
+  border-radius: 10px;
+  width: 200%;
 }
 
 .exploreCards {
@@ -80,6 +86,8 @@ ul.exploreCards li {
 
 .postReviewButton {
   margin-right: 0px;
+  margin-top: 10px;
+  margin-left: 1px;
 }
 
 .exploreCards img {
@@ -106,7 +114,8 @@ ul.exploreCards li {
 
 .reviewCard {
   height: 7em;
-  width: 100%;
+  width: 95%;
+
 
   margin-left: 1vw;
   margin-top: 1vw;
@@ -119,6 +128,10 @@ ul.exploreCards li {
   width: 90%;
   overflow: auto;
   background-color: var(--color-primary-lightgreen);
+}
+
+.reviewName {
+  width: 100%;
 }
 
 .reviews {

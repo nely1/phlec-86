@@ -1,25 +1,47 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SettingsPage.css";
 import { useDispatch } from "react-redux";
-import { changeProfile } from "../actions/changeProfile";
+import { changeProfile, getUserInfo } from "../actions/changeProfile";
+import { useSelector } from "react-redux";
 
-function SettingsPage() {
+function SettingsPage({ loginState }) {
   const [change, setChange] = useState(false);
   const userInfo = JSON.parse(localStorage.getItem("profile"));
+  const user = useSelector((state) => state.settings);
+  const [load, setLoad] = useState(0);
+
   const dispatch = useDispatch();
   const history = useNavigate();
 
-  console.log(userInfo);
+  useEffect(() => {
+    if (!loginState) {
+      history("/login");
+    } else {
+      dispatch(getUserInfo(userInfo.result._id));
+    }
+  }, [history, loginState, dispatch, userInfo.result._id]);
 
   const [userDetails, setUserDetails] = useState({
-    firstName: userInfo.result.firstName,
-    lastName: userInfo.result.lastName,
-    userName: userInfo.result.userName,
-    email: userInfo.result.email,
-    password: userInfo.result.password,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    userName: user.userName,
+    email: user.email,
+    password: user.password,
     token: userInfo.token,
   });
+
+  if (user.userName != null && load < 1) {
+    setUserDetails({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      userName: user.userName,
+      email: user.email,
+      password: user.password,
+      token: userInfo.token,
+    });
+    setLoad(load + 1);
+  }
 
   function changingState() {
     setChange((prev) => !prev);
@@ -31,6 +53,9 @@ function SettingsPage() {
     dispatch(changeProfile(userDetails, userInfo, history));
   }
 
+  if (!loginState) {
+    return <></>;
+  }
   return (
     <>
       <div className="SettingsPage">
@@ -43,14 +68,11 @@ function SettingsPage() {
           {!change ? (
             <>
               <p className="PersonalInfo">
-                Name : &emsp;&emsp;&emsp;{" "}
-                {userInfo.result.firstName + " " + userInfo.result.lastName}
+                Name : &emsp;&emsp;&emsp; {user.firstName + " " + user.lastName}
               </p>
+              <p className="PersonalInfo">Username : &emsp; {user.userName}</p>
               <p className="PersonalInfo">
-                Username : &emsp; {userInfo.result.userName}
-              </p>
-              <p className="PersonalInfo">
-                Email : &emsp;&emsp;&emsp; {userInfo.result.email}
+                Email : &emsp;&emsp;&emsp; {user.email}
               </p>
               <p className="PersonalInfo">Password :</p>
               <button className="ChangeButton text3" onClick={changingState}>

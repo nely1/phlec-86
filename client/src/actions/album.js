@@ -1,3 +1,4 @@
+/* The following are the API for the album page, contains action calls for fetching, updating and deleting albums */
 import * as api from "../api";
 
 export const postAlbum = (album) => async (dispatch) => {

@@ -6,8 +6,6 @@ import decode from "jwt-decode";
 import NavButton from "./NavButton";
 import "./Navbar.css";
 
-/* This will probably be changed when Auth is added */
-
 // Enum for the pages in the navbar
 export const Pages = Object.freeze({
   Home: "home",

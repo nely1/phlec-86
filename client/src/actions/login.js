@@ -1,3 +1,4 @@
+/* The following are the API for the login page, contains action calls for authenticating users */
 import * as api from "../api";
 
 export const loginUser = (loginDetails, history) => async (dispatch) => {
@@ -7,7 +8,7 @@ export const loginUser = (loginDetails, history) => async (dispatch) => {
     dispatch({ type: "LOGIN", data });
     loginDetails.setLogin(true);
 
-    // navigate to landing page
+    // Navigate to landing page
     history("/home");
   } catch (error) {
     console.log(error);

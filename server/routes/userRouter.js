@@ -36,4 +36,6 @@ userRouter.delete("/albumview/:id", albumController.deleteAlbum);
 
 userRouter.patch("/:id/settings", userInfoController.updateUserInfo);
 
+userRouter.get("/:id/settings", userInfoController.getUserInfo);
+
 export default userRouter;

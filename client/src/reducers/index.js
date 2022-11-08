@@ -1,3 +1,4 @@
+/* The following are all reducers from other pages managed in a combined reducer */
 import { combineReducers } from "redux";
 import login from "./login";
 import album from "./album";
