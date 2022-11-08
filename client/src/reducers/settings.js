@@ -12,7 +12,7 @@ const settingsReducer = (userDetails = [], action) => {
         },
         token: action.token
       }
-      localStorage.setItem("profile", JSON.stringify(details));
+      localStorage.setItem("profile", JSON.stringify(...details));
       return action.data.result;
     case "GET_USER_INFO":
       
