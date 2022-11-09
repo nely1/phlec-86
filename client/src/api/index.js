@@ -24,6 +24,7 @@ export const getAlbums = (id) => axios.get(`${url}/user/${id}/albums`);
 
 export const getAlbumOne = (id) => axios.get(`${url}/user/albumview/${id}`);
 
+
 export const updateAlbumOne = (id, updatedAlbum) =>
   axios.patch(`${url}/user/albumview/${id}`, updatedAlbum);
 
