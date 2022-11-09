@@ -5,6 +5,7 @@ const planReducer = (plan = [], action) => {
     case "DELETE_ONE_PLAN":
       return action.payload;
     case "CREATE_PLAN":
+      console.log(action.payload);
       return action.payload;
     case "FETCH_PLANS":
       return action.payload;
