@@ -4,7 +4,7 @@ import axios from "axios";
 const API = axios.create({ baseUrl: "http://localhost:5000" });
 // Change url to http://localhost:5000. If want to use local server
 // const url = "http://localhost:5000";
-const url = "http://localhost:5000";
+const url = "https://phlec-86.herokuapp.com";
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     req.headers.Authorization = `Bearer ${JSON.parse(
@@ -24,9 +24,6 @@ export const getAlbums = (id) => axios.get(`${url}/user/${id}/albums`);
 
 export const getAlbumOne = (id) => axios.get(`${url}/user/albumview/${id}`);
 
-export const getReview = () => API.get("/user/explore");
-
-export const getReviews = (id) => axios.get(`${url}/user/${id}/reviews`);
 
 export const updateAlbumOne = (id, updatedAlbum) =>
   axios.patch(`${url}/user/albumview/${id}`, updatedAlbum);

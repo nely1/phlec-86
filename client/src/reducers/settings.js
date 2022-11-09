@@ -10,9 +10,9 @@ const settingsReducer = (userDetails = [], action) => {
           favourties: action.data.result.favourties,
           _id: action.data.result._id,
         },
-        token: action.token,
+        token: action.data.token,
       };
-      localStorage.setItem("profile", JSON.stringify(...details));
+      localStorage.setItem("profile", JSON.stringify(details));
       return action.data.result;
     case "GET_USER_INFO":
       return action.payload;

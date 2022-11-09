@@ -7,7 +7,6 @@ export const changeProfile =
         userInfo.result._id,
         userDetails
       );
-
       dispatch({ type: "CHANGE_PROFILE", data });
 
       history("/settings");

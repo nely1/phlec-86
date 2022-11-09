@@ -4,6 +4,8 @@ const locationReducer = (location = [], action) => {
   switch (action.type) {
     case "FETCH_LOCATIONS":
       return action.payload;
+    case "CREATE_REVIEW":
+      return [...location, action.payload];
     default:
       return location;
   }
