@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 
 function SettingsPage({ loginState }) {
   const [change, setChange] = useState(false);
-  const userInfo = JSON.parse(localStorage.getItem("profile"));
   const user = useSelector((state) => state.settings);
   const [load, setLoad] = useState(0);
 
@@ -18,9 +17,11 @@ function SettingsPage({ loginState }) {
     if (!loginState) {
       history("/login");
     } else {
-      dispatch(getUserInfo(userInfo.result._id));
+      dispatch(getUserInfo(JSON.parse(localStorage.getItem("profile")).result._id));
     }
-  }, [history, loginState, dispatch, userInfo.result._id]);
+  }, [history, loginState, dispatch]);
+
+  const userInfo = JSON.parse(localStorage.getItem("profile"));
 
   const [userDetails, setUserDetails] = useState({
     firstName: user.firstName,
