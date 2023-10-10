@@ -5,6 +5,8 @@ const schema = new mongoose.Schema({
   tripName: { type: String, required: true },
   scheduledDate: Date,
   locations: [{ type: mongoose.Schema.Types.ObjectId, ref: "locationModel" }],
+  
+  
 });
 
 const planModel = mongoose.model("planModel", schema);
