@@ -24,14 +24,20 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-// Connects to the database
-mongoose
-  .connect(process.env.CONNECTION_URL, {
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.CONNECTION_URL, {
     useNewURLParser: true,
     useUnifiedTopology: true,
     dbName: "phlecTravels",
-  })
-  .then(() =>
+  });
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+// Connects to the database
+  connectDB().then(() =>
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
   .catch((error) => console.log(error.message));
