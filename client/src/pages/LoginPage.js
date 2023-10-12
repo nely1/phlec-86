@@ -33,6 +33,7 @@ function LoginPage({ setLogin, loginState }) {
                 name="email"
                 placeholder="Enter Your Email"
                 required
+                value="shanna@gmail.com"
               ></input>
             </label>
             <label className="LoginPageInputBox">
@@ -43,6 +44,7 @@ function LoginPage({ setLogin, loginState }) {
                 type="password"
                 name="password"
                 required
+                value="1stGamer"
               ></input>
             </label>
             <input
